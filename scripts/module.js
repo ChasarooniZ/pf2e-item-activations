@@ -2,10 +2,11 @@
 // HOOKS STUFF
 Hooks.on("ready", async () => {
     //console.error("PF2e RPG Numbers is ready");
-    //ui.notifications.notify("PF2e RPG Numbers is ready")
+    if (!game.user.isGM) return;
+    ui.notifications.notify("PF2e RPG Numbers is ready")
     //game.RPGNumbers = new RPGNumbers();
 })
-Hooks.on("updateItem", async function (item, changes) {
+Hooks.on("updateItem", async function (item, changes, diff, id) {
     if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
     if (game.user.isGM) {
         debugLog({
@@ -20,7 +21,7 @@ Hooks.on("updateItem", async function (item, changes) {
         } else if (item.system.usage.type === "worn") {
             isProperlyEquipped = item.isWorn;
         }
-        debugLog({ actions, isProperlyEquipped, isInvestProper }, "RemoveorAdd")
+        debugLog({ actions, isProperlyEquipped, isInvestProper }, "RemoveorAdd");
         removeOrAddActions(item.actor, actions, isProperlyEquipped && isInvestProper);
     }
 })
