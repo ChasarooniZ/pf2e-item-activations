@@ -1,0 +1,43 @@
+{
+  "id": "pf2e-item-activations",
+  "title": "PF2e Item Activations",
+  "description": "A module that allows you to have actions be added to an actor upon equipping",
+  "version": "#{VERSION}#",
+  "compatibility": {
+    "minimum": "10",
+    "verified": "11",
+    "maximum": "11"
+  },
+  "authors": [
+    {
+      "name": "chasarooniZ"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "5.2.1",
+          "verified": "5.3.0"
+        }
+      }
+    ]
+  },
+  "esmodules": [
+    "scripts/module.js",
+    "scripts/settings.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "readme": "https://github.com/cadowtin/pf2e-item-activations/blob/master/README.md"
+}
