@@ -7,6 +7,8 @@ Hooks.on("ready", async () => {
     //game.RPGNumbers = new RPGNumbers();
 })
 Hooks.on("updateItem", async function (item, changes, diff, id) {
+    console.log(`PF2E-ITEM-ACTIVATIONs:`, item);
+    console.log({ enable: game.settings.get("pf2e-item-activations", 'enabled'), debug: game.settings.get("pf2e-item-activations", 'debug-mode') })
     if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
     if (game.user.isGM) {
         debugLog({
@@ -30,7 +32,7 @@ export function removeOrAddActions(actor, itemIds, isAdd = true) {
     const actions = [];
     for (uuid in itemIds) {
         let action = await fromUuid(uuid);
-        actions.push(action.toObject())
+        actions.push(action.toObject());
     }
     if (isAdd) {
         actor.createEmbeddedDocuments("Item", actions);
