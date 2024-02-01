@@ -26,22 +26,23 @@ Hooks.on("ready", async () => {
             removeOrAddActions(item.actor, actions, isProperlyEquipped && isInvestProper);
         }
     })
+});
 
-    export function removeOrAddActions(actor, itemIds, isAdd = true) {
-        const actions = [];
-        for (uuid in itemIds) {
-            let action = await fromUuid(uuid);
-            actions.push(action.toObject());
-        }
-        if (isAdd) {
-            actor.createEmbeddedDocuments("Item", actions);
-        } else {
-            const actionSlugs = actions.map(action => action.slug);
-            actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => actionSlugs.includes(item.slug)).map(item => item.slug));
-        }
+export function removeOrAddActions(actor, itemIds, isAdd = true) {
+    const actions = [];
+    for (uuid in itemIds) {
+        let action = await fromUuid(uuid);
+        actions.push(action.toObject());
     }
+    if (isAdd) {
+        actor.createEmbeddedDocuments("Item", actions);
+    } else {
+        const actionSlugs = actions.map(action => action.slug);
+        actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => actionSlugs.includes(item.slug)).map(item => item.slug));
+    }
+}
 
-    export function debugLog(data, context = "") {
-        if (game.settings.get("pf2e-item-activations", 'debug-mode'))
-            console.log(`PF2E-ITEM-ACTIVATIONs: ${context}`, data);
-    }
+export function debugLog(data, context = "") {
+    if (game.settings.get("pf2e-item-activations", 'debug-mode'))
+        console.log(`PF2E-ITEM-ACTIVATIONs: ${context}`, data);
+}
