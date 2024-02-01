@@ -3,30 +3,35 @@
 Hooks.on("ready", async () => {
     //console.error("PF2e RPG Numbers is ready");
     if (!game.user.isGM) return;
-    ui.notifications.notify("PF2e Item Activations")
+    ui.notifications.info("PF2e Item Activations")
     //game.RPGNumbers = new RPGNumbers();
     Hooks.on("updateItem", async function (item, changes, diff, id) {
-        console.log(`PF2E-ITEM-ACTIVATIONs:`, item);
-        console.log({ enable: game.settings.get("pf2e-item-activations", 'enabled'), debug: game.settings.get("pf2e-item-activations", 'debug-mode') })
-        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
-        if (game.user.isGM) {
-            debugLog({
-                item
-            }, "Item")
-            let actions = item.rules.filter((rule) => rule.key === "GrantItem").map(rule => rule.uuid);
-            if (actions.length === 0) return;
-            const isInvestProper = item.system.traits.value.includes("invested") === !!item.isInvested;
-            let isProperlyEquipped = false;
-            if (item.system.usage.value === "held-in-one-hand") {
-                isProperlyEquipped = item.isHeld;
-            } else if (item.system.usage.type === "worn") {
-                isProperlyEquipped = item.isWorn;
-            }
-            debugLog({ actions, isProperlyEquipped, isInvestProper }, "RemoveOrAdd");
-            removeOrAddActions(item.actor, actions, isProperlyEquipped && isInvestProper);
-        }
+        console.log(`PF2E-ITEM-ACTIVATIONS:`, item, changes, diff);
+    //     console.log({ enable: game.settings.get("pf2e-item-activations", 'enabled'), debug: game.settings.get("pf2e-item-activations", 'debug-mode') })
+    //     if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
+    //     if (game.user.isGM) {
+    //         debugLog({
+    //             item
+    //         }, "Item")
+    //         
+    //         debugLog({ actions, isProperlyEquipped, isInvestProper }, "RemoveOrAdd");
+    //         removeOrAddActions(item.actor, actions, isProperlyEquipped && isInvestProper);
+    //     }
     })
 });
+
+export function checkIfImportantUpdate(item) {
+    let actions = item.rules.filter((rule) => rule.key === "GrantItem").map(rule => rule.uuid);
+    if (actions.length === 0) return;
+    const isInvestProper = item.system.traits.value.includes("invested") === !!item.isInvested;
+    let isProperlyEquipped = false;
+    if (item.system.usage.value === "held-in-one-hand") {
+        isProperlyEquipped = item.isHeld;
+    } else if (item.system.usage.type === "worn") {
+        isProperlyEquipped = item.isWorn;
+    }
+    return isProperlyEquipped && isProperlyInvested;
+}
 
 export function removeOrAddActions(actor, itemIds, isAdd = true) {
     const actions = [];
