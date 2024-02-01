@@ -1,6 +1,6 @@
 // import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
 // HOOKS STUFF
-Hooks.on("ready", async () => {
+Hooks.on("ready", () => {
     //console.error("PF2e RPG Numbers is ready");
     if (!game.user.isGM) return;
     ui.notifications.info("PF2e Item Activations")
