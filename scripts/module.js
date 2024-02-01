@@ -1,7 +1,7 @@
 // import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
 // HOOKS STUFF
 Hooks.on("ready", () => {
-    //console.error("PF2e RPG Numbers is ready");
+    console.error("PF2e Item Activation is ready");
     if (!game.user.isGM) return;
     ui.notifications.info("PF2e Item Activations")
     //game.RPGNumbers = new RPGNumbers();
@@ -17,8 +17,8 @@ Hooks.on("ready", () => {
     //         debugLog({ actions, isProperlyEquipped, isInvestProper }, "RemoveOrAdd");
     //         removeOrAddActions(item.actor, actions, isProperlyEquipped && isInvestProper);
     //     }
-    })
-});
+    });
+})
 
 export function checkIfImportantUpdate(item) {
     let actions = item.rules.filter((rule) => rule.key === "GrantItem").map(rule => rule.uuid);
