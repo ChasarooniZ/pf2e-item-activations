@@ -12,10 +12,16 @@ Adds actions based on items activations
 - [PF2e Item Activations](#pf2e-item-activations)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
+    - [Supported Items](#supported-items)
   - [Settings](#settings)
   - [FAQ](#faq)
 ## Features
-Coming Soon
+Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in thefuture to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
+### Supported Items
+- Lantern of Empty Light
+- Bracelet of Dashing
+- Hunter's Brooch
+- The Whispering Reeds
 ## Settings
 Coming Soon
 ## FAQ
