@@ -25,6 +25,17 @@
       }
     ]
   },
+  "packs": [
+    {
+      "label": "Item Activations",
+      "name": "item-activations",
+      "path": "packs/item-activations.db",
+      "system": "pf2e",
+      "private": false,
+      "type": "Item",
+      "flags": {}
+    }
+  ],
   "esmodules": [
     "scripts/module.js",
     "scripts/settings.js"
