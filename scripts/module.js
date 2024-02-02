@@ -147,7 +147,10 @@ export function addOrRemoveActivation(item, changeType) {
     const slug = item.system.slug;
     const actions_uuid = ITEM_LIST[slug].actions;
     if (actions_uuid.length === 0) return;
-    const actions = actions_uuid.map(uuid => fromUuidSync(uuid).toObject());
+    const actions = actions_uuid.map(uuid => {
+        let item = await fromUuidSync(uuid)
+        return item.toObject()
+    });
     if (changeType === 'On') {
         actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Off') {
