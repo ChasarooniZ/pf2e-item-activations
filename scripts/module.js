@@ -148,7 +148,7 @@ export function addOrRemoveActivation(item, changeType) {
     const actions_uuid = ITEM_LIST[slug].actions;
     if (actions_uuid.length === 0) return;
     const actions = actions_uuid.map(uuid => {
-        let item = await fromUuidSync(uuid)
+        let item = await fromUuid(uuid)
         return item.toObject()
     });
     if (changeType === 'On') {
