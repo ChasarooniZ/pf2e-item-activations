@@ -1,4 +1,4 @@
-import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list";
+import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
 
 Hooks.on("ready", () => {
     console.error("PF2e Item Activation is ready");
