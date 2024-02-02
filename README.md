@@ -18,9 +18,10 @@ Adds actions based on items activations
 ## Features
 Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in thefuture to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
 ### Supported Items
-- Lantern of Empty Light
 - Bracelet of Dashing
+- Caterwaul Sling
 - Hunter's Brooch
+- Lantern of Empty Light
 - The Whispering Reeds
 ## Settings
 Coming Soon

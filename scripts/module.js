@@ -12,7 +12,7 @@ Hooks.on("ready", () => {
         const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
         console.log({ changeType });
         if (changeType == 'none') return;
-        addOrRemoveActivation()
+        addOrRemoveActivation(item, changeType)
         switch (changeType) {
             case 'on':
                 break;
@@ -140,7 +140,7 @@ export function isQualified(itemEquipmentStatus, usageConditions) {
 /**
  * 
  * @param {*} item 
- * @param {*} changeType 
+ * @param {'On' | 'Off | 'None'} changeType 
  */
 export function addOrRemoveActivation(item, changeType) {
     const actor = item.actor;
