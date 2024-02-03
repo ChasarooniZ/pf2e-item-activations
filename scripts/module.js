@@ -13,45 +13,8 @@ Hooks.on("ready", () => {
         console.log({ changeType });
         if (changeType == 'none') return;
         let test = await addOrRemoveActivation(item, changeType);
-        //     console.log({ enable: game.settings.get("pf2e-item-activations", 'enabled'), debug: game.settings.get("pf2e-item-activations", 'debug-mode') })
-        //     if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
-        //     if (game.user.isGM) {
-        //         debugLog({
-        //             item
-        //         }, "Item")
-        //         
-        //         debugLog({ actions, isProperlyEquipped, isProperlyInvested }, "RemoveOrAdd");
-        //         removeOrAddActions(item.actor, actions, isProperlyEquipped && isInvestProper);
-        //     }
     });
 })
-
-// export function checkIfImportantUpdate(item) {
-//     let actions = item.rules.filter((rule) => rule.key === "GrantItem").map(rule => rule.uuid);
-//     if (actions.length === 0) return;
-//     const isProperlyInvested = item.system.traits.value.includes("invested") === !!item.isInvested;
-//     let isProperlyEquipped = false;
-//     if (item.system.usage.value === "held-in-one-hand") {
-//         isProperlyEquipped = item.isHeld;
-//     } else if (item.system.usage.type === "worn") {
-//         isProperlyEquipped = item.isWorn;
-//     }
-//     return isProperlyEquipped && isProperlyInvested;
-// }
-
-// export function removeOrAddActions(actor, itemIds, isAdd = true) {
-//     const actions = [];
-// for (uuid in itemIds) {
-//     let action = await fromUuid(uuid);
-//     actions.push(action.toObject());
-// }
-//     if (isAdd) {
-//         actor.createEmbeddedDocuments("Item", actions);
-//     } else {
-//         const actionSlugs = actions.map(action => action.slug);
-//         actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => actionSlugs.includes(item.slug)).map(item => item.slug));
-//     }
-// }
 
 /**
  * Checks if the item is in the list
@@ -138,7 +101,7 @@ export async function addOrRemoveActivation(item, changeType) {
     const actions_uuid = ITEM_LIST[slug].actions;
     if (actions_uuid.length === 0) return;
     const actions = [];
-    for (uuid of actions_uuid) {
+    for (const uuid of actions_uuid) {
         let item = await fromUuid(uuid)
         actions.push(item.toObject())
     }
