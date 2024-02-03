@@ -40,9 +40,9 @@ export function getActivationConditions(item) {
 
     if (item.system?.equipped?.invested !== null)
         usage.invested = true;
-    switch (item?.system?.equipped?.type) {
+    switch (item?.system?.usage?.type) {
         case 'worn':
-            if (item?.system?.equipped?.value !== 'worn') {
+            if (item?.system?.usage?.value !== 'worn') {
                 usage.inSlot = true;
             }
             break;
