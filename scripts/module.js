@@ -32,7 +32,7 @@ export function checkIfMatters(slug, changes) {
  */
 export function getActivationConditions(item) {
     const usage = {
-        carryType: item.type,
+        carryType: item?.system?.usage?.type,
         handsHeld: 0,
         invested: false,
         inSlot: false
