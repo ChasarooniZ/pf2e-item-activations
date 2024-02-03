@@ -7,7 +7,7 @@ Hooks.on("ready", () => {
     //game.RPGNumbers = new RPGNumbers();
     Hooks.on("updateItem", async function (item, changes, diff, id) {
         console.log(`PF2E-ITEM-ACTIVATIONS:`, item, changes, diff);
-        if (!checkIfMatters(item.system.slug, changes)) return;
+        if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
         const conditions = getActivationConditions(item);
         const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
         console.log({ changeType });

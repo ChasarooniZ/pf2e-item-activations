@@ -18,11 +18,16 @@ Adds actions based on items activations
 ## Features
 Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in thefuture to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
 ### Supported Items
+- Bottled Air
 - Bracelet of Dashing
 - Caterwaul Sling
 - Hunter's Brooch
 - Lantern of Empty Light
+- Masquerade Scarf
+- Serpent Dagger
 - The Whispering Reeds
+- Ventriloquist's Ring
+- Wayfinder
 ## Settings
 Coming Soon
 ## FAQ
