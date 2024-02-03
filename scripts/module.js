@@ -92,16 +92,16 @@ export function isQualified(itemEquipmentStatus, usageConditions) {
 }
 
 export function isChangeImportant(changesToEquipment, usageConditions) {
-    if (usageConditions.invested && changesToEquipment?.invested) {
+    if (changesToEquipment?.invested !== null) {
         return true;
     }
-    if (usageConditions.handsHeld <= changesToEquipment?.handsHeld) {
+    if (changesToEquipment?.handsHeld !== null) {
         return true;
     }
-    if (usageConditions.inSlot && changesToEquipment?.inSlot) {
+    if (changesToEquipment?.inSlot !== null) {
         return true;
     }
-    if (usageConditions.carryType === changesToEquipment?.carryType) {
+    if (changesToEquipment?.carryType  !== null) {
         return true;
     }
 
