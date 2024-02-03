@@ -6,12 +6,12 @@ Hooks.on("ready", () => {
     ui.notifications.info("PF2e Item Activations")
     //game.RPGNumbers = new RPGNumbers();
     Hooks.on("updateItem", async function (item, changes, diff, id) {
-        console.log(`PF2E-ITEM-ACTIVATIONS:`, item, changes, diff);
+        debugLog({item, changes, diff}, "Start");
         if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
         const conditions = getActivationConditions(item);
         const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
-        console.log({ changeType });
-        if (changeType == 'none') return;
+        debugLog(changeType, 'ChangeType')
+        if (changeType == 'None') return;
         let test = await addOrRemoveActivation(item, changeType);
     });
 })
