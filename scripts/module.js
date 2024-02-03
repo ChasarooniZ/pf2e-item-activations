@@ -12,17 +12,7 @@ Hooks.on("ready", () => {
         const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
         console.log({ changeType });
         if (changeType == 'none') return;
-        addOrRemoveActivation(item, changeType)
-        switch (changeType) {
-            case 'on':
-                break;
-            case 'off':
-                break;
-            case 'none':
-                break;
-            case 'default':
-                break;
-        }
+        let test = await addOrRemoveActivation(item, changeType);
         //     console.log({ enable: game.settings.get("pf2e-item-activations", 'enabled'), debug: game.settings.get("pf2e-item-activations", 'debug-mode') })
         //     if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
         //     if (game.user.isGM) {
@@ -142,7 +132,7 @@ export function isQualified(itemEquipmentStatus, usageConditions) {
  * @param {*} item 
  * @param {'On' | 'Off | 'None'} changeType 
  */
-export function addOrRemoveActivation(item, changeType) {
+export async function addOrRemoveActivation(item, changeType) {
     const actor = item.actor;
     const slug = item.system.slug;
     const actions_uuid = ITEM_LIST[slug].actions;
