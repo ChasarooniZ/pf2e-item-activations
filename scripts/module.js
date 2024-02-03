@@ -7,7 +7,7 @@ Hooks.on("ready", () => {
     //game.RPGNumbers = new RPGNumbers();
     Hooks.on("updateItem", async function (item, changes, diff, id) {
         console.log(`PF2E-ITEM-ACTIVATIONS:`, item, changes, diff);
-        if (!checkIfMatters(item.system.slug)) return;
+        if (!checkIfMatters(item.system.slug, changes)) return;
         const conditions = getActivationConditions(item);
         const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
         console.log({ changeType });
@@ -21,8 +21,8 @@ Hooks.on("ready", () => {
  * @param {string} slug Slug of item to check for
  * @returns True if item is in list
  */
-export function checkIfMatters(slug) {
-    return ITEM_SLUGS.includes(slug);
+export function checkIfMatters(slug, changes) {
+    return ITEM_SLUGS.includes(slug) && changes?.system?.equipped;
 }
 
 /**
@@ -61,14 +61,15 @@ export function getActivationConditions(item) {
  * @param {carryType?: string, handsHeld?: number, invested?: boolean, inSlot?: boolean} usageConditions usage type
  */
 export function checkChangeType(itemEquipmentStatus, changesToEquipment, usageConditions) {
-    const oldQualified = isQualified(itemEquipmentStatus, usageConditions);
     const combinedStatus = Object.assign(itemEquipmentStatus, changesToEquipment)
-    const newQualified = isQualified(combinedStatus, usageConditions);
-    if (oldQualified === newQualified) {
+    const qualified = isQualified(combinedStatus, usageConditions);
+    const importantChange = isChangeImportant(changesToEquipment, usageConditions);
+    //TODO Improve the checking on this to help with performance
+    if (!importantChange) {
         return 'None'
-    } else if (oldQualified && !newQualified) {
+    } else if (importantChange && !qualified) {
         return 'Off'
-    } else if (!oldQualified && newQualified) {
+    } else if (importantChange && qualified) {
         return 'On'
     }
 }
@@ -77,7 +78,7 @@ export function isQualified(itemEquipmentStatus, usageConditions) {
     if (usageConditions.invested && !itemEquipmentStatus?.invested) {
         return false;
     }
-    if (itemEquipmentStatus.handsHeld >= usageConditions.handsHeld) {
+    if (usageConditions.handsHeld > itemEquipmentStatus.handsHeld) {
         return false;
     }
     if (usageConditions.inSlot && !itemEquipmentStatus.inSlot) {
@@ -88,6 +89,23 @@ export function isQualified(itemEquipmentStatus, usageConditions) {
     }
 
     return true;
+}
+
+export function isChangeImportant(changesToEquipment, usageConditions) {
+    if (usageConditions.invested && changesToEquipment?.invested) {
+        return true;
+    }
+    if (usageConditions.handsHeld <= changesToEquipment?.handsHeld) {
+        return true;
+    }
+    if (usageConditions.inSlot && changesToEquipment?.inSlot) {
+        return true;
+    }
+    if (usageConditions.carryType === changesToEquipment?.carryType) {
+        return true;
+    }
+
+    return false
 }
 
 /**
