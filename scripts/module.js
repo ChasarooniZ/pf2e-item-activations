@@ -147,15 +147,16 @@ export function addOrRemoveActivation(item, changeType) {
     const slug = item.system.slug;
     const actions_uuid = ITEM_LIST[slug].actions;
     if (actions_uuid.length === 0) return;
-    const actions = actions_uuid.map(uuid => {
+    const actions = [];
+    for (uuid of actions_uuid) {
         let item = await fromUuid(uuid)
-        return item.toObject()
-    });
+        actions.push(item.toObject())
+    }
     if (changeType === 'On') {
         actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Off') {
-        const actionSlugs = actions.map(action => action.slug);
-        actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => actionSlugs.includes(item.slug)).map(item => item.slug));
+        const actionSlugs = actions.map(action => action.system.slug);
+        actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => actionSlugs.includes(item.system.slug)).map(item => item.id));
     }
 }
 
