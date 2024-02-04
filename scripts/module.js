@@ -182,7 +182,7 @@ export async function turnOnOffActivation(item, changeType) {
     if (changeType === 'On') {
         if (missingActions.length > 0) {
             const activations = [];
-            for (actionSlug of missingActions) {
+            for (const actionSlug of missingActions) {
                 let idx = ITEM_LIST[slug].slugs.indexOf(actionSlug);
                 let action = await fromUuid(ITEM_LIST[slug].actions[uuid]);
                 activations.push(action.toObject())
