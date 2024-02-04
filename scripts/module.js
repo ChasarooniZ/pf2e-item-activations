@@ -1,6 +1,13 @@
-import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
+import { ITEM_LIST_INPUT, ITEM_SLUGS } from "./helpers/item-list.js";
+const ITEM_LIST = ITEM_LIST_INPUT;
 
 Hooks.on("ready", () => {
+    const index = game.packs.get("pf2e-item-activations.item-activations").index;
+    for (let item in ITEM_LIST) {
+        ITEM_LIST[item].slugs = ITEM_LIST[item].actions.map(uuid =>
+            game.pf2e.system.sluggify(index.get(uuid.split('.').slice(-1)).name)
+        );
+    }
     console.log("PF2e Item Activation is ready");
     Hooks.on("updateItem", async function (item, changes, diff, userID) {
         if (!item.actor) return;
@@ -157,12 +164,12 @@ export async function turnOnOffActivation(item, changeType) {
     const marker = '[X]';
     const actor = item.actor;
     const slug = item.system.slug;
-    const actions_uuid = ITEM_LIST[slug].actions;
-    if (actions_uuid.length === 0) return;
+    const actionSlugs = ITEM_LIST[slug].slugs;
+    if (actionSlugs.length === 0) return;
     const actions = [];
-    for (const uuid of actions_uuid) {
-        let item = await fromUuid(uuid)
-        actions.push(item.toObject())
+    for (const slug of actionSlugs) {
+        const item = actor.items.find(item => item.system.slug === slug);
+        actions.append(item);
     }
     const nameIds = actions.map(action => ({
         _id: action.id,

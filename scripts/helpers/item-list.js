@@ -1,4 +1,4 @@
-export const ITEM_LIST = {
+export const ITEM_LIST_INPUT = {
     'bottled-air': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.ucitBfE1h2qiCmRW', //Breathe In
