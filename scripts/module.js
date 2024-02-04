@@ -22,7 +22,7 @@ Hooks.on("ready", () => {
     Hooks.on("createItem", async (item, options, userID) => {
         if (!item.actor) return;
         if (userID !== game.user.id) return;
-        if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
+        if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
         let test = await addOrDeleteActivation(item, 'Add');
         const conditions = getActivationConditions(item);
         if (!isQualified(item?.system?.equipped, conditions)) {
@@ -33,7 +33,7 @@ Hooks.on("ready", () => {
     Hooks.on("preDeleteItem", async (item, options, userID) => {
         if (!item.actor) return;
         if (userID !== game.user.id) return;
-        if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
+        if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
         let test = await addOrDeleteActivation(item, 'Delete');
     });
 
@@ -44,7 +44,7 @@ Hooks.on("ready", () => {
  * @param {string} slug Slug of item to check for
  * @returns True if item is in list
  */
-export function checkIfMatters(slug, changes) {
+export function checkIfMatters(slug, changes = {}) {
     return ITEM_SLUGS.includes(slug) && changes?.system?.equipped;
 }
 
