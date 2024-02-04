@@ -1,10 +1,10 @@
-import { ITEM_LIST_INPUT as ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
+import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
 
 Hooks.on("ready", () => {
     const index = game.packs.get("pf2e-item-activations.item-activations").index;
     for (let item in ITEM_LIST) {
         ITEM_LIST[item].slugs = ITEM_LIST[item].actions.map(uuid =>
-            game.pf2e.system.sluggify(index.get(uuid.split('.').slice(-1)).name)
+            game.pf2e.system.sluggify(index.get(uuid.split('.').slice(-1)[0]).name)
         );
     }
     console.log("PF2e Item Activation is ready");
