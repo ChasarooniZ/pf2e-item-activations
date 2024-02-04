@@ -2,10 +2,10 @@ import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
 
 Hooks.on("ready", () => {
     console.log("PF2e Item Activation is ready");
-    Hooks.on("updateItem", async function (item, changes, diff, id) {
+    Hooks.on("updateItem", async function (item, changes, diff, userID) {
         if (!item.actor) return;
         if (userID !== game.user.id) return;
-        debugLog({ item, changes, diff, id }, "Start");
+        debugLog({ item, changes, diff, userID }, "Start");
         if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
         const conditions = getActivationConditions(item);
         const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
@@ -123,6 +123,29 @@ export function isChangeImportant(changesToEquipment, usageConditions) {
     }
 
     return false
+}
+
+export async function checkAndGetMissingActivations(item, conditions) {
+    const actor = item.actor;
+    const slug = item.system.slug;
+    const actions_uuid = ITEM_LIST[slug].actions;
+    if (actions_uuid.length === 0) return;
+    const actions = [];
+    for (const uuid of actions_uuid) {
+        let item = await fromUuid(uuid)
+        actions.push(item.toObject())
+    }
+    let toAdd = actions.filter(action => !actor.items.some(item => item.system.slug === action.system.slug));
+    if (toAdd.length > 0) {
+        const notQualified = isQualified(item?.system?.equipped, conditions);
+        const marker = '[X]';
+        if (notQualified) {
+            toAdd = toAdd.map(item => ({
+                ...item, name: marker.concat(' ', item.name)
+            }))
+        }
+        actor.createEmbeddedDocuments("Item", toAdd);
+    }
 }
 
 /**
