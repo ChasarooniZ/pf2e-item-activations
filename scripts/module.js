@@ -166,15 +166,29 @@ export async function turnOnOffActivation(item, changeType) {
     const actionSlugs = ITEM_LIST[slug].slugs;
     if (actionSlugs.length === 0) return;
     const actions = [];
-    for (const slug of actionSlugs) {
-        const item = actor.items.find(item => item.system.slug === slug);
-        actions.push(item);
+    const missingActions = [];
+    for (const itemSlug of actionSlugs) {
+        const item = actor.items.find(item => item.system.slug === itemSlug);
+        if (item) {
+            actions.push(item);
+        } else {
+            missingActions.push(itemSlug)
+        }
     }
     const nameIds = actions.map(action => ({
         _id: action.id,
         name: action.name.replaceAll(marker, '').trim()
     }))
     if (changeType === 'On') {
+        if (missingActions.length > 0) {
+            const activations = [];
+            for (actionSlug of missingActions) {
+                let idx = ITEM_LIST[slug].slugs.indexOf(actionSlug);
+                let action = await fromUuid(ITEM_LIST[slug].actions[uuid]);
+                activations.push(action.toObject())
+            }
+            actor.createEmbeddedDocuments("Item", activations);
+        }
         actor.updateEmbeddedDocuments("Item", nameIds);
     } else if (changeType === 'Off') {
         actor.updateEmbeddedDocuments("Item", nameIds.map(item => ({
