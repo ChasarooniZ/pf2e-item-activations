@@ -184,7 +184,7 @@ export async function turnOnOffActivation(item, changeType) {
             const activations = [];
             for (const actionSlug of missingActions) {
                 let idx = ITEM_LIST[slug].slugs.indexOf(actionSlug);
-                let action = await fromUuid(ITEM_LIST[slug].actions[uuid]);
+                let action = await fromUuid(ITEM_LIST[slug].actions[idx]);
                 activations.push(action.toObject())
             }
             actor.createEmbeddedDocuments("Item", activations);
