@@ -16,7 +16,7 @@ Adds actions based on items activations
   - [Settings](#settings)
   - [FAQ](#faq)
 ## Features
-Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in thefuture to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
+Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in the future to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
 ### Supported Items
 - Bottled Air
 - Bracelet of Dashing
