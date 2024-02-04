@@ -168,7 +168,7 @@ export async function turnOnOffActivation(item, changeType) {
     const actions = [];
     for (const slug of actionSlugs) {
         const item = actor.items.find(item => item.system.slug === slug);
-        actions.append(item);
+        actions.push(item);
     }
     const nameIds = actions.map(action => ({
         _id: action.id,
@@ -190,7 +190,7 @@ export async function turnOnOffActivation(item, changeType) {
  * @param {'Add' | 'Delete'} type
  * @returns 
  */
-export async function addOrDeleteActivation(item, type) {
+export async function addOrDeleteActivation(item, changeType) {
     const actor = item.actor;
     const slug = item.system.slug;
     const actions_uuid = ITEM_LIST[slug].actions;
