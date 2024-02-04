@@ -1,19 +1,36 @@
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
 
 Hooks.on("ready", () => {
-    console.error("PF2e Item Activation is ready");
-    if (!game.user.isGM) return;
-    ui.notifications.info("PF2e Item Activations")
-    //game.RPGNumbers = new RPGNumbers();
+    console.log("PF2e Item Activation is ready");
     Hooks.on("updateItem", async function (item, changes, diff, id) {
-        debugLog({item, changes, diff}, "Start");
+        if (!item.actor) return;
+        if (userID !== game.user.id) return;
+        debugLog({ item, changes, diff, id }, "Start");
         if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
         const conditions = getActivationConditions(item);
         const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
         debugLog(changeType, 'ChangeType')
         if (changeType == 'None') return;
-        let test = await addOrRemoveActivation(item, changeType);
+        let test = await turnOnOffActivation(item, changeType);
     });
+    Hooks.on("createItem", async (item, options, userID) => {
+        if (!item.actor) return;
+        if (userID !== game.user.id) return;
+        if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
+        let test = await addOrDeleteActivation(item, 'Add');
+        const conditions = getActivationConditions(item);
+        if (!isQualified(item?.system?.equipped, conditions)) {
+            let test2 = await turnOnOffActivation(item, 'Off');
+        }
+    });
+
+    Hooks.on("preDeleteItem", async (item, options, userID) => {
+        if (!item.actor) return;
+        if (userID !== game.user.id) return;
+        if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
+        let test = await addOrDeleteActivation(item, 'Delete');
+    });
+
 })
 
 /**
@@ -101,7 +118,7 @@ export function isChangeImportant(changesToEquipment, usageConditions) {
     if (changesToEquipment?.inSlot !== null) {
         return true;
     }
-    if (changesToEquipment?.carryType  !== null) {
+    if (changesToEquipment?.carryType !== null) {
         return true;
     }
 
@@ -113,7 +130,8 @@ export function isChangeImportant(changesToEquipment, usageConditions) {
  * @param {*} item 
  * @param {'On' | 'Off | 'None'} changeType 
  */
-export async function addOrRemoveActivation(item, changeType) {
+export async function turnOnOffActivation(item, changeType) {
+    const marker = '[X]';
     const actor = item.actor;
     const slug = item.system.slug;
     const actions_uuid = ITEM_LIST[slug].actions;
@@ -123,9 +141,39 @@ export async function addOrRemoveActivation(item, changeType) {
         let item = await fromUuid(uuid)
         actions.push(item.toObject())
     }
+    const nameIds = actions.map(action => ({
+        _id: action.id,
+        name: action.name.replaceAll(marker, '').trim()
+    }))
     if (changeType === 'On') {
-        actor.createEmbeddedDocuments("Item", actions);
+        actor.updateEmbeddedDocuments("Item", nameIds);
     } else if (changeType === 'Off') {
+        actor.updateEmbeddedDocuments("Item", nameIds.map(item => ({
+            _id: item._id,
+            name: marker.concat(' ', item.name)
+        })));
+    }
+}
+
+/**
+ * 
+ * @param {*} item 
+ * @param {'Add' | 'Delete'} type
+ * @returns 
+ */
+export async function addOrDeleteActivation(item, type) {
+    const actor = item.actor;
+    const slug = item.system.slug;
+    const actions_uuid = ITEM_LIST[slug].actions;
+    if (actions_uuid.length === 0) return;
+    const actions = [];
+    for (const uuid of actions_uuid) {
+        let item = await fromUuid(uuid)
+        actions.push(item.toObject())
+    }
+    if (changeType === 'Add') {
+        actor.createEmbeddedDocuments("Item", actions);
+    } else if (changeType === 'Delete') {
         const actionSlugs = actions.map(action => action.system.slug);
         actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => actionSlugs.includes(item.system.slug)).map(item => item.id));
     }
