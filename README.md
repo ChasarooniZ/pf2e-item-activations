@@ -25,6 +25,7 @@ Adds and removes actions from your inventory when you equip item etc.. Do note, 
 - Lantern of Empty Light
 - Masquerade Scarf
 - Serpent Dagger
+- Skeleton Key
 - The Whispering Reeds
 - Ventriloquist's Ring
 - Wayfinder

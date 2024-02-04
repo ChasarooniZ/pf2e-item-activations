@@ -35,6 +35,11 @@ export const ITEM_LIST = {
             'Compendium.pf2e-item-activations.item-activations.Item.RhcntWQiQFgipCUc', //Drip Poison
         ]
     },
+    'skeleton-key': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.O9YL3mp7yAPNkJpN', // Loosen Lock
+        ]
+    },
     'the-whispering-reeds': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.Ggy8zHKPaWbTBtzZ', //Soul Siphon
@@ -50,6 +55,34 @@ export const ITEM_LIST = {
     'wayfinder': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.rL8P1QXZXC5mEWs0', //Light
+        ]
+    },
+    // '-': {
+    //     actions: [
+    //         '', //
+    //     ]
+    // },
+}
+
+export const ITEM_LIST_HOMEBREW = {
+    'cailean-key': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.O9YL3mp7yAPNkJpN', // Loosen Lock
+        ]
+    },
+    'cailean-key-unshackled': { //TODO Add more actions
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.O9YL3mp7yAPNkJpN', // Loosen Lock
+        ]
+    },
+    'cailean-key-unfettered': { //TODO Add more actions
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.O9YL3mp7yAPNkJpN', // Loosen Lock
+        ]
+    },
+    'cailean-key-unbound': { //TODO Add more actions
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.O9YL3mp7yAPNkJpN', // Loosen Lock
         ]
     },
     // '-': {
