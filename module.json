@@ -34,6 +34,25 @@
       "private": false,
       "type": "Item",
       "flags": {}
+    },
+    {
+      "label": "Item Activations: Effects",
+      "name": "item-activations-effects",
+      "path": "packs/item-activations-effects.db",
+      "system": "pf2e",
+      "private": false,
+      "type": "Item",
+      "flags": {}
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "PF2e: Item Activations",
+      "sorting": "m",
+      "packs": [
+        "item-activations",
+        "item-activations-effects"
+      ]
     }
   ],
   "esmodules": [
