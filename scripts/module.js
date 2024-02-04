@@ -1,5 +1,4 @@
-import { ITEM_LIST_INPUT, ITEM_SLUGS } from "./helpers/item-list.js";
-export const ITEM_LIST = ITEM_LIST_INPUT;
+import { ITEM_LIST_INPUT as ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
 
 Hooks.on("ready", () => {
     const index = game.packs.get("pf2e-item-activations.item-activations").index;
