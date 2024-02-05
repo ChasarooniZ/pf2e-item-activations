@@ -47,8 +47,8 @@ Hooks.on("ready", () => {
  * @param {string} slug Slug of item to check for
  * @returns True if item is in list
  */
-export function checkIfMatters(slug, changes = {}) {
-    return ITEM_SLUGS.includes(slug) && changes?.system?.equipped;
+export function checkIfMatters(slug, changes) {
+    return ITEM_SLUGS.includes(slug) && (changes?.system?.equipped || changes === null);
 }
 
 /**
