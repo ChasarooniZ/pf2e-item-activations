@@ -55,3 +55,7 @@ Coming Soon
 **Q: Will you add support for \<Insert System Here\>?**
 
 A: This module will only support the **PF2e** system
+
+**Q: Will you support Pre Remaster versions of items?**
+
+A: Don't plan on it, when I add homebrew support someone else can add support for them though!
