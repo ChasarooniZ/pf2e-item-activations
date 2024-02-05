@@ -2,7 +2,7 @@
 name: Item Request
 about: Suggest an item to add aactivations for
 title: '[Item] '
-labels: 'item'
+labels: 'data-entry'
 assignees: ''
 
 ---
