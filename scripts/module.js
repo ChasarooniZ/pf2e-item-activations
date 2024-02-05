@@ -171,9 +171,9 @@ export async function turnOnOffActivation(item, changeType) {
     const actions = [];
     const missingActions = [];
     for (const itemSlug of actionSlugs) {
-        const item = actor.items.find(item => item.system.slug === itemSlug);
-        if (item) {
-            actions.push(item);
+        const action = actor.items.find(it => it.system.slug === itemSlug);
+        if (action) {
+            actions.push(action);
         } else {
             missingActions.push(itemSlug)
         }
@@ -217,7 +217,7 @@ export async function addOrDeleteActivation(item, changeType) {
     const actions = [];
     for (const uuid of actions_uuid) {
         let it = await fromUuid(uuid)
-        it = item.toObject();
+        it = it.toObject();
         item.system.description.value = `<p>Granted by ${item.link}</p>`.concat(it.system.description.value)
         actions.push(it)
     }
