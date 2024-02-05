@@ -9,6 +9,7 @@ Hooks.on("ready", () => {
     }
     console.log("PF2e Item Activation is ready");
     Hooks.on("updateItem", async function (item, changes, diff, userID) {
+       if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         debugLog({ item, changes, diff, userID }, "Start");
@@ -20,6 +21,7 @@ Hooks.on("ready", () => {
         let test = await turnOnOffActivation(item, changeType);
     });
     Hooks.on("createItem", async (item, options, userID) => {
+        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
@@ -31,6 +33,7 @@ Hooks.on("ready", () => {
     });
 
     Hooks.on("preDeleteItem", async (item, options, userID) => {
+        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
