@@ -1,19 +1,19 @@
 ## 11.0.42 Initial Release
 - Releases with the following items
-- Boots of Elevenkind
-- Bottled Air
-- Bracelet of Dashing
-- Bracers of Missile Deflection
-- Caterwaul Sling
-- Grasp of Droskar
-- Hunter's Brooch
-- Lantern of Empty Light
-- Lifting Belt
-- Masquerade Scarf
-- Ring of Torag
-- Serpent Dagger
-- Skeleton Key
-- Soulspeaker
-- The Whispering Reeds
-- Ventriloquist's Ring
-- Wayfinder
+  - Boots of Elevenkind
+  - Bottled Air
+  - Bracelet of Dashing
+  - Bracers of Missile Deflection
+  - Caterwaul Sling
+  - Grasp of Droskar
+  - Hunter's Brooch
+  - Lantern of Empty Light
+  - Lifting Belt
+  - Masquerade Scarf
+  - Ring of Torag
+  - Serpent Dagger
+  - Skeleton Key
+  - Soulspeaker
+  - The Whispering Reeds
+  - Ventriloquist's Ring
+  - Wayfinder
