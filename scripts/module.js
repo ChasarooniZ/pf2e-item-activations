@@ -222,10 +222,13 @@ export async function addOrDeleteActivation(item, changeType) {
         actions.push(it)
     }
     if (changeType === 'Add') {
+        debugLog({actions}, 'Add')
         actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
         const actionSlugs = actions.map(action => action.system.slug);
-        actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => actionSlugs.includes(item.system.slug)).map(item => item.id));
+        const deleteIds = actor.items.filter(item => actionSlugs.includes(item.system.slug)).map(item => item.id);
+        debugLog({actions,actionSlugs, deleteIds}, 'Delete')
+        actor.deleteEmbeddedDocuments("Item", );
     }
 }
 
