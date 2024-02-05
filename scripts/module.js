@@ -228,7 +228,7 @@ export async function addOrDeleteActivation(item, changeType) {
         const actionSlugs = actions.map(action => action.system.slug);
         const deleteIds = actor.items.filter(item => actionSlugs.includes(item.system.slug)).map(item => item.id);
         debugLog({actions,actionSlugs, deleteIds}, 'Delete')
-        actor.deleteEmbeddedDocuments("Item", );
+        actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
 }
 
