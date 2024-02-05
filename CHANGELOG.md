@@ -1,3 +1,5 @@
+## 11.0.46 Item Link bug Fix
+- Fixed bug where description was being improperly changed
 ## 11.0.45 Fixed infinite Item Dupes bug
 - Fixed Bug where items were duplicated when they had activations isntead of adding the actiovations
 ## 11.0.44 Actually Fixed Issue
