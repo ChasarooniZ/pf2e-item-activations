@@ -1,4 +1,9 @@
 export const ITEM_LIST = {
+    'boots-of-elvenkind': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.Ca2C3OGu9guPwUnH', //Elven ALacrity
+        ]
+    },
     'bottled-air': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.ucitBfE1h2qiCmRW', //Breathe In
@@ -9,9 +14,20 @@ export const ITEM_LIST = {
             'Compendium.pf2e-item-activations.item-activations.Item.Lq4BGDmbIm9Y6eXH' //  Jangling Dash
         ]
     },
+    'bracers-of-missile-deflection': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.TusXZtENG0YEEGiC', // Missile Deflection
+        ]
+    },
     'caterwaul-sling': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.m12UnOti5MuZTmwC' // Unleash Roar
+        ]
+    },
+    'grasp-of-droskar': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.jzAJerP6oIsjlcvR', // Strength of Droskar
+            'Compendium.pf2e-item-activations.item-activations.Item.ajUpTyjXZQIL3IZ4', //Droskar's Dominance
         ]
     },
     'hunters-brooch': {
@@ -25,9 +41,20 @@ export const ITEM_LIST = {
             'Compendium.pf2e-item-activations.item-activations.Item.ET9CimjMuUEubSJt', // Spectral Drain
         ]
     },
+    'lifting-belt': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.VbdNJFigt31VlKly', //Assisted Lift
+        ]
+    },
     'masquerade-scarf': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.xdEF2RzgWon8TNXe', //Masquerade
+        ]
+    },
+    'ring-of-torag': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.STS9lnXLFGYeCVpz', // Douse Fire
+            'Compendium.pf2e-item-activations.item-activations.Item.mBoDXpeUodhvbhpb', //Douse Flames
         ]
     },
     'serpent-dagger': {
@@ -38,6 +65,11 @@ export const ITEM_LIST = {
     'skeleton-key': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.O9YL3mp7yAPNkJpN', // Loosen Lock
+        ]
+    },
+    'soulspeaker': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.uRbxErHDFmSaD0Gb', // Soul Speaker
         ]
     },
     'the-whispering-reeds': {
