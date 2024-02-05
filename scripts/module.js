@@ -186,7 +186,7 @@ export async function turnOnOffActivation(item, changeType) {
                 let idx = ITEM_LIST[slug].slugs.indexOf(actionSlug);
                 let action = await fromUuid(ITEM_LIST[slug].actions[idx]);
                 action = action.toObject()
-                action.description = `<p>Granted by ${item.link}</p>`.concat(action.description)
+                action.system.description.value = `<p>Granted by ${item.link}</p>`.concat(action.system.description.value)
                 activations.push(action)
             }
             actor.createEmbeddedDocuments("Item", activations);
@@ -215,7 +215,7 @@ export async function addOrDeleteActivation(item, changeType) {
     for (const uuid of actions_uuid) {
         let it = await fromUuid(uuid)
         it = item.toObject();
-        item.description = `<p>Granted by ${item.link}</p>`.concat(it.description)
+        item.system.description.value = `<p>Granted by ${item.link}</p>`.concat(it.system.description.value)
         actions.push(it)
     }
     if (changeType === 'Add') {
