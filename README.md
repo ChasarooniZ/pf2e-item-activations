@@ -7,7 +7,7 @@
 
 
 # PF2e Item Activations
-Adds actions based on items activations
+Adds actions based on items activations. FYI, This is in a Pre 1.0 state so it may be more unstable
 
 ## Table of Contents
 - [PF2e Item Activations](#pf2e-item-activations)
