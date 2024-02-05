@@ -48,7 +48,7 @@ Hooks.on("ready", () => {
  * @returns True if item is in list
  */
 export function checkIfMatters(slug, changes) {
-    return ITEM_SLUGS.includes(slug) && (changes?.system?.equipped || changes === null);
+    return ITEM_SLUGS.includes(slug) && (changes?.system?.equipped || changes === undefined);
 }
 
 /**
