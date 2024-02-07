@@ -6,6 +6,16 @@
                 "name": "Enable Module",
                 "hint": "Enables all functionality of module"
             },
+            "npc": {
+                "enabled": {
+                    "name": "Enable NPC Activations",
+                    "hint": "Enables all functionality of module for NPCs"
+                },
+                "on-create-token": {
+                    "name": "Add NPC Activations on Token Creation",
+                    "hint": "When NPC tokens are placed, runs a check to Add any missing activations"
+                }
+            },
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"

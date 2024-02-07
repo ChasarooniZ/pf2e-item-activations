@@ -9,38 +9,91 @@ Hooks.on("ready", () => {
     }
     console.log("PF2e Item Activation is ready");
     Hooks.on("updateItem", async function (item, changes, diff, userID) {
-       if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
+        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         debugLog({ item, changes, diff, userID }, "Start");
-        if (!checkIfMatters(item.system.slug, changes) || !item.isIdentified) return;
-        const conditions = getActivationConditions(item);
-        const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
-        debugLog(changeType, 'ChangeType')
-        if (changeType == 'None') return;
-        let test = await turnOnOffActivation(item, changeType);
+        if (!checkIfMatters(item.system.slug, changes)) return;
+        if (item.actor.type === 'npc') {
+            if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
+            const conditions = getActivationConditions(item);
+            const changeType = checkChangeTypeNPC(item?.system?.equipped, changes?.system?.equipped, conditions);
+            debugLog(changeType, 'ChangeTypeNPC')
+            if (changeType == 'None') return;
+            let test = await turnOnOffActivation(item, changeType);
+        } else {
+            if (!item.isIdentified) return;
+            const conditions = getActivationConditions(item);
+            const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
+            debugLog(changeType, 'ChangeType')
+            if (changeType == 'None') return;
+            let test = await turnOnOffActivation(item, changeType);
+        }
     });
     Hooks.on("createItem", async (item, options, userID) => {
         if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
-        if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
-        let test = await addOrDeleteActivation(item, 'Add');
-        const conditions = getActivationConditions(item);
-        if (!isQualified(item?.system?.equipped, conditions)) {
-            let test2 = await turnOnOffActivation(item, 'Off');
+        if (!checkIfMatters(item.system.slug)) return;
+        if (item.actor.type === 'npc') {
+            if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
+            let test = await addOrDeleteActivation(item, 'Add');
+            const conditions = getActivationConditions(item);
+            if (!isQualifiedNPC(item?.system?.equipped, conditions)) {
+                let test2 = await turnOnOffActivation(item, 'Off');
+            }
+        } else {
+            if (!item.isIdentified) return;
+            let test = await addOrDeleteActivation(item, 'Add');
+            const conditions = getActivationConditions(item);
+            if (!isQualified(item?.system?.equipped, conditions)) {
+                let test2 = await turnOnOffActivation(item, 'Off');
+            }
         }
     });
 
     Hooks.on("preDeleteItem", async (item, options, userID) => {
         if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
+        if (token.actor.type === 'npc' && !game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
         let test = await addOrDeleteActivation(item, 'Delete');
     });
 
+    Hooks.on("createToken", async (token, details, userID) => {
+        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
+        if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
+        if (!game.settings.get("pf2e-item-activations", 'npc.on-create-token')) return;
+        if (userID !== game.user.id) return;
+        if (token.actor.type === 'npc') {
+            let test = await updateTokensActivations(token);
+        }
+    })
+
 })
+
+export async function updateTokensActivations(token) {
+    const actor = token.actor;
+    if (actor.type === 'npc') {
+        actor.items.filter(item => checkIfMatters(item.system.slug)).forEach(item => {
+            let test = await addOrDeleteActivation(item, 'Add');
+            const conditions = getActivationConditions(item);
+            if (!isQualifiedNPC(item?.system?.equipped, conditions)) {
+                let test2 = await turnOnOffActivation(item, 'Off');
+            }
+        })
+    } else {
+        actor.items.filter(item => checkIfMatters(item.system.slug)).forEach(item => {
+            if (!item.isIdentified) return;
+            let test = await addOrDeleteActivation(item, 'Add');
+            const conditions = getActivationConditions(item);
+            if (!isQualified(item?.system?.equipped, conditions)) {
+                let test2 = await turnOnOffActivation(item, 'Off');
+            }
+        })
+    }
+}
 
 /**
  * Checks if the item is in the list
@@ -100,6 +153,20 @@ export function checkChangeType(itemEquipmentStatus, changesToEquipment, usageCo
     }
 }
 
+export function checkChangeTypeNPC(itemEquipmentStatus, changesToEquipment, usageConditions) {
+    const combinedStatus = Object.assign(itemEquipmentStatus, changesToEquipment)
+    const qualified = isQualifiedNPC(combinedStatus, usageConditions);
+    const importantChange = isChangeImportant(changesToEquipment, usageConditions);
+    //TODO Improve the checking on this to help with performance
+    if (!importantChange) {
+        return 'None'
+    } else if (importantChange && !qualified) {
+        return 'Off'
+    } else if (importantChange && qualified) {
+        return 'On'
+    }
+}
+
 export function isQualified(itemEquipmentStatus, usageConditions) {
     if (usageConditions.invested && !itemEquipmentStatus?.invested) {
         return false;
@@ -114,6 +181,21 @@ export function isQualified(itemEquipmentStatus, usageConditions) {
         return false;
     }
 
+    return true;
+}
+
+export function isQualifiedNPC(itemEquipmentStatus, usageConditions) {
+    if (usageConditions.handsHeld > itemEquipmentStatus.handsHeld) {
+        return false;
+    }
+
+    if (usageConditions.carryType === 'held') {
+        if (itemEquipmentStatus.carryType !== 'held') {
+            return false;
+        }
+    } else if (itemEquipmentStatus.carryType !== 'worn') {
+        return false;
+    }
     return true;
 }
 
@@ -222,12 +304,12 @@ export async function addOrDeleteActivation(item, changeType) {
         actions.push(it)
     }
     if (changeType === 'Add') {
-        debugLog({actions}, 'Add')
+        debugLog({ actions }, 'Add')
         actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
         const actionSlugs = actions.map(action => action.system.slug);
         const deleteIds = actor.items.filter(item => actionSlugs.includes(item.system.slug)).map(item => item.id);
-        debugLog({actions,actionSlugs, deleteIds}, 'Delete')
+        debugLog({ actions, actionSlugs, deleteIds }, 'Delete')
         actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
 }
