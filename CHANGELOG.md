@@ -1,3 +1,21 @@
+## 11.0.47 NPCs
+- **Added NPC Support**
+  - Added Settings for NPCs (to includein normal item add/update)
+  - Also added setting for updating NPCs when you spawn them in the world
+- **Item Updates**
+  - `Activation Effect: Douse Fire` description
+  - `Activation Effect: Through the Flames` description, effects
+  - `Activation Effect: Empty Death` description
+  - `Activation: Elven Alacrity` traits
+  - `Activation: Droskar's Dominance` traits
+  - `Activation: Masquerade` frequency
+- Item Additions
+  - `Boots of Elvenkind (Greater)`
+  - `Bracers of Missile Deflection (Greater)`
+  - `Heartripper Blade`
+  - `Masquerade Scarf (Greater)`
+  - `Ventriloquist's Ring (Greater)`
+  - `Skeleton Key (Greater)`
 ## 11.0.46 Item Link bug Fix
 - Fixed bug where description of activations wasn't adding the source
 ## 11.0.45 Fixed infinite Item Dupes bug

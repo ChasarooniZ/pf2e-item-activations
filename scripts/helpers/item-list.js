@@ -4,6 +4,11 @@ export const ITEM_LIST = {
             'Compendium.pf2e-item-activations.item-activations.Item.Ca2C3OGu9guPwUnH', //Elven ALacrity
         ]
     },
+    'boots-of-elvenkind-greater': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.6PYRZjxw5xkCdtFQ', ///Elven ALacrity (Greater)
+        ]
+    },
     'bottled-air': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.ucitBfE1h2qiCmRW', //Breathe In
@@ -19,6 +24,11 @@ export const ITEM_LIST = {
             'Compendium.pf2e-item-activations.item-activations.Item.TusXZtENG0YEEGiC', // Missile Deflection
         ]
     },
+    'bracers-of-missile-deflection-greater': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.5jHWyYjhU81U6Lrt', // Missile Deflection (Greater)
+        ]
+    },
     'caterwaul-sling': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.m12UnOti5MuZTmwC' // Unleash Roar
@@ -28,6 +38,12 @@ export const ITEM_LIST = {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.jzAJerP6oIsjlcvR', // Strength of Droskar
             'Compendium.pf2e-item-activations.item-activations.Item.ajUpTyjXZQIL3IZ4', //Droskar's Dominance
+        ]
+    },
+    'heartripper-blade': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.wiCUY6kjsjeIwaic', // Heart Fueled Flames
+            'Compendium.pf2e-item-activations.item-activations.Item.GMJymqYkfHdwMtwu', // Hearty Restoration
         ]
     },
     'hunters-brooch': {
@@ -51,6 +67,11 @@ export const ITEM_LIST = {
             'Compendium.pf2e-item-activations.item-activations.Item.xdEF2RzgWon8TNXe', //Masquerade
         ]
     },
+    'masquerade-scarf-greater': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.HdiQHOD85YdYULI0', //Masquerade (Greater)
+        ]
+    },
     'ring-of-torag': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.STS9lnXLFGYeCVpz', // Douse Fire
@@ -65,6 +86,11 @@ export const ITEM_LIST = {
     'skeleton-key': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.O9YL3mp7yAPNkJpN', // Loosen Lock
+        ]
+    },
+    'skeleton-key-greater': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.7e7Km18fRrhmHKQw', // Loosen Lock (Greater)
         ]
     },
     'soulspeaker': {
@@ -82,6 +108,11 @@ export const ITEM_LIST = {
     'ventriloquists-ring': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.1sL2nfz8kOT4V7V2', //Throw Voice
+        ]
+    },
+    'ventriloquists-ring-greater': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.857EdkffbeJKwHFY', //Throw Voice (Greater)
         ]
     },
     'wayfinder': {

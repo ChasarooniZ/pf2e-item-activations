@@ -32,23 +32,7 @@ Adds actions based on items activations. **FYI:** This is in a Pre 1.0 state so 
 - Activations aren't disable when a player can't use them they just put an [X] in front of them## Features
 Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in the future to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
 ### Supported Items
-- Boots of Elevenkind
-- Bottled Air
-- Bracelet of Dashing
-- Bracers of Missile Deflection
-- Caterwaul Sling
-- Grasp of Droskar
-- Hunter's Brooch
-- Lantern of Empty Light
-- Lifting Belt
-- Masquerade Scarf
-- Ring of Torag
-- Serpent Dagger
-- Skeleton Key
-- Soulspeaker
-- The Whispering Reeds
-- Ventriloquist's Ring
-- Wayfinder
+[Full List of Supported Items Here](https://github.com/chasarooniZ/pf2e-item-activations/blob/main/ITEMS.md)
 ## Settings
 Coming Soon
 ## FAQ
