@@ -76,22 +76,21 @@ Hooks.on("ready", () => {
 export async function updateTokensActivations(token) {
     const actor = token.actor;
     if (actor.type === 'npc') {
-        actor.items.filter(item => checkIfMatters(item.system.slug)).forEach(item => {
+        for (const item of actor.items.filter(item => checkIfMatters(item.system.slug))) {
             let test = await addOrDeleteActivation(item, 'Add');
             const conditions = getActivationConditions(item);
             if (!isQualifiedNPC(item?.system?.equipped, conditions)) {
                 let test2 = await turnOnOffActivation(item, 'Off');
             }
-        })
+        }
     } else {
-        actor.items.filter(item => checkIfMatters(item.system.slug)).forEach(item => {
-            if (!item.isIdentified) return;
+        for (const item of actor.items.filter(item => checkIfMatters(item.system.slug) && item.isIdentified)) {
             let test = await addOrDeleteActivation(item, 'Add');
             const conditions = getActivationConditions(item);
             if (!isQualified(item?.system?.equipped, conditions)) {
                 let test2 = await turnOnOffActivation(item, 'Off');
             }
-        })
+        }
     }
 }
 
