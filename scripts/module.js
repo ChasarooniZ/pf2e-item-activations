@@ -54,7 +54,7 @@ Hooks.on("ready", () => {
 
     Hooks.on("preDeleteItem", async (item, options, userID) => {
         if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
-        if (token.actor.type === 'npc' && !game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
+        if (item.actor.type === 'npc' && !game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
