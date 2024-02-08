@@ -14,7 +14,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-item-activations.module-settings.npc.enabled.hint"),
         scope: "world",
         config: true,
-        default: true,
+        default: false,
         type: Boolean,
     });
 
@@ -23,7 +23,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-item-activations.module-settings.npc.on-create-token.hint"),
         scope: "world",
         config: true,
-        default: true,
+        default: false,
         type: Boolean,
     });
 
