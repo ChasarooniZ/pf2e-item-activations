@@ -299,8 +299,11 @@ export async function addOrDeleteActivation(item, changeType) {
     for (const uuid of actions_uuid) {
         let it = await fromUuid(uuid)
         it = it.toObject();
-        it.system.description.value = `<p>Granted by ${item.link}</p>`.concat(it.system.description.value)
-        actions.push(it)
+        if (!actor.items.some(i => i.system.slug === it.system.slug)) {
+            it.system.description.value = `<p>Granted by ${item.link}</p>`.concat(it.system.description.value)
+            it.grantedBy = item;
+            actions.push(it)
+        }
     }
     if (changeType === 'Add') {
         debugLog({ actions }, 'Add')
