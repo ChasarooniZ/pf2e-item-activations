@@ -101,7 +101,7 @@ export async function updateTokensActivations(token) {
  * @param {string} slug Slug of item to check for
  * @returns True if item is in list
  */
-export function checkIfMatters(slug, changes) {
+export function checkIfMatters(slug, changes ) {
     return ITEM_SLUGS.includes(slug) && (changes?.system?.equipped || changes === undefined);
 }
 
@@ -158,16 +158,21 @@ export async function checkAndGetMissingActivations(item, conditions) {
     if (actions_uuid.length === 0) return;
     const actions = [];
     for (const uuid of actions_uuid) {
-        let item = await fromUuid(uuid)
-        actions.push(item.toObject())
+        try {
+            let actionItem = await fromUuid(uuid);
+            actions.push(actionItem.toObject());
+        } catch (error) {
+            console.error("Error retrieving action item:", error);
+        }
     }
-    let toAdd = actions.filter(action => !actor.items.some(item => item.system.slug === action.system.slug));
+    let toAdd = actions.filter(action => !actor.items.some(existingItem => existingItem.system.slug === action.system.slug));
     if (toAdd.length > 0) {
         const notQualified = isQualifiedPC(item?.system?.equipped, conditions);
         if (notQualified) {
             toAdd = toAdd.map(action => ({
-                ...action, name: activateAction(action).name
-            }))
+                ...action,
+                name: activateAction(action).name
+            }));
         }
         actor.createEmbeddedDocuments("Item", toAdd);
     }
@@ -186,16 +191,19 @@ export async function addOrDeleteActivation(item, changeType) {
     if (actions_uuid.length === 0) return;
     const actions = [];
     for (const uuid of actions_uuid) {
-        let it = await fromUuid(uuid)
-        it = it.toObject();
-        if (!actor.items.some(i => i.system.slug === it.system.slug)) {
-            it = augmentAction(it, item)
-            actions.push(it)
+        try {
+            let actionItem = await fromUuid(uuid);
+            actionItem = actionItem.toObject();
+            if (!actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
+                actionItem = augmentAction(actionItem, item);
+                actions.push(actionItem);
+            }
+        } catch (error) {
+            console.error("Error retrieving action item:", error);
         }
     }
     if (changeType === 'Add') {
-        if (
-            item.actor.type === "npc" ?
+        if (item.actor.type === "npc" ?
             !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item)) :
             !isQualifiedPC(item?.system?.equipped, getActivationConditions(item)))
                 action = actions.map(action => deactivateAction(action))
@@ -203,7 +211,7 @@ export async function addOrDeleteActivation(item, changeType) {
         actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
         const actionSlugs = actions.map(action => action.system.slug);
-        const deleteIds = actor.items.filter(item => actionSlugs.includes(item.system.slug)).map(item => item.id);
+        const deleteIds = actor.items.filter(existingItem => actionSlugs.includes(existingItem.system.slug)).map(existingItem => existingItem.id);
         debugLog({ actions, actionSlugs, deleteIds }, 'Delete')
         actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
