@@ -1,15 +1,18 @@
 import { ITEM_LIST } from "./item-list.js";
+import { augmentAction } from "./on-create.js";
 
 export const marker = '[X]';
 
 export function activateAction(action) {
-    action.name = marker.concat(' ', action.name)
-    return action;
+    let outputAction = action;
+    outputAction.name = marker.concat(' ', action.name)
+    return outputAction;
 }
 
 export function deactivateAction(action) {
-    action.name = action.name.replaceAll(marker, '').trim();
-    return action;
+    let outputAction = action;
+    outputAction.name = action.name.replaceAll(marker, '').trim();
+    return outputAction;
 }
 
 /**
