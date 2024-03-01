@@ -31,7 +31,7 @@ export const ITEM_LIST = {
     },
     'cape-of-the-mountebank': {
         actions: [
-            'Compendium.pf2e-item-activations.item-activations.Item.SZsogQJLm5P58R6W' // Exit Stage Left
+            'Compendium.pf2e-item-activations.item-activations.Item.tiwEANF2hQ61dnao' // Exit Stage Left
         ]
     },
     'caterwaul-sling': {
