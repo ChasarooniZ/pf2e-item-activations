@@ -208,12 +208,12 @@ export async function addOrDeleteActivation(item, changeType) {
             !isQualifiedPC(item?.system?.equipped, getActivationConditions(item)))
                 action = actions.map(action => deactivateAction(action))
         debugLog({ actions }, 'Add')
-        actor.createEmbeddedDocuments("Item", actions);
+        await actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
         const actionSlugs = actions.map(action => action.system.slug);
         const deleteIds = actor.items.filter(existingItem => actionSlugs.includes(existingItem.system.slug)).map(existingItem => existingItem.id);
         debugLog({ actions, actionSlugs, deleteIds }, 'Delete')
-        actor.deleteEmbeddedDocuments("Item", deleteIds);
+        await actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
 }
 

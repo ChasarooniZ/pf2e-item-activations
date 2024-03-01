@@ -49,11 +49,11 @@ export function deactivateAction(action) {
                 action = augmentAction(action, item)
                 activations.push(action)
             }
-            actor.createEmbeddedDocuments("Item", activations);
+            await actor.createEmbeddedDocuments("Item", activations);
         }
-        actor.updateEmbeddedDocuments("Item", nameIds);
+        await actor.updateEmbeddedDocuments("Item", nameIds);
     } else if (changeType === 'Off') {
-        actor.updateEmbeddedDocuments("Item", nameIds.map(action => ({
+        await actor.updateEmbeddedDocuments("Item", nameIds.map(action => ({
             _id: action._id,
             name: deactivateAction(action).name
         })));
