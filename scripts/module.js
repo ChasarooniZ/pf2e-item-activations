@@ -1,4 +1,4 @@
-import { deactivateAction, activateAction } from "./helpers/activate.js";
+import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
@@ -178,51 +178,6 @@ export async function checkAndGetMissingActivations(item, conditions) {
 /**
  * 
  * @param {*} item 
- * @param {'On' | 'Off | 'None'} changeType 
- */
-export async function turnOnOffActivation(item, changeType) {
-    const actor = item.actor;
-    const slug = item.system.slug;
-    const actionSlugs = ITEM_LIST[slug].slugs;
-    if (actionSlugs.length === 0) return;
-    const actions = [];
-    const missingActions = [];
-    for (const itemSlug of actionSlugs) {
-        const action = actor.items.find(it => it.system.slug === itemSlug);
-        if (action) {
-            actions.push(action);
-        } else {
-            missingActions.push(itemSlug)
-        }
-    }
-    const nameIds = actions.map(action => ({
-        _id: action.id,
-        name: deactivateAction(action).name
-    }))
-    if (changeType === 'On') {
-        if (missingActions.length > 0) {
-            const activations = [];
-            for (const actionSlug of missingActions) {
-                let idx = ITEM_LIST[slug].slugs.indexOf(actionSlug);
-                let action = await fromUuid(ITEM_LIST[slug].actions[idx]);
-                action = action.toObject()
-                action = augmentAction(action, item)
-                activations.push(action)
-            }
-            actor.createEmbeddedDocuments("Item", activations);
-        }
-        actor.updateEmbeddedDocuments("Item", nameIds);
-    } else if (changeType === 'Off') {
-        actor.updateEmbeddedDocuments("Item", nameIds.map(action => ({
-            _id: action._id,
-            name: activateAction(action).name
-        })));
-    }
-}
-
-/**
- * 
- * @param {*} item 
  * @param {'Add' | 'Delete'} type
  * @returns 
  */
@@ -258,5 +213,5 @@ export async function addOrDeleteActivation(item, changeType) {
 
 export function debugLog(data, context = "") {
     if (game.settings.get("pf2e-item-activations", 'debug-mode'))
-        console.log(`PF2E-ITEM-ACTIVATIONs: ${context}`, data);
+        console.log(`PF2E-ITEM-ACTIVATIONS: ${context}`, data);
 }
