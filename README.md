@@ -29,7 +29,8 @@ Adds actions based on items activations. **FYI:** This is in a Pre 1.0 state so 
 - Activations only appear when an item is added/updated
 - Activations currently don't have their own action category, I may look into that to see how difficult it would be
 - Activations don't automatically update their uses you need to use the **PF2e Item Actions Module** to have that work
-- Activations aren't disable when a player can't use them they just put an [X] in front of them## Features
+- Activations aren't disable when a player can't use them they just put an [X] in front of thrm
+## Features
 Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in the future to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
 ### Supported Items
 [Full List of Supported Items Here](https://github.com/chasarooniZ/pf2e-item-activations/blob/main/ITEMS.md)
