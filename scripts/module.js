@@ -1,15 +1,11 @@
 import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
+import { indexSlugs } from "./helpers/misc.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 
 Hooks.on("ready", () => {
-    const index = game.packs.get("pf2e-item-activations.item-activations").index;
-    for (let item in ITEM_LIST) {
-        ITEM_LIST[item].slugs = ITEM_LIST[item].actions.map(uuid =>
-            game.pf2e.system.sluggify(index.get(uuid.split('.').slice(-1)[0]).name)
-        );
-    }
+    indexSlugs()
     console.log("PF2e Item Activation is ready");
     Hooks.on("updateItem", async function (item, changes, diff, userID) {
         if (!game.settings.get("pf2e-item-activations", 'enabled')) return;

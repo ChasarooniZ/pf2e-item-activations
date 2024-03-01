@@ -29,6 +29,7 @@
 - Boots of Elevenkind (Greater)
 - Bottled Air
 - Bracelet of Dashing
+- Cape of the Mountebank
 
 ## Adventure Paths
 ### Crown of Kobold King

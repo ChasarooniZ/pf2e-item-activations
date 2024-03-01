@@ -1,3 +1,5 @@
+## 11.0.48
+ - Added `Cape of the Mountebank`
 ## 11.0.47 NPCs
 - **Added NPC Support**
   - Added Settings for NPCs (to includein normal item add/update)
