@@ -1,4 +1,7 @@
+import { deactivateAction, activateAction } from "./helpers/activate.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
+import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
+import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 
 Hooks.on("ready", () => {
     const index = game.packs.get("pf2e-item-activations.item-activations").index;
@@ -24,7 +27,7 @@ Hooks.on("ready", () => {
         } else {
             if (!item.isIdentified) return;
             const conditions = getActivationConditions(item);
-            const changeType = checkChangeType(item?.system?.equipped, changes?.system?.equipped, conditions);
+            const changeType = checkChangeTypePC(item?.system?.equipped, changes?.system?.equipped, conditions);
             debugLog(changeType, 'ChangeType')
             if (changeType == 'None') return;
             let test = await turnOnOffActivation(item, changeType);
@@ -35,6 +38,7 @@ Hooks.on("ready", () => {
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug)) return;
+        debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, conditions, item }, 'createItem')
         if (item.actor.type === 'npc') {
             if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
             let test = await addOrDeleteActivation(item, 'Add');
@@ -46,7 +50,7 @@ Hooks.on("ready", () => {
             if (!item.isIdentified) return;
             let test = await addOrDeleteActivation(item, 'Add');
             const conditions = getActivationConditions(item);
-            if (!isQualified(item?.system?.equipped, conditions)) {
+            if (!isQualifiedPC(item?.system?.equipped, conditions)) {
                 let test2 = await turnOnOffActivation(item, 'Off');
             }
         }
@@ -87,7 +91,7 @@ export async function updateTokensActivations(token) {
         for (const item of actor.items.filter(item => checkIfMatters(item.system.slug) && item.isIdentified)) {
             let test = await addOrDeleteActivation(item, 'Add');
             const conditions = getActivationConditions(item);
-            if (!isQualified(item?.system?.equipped, conditions)) {
+            if (!isQualifiedPC(item?.system?.equipped, conditions)) {
                 let test2 = await turnOnOffActivation(item, 'Off');
             }
         }
@@ -132,72 +136,6 @@ export function getActivationConditions(item) {
     return usage;
 }
 
-/**
- * Check change type ('On', 'Off' or 'None')
- * @param {carryType?: string, handsHeld?: number, invested?: boolean, inSlot?: boolean} itemEquipmentStatus Item to check
- * @param {carryType?: string, handsHeld?: number, invested?: boolean, inSlot?: boolean} changes Changes made to item
- * @param {carryType?: string, handsHeld?: number, invested?: boolean, inSlot?: boolean} usageConditions usage type
- */
-export function checkChangeType(itemEquipmentStatus, changesToEquipment, usageConditions) {
-    const combinedStatus = Object.assign(itemEquipmentStatus, changesToEquipment)
-    const qualified = isQualified(combinedStatus, usageConditions);
-    const importantChange = isChangeImportant(changesToEquipment, usageConditions);
-    //TODO Improve the checking on this to help with performance
-    if (!importantChange) {
-        return 'None'
-    } else if (importantChange && !qualified) {
-        return 'Off'
-    } else if (importantChange && qualified) {
-        return 'On'
-    }
-}
-
-export function checkChangeTypeNPC(itemEquipmentStatus, changesToEquipment, usageConditions) {
-    const combinedStatus = Object.assign(itemEquipmentStatus, changesToEquipment)
-    const qualified = isQualifiedNPC(combinedStatus, usageConditions);
-    const importantChange = isChangeImportant(changesToEquipment, usageConditions);
-    //TODO Improve the checking on this to help with performance
-    if (!importantChange) {
-        return 'None'
-    } else if (importantChange && !qualified) {
-        return 'Off'
-    } else if (importantChange && qualified) {
-        return 'On'
-    }
-}
-
-export function isQualified(itemEquipmentStatus, usageConditions) {
-    if (usageConditions.invested && !itemEquipmentStatus?.invested) {
-        return false;
-    }
-    if (usageConditions.handsHeld > itemEquipmentStatus.handsHeld) {
-        return false;
-    }
-    if (usageConditions.inSlot && !itemEquipmentStatus.inSlot) {
-        return false;
-    }
-    if (usageConditions.carryType !== itemEquipmentStatus.carryType) {
-        return false;
-    }
-
-    return true;
-}
-
-export function isQualifiedNPC(itemEquipmentStatus, usageConditions) {
-    if (usageConditions.handsHeld > itemEquipmentStatus.handsHeld) {
-        return false;
-    }
-
-    if (usageConditions.carryType === 'held') {
-        if (itemEquipmentStatus.carryType !== 'held') {
-            return false;
-        }
-    } else if (itemEquipmentStatus.carryType !== 'worn') {
-        return false;
-    }
-    return true;
-}
-
 export function isChangeImportant(changesToEquipment, usageConditions) {
     if (changesToEquipment?.invested !== null) {
         return true;
@@ -227,11 +165,10 @@ export async function checkAndGetMissingActivations(item, conditions) {
     }
     let toAdd = actions.filter(action => !actor.items.some(item => item.system.slug === action.system.slug));
     if (toAdd.length > 0) {
-        const notQualified = isQualified(item?.system?.equipped, conditions);
-        const marker = '[X]';
+        const notQualified = isQualifiedPC(item?.system?.equipped, conditions);
         if (notQualified) {
-            toAdd = toAdd.map(item => ({
-                ...item, name: marker.concat(' ', item.name)
+            toAdd = toAdd.map(action => ({
+                ...action, name: activateAction(action).name
             }))
         }
         actor.createEmbeddedDocuments("Item", toAdd);
@@ -244,7 +181,6 @@ export async function checkAndGetMissingActivations(item, conditions) {
  * @param {'On' | 'Off | 'None'} changeType 
  */
 export async function turnOnOffActivation(item, changeType) {
-    const marker = '[X]';
     const actor = item.actor;
     const slug = item.system.slug;
     const actionSlugs = ITEM_LIST[slug].slugs;
@@ -261,7 +197,7 @@ export async function turnOnOffActivation(item, changeType) {
     }
     const nameIds = actions.map(action => ({
         _id: action.id,
-        name: action.name.replaceAll(marker, '').trim()
+        name: deactivateAction(action).name
     }))
     if (changeType === 'On') {
         if (missingActions.length > 0) {
@@ -270,16 +206,16 @@ export async function turnOnOffActivation(item, changeType) {
                 let idx = ITEM_LIST[slug].slugs.indexOf(actionSlug);
                 let action = await fromUuid(ITEM_LIST[slug].actions[idx]);
                 action = action.toObject()
-                action.system.description.value = `<p>Granted by ${item.link}</p>`.concat(action.system.description.value)
+                action = augmentAction(action, item)
                 activations.push(action)
             }
             actor.createEmbeddedDocuments("Item", activations);
         }
         actor.updateEmbeddedDocuments("Item", nameIds);
     } else if (changeType === 'Off') {
-        actor.updateEmbeddedDocuments("Item", nameIds.map(item => ({
-            _id: item._id,
-            name: marker.concat(' ', item.name)
+        actor.updateEmbeddedDocuments("Item", nameIds.map(action => ({
+            _id: action._id,
+            name: activateAction(action).name
         })));
     }
 }
@@ -300,12 +236,16 @@ export async function addOrDeleteActivation(item, changeType) {
         let it = await fromUuid(uuid)
         it = it.toObject();
         if (!actor.items.some(i => i.system.slug === it.system.slug)) {
-            it.system.description.value = `<p>Granted by ${item.link}</p>`.concat(it.system.description.value)
-            it.grantedBy = item;
+            it = augmentAction(it, item)
             actions.push(it)
         }
     }
     if (changeType === 'Add') {
+        if (
+            item.actor.type === "npc" ?
+            !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item)) :
+            !isQualifiedPC(item?.system?.equipped, getActivationConditions(item)))
+                action = actions.map(action => deactivateAction(action))
         debugLog({ actions }, 'Add')
         actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {

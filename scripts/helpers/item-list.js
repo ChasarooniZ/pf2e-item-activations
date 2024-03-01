@@ -29,6 +29,11 @@ export const ITEM_LIST = {
             'Compendium.pf2e-item-activations.item-activations.Item.5jHWyYjhU81U6Lrt', // Missile Deflection (Greater)
         ]
     },
+    'cape-of-the-mountebank': {
+        actions: [
+            'Compendium.pf2e-item-activations.item-activations.Item.SZsogQJLm5P58R6W' // Exit Stage Left
+        ]
+    },
     'caterwaul-sling': {
         actions: [
             'Compendium.pf2e-item-activations.item-activations.Item.m12UnOti5MuZTmwC' // Unleash Roar
