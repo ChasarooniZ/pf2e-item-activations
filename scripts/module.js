@@ -36,7 +36,7 @@ Hooks.on("ready", () => {
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug)) return;
-        debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, conditions, item }, 'createItem')
+        debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, item }, 'createItem')
         if (item.actor.type === 'npc') {
             if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
             let test = await addOrDeleteActivation(item, 'Add');
@@ -194,9 +194,10 @@ export async function addOrDeleteActivation(item, changeType) {
         try {
             let actionItem = await fromUuid(uuid);
             actionItem = actionItem.toObject();
-            if (!actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
-                actionItem = augmentAction(actionItem, item);
-                actions.push(actionItem);
+            if (actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
+                actions.push(existingItem);
+            } else {
+                actions.push(augmentAction(actionItem, item))
             }
         } catch (error) {
             console.error("Error retrieving action item:", error);
