@@ -5,13 +5,13 @@ export const marker = '[X]';
 
 export function activateAction(action) {
     let outputAction = action;
-    outputAction.name = marker.concat(' ', action.name)
+    outputAction.name = action.name.replaceAll(marker, '').trim();
     return outputAction;
 }
 
 export function deactivateAction(action) {
     let outputAction = action;
-    outputAction.name = action.name.replaceAll(marker, '').trim();
+    outputAction.name = marker.concat(' ', action.name.replaceAll(marker, '').trim())
     return outputAction;
 }
 
