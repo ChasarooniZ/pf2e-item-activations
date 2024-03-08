@@ -1,16 +1,19 @@
 import { ITEM_LIST } from "./item-list.js";
+import { setModuleFlag } from "./misc.js";
 import { augmentAction } from "./on-create.js";
 
 export const marker = '[X]';
 
 export function activateAction(action) {
     let outputAction = action;
+    setModuleFlag(action, 'enabled', true);
     outputAction.name = action.name.replaceAll(marker, '').trim();
     return outputAction;
 }
 
 export function deactivateAction(action) {
     let outputAction = action;
+    setModuleFlag(action, 'enabled', false);
     outputAction.name = marker.concat(' ', action.name.replaceAll(marker, '').trim())
     return outputAction;
 }
@@ -20,7 +23,7 @@ export function deactivateAction(action) {
  * @param {*} item 
  * @param {'On' | 'Off' | 'None'} changeType 
  */
- export async function turnOnOffActivation(item, changeType) {
+export async function turnOnOffActivation(item, changeType) {
     const actor = item.actor;
     const slug = item.system.slug;
     const actionSlugs = ITEM_LIST[slug].slugs;

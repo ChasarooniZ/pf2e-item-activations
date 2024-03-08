@@ -1,22 +1,23 @@
 import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
-import { indexSlugs } from "./helpers/misc.js";
+import { indexSlugs, MODULE_ID } from "./helpers/misc.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
+import { actionStyling } from "./helpers/style-item.js";
 
 Hooks.on("ready", () => {
-    if (game.settings.get("pf2e-item-activations", 'enabled'))
+    if (game.settings.get(MODULE_ID, 'enabled'))
         indexSlugs()
     console.log("PF2e Item Activation is ready");
     Hooks.on("updateItem", async function (item, changes, diff, userID) {
-        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
+        if (!game.settings.get(MODULE_ID, 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         debugLog({ item, changes, diff, userID }, "Start");
         if (!checkIfMatters(item.system.slug, changes)) return;
         if (item.actor.type === 'npc') {
-            if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
+            if (!game.settings.get(MODULE_ID, 'npc.enabled')) return;
             const conditions = getActivationConditions(item);
             const changeType = checkChangeTypeNPC(item?.system?.equipped, changes?.system?.equipped, conditions);
             debugLog(changeType, 'ChangeTypeNPC')
@@ -32,13 +33,13 @@ Hooks.on("ready", () => {
         }
     });
     Hooks.on("createItem", async (item, options, userID) => {
-        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
+        if (!game.settings.get(MODULE_ID, 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug)) return;
         debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, item }, 'createItem')
         if (item.actor.type === 'npc') {
-            if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
+            if (!game.settings.get(MODULE_ID, 'npc.enabled')) return;
             let test = await addOrDeleteActivation(item, 'Add');
             const conditions = getActivationConditions(item);
             if (!isQualifiedNPC(item?.system?.equipped, conditions)) {
@@ -55,8 +56,8 @@ Hooks.on("ready", () => {
     });
 
     Hooks.on("preDeleteItem", async (item, options, userID) => {
-        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
-        if (item.actor.type === 'npc' && !game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
+        if (!game.settings.get(MODULE_ID, 'enabled')) return;
+        if (item.actor.type === 'npc' && !game.settings.get(MODULE_ID, 'npc.enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
@@ -64,13 +65,19 @@ Hooks.on("ready", () => {
     });
 
     Hooks.on("createToken", async (token, details, userID) => {
-        if (!game.settings.get("pf2e-item-activations", 'enabled')) return;
-        if (!game.settings.get("pf2e-item-activations", 'npc.enabled')) return;
-        if (!game.settings.get("pf2e-item-activations", 'npc.on-create-token')) return;
+        if (!game.settings.get(MODULE_ID, 'enabled')) return;
+        if (!game.settings.get(MODULE_ID, 'npc.enabled')) return;
+        if (!game.settings.get(MODULE_ID, 'npc.on-create-token')) return;
         if (userID !== game.user.id) return;
         if (token.actor.type === 'npc') {
             let test = await updateTokensActivations(token);
         }
+    })
+
+
+    hooks.on('renderActorSheet', async(sheet, html, info) => {
+        const actor = info.actor;
+        actionStyling(actor);
     })
 
 })
@@ -101,7 +108,7 @@ export async function updateTokensActivations(token) {
  * @param {string} slug Slug of item to check for
  * @returns True if item is in list
  */
-export function checkIfMatters(slug, changes ) {
+export function checkIfMatters(slug, changes) {
     return ITEM_SLUGS.includes(slug) && (changes?.system?.equipped || changes === undefined);
 }
 
@@ -207,7 +214,7 @@ export async function addOrDeleteActivation(item, changeType) {
         if (item.actor.type === "npc" ?
             !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item)) :
             !isQualifiedPC(item?.system?.equipped, getActivationConditions(item)))
-                action = actions.map(action => deactivateAction(action))
+            action = actions.map(action => deactivateAction(action))
         debugLog({ actions }, 'Add')
         await actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
@@ -219,6 +226,6 @@ export async function addOrDeleteActivation(item, changeType) {
 }
 
 export function debugLog(data, context = "") {
-    if (game.settings.get("pf2e-item-activations", 'debug-mode'))
+    if (game.settings.get(MODULE_ID, 'debug-mode'))
         console.log(`PF2E-ITEM-ACTIVATIONS: ${context}`, data);
 }
