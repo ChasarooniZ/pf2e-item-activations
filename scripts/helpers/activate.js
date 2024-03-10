@@ -56,6 +56,7 @@ export async function turnOnOffActivation(item, changeType) {
         }
         await actor.updateEmbeddedDocuments("Item", nameIds);
     } else if (changeType === 'Off') {
+        actionStyling(actor);
         await actor.updateEmbeddedDocuments("Item", nameIds.map(action => ({
             _id: action._id,
             name: deactivateAction(action).name

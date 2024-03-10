@@ -75,7 +75,7 @@ Hooks.on("ready", () => {
     })
 
 
-    hooks.on('renderActorSheet', async(sheet, html, info) => {
+    hooks.on('renderActorSheet', (sheet, html, info) => {
         const actor = info.actor;
         actionStyling(actor);
     })
