@@ -204,7 +204,7 @@ export async function addOrDeleteActivation(item, changeType) {
                 let actionItem = await fromUuid(uuid);
                 actionItem = actionItem.toObject();
                 if (actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
-                    actions.push(existingItem);
+                    actions.push(actionItem);
                 } else {
                     actions.push(augmentAction(actionItem, item))
                 }
