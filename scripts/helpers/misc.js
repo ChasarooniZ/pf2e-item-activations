@@ -12,10 +12,8 @@ export function indexSlugs() {
 }
 
 export function setModuleFlag(item, flagName, value) {
-    if (item?.flags?.[MODULE_ID]) {
-        item.flags[MODULE_ID] = Object.assign(item.flags[MODULE_ID], { [flagName]: true })
-    } else {
-        item.flags = Object.assign(item.flags, { [MODULE_ID]: { [flagName]: value } })
-    }
+    if (!item?.flag?.[MODULE_ID])
+        item?.flags?.[MODULE_ID] = {};
+    item.flags[MODULE_ID][flagName] = value;
     return item;
 }
