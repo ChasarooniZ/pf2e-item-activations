@@ -27,12 +27,11 @@ export function deactivateAction(action) {
 export async function turnOnOffActivation(item, changeType) {
     const actor = item.actor;
     const id = item.id;
-    const existingActions = actor.items.find(it =>
+    let existingActions = actor.items.find(it =>
         it?.flags?.[MODULE_ID]?.grantedBy._id === id
     );
     if (changeType === 'On') {
         if (existingActions.length === 0) {
-
             const activations = [];
             if (ITEM_SLUGS.includes(slug)) {//Custom Built
                 for (const actionUuid in ITEM_LIST[slug].actions) {
@@ -46,6 +45,9 @@ export async function turnOnOffActivation(item, changeType) {
             }
             await actor.createEmbeddedDocuments("Item", activations);
         }
+        const actions = existingActions || actor.items.find(it =>
+            it?.flags?.[MODULE_ID]?.grantedBy._id === id
+        );
 
         const nameIds = actions.map(action => ({
             _id: action.id,
