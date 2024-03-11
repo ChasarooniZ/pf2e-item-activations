@@ -109,7 +109,7 @@ export async function updateTokensActivations(token) {
  * @returns True if item is in list
  */
 export function checkIfMatters(item, changes) {
-    return (item.includes(item.system.slug) || (hasActivations(item) && game.settings.get(MODULE_ID, 'auto-gen.enabled'))) && (changes?.system?.equipped || changes === undefined);
+    return (ITEM_SLUGS.includes(item.system.slug) || (hasActivations(item) && game.settings.get(MODULE_ID, 'auto-gen.enabled'))) && (changes?.system?.equipped || changes === undefined);
 }
 
 /**
@@ -195,7 +195,7 @@ export async function addOrDeleteActivation(item, changeType) {
     const actor = item.actor;
     const slug = item.system.slug;
     let actions = [];
-    if (item.includes(item.system.slug)) { //Premade
+    if (ITEM_SLUGS.includes(item.system.slug)) { //Premade
         const actions_uuid = ITEM_LIST[slug].actions;
         if (actions_uuid.length === 0) return;
         for (const uuid of actions_uuid) {
