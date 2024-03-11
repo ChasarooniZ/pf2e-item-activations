@@ -220,7 +220,7 @@ export async function addOrDeleteActivation(item, changeType) {
         if (item.actor.type === "npc" ?
             !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item)) :
             !isQualifiedPC(item?.system?.equipped, getActivationConditions(item)))
-            action = actions.map(action => deactivateAction(action))
+            actions = actions.map(action => deactivateAction(action))
         debugLog({ actions }, 'Add')
         await actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
