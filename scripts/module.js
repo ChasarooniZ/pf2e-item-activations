@@ -226,7 +226,7 @@ export async function addOrDeleteActivation(item, changeType) {
         await actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
         const deleteIds = actor.items.filter(
-            existingItem => existingItem?.flags?.[MODULE_ID]?.grantedBy?._id
+            existingItem => existingItem?.flags?.[MODULE_ID]?.grantedBy?._id === item.id
         ).map(
             existingItem => existingItem.id
         );
