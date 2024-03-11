@@ -27,6 +27,15 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
+    game.settings.register("pf2e-item-activations", "auto-gen.enabled", {
+        name: game.i18n.localize("pf2e-item-activations.module-settings.auto-gen.enabled.name"),
+        hint: game.i18n.localize("pf2e-item-activations.module-settings.auto-gen.enabled.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+
     game.settings.register("pf2e-item-activations", "debug-mode", {
         name: game.i18n.localize("pf2e-item-activations.module-settings.debug-mode.name"),
         hint: game.i18n.localize("pf2e-item-activations.module-settings.debug-mode.hint"),
