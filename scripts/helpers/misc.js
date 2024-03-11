@@ -12,7 +12,7 @@ export function indexSlugs() {
 }
 
 export function setModuleFlag(item, flagName, value) {
-    if (!item?.flag?.[MODULE_ID])
+    if (!item?.flags?.[MODULE_ID])
         item.flags[MODULE_ID] = {};
     item.flags[MODULE_ID][flagName] = value;
     return item;
