@@ -12,6 +12,8 @@ export function indexSlugs() {
 }
 
 export function setModuleFlag(item, flagName, value) {
+    if (!item?.flags)
+        item.flags = {};
     if (!item?.flags?.[MODULE_ID])
         item.flags[MODULE_ID] = {};
     item.flags[MODULE_ID][flagName] = value;
