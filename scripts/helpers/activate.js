@@ -7,14 +7,14 @@ export const marker = '[X]';
 
 export function activateAction(action) {
     let outputAction = action;
-    setModuleFlag(action, 'enabled', true);
+    outputAction = setModuleFlag(action, 'enabled', true);
     outputAction.name = action.name.replaceAll(marker, '').trim();
     return outputAction;
 }
 
 export function deactivateAction(action) {
     let outputAction = action;
-    setModuleFlag(action, 'enabled', false);
+    outputAction = setModuleFlag(action, 'enabled', false);
     outputAction.name = marker.concat(' ', action.name.replaceAll(marker, '').trim())
     return outputAction;
 }

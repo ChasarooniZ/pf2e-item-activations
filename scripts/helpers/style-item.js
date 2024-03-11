@@ -19,5 +19,5 @@ function styleDisabledAction(id) {
 }
 
 function getDisabledActions(items) {
-    return items.filter(it => !it?.[MODULE_ID]?.enabled).map(i => i.id);
+    return items.filter(it => !it?.flags?.[MODULE_ID]?.enabled).map(i => i.id);
 }
