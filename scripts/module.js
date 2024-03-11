@@ -202,17 +202,9 @@ export async function addOrDeleteActivation(item, changeType) {
             const actions_uuid = ITEM_LIST[slug].actions;
             if (actions_uuid.length === 0) return;
             for (const uuid of actions_uuid) {
-                try {
                     let actionItem = await fromUuid(uuid);
                     actionItem = actionItem.toObject();
-                    if (actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
-                        actions.push(actionItem);
-                    } else {
-                        actions.push(augmentAction(actionItem, item))
-                    }
-                } catch (error) {
-                    console.error("Error retrieving action item:", error);
-                }
+                    actions.push(augmentAction(actionItem, item))
             }
         } else { //On the Fly
             actions = generateActivations(item).map(act => augmentAction(act, item));

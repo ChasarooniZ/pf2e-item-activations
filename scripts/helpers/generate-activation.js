@@ -35,7 +35,7 @@ export function generateActivations(item) {
             action.name = `Activation: ${item.name}${result.length > 1 ? `(#${num + 1})` : ''}`;
             action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));
         }
-        action.slug = game.pf2e?.system?.sluggify(action.name)
+        action.system.slug = game.pf2e?.system?.sluggify(action.name)
         return action;
     })
     return result;
