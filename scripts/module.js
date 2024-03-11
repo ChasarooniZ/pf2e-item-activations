@@ -15,7 +15,7 @@ Hooks.on("ready", () => {
         if (!item.actor) return;
         if (userID !== game.user.id) return;
         debugLog({ item, changes, diff, userID }, "Start");
-        if (!checkIfMatters(item.system.slug, changes)) return;
+        if (!checkIfMatters(item, changes)) return;
         if (item.actor.type === 'npc') {
             if (!game.settings.get(MODULE_ID, 'npc.enabled')) return;
             const conditions = getActivationConditions(item);
@@ -36,7 +36,7 @@ Hooks.on("ready", () => {
         if (!game.settings.get(MODULE_ID, 'enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
-        if (!checkIfMatters(item.system.slug)) return;
+        if (!checkIfMatters(item)) return;
         debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, item }, 'createItem')
         if (item.actor.type === 'npc') {
             if (!game.settings.get(MODULE_ID, 'npc.enabled')) return;
@@ -60,7 +60,7 @@ Hooks.on("ready", () => {
         if (item.actor.type === 'npc' && !game.settings.get(MODULE_ID, 'npc.enabled')) return;
         if (!item.actor) return;
         if (userID !== game.user.id) return;
-        if (!checkIfMatters(item.system.slug) || !item.isIdentified) return;
+        if (!checkIfMatters(item) || !item.isIdentified) return;
         let test = await addOrDeleteActivation(item, 'Delete');
     });
 
@@ -85,7 +85,7 @@ Hooks.on("ready", () => {
 export async function updateTokensActivations(token) {
     const actor = token.actor;
     if (actor.type === 'npc') {
-        for (const item of actor.items.filter(item => checkIfMatters(item.system.slug))) {
+        for (const item of actor.items.filter(item => checkIfMatters(item))) {
             let test = await addOrDeleteActivation(item, 'Add');
             const conditions = getActivationConditions(item);
             if (!isQualifiedNPC(item?.system?.equipped, conditions)) {
@@ -93,7 +93,7 @@ export async function updateTokensActivations(token) {
             }
         }
     } else {
-        for (const item of actor.items.filter(item => checkIfMatters(item.system.slug) && item.isIdentified)) {
+        for (const item of actor.items.filter(item => checkIfMatters(item) && item.isIdentified)) {
             let test = await addOrDeleteActivation(item, 'Add');
             const conditions = getActivationConditions(item);
             if (!isQualifiedPC(item?.system?.equipped, conditions)) {
@@ -108,8 +108,8 @@ export async function updateTokensActivations(token) {
  * @param {string} slug Slug of item to check for
  * @returns True if item is in list
  */
-export function checkIfMatters(slug, changes) {
-    return ITEM_SLUGS.includes(slug) && (changes?.system?.equipped || changes === undefined);
+export function checkIfMatters(item, changes) {
+    return (ITEM_itemS.includes(item.system.slug) || hasActivations(item)) && (changes?.system?.equipped || changes === undefined);
 }
 
 /**
@@ -194,21 +194,27 @@ export async function checkAndGetMissingActivations(item, conditions) {
 export async function addOrDeleteActivation(item, changeType) {
     const actor = item.actor;
     const slug = item.system.slug;
-    const actions_uuid = ITEM_LIST[slug].actions;
-    if (actions_uuid.length === 0) return;
-    const actions = [];
-    for (const uuid of actions_uuid) {
-        try {
-            let actionItem = await fromUuid(uuid);
-            actionItem = actionItem.toObject();
-            if (actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
-                actions.push(existingItem);
-            } else {
-                actions.push(augmentAction(actionItem, item))
+    if (ITEM_itemS.includes(item.system.slug)) { //Premade
+        const actions_uuid = ITEM_LIST[slug].actions;
+        if (actions_uuid.length === 0) return;
+        const actions = [];
+        for (const uuid of actions_uuid) {
+            try {
+                let actionItem = await fromUuid(uuid);
+                actionItem = actionItem.toObject();
+                if (actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
+                    actions.push(existingItem);
+                } else {
+                    actions.push(augmentAction(actionItem, item))
+                }
+            } catch (error) {
+                console.error("Error retrieving action item:", error);
             }
-        } catch (error) {
-            console.error("Error retrieving action item:", error);
         }
+    } else { //On the Fly
+        const actionDeets = generateActivations(item);
+        debugLog({ actionDeets }, 'Auto Create');
+        return
     }
     if (changeType === 'Add') {
         if (item.actor.type === "npc" ?
@@ -219,7 +225,7 @@ export async function addOrDeleteActivation(item, changeType) {
         await actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
         const actionSlugs = actions.map(action => action.system.slug);
-        const deleteIds = actor.items.filter(existingItem => actionSlugs.includes(existingItem.system.slug)).map(existingItem => existingItem.id);
+        const deleteIds = actor.items.filter(existingItem => existingItem.getFlag(MODULE_ID, "grantedBy") === item.id).map(existingItem => existingItem.id);
         debugLog({ actions, actionSlugs, deleteIds }, 'Delete')
         await actor.deleteEmbeddedDocuments("Item", deleteIds);
     }

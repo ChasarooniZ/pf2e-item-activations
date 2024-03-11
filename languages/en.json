@@ -16,6 +16,12 @@
                     "hint": "When NPC tokens are placed, runs a check to Add any missing activations"
                 }
             },
+            "auto-gen": {
+                "enabled": {
+                    "name": "Enable Automatic Generation",
+                    "hint": "Enables automatic generations for activations that haven't been handcrafted. Note these may have less implementation/functionality."
+                }
+            },
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"
