@@ -1,6 +1,7 @@
 import { MODULE_ID } from "./misc.js";
 
 export function actionStyling(actor) {
+    //TODO remove styling from actions that don't have any issues
     const items = actor.items.contents;
     const disabledActionsIDs = getDisabledActions(items);
     styleAllDisabledActions(disabledActionsIDs)
