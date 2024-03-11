@@ -109,7 +109,7 @@ export async function updateTokensActivations(token) {
  * @returns True if item is in list
  */
 export function checkIfMatters(item, changes) {
-    return (ITEM_itemS.includes(item.system.slug) || hasActivations(item)) && (changes?.system?.equipped || changes === undefined);
+    return (item.includes(item.system.slug) || (hasActivations(item) && game.settings.get(MODULE_ID, 'auto-gen.enabled'))) && (changes?.system?.equipped || changes === undefined);
 }
 
 /**
@@ -194,10 +194,10 @@ export async function checkAndGetMissingActivations(item, conditions) {
 export async function addOrDeleteActivation(item, changeType) {
     const actor = item.actor;
     const slug = item.system.slug;
-    if (ITEM_itemS.includes(item.system.slug)) { //Premade
+    let actions = [];
+    if (item.includes(item.system.slug)) { //Premade
         const actions_uuid = ITEM_LIST[slug].actions;
         if (actions_uuid.length === 0) return;
-        const actions = [];
         for (const uuid of actions_uuid) {
             try {
                 let actionItem = await fromUuid(uuid);
@@ -212,9 +212,8 @@ export async function addOrDeleteActivation(item, changeType) {
             }
         }
     } else { //On the Fly
-        const actionDeets = generateActivations(item);
+        actions = generateActivations(item).map(act => augmentAction(act, item));
         debugLog({ actionDeets }, 'Auto Create');
-        return
     }
     if (changeType === 'Add') {
         if (item.actor.type === "npc" ?
