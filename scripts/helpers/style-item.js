@@ -1,4 +1,4 @@
-import { MODULE_ID } from "./misc";
+import { MODULE_ID } from "./misc.js";
 
 export function actionStyling(actor) {
     const items = actor.items.contents;

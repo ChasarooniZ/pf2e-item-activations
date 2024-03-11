@@ -1,4 +1,4 @@
-import { setModuleFlag } from "./misc";
+import { setModuleFlag } from "./misc.js";
 
 export function augmentAction(action, item) {
     const resultAction = action;
