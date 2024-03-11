@@ -1,6 +1,7 @@
 import { ITEM_LIST } from "./item-list.js";
 import { setModuleFlag } from "./misc.js";
 import { augmentAction } from "./on-create.js";
+import { actionStyling } from "./style-item.js";
 
 export const marker = '[X]';
 
