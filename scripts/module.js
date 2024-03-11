@@ -196,27 +196,28 @@ export async function addOrDeleteActivation(item, changeType) {
     const actor = item.actor;
     const slug = item.system.slug;
     let actions = [];
-    if (ITEM_SLUGS.includes(item.system.slug)) { //Premade
-        const actions_uuid = ITEM_LIST[slug].actions;
-        if (actions_uuid.length === 0) return;
-        for (const uuid of actions_uuid) {
-            try {
-                let actionItem = await fromUuid(uuid);
-                actionItem = actionItem.toObject();
-                if (actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
-                    actions.push(actionItem);
-                } else {
-                    actions.push(augmentAction(actionItem, item))
-                }
-            } catch (error) {
-                console.error("Error retrieving action item:", error);
-            }
-        }
-    } else { //On the Fly
-        actions = generateActivations(item).map(act => augmentAction(act, item));
-        debugLog({ actions }, 'Auto Create');
-    }
+
     if (changeType === 'Add') {
+        if (ITEM_SLUGS.includes(item.system.slug)) { //Premade
+            const actions_uuid = ITEM_LIST[slug].actions;
+            if (actions_uuid.length === 0) return;
+            for (const uuid of actions_uuid) {
+                try {
+                    let actionItem = await fromUuid(uuid);
+                    actionItem = actionItem.toObject();
+                    if (actor.items.some(existingItem => existingItem.system.slug === actionItem.system.slug)) {
+                        actions.push(actionItem);
+                    } else {
+                        actions.push(augmentAction(actionItem, item))
+                    }
+                } catch (error) {
+                    console.error("Error retrieving action item:", error);
+                }
+            }
+        } else { //On the Fly
+            actions = generateActivations(item).map(act => augmentAction(act, item));
+            debugLog({ actions }, 'Auto Create');
+        }
         if (item.actor.type === "npc" ?
             !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item)) :
             !isQualifiedPC(item?.system?.equipped, getActivationConditions(item)))
@@ -224,9 +225,12 @@ export async function addOrDeleteActivation(item, changeType) {
         debugLog({ actions }, 'Add')
         await actor.createEmbeddedDocuments("Item", actions);
     } else if (changeType === 'Delete') {
-        const actionSlugs = actions.map(action => action.system.slug);
-        const deleteIds = actor.items.filter(existingItem => existingItem.getFlag(MODULE_ID, "grantedBy") === item.id).map(existingItem => existingItem.id);
-        debugLog({ actions, actionSlugs, deleteIds }, 'Delete')
+        const deleteIds = actor.items.filter(
+            existingItem => existingItem?.flags?.[MODULE_ID]?.grantedBy?._id
+        ).map(
+            existingItem => existingItem.id
+        );
+        debugLog({ actions, deleteIds }, 'Delete')
         await actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
 }
