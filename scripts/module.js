@@ -214,7 +214,7 @@ export async function addOrDeleteActivation(item, changeType) {
         }
     } else { //On the Fly
         actions = generateActivations(item).map(act => augmentAction(act, item));
-        debugLog({ actionDeets }, 'Auto Create');
+        debugLog({ actions }, 'Auto Create');
     }
     if (changeType === 'Add') {
         if (item.actor.type === "npc" ?
