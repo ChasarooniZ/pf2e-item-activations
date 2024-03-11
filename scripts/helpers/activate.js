@@ -27,7 +27,7 @@ export function deactivateAction(action) {
 export async function turnOnOffActivation(item, changeType) {
     const actor = item.actor;
     const id = item.id;
-    let existingActions = actor.items.find(it =>
+    let existingActions = actor.items.filter(it =>
         it?.flags?.[MODULE_ID]?.grantedBy._id === id
     );
     if (changeType === 'On') {
@@ -45,7 +45,7 @@ export async function turnOnOffActivation(item, changeType) {
             }
             await actor.createEmbeddedDocuments("Item", activations);
         }
-        const actions = existingActions || actor.items.find(it =>
+        const actions = existingActions || actor.items.filter(it =>
             it?.flags?.[MODULE_ID]?.grantedBy._id === id
         );
 
