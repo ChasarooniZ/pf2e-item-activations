@@ -10,7 +10,7 @@ export function generateActivations(item) {
         const actionType = getActionInfo(descAction.split('<span class="action-glyph">')[1]?.split('</span>')[0]);
         const action = {
             img: item.img,
-            type: "ability",
+            type: "action",
             system: {
                 description: {
                     value: '<p><strong>Activate' + descAction.substring(descAction)
