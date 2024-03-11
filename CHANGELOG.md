@@ -1,8 +1,14 @@
+## 11.1.0 First Full Release
+ - **Added Automatic Generation**
+   - Activations that haven't been manually implemented will now *Auto Generate*
+   - Relies on the activations to be formatted the same way as items built in
+   - Can account for both Remaster format, and pre remaster format
+ - Major backend changes to help support automatic generation
 ## 11.0.48
  - Added `Cape of the Mountebank`
 ## 11.0.47 NPCs
 - **Added NPC Support**
-  - Added Settings for NPCs (to includein normal item add/update)
+  - Added Settings for NPCs (to include in normal item add/update)
   - Also added setting for updating NPCs when you spawn them in the world
 - **Item Updates**
   - `Activation Effect: Douse Fire` description

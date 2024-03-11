@@ -32,7 +32,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-item-activations.module-settings.auto-gen.enabled.hint"),
         scope: "world",
         config: true,
-        default: false,
+        default: true,
         type: Boolean,
     });
 
