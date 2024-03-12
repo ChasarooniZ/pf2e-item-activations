@@ -6,6 +6,12 @@
                 "name": "Enable Module",
                 "hint": "Enables all functionality of module"
             },
+            "action-type-icon": {
+                "enabled": {
+                    "name": "Overwrite Icon to Action Count Icon",
+                    "hint": "When generating actions will use an action count Icon for all relevant (IE 1, 2, 3 etc.)"
+                }
+            },
             "npc": {
                 "enabled": {
                     "name": "Enable NPC Activations",

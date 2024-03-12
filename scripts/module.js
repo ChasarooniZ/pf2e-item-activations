@@ -13,7 +13,7 @@ Hooks.on("updateItem", onUpdateItem);
 Hooks.on("createItem", onCreateItem);
 Hooks.on("preDeleteItem", onPreDeleteItem);
 Hooks.on("createToken", onCreateToken);
-Hooks.on("renderActorSheet", onRenderActorSheet);
+//Hooks.on("renderActorSheet", onRenderActorSheet);
 
 // Main function for 'ready' hook
 function onReady() {

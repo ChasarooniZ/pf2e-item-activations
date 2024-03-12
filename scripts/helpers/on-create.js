@@ -9,12 +9,34 @@ import { setModuleFlag } from "./misc.js";
  */
 export function augmentAction(action, item) {
     const resultAction = action;
-    
+
     // Concatenate item information to action description
     resultAction.system.description.value = `<p>Granted by ${item.link}</p>`.concat(action.system.description.value);
-    
+
+    //Update Icons
+    if (game.settings.get(MODULE_ID, "action-type-icon")) resultAction.img = getActionImage(action);
+
     // Set module flag indicating the item granting the action
     setModuleFlag(action, 'grantedBy', item);
-    
+
     return resultAction;
+}
+
+function getActionImage(item) {
+    const action = { type: item.system.actionType.value, cnt: item.system.actions.value }
+    if (action.type === 'action') {
+        if (action.cnt === 1) {
+            return 'systems/pf2e/icons/actions/OneAction.webp'
+        } else if (action.cnt === 2) {
+            return 'systems/pf2e/icons/actions/TwoActions.webp'
+        } else if (action.cnt === 3) {
+            return 'systems/pf2e/icons/actions/ThreeActions.webp'
+        }
+    } else if (action.type === 'reaction') {
+        return 'systems/pf2e/icons/actions/Reaction.webp'
+    } else if (action.type === 'free') {
+        return 'systems/pf2e/icons/actions/FreeAction.webp'
+    }
+
+    return item.img;
 }
