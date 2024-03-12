@@ -1,5 +1,5 @@
 // Import groups
-import { setModuleFlag } from "./misc.js";
+import { MODULE_ID, setModuleFlag } from "./misc.js";
 
 /**
  * Augments an action with item information
