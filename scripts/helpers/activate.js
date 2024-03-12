@@ -1,5 +1,5 @@
 // Import groups and constants
-import { ITEM_LIST } from "./item-list.js";
+import { ITEM_LIST, ITEM_SLUGS } from "./item-list.js";
 import { MODULE_ID, setModuleFlag } from "./misc.js";
 import { augmentAction } from "./on-create.js";
 import { actionStyling } from "./style-item.js";
