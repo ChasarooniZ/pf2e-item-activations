@@ -110,7 +110,15 @@ export async function updateTokensActivations(token) {
  * @returns True if item is in list
  */
 export function checkIfMatters(item, changes) {
-    return (ITEM_SLUGS.includes(item.system.slug) || (hasActivations(item) && game.settings.get(MODULE_ID, 'auto-gen.enabled'))) && (changes?.system?.equipped || changes === undefined);
+    return (ITEM_SLUGS.includes(item.system.slug)
+        || (hasActivations(item)
+            && game.settings.get(MODULE_ID, 'auto-gen.enabled')
+            && item.type !== 'consumable')
+    )
+        && (
+            changes?.system?.equipped
+            || changes === undefined
+        );
 }
 
 /**
@@ -202,9 +210,9 @@ export async function addOrDeleteActivation(item, changeType) {
             const actions_uuid = ITEM_LIST[slug].actions;
             if (actions_uuid.length === 0) return;
             for (const uuid of actions_uuid) {
-                    let actionItem = await fromUuid(uuid);
-                    actionItem = actionItem.toObject();
-                    actions.push(augmentAction(actionItem, item))
+                let actionItem = await fromUuid(uuid);
+                actionItem = actionItem.toObject();
+                actions.push(augmentAction(actionItem, item))
             }
         } else { //On the Fly
             actions = generateActivations(item).map(act => augmentAction(act, item));
