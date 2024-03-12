@@ -1,5 +1,5 @@
 // Import groups
-import { MODULE_ID, setModuleFlag } from "./misc.js";
+import { GRANTED_BY_TEXT, MODULE_ID, setModuleFlag } from "./misc.js";
 
 /**
  * Augments an action with item information
@@ -11,7 +11,7 @@ export function augmentAction(action, item) {
     const resultAction = action;
 
     // Concatenate item information to action description
-    resultAction.system.description.value = `<p>Granted by ${item.link}</p>`.concat(action.system.description.value);
+    resultAction.system.description.value = `<p>${GRANTED_BY_TEXT} ${item.link}</p>`.concat(action.system.description.value);
 
     //Update Icons
     if (game.settings.get(MODULE_ID, "action-type-icon")) resultAction.img = getActionImage(action);

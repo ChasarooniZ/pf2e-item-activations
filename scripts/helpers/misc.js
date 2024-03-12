@@ -4,6 +4,26 @@ import { ITEM_LIST } from "./item-list.js";
 // Constant defining the module ID
 export const MODULE_ID = 'pf2e-item-activations';
 
+export const ACTIVATE_TEXT = game.i18n.localize("pf2e-item-activations.code.activate");
+export const ACTIVATION_TEXT = game.i18n.localize("pf2e-item-activations.code.activation");
+export const FREQUENCY_TEXT = game.i18n.localize("pf2e-item-activations.code.frequency");
+export const GRANTED_BY_TEXT = game.i18n.localize("pf2e-item-activations.code.granted-by");
+export const COMMAND_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.command");
+export const ENVISION_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.envision");
+export const INTERACT_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.interact");
+export const TIME = {
+    "turn": game.i18n.localize("pf2e-item-activations.code.time.turn"),
+    "round": game.i18n.localize("pf2e-item-activations.code.time.round"),
+    "minute": game.i18n.localize("pf2e-item-activations.code.time.minutes"),
+    "ten-minutes": game.i18n.localize("pf2e-item-activations.code.time.ten-minutes"),
+    "hour": game.i18n.localize("pf2e-item-activations.code.time.hour"),
+    "twenty-four-hours": game.i18n.localize("pf2e-item-activations.code.time.twenty-four-hours"),
+    "day": game.i18n.localize("pf2e-item-activations.code.time.day"),
+    "week": game.i18n.localize("pf2e-item-activations.code.time.week"),
+    "month": game.i18n.localize("pf2e-item-activations.code.time.month"),
+    "year": game.i18n.localize("pf2e-item-activations.code.time.year")
+}
+
 /**
  * Indexes slugs for items in the ITEM_LIST
  */
