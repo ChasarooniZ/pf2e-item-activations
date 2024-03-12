@@ -1,15 +1,15 @@
-2024/03/01-07:37:35.780295 ffff85c1b160 Recovering log #103
-2024/03/01-07:37:35.784674 ffff85c1b160 Delete type=3 #96
-2024/03/01-07:37:35.784698 ffff85c1b160 Delete type=3 #6
-2024/03/01-07:37:35.784712 ffff85c1b160 Delete type=3 #30
-2024/03/01-07:37:35.784724 ffff85c1b160 Delete type=3 #25
-2024/03/01-07:37:35.784737 ffff85c1b160 Delete type=3 #101
-2024/03/01-07:37:35.784748 ffff85c1b160 Delete type=3 #11
-2024/03/01-07:37:35.784759 ffff85c1b160 Delete type=0 #103
-2024/03/01-07:37:35.784769 ffff85c1b160 Delete type=3 #2
-2024/03/01-07:37:35.784779 ffff85c1b160 Delete type=3 #16
-2024/03/01-07:50:23.756677 ffff6dd81160 Level-0 table #109: started
-2024/03/01-07:50:23.756697 ffff6dd81160 Level-0 table #109: 0 bytes OK
-2024/03/01-07:50:23.758419 ffff6dd81160 Delete type=0 #107
-2024/03/01-07:50:23.763282 ffff6dd81160 Manual compaction at level-0 from '!items!1sL2nfz8kOT4V7V2' @ 72057594037927935 : 1 .. '!items!xdEF2RzgWon8TNXe' @ 0 : 0; will stop at (end)
-2024/03/01-07:50:23.763321 ffff6dd81160 Manual compaction at level-1 from '!items!1sL2nfz8kOT4V7V2' @ 72057594037927935 : 1 .. '!items!xdEF2RzgWon8TNXe' @ 0 : 0; will stop at (end)
+2024/03/12-17:06:42.874059 ffff85c1b160 Recovering log #118
+2024/03/12-17:06:42.878332 ffff85c1b160 Delete type=0 #118
+2024/03/12-17:06:42.878352 ffff85c1b160 Delete type=3 #116
+2024/03/12-17:10:26.812133 ffff6dd81160 Level-0 table #123: started
+2024/03/12-17:10:26.814068 ffff6dd81160 Level-0 table #123: 1947 bytes OK
+2024/03/12-17:10:26.815525 ffff6dd81160 Delete type=0 #121
+2024/03/12-17:10:26.818895 ffff6dd81160 Manual compaction at level-0 from '!items!1sL2nfz8kOT4V7V2' @ 72057594037927935 : 1 .. '!items!xdEF2RzgWon8TNXe' @ 0 : 0; will stop at (end)
+2024/03/12-17:10:26.820474 ffff6dd81160 Manual compaction at level-1 from '!items!1sL2nfz8kOT4V7V2' @ 72057594037927935 : 1 .. '!items!xdEF2RzgWon8TNXe' @ 0 : 0; will stop at '!items!BQUty2wwD2yk4Bb2' @ 203 : 1
+2024/03/12-17:10:26.820481 ffff6dd81160 Compacting 1@1 + 1@2 files
+2024/03/12-17:10:26.823008 ffff6dd81160 Generated table #124@1: 30 keys, 21186 bytes
+2024/03/12-17:10:26.823021 ffff6dd81160 Compacted 1@1 + 1@2 files => 21186 bytes
+2024/03/12-17:10:26.824425 ffff6dd81160 compacted to: files[ 0 0 1 0 0 0 0 ]
+2024/03/12-17:10:26.824483 ffff6dd81160 Delete type=2 #105
+2024/03/12-17:10:26.824531 ffff6dd81160 Delete type=2 #123
+2024/03/12-17:10:26.826318 ffff6dd81160 Manual compaction at level-1 from '!items!BQUty2wwD2yk4Bb2' @ 203 : 1 .. '!items!xdEF2RzgWon8TNXe' @ 0 : 0; will stop at (end)
