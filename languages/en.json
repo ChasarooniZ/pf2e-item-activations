@@ -32,6 +32,29 @@
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"
             }
+        },
+        "code": {
+            "activation": "Activation",
+            "activate": "Activate",
+            "frequency": "Frequency",
+            "granted-by": "Granted by",
+            "activation-traits": {
+                "command": "command",
+                "envision": "envision",
+                "interact": "interact",
+            },
+            "time": {
+                "turn": "turn",
+                "round": "round",
+                "minute": "minute",
+                "ten-minutes": "10 minutes",
+                "hour": "hour",
+                "twenty-four-hours": "24 hours",
+                "day": "day",
+                "week": "week",
+                "month": "month",
+                "year": "year"
+            }
         }
     }
 }
