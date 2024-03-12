@@ -14,6 +14,7 @@ Hooks.on("ready", () => {
     Hooks.on("updateItem", async function (item, changes, diff, userID) {
         if (!game.settings.get(MODULE_ID, 'enabled')) return;
         if (!item.actor) return;
+        if (item.actor.type === "party") return;
         if (userID !== game.user.id) return;
         debugLog({ item, changes, diff, userID }, "Start");
         if (!checkIfMatters(item, changes)) return;
