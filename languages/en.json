@@ -41,7 +41,7 @@
             "activation-traits": {
                 "command": "command",
                 "envision": "envision",
-                "interact": "interact",
+                "interact": "interact"
             },
             "time": {
                 "turn": "turn",
