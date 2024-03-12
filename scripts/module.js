@@ -111,7 +111,7 @@ export function checkIfMatters(item, changes) {
     return (ITEM_SLUGS.includes(item.system.slug)
         || (hasActivations(item)
             && game.settings.get(MODULE_ID, 'auto-gen.enabled')
-            && item.type !== 'consumable')
+            && !['consumable','action', "feat", "heritage", "ancestry", "background", "class", "spell"].includes(item.type))
     ) && (changes?.system?.equipped || changes === undefined);
 }
 
