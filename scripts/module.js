@@ -5,7 +5,6 @@ import { indexSlugs, MODULE_ID } from "./helpers/misc.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
-import { actionStyling } from "./helpers/style-item.js";
 
 // Hook attachment functions
 Hooks.on("ready", onReady);
@@ -13,11 +12,11 @@ Hooks.on("updateItem", onUpdateItem);
 Hooks.on("createItem", onCreateItem);
 Hooks.on("preDeleteItem", onPreDeleteItem);
 Hooks.on("createToken", onCreateToken);
-//Hooks.on("renderActorSheet", onRenderActorSheet);
+//TODO Hooks.on("renderActorSheet", onRenderActorSheet);
 
 // Main function for 'ready' hook
 function onReady() {
-    if (game.settings.get(MODULE_ID, 'enabled')) {
+    if (game.settings.get(MODULE_ID, "enabled")) {
         indexSlugs();
     }
     console.log("PF2e Item Activation is ready");
@@ -25,7 +24,12 @@ function onReady() {
 
 // Function for 'updateItem' hook
 async function onUpdateItem(item, changes, diff, userID) {
-    if (!game.settings.get(MODULE_ID, 'enabled') || !item.actor || item.actor.type === "party" || userID !== game.user.id) {
+    if (
+        !game.settings.get(MODULE_ID, "enabled") ||
+        !item.actor ||
+        item.actor.type === "party" ||
+        userID !== game.user.id
+    ) {
         return;
     }
 
@@ -36,43 +40,69 @@ async function onUpdateItem(item, changes, diff, userID) {
     }
 
     const conditions = getActivationConditions(item);
-    const changeType = item.actor.type === 'npc' ? checkChangeTypeNPC(item?.system?.equipped, changes?.system?.equipped, conditions) : checkChangeTypePC(item?.system?.equipped, changes?.system?.equipped, conditions);
+    const changeType =
+        item.actor.type === "npc"
+            ? checkChangeTypeNPC(item?.system?.equipped, changes?.system?.equipped, conditions)
+            : checkChangeTypePC(item?.system?.equipped, changes?.system?.equipped, conditions);
 
-    debugLog(changeType, item.actor.type === 'npc' ? 'ChangeTypeNPC' : 'ChangeType');
+    debugLog(changeType, item.actor.type === "npc" ? "ChangeTypeNPC" : "ChangeType");
 
-    if (changeType !== 'None') {
+    if (changeType !== "None") {
         await turnOnOffActivation(item, changeType);
     }
 }
 
 // Function for 'createItem' hook
-async function onCreateItem(item, options, userID) {
-    if (!game.settings.get(MODULE_ID, 'enabled') || !item.actor || userID !== game.user.id || !checkIfMatters(item) || (item.actor.type === 'npc' && !game.settings.get(MODULE_ID, 'npc.enabled'))) {
+async function onCreateItem(item, _options, userID) {
+    if (
+        !game.settings.get(MODULE_ID, "enabled") ||
+        !item.actor ||
+        userID !== game.user.id ||
+        !checkIfMatters(item) ||
+        (item.actor.type === "npc" && !game.settings.get(MODULE_ID, "npc.enabled"))
+    ) {
         return;
     }
 
-    debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, item }, 'createItem');
+    debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, item }, "createItem");
 
     const conditions = getActivationConditions(item);
-    let test = await addOrDeleteActivation(item, 'Add');
+    await addOrDeleteActivation(item, "Add");
 
-    if (item.actor.type === 'npc' ? !isQualifiedNPC(item?.system?.equipped, conditions) : !item.isIdentified || !isQualifiedPC(item?.system?.equipped, conditions)) {
-        await turnOnOffActivation(item, 'Off');
+    if (
+        item.actor.type === "npc"
+            ? !isQualifiedNPC(item?.system?.equipped, conditions)
+            : !item.isIdentified || !isQualifiedPC(item?.system?.equipped, conditions)
+    ) {
+        await turnOnOffActivation(item, "Off");
     }
 }
 
 // Function for 'preDeleteItem' hook
-async function onPreDeleteItem(item, options, userID) {
-    if (!game.settings.get(MODULE_ID, 'enabled') || !item.actor || userID !== game.user.id || item.actor.type === 'npc' && !game.settings.get(MODULE_ID, 'npc.enabled') || !checkIfMatters(item) || !item.isIdentified) {
+async function onPreDeleteItem(item, _options, userID) {
+    if (
+        !game.settings.get(MODULE_ID, "enabled") ||
+        !item.actor ||
+        userID !== game.user.id ||
+        (item.actor.type === "npc" && !game.settings.get(MODULE_ID, "npc.enabled")) ||
+        !checkIfMatters(item) ||
+        !item.isIdentified
+    ) {
         return;
     }
 
-    await addOrDeleteActivation(item, 'Delete');
+    await addOrDeleteActivation(item, "Delete");
 }
 
 // Function for 'createToken' hook
-async function onCreateToken(token, details, userID) {
-    if (!game.settings.get(MODULE_ID, 'enabled') || !game.settings.get(MODULE_ID, 'npc.enabled') || !game.settings.get(MODULE_ID, 'npc.on-create-token') || userID !== game.user.id || token.actor.type !== 'npc') {
+async function onCreateToken(token, _details, userID) {
+    if (
+        !game.settings.get(MODULE_ID, "enabled") ||
+        !game.settings.get(MODULE_ID, "npc.enabled") ||
+        !game.settings.get(MODULE_ID, "npc.on-create-token") ||
+        userID !== game.user.id ||
+        token.actor.type !== "npc"
+    ) {
         return;
     }
 
@@ -80,23 +110,27 @@ async function onCreateToken(token, details, userID) {
 }
 
 // Function for 'renderActorSheet' hook
-function onRenderActorSheet(sheet, html, info) {
-    const actor = info.actor;
-    actionStyling(actor);
-}
+/* TODO function onRenderActorSheet(sheet, html, info) {
+  const actor = info.actor;
+  actionStyling(actor);
+}*/
 
 export async function updateTokensActivations(token) {
     const actor = token.actor;
-    const relevantItems = actor.items.filter(item => checkIfMatters(item));
+    const relevantItems = actor.items.filter((item) => checkIfMatters(item));
 
     for (const item of relevantItems) {
-        let test = await addOrDeleteActivation(item, 'Add');
+        await addOrDeleteActivation(item, "Add");
         const conditions = getActivationConditions(item);
 
-        if (actor.type === 'npc' && !isQualifiedNPC(item?.system?.equipped, conditions)) {
-            let test2 = await turnOnOffActivation(item, 'Off');
-        } else if (!item.isIdentified && !isQualifiedPC(item?.system?.equipped, conditions)) {
-            let test2 = await turnOnOffActivation(item, 'Off');
+        if (
+            actor.type === "npc"
+                ? isQualifiedNPC(item?.system?.equipped, conditions)
+                : item.isIdentified && isQualifiedPC(item?.system?.equipped, conditions)
+        ) {
+            await turnOnOffActivation(item, "On");
+        } else {
+            await turnOnOffActivation(item, "Off");
         }
     }
 }
@@ -108,11 +142,15 @@ export async function updateTokensActivations(token) {
  * @returns {boolean} True if the item is relevant for activation
  */
 export function checkIfMatters(item, changes) {
-    return (ITEM_SLUGS.includes(item.system.slug)
-        || (hasActivations(item)
-            && game.settings.get(MODULE_ID, 'auto-gen.enabled')
-            && !['consumable','action', "feat", "heritage", "ancestry", "background", "class", "spell"].includes(item.type))
-    ) && (changes?.system?.equipped || changes === undefined);
+    return (
+        (ITEM_SLUGS.includes(item.system.slug) ||
+            (hasActivations(item) &&
+                game.settings.get(MODULE_ID, "auto-gen.enabled") &&
+                !["consumable", "action", "feat", "heritage", "ancestry", "background", "class", "spell"].includes(
+                    item.type
+                ))) &&
+        (changes?.system?.equipped || changes === undefined)
+    );
 }
 
 /**
@@ -125,19 +163,18 @@ export function getActivationConditions(item) {
         carryType: item?.system?.usage?.type,
         handsHeld: 0,
         invested: false,
-        inSlot: false
-    }
+        inSlot: false,
+    };
 
-    if (item.system?.equipped?.invested !== null)
-        usage.invested = true;
+    if (item.system?.equipped?.invested !== null) usage.invested = true;
 
     switch (item?.system?.usage?.type) {
-        case 'worn':
-            if (item?.system?.usage?.value !== 'worn') {
+        case "worn":
+            if (item?.system?.usage?.value !== "worn") {
                 usage.inSlot = true;
             }
             break;
-        case 'held':
+        case "held":
             usage.handsHeld = item.system.usage.hands;
             break; // Added break statement
         default:
@@ -152,10 +189,12 @@ export function getActivationConditions(item) {
  * @returns {boolean} True if the change is important
  */
 export function isChangeImportant(changesToEquipment, usageConditions) {
-    return changesToEquipment?.invested !== null ||
+    return (
+        changesToEquipment?.invested !== null ||
         changesToEquipment?.handsHeld !== null ||
         changesToEquipment?.inSlot !== null ||
-        changesToEquipment?.carryType !== null;
+        changesToEquipment?.carryType !== null
+    );
 }
 
 /**
@@ -181,15 +220,17 @@ export async function checkAndGetMissingActivations(item, conditions) {
         }
     }
 
-    let toAdd = actions.filter(action => !actor.items.some(existingItem => existingItem.system.slug === action.system.slug));
+    let toAdd = actions.filter(
+        (action) => !actor.items.some((existingItem) => existingItem.system.slug === action.system.slug)
+    );
 
     if (toAdd.length > 0) {
         const notQualified = isQualifiedPC(item?.system?.equipped, conditions);
 
         if (notQualified) {
-            toAdd = toAdd.map(action => ({
+            toAdd = toAdd.map((action) => ({
                 ...action,
-                name: activateAction(action).name
+                name: activateAction(action).name,
             }));
         }
         actor.createEmbeddedDocuments("Item", toAdd);
@@ -206,8 +247,9 @@ export async function addOrDeleteActivation(item, changeType) {
     const slug = item.system.slug;
     let actions = [];
 
-    if (changeType === 'Add') {
-        if (ITEM_SLUGS.includes(item.system.slug)) { //Premade
+    if (changeType === "Add") {
+        if (ITEM_SLUGS.includes(item.system.slug)) {
+            //Premade
             const actions_uuid = ITEM_LIST[slug].actions;
 
             if (actions_uuid.length === 0) return;
@@ -215,34 +257,34 @@ export async function addOrDeleteActivation(item, changeType) {
             for (const uuid of actions_uuid) {
                 let actionItem = await fromUuid(uuid);
                 actionItem = actionItem.toObject();
-                actions.push(augmentAction(actionItem, item))
+                actions.push(augmentAction(actionItem, item));
             }
-        } else { //On the Fly
-            actions = generateActivations(item).map(act => augmentAction(act, item));
-            debugLog({ actions }, 'Auto Create');
+        } else {
+            //On the Fly
+            actions = generateActivations(item).map((act) => augmentAction(act, item));
+            debugLog({ actions }, "Auto Create");
         }
 
-        if (actor.type === "npc" ?
-            !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item)) :
-            !isQualifiedPC(item?.system?.equipped, getActivationConditions(item))) {
-            actions = actions.map(action => deactivateAction(action));
+        if (
+            actor.type === "npc"
+                ? !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item))
+                : !isQualifiedPC(item?.system?.equipped, getActivationConditions(item))
+        ) {
+            actions = actions.map((action) => deactivateAction(action));
         }
 
-        debugLog({ actions }, 'Add');
+        debugLog({ actions }, "Add");
         await actor.createEmbeddedDocuments("Item", actions);
-    } else if (changeType === 'Delete') {
-        const deleteIds = actor.items.filter(
-            existingItem => existingItem?.flags?.[MODULE_ID]?.grantedBy?._id === item.id
-        ).map(
-            existingItem => existingItem.id
-        );
+    } else if (changeType === "Delete") {
+        const deleteIds = actor.items
+            .filter((existingItem) => existingItem?.flags?.[MODULE_ID]?.grantedBy?._id === item.id)
+            .map((existingItem) => existingItem.id);
 
-        debugLog({ actions, deleteIds }, 'Delete');
+        debugLog({ actions, deleteIds }, "Delete");
         await actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
 }
 
 export function debugLog(data, context = "") {
-    if (game.settings.get(MODULE_ID, 'debug-mode'))
-        console.log(`PF2E-ITEM-ACTIVATIONS: ${context}`, data);
+    if (game.settings.get(MODULE_ID, "debug-mode")) console.log(`PF2E-ITEM-ACTIVATIONS: ${context}`, data);
 }

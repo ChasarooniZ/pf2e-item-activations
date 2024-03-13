@@ -2,7 +2,7 @@
 import { ITEM_LIST } from "./item-list.js";
 
 // Constant defining the module ID
-export const MODULE_ID = 'pf2e-item-activations';
+export const MODULE_ID = "pf2e-item-activations";
 
 export const ACTIVATE_TEXT = game.i18n.localize("pf2e-item-activations.code.activate");
 export const ACTIVATION_TEXT = game.i18n.localize("pf2e-item-activations.code.activation");
@@ -12,17 +12,17 @@ export const COMMAND_TEXT = game.i18n.localize("pf2e-item-activations.code.activ
 export const ENVISION_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.envision");
 export const INTERACT_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.interact");
 export const TIME = {
-    "turn": game.i18n.localize("pf2e-item-activations.code.time.turn"),
-    "round": game.i18n.localize("pf2e-item-activations.code.time.round"),
-    "minute": game.i18n.localize("pf2e-item-activations.code.time.minutes"),
+    turn: game.i18n.localize("pf2e-item-activations.code.time.turn"),
+    round: game.i18n.localize("pf2e-item-activations.code.time.round"),
+    minute: game.i18n.localize("pf2e-item-activations.code.time.minutes"),
     "ten-minutes": game.i18n.localize("pf2e-item-activations.code.time.ten-minutes"),
-    "hour": game.i18n.localize("pf2e-item-activations.code.time.hour"),
+    hour: game.i18n.localize("pf2e-item-activations.code.time.hour"),
     "twenty-four-hours": game.i18n.localize("pf2e-item-activations.code.time.twenty-four-hours"),
-    "day": game.i18n.localize("pf2e-item-activations.code.time.day"),
-    "week": game.i18n.localize("pf2e-item-activations.code.time.week"),
-    "month": game.i18n.localize("pf2e-item-activations.code.time.month"),
-    "year": game.i18n.localize("pf2e-item-activations.code.time.year")
-}
+    day: game.i18n.localize("pf2e-item-activations.code.time.day"),
+    week: game.i18n.localize("pf2e-item-activations.code.time.week"),
+    month: game.i18n.localize("pf2e-item-activations.code.time.month"),
+    year: game.i18n.localize("pf2e-item-activations.code.time.year"),
+};
 
 /**
  * Indexes slugs for items in the ITEM_LIST
@@ -34,8 +34,8 @@ export function indexSlugs() {
     // Iterate through each item in the ITEM_LIST
     for (let item in ITEM_LIST) {
         // Map each action UUID to its corresponding slug
-        ITEM_LIST[item].slugs = ITEM_LIST[item].actions.map(uuid =>
-            game.pf2e?.system?.sluggify(index.get(uuid.split('.').slice(-1)[0]).name)
+        ITEM_LIST[item].slugs = ITEM_LIST[item].actions.map((uuid) =>
+            game.pf2e?.system?.sluggify(index.get(uuid.split(".").slice(-1)[0]).name)
         );
     }
 }
@@ -49,12 +49,10 @@ export function indexSlugs() {
  */
 export function setModuleFlag(item, flagName, value) {
     // Ensure item has a flags object
-    if (!item?.flags)
-        item.flags = {};
+    if (!item?.flags) item.flags = {};
 
     // Ensure item has a flags object for the module
-    if (!item?.flags?.[MODULE_ID])
-        item.flags[MODULE_ID] = {};
+    if (!item?.flags?.[MODULE_ID]) item.flags[MODULE_ID] = {};
 
     // Set the value for the specified flag
     item.flags[MODULE_ID][flagName] = value;
