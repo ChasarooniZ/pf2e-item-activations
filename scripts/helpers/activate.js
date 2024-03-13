@@ -1,4 +1,5 @@
 // Import groups and constants
+import { generateActivations } from "./generate-activation.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./item-list.js";
 import { MODULE_ID, setModuleFlag } from "./misc.js";
 import { augmentAction } from "./on-create.js";
@@ -77,6 +78,6 @@ export async function turnOnOffActivation(item, changeType) {
             name: deactivateAction(action).name
         })));
 
-        actionStyling(actor);
+        //actionStyling(actor);
     }
 }
