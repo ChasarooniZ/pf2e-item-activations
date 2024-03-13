@@ -2,7 +2,7 @@ import { debugLog } from "./helpers/debug.js";
 import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { generateActivations, hasActivations } from "./helpers/generate-activation.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
-import { indexSlugs, MODULE_ID } from "./helpers/misc.js";
+import { MODULE_ID } from "./helpers/misc.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
