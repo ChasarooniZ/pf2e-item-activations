@@ -1,28 +1,27 @@
 // Constant defining the module ID
 export const MODULE_ID = "pf2e-item-activations";
-export const TEXT = {}
-Hooks.on("init", () => {
-    TEXT.ACTIVATE_TEXT = game.i18n.localize("pf2e-item-activations.code.activate");
-    TEXT.ACTIVATION_TEXT = game.i18n.localize("pf2e-item-activations.code.activation");
-    TEXT.FREQUENCY_TEXT = game.i18n.localize("pf2e-item-activations.code.frequency");
-    TEXT.GRANTED_BY_TEXT = game.i18n.localize("pf2e-item-activations.code.granted-by");
-    TEXT.COMMAND_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.command");
-    TEXT.ENVISION_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.envision");
-    TEXT.INTERACT_TEXT = game.i18n.localize("pf2e-item-activations.code.activation-traits.interact");
+export const TEXT = {};
+Hooks.on("ready", () => {
+    TEXT.ACTIVATE_TEXT = game.i18n.format("pf2e-item-activations.code.activate");
+    TEXT.ACTIVATION_TEXT = game.i18n.format("pf2e-item-activations.code.activation");
+    TEXT.FREQUENCY_TEXT = game.i18n.format("pf2e-item-activations.code.frequency");
+    TEXT.GRANTED_BY_TEXT = game.i18n.format("pf2e-item-activations.code.granted-by");
+    TEXT.COMMAND_TEXT = game.i18n.format("pf2e-item-activations.code.activation-traits.command");
+    TEXT.ENVISION_TEXT = game.i18n.format("pf2e-item-activations.code.activation-traits.envision");
+    TEXT.INTERACT_TEXT = game.i18n.format("pf2e-item-activations.code.activation-traits.interact");
     TEXT.TIME = {
-        turn: game.i18n.localize("pf2e-item-activations.code.time.turn"),
-        round: game.i18n.localize("pf2e-item-activations.code.time.round"),
-        minute: game.i18n.localize("pf2e-item-activations.code.time.minutes"),
-        "ten-minutes": game.i18n.localize("pf2e-item-activations.code.time.ten-minutes"),
-        hour: game.i18n.localize("pf2e-item-activations.code.time.hour"),
-        "twenty-four-hours": game.i18n.localize("pf2e-item-activations.code.time.twenty-four-hours"),
-        day: game.i18n.localize("pf2e-item-activations.code.time.day"),
-        week: game.i18n.localize("pf2e-item-activations.code.time.week"),
-        month: game.i18n.localize("pf2e-item-activations.code.time.month"),
-        year: game.i18n.localize("pf2e-item-activations.code.time.year"),
+        turn: game.i18n.format("pf2e-item-activations.code.time.turn"),
+        round: game.i18n.format("pf2e-item-activations.code.time.round"),
+        minute: game.i18n.format("pf2e-item-activations.code.time.minutes"),
+        "ten-minutes": game.i18n.format("pf2e-item-activations.code.time.ten-minutes"),
+        hour: game.i18n.format("pf2e-item-activations.code.time.hour"),
+        "twenty-four-hours": game.i18n.format("pf2e-item-activations.code.time.twenty-four-hours"),
+        day: game.i18n.format("pf2e-item-activations.code.time.day"),
+        week: game.i18n.format("pf2e-item-activations.code.time.week"),
+        month: game.i18n.format("pf2e-item-activations.code.time.month"),
+        year: game.i18n.format("pf2e-item-activations.code.time.year"),
     };
 });
-
 /**
  * Sets a module flag for the given item
  * @param {object} item The item to set the flag for
