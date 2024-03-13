@@ -142,13 +142,13 @@ function getFrequency(str) {
         case `${TIME.minute}`:
             re.per = `PT1M`;
             break;
-        case `${TIME.ten - minutes}`:
+        case `${TIME['ten-minutes']}`:
             re.per = `PT10M`;
             break;
         case `${TIME.hour}`:
             re.per = `PT1H`;
             break;
-        case `${TIME.twenty - four - hours}`:
+        case `${TIME['twenty-four-hours']}`:
             re.per = `PT24H`;
             break;
         case `${TIME.day}`:
