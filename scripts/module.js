@@ -15,17 +15,17 @@ Hooks.on("setup", () => {
 
 // Main function for 'ready' hook
 function onReady() {
-    Hooks.on("updateItem", () => {
-        onUpdateItem();
+    Hooks.on("updateItem", async (item, changes, diff, userID) => {
+        await onUpdateItem(item, changes, diff, userID);
     });
-    Hooks.on("createItem", () => {
-        onCreateItem();
+    Hooks.on("createItem", async (item, _options, userID) => {
+        await onCreateItem(item, _options, userID);
     });
-    Hooks.on("preDeleteItem", () => {
-        onPreDeleteItem();
+    Hooks.on("preDeleteItem", async (item, _options, userID) => {
+        await onPreDeleteItem(item, _options, userID);
     });
-    Hooks.on("createToken", () => {
-        onCreateToken();
+    Hooks.on("createToken", async (token, _details, userID) => {
+        await onCreateToken(token, _details, userID);
     });
     console.log("PF2e Item Activation is initialized");
 }
