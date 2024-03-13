@@ -165,7 +165,7 @@ export function getActivationConditions(item) {
         inSlot: false,
     };
 
-    if (item.system?.equipped?.invested !== null) usage.invested = true;
+    if (item?.system?.trait?.value?.includes("invested")) usage.invested = true;
 
     switch (item?.system?.usage?.type) {
         case "worn":
