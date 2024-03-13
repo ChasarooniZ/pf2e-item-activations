@@ -8,13 +8,8 @@ import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 
 // Hook attachment functions
-Hooks.on("setup", () => {
-    onReady();
-});
-//TODO Hooks.on("renderActorSheet", onRenderActorSheet);
-
-// Main function for 'ready' hook
-function onReady() {
+Hooks.on("ready", () => {
+    console.log("PF2e Item Activations is getting ready....")
     Hooks.on("updateItem", async (item, changes, diff, userID) => {
         if (skipUpdateItem(item, userID)) {
             return;
@@ -71,9 +66,9 @@ function onReady() {
         await updateTokensActivations(token);
     });
     console.log("PF2e Item Activation is initialized");
-}
+});
 
-function skipUpdateItem(item, userID) {
+export function skipUpdateItem(item, userID) {
     return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
@@ -82,7 +77,7 @@ function skipUpdateItem(item, userID) {
     );
 }
 
-function skipCreateItem(item, userID) {
+export function skipCreateItem(item, userID) {
     return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
@@ -92,7 +87,7 @@ function skipCreateItem(item, userID) {
     );
 }
 
-function skipCreateToken(userID, token) {
+export function skipCreateToken(userID, token) {
     return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !game.settings.get(MODULE_ID, "npc.enabled") ||
@@ -102,7 +97,7 @@ function skipCreateToken(userID, token) {
     );
 }
 
-function skipDeleteItem(item, userID) {
+export function skipDeleteItem(item, userID) {
     return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
