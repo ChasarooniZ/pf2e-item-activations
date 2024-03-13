@@ -1,5 +1,5 @@
 // Import groups
-import { GRANTED_BY_TEXT, MODULE_ID, setModuleFlag } from "./misc.js";
+import { TEXT, MODULE_ID, setModuleFlag } from "./misc.js";
 
 /**
  * Augments an action with item information
@@ -11,7 +11,7 @@ export function augmentAction(action, item) {
     let resultAction = { ...action };
 
     // Concatenate item information to action description
-    resultAction.system.description.value = `<p>${GRANTED_BY_TEXT} ${item.link}</p>`.concat(
+    resultAction.system.description.value = `<p>${TEXT.GRANTED_BY_TEXT} ${item.link}</p>`.concat(
         action.system.description.value
     );
 

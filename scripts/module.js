@@ -9,7 +9,7 @@ import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
-    console.log("PF2e Item Activations is getting ready....")
+    console.log("PF2e Item Activations is getting ready....");
     Hooks.on("updateItem", async (item, changes, diff, userID) => {
         if (skipUpdateItem(item, userID)) {
             return;

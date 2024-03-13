@@ -1,21 +1,15 @@
 import {
-    ACTIVATE_TEXT,
-    ACTIVATION_TEXT,
-    COMMAND_TEXT,
-    ENVISION_TEXT,
-    FREQUENCY_TEXT,
-    INTERACT_TEXT,
-    TIME,
+    TEXT
 } from "./misc.js";
 
 export function hasActivations(item) {
-    return item.system.description.value.includes(`<p><strong>${ACTIVATE_TEXT}`);
+    return item.system.description.value.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}`);
 }
 
 export function generateActivations(item) {
     const description = item.system.description.value;
-    const isRemaster = description.includes(`<p><strong>${ACTIVATE_TEXT}—`);
-    let result = description.split(`<p><strong>${ACTIVATE_TEXT}`).slice(1) ?? [];
+    const isRemaster = description.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}—`);
+    let result = description.split(`<p><strong>${TEXT.ACTIVATE_TEXT}`).slice(1) ?? [];
     result = result.map((descAction, num) => {
         const type = descAction.includes(`<span class="action-glyph">`)
             ? descAction.split(`<span class="action-glyph">`)[1]?.split(`</span>`)[0]
@@ -26,7 +20,7 @@ export function generateActivations(item) {
             type: "action",
             system: {
                 description: {
-                    value: `<p><strong>${ACTIVATE_TEXT}` + descAction.substring(descAction),
+                    value: `<p><strong>${TEXT.ACTIVATE_TEXT}` + descAction.substring(descAction),
                 },
                 traits: {
                     value: [],
@@ -39,18 +33,18 @@ export function generateActivations(item) {
                 },
             },
         };
-        if (descAction.includes(`<strong>${FREQUENCY_TEXT}</strong> `))
+        if (descAction.includes(`<strong>${TEXT.FREQUENCY_TEXT}</strong> `))
             action.system.frequency = getFrequency(
-                descAction.split(`<strong>${FREQUENCY_TEXT}</strong> `)[1]?.split(`</p>`)[0]
+                descAction.split(`<strong>${TEXT.FREQUENCY_TEXT}</strong> `)[1]?.split(`</p>`)[0]
             );
         if (isRemaster) {
-            action.name = `${ACTIVATION_TEXT}: ${descAction.split("</strong>")[0].replace("—", "")}`;
+            action.name = `${TEXT.ACTIVATION_TEXT}: ${descAction.split("</strong>")[0].replace("—", "")}`;
             action.system.traits.value = descAction
                 .match(/\(([^)]+)\)/g)[0]
                 .slice(1, -1)
                 .split(",");
         } else {
-            action.name = `${ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ""}`;
+            action.name = `${TEXT.ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ""}`;
             action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));
         }
         action.system.slug = game.pf2e?.system?.sluggify(action.name);
@@ -87,9 +81,9 @@ function getOldActionTraitString(desc) {
         str = str.toLowerCase();
         str = str.substring(
             Math.min(
-                Math.max(str.indexOf(`${COMMAND_TEXT}`), 9999),
-                Math.max(str.indexOf(`${ENVISION_TEXT}`), 9999),
-                Math.max(str.indexOf(`${INTERACT_TEXT}`), 9999)
+                Math.max(str.indexOf(`${TEXT.COMMAND_TEXT}`), 9999),
+                Math.max(str.indexOf(`${TEXT.ENVISION_TEXT}`), 9999),
+                Math.max(str.indexOf(`${TEXT.INTERACT_TEXT}`), 9999)
             )
         );
     }
@@ -117,11 +111,11 @@ function getOldActionTraits(string) {
 
 function getNewTraits(activationOldTrait) {
     switch (activationOldTrait) {
-        case `${COMMAND_TEXT}`:
+        case `${TEXT.COMMAND_TEXT}`:
             return [`auditory`, `concentrate`];
-        case `${ENVISION_TEXT}`:
+        case `${TEXT.ENVISION_TEXT}`:
             return [`concentrate`];
-        case `${INTERACT_TEXT}`:
+        case `${TEXT.INTERACT_TEXT}`:
             return [`manipulate`];
         default:
             return [activationOldTrait];
@@ -151,34 +145,34 @@ function getFrequency(str) {
             if (!isNaN(amt)) re.max = parseInt(amt);
     }
     switch (unit.toLowerCase()) {
-        case `${TIME.turn}`:
+        case `${TEXT.TIME.turn}`:
             re.per = `turn`;
             break;
-        case `${TIME.round}`:
+        case `${TEXT.TIME.round}`:
             re.per = `round`;
             break;
-        case `${TIME.minute}`:
+        case `${TEXT.TIME.minute}`:
             re.per = `PT1M`;
             break;
-        case `${TIME["ten-minutes"]}`:
+        case `${TEXT.TIME["ten-minutes"]}`:
             re.per = `PT10M`;
             break;
-        case `${TIME.hour}`:
+        case `${TEXT.TIME.hour}`:
             re.per = `PT1H`;
             break;
-        case `${TIME["twenty-four-hours"]}`:
+        case `${TEXT.TIME["twenty-four-hours"]}`:
             re.per = `PT24H`;
             break;
-        case `${TIME.day}`:
+        case `${TEXT.TIME.day}`:
             re.per = `day`;
             break;
-        case `${TIME.week}`:
+        case `${TEXT.TIME.week}`:
             re.per = `P1W`;
             break;
-        case `${TIME.month}`:
+        case `${TEXT.TIME.month}`:
             re.per = `PT1M`;
             break;
-        case `${TIME.year}`:
+        case `${TEXT.TIME.year}`:
             re.per = `P1Y`;
             break;
         default:
