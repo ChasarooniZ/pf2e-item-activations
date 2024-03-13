@@ -8,14 +8,13 @@ import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 
 // Hook attachment functions
-Hooks.on("ready", () => {
+Hooks.on("setup", () => {
     onReady();
 });
 //TODO Hooks.on("renderActorSheet", onRenderActorSheet);
 
 // Main function for 'ready' hook
 function onReady() {
-    console.log("PF2e Item Activation is ready");
     Hooks.on("updateItem", () => {
         onUpdateItem();
     });
@@ -28,6 +27,7 @@ function onReady() {
     Hooks.on("createToken", () => {
         onCreateToken();
     });
+    console.log("PF2e Item Activation is initialized");
 }
 
 // Function for 'updateItem' hook
