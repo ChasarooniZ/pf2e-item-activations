@@ -70,7 +70,7 @@ function getOldActionTraitString(desc) {
         str = str.split(`</span>`)[1].trim();
     } else {
         str = str.toLowerCase();
-        str = str.subString(
+        str = str.substring(
             Math.min(
                 Math.max(str.indexOf(`${COMMAND_TEXT}`), 9999),
                 Math.max(str.indexOf(`${ENVISION_TEXT}`), 9999),
@@ -81,17 +81,26 @@ function getOldActionTraitString(desc) {
     return str.trim();
 }
 
+
 function getOldActionTraits(string) {
     let traits = [];
-    if (string.includes("(")) {
-        traits = string.match(/\(([^)]+)\)/g)[0].slice(1, -1).split(",");
+
+    // Extract traits enclosed within parentheses
+    const parenthesizedTraits = string.match(/\(([^)]+)\)/);
+    if (parenthesizedTraits) {
+        traits = parenthesizedTraits[1].split(",").map(t => t.trim());
         string = string.split("(")[0].trim();
     }
-    string.split(",").forEach((t) => {
-        traits = traits.concat(getNewTraits(t.trim()))
-    })
+
+    // Split remaining traits by comma and concatenate with existing traits
+    string.split(",").forEach(trait => {
+        traits = traits.concat(getNewTraits(trait.trim()));
+    });
+
+    // Remove duplicates and return unique traits
     return [...new Set(traits)];
 }
+
 
 function getNewTraits(activ) {
     switch (activ) {
@@ -133,13 +142,13 @@ function getFrequency(str) {
         case `${TIME.minute}`:
             re.per = `PT1M`;
             break;
-        case `${TIME.ten-minutes}`:
+        case `${TIME.ten - minutes}`:
             re.per = `PT10M`;
             break;
         case `${TIME.hour}`:
             re.per = `PT1H`;
             break;
-        case `${TIME.twenty-four-hours}`:
+        case `${TIME.twenty - four - hours}`:
             re.per = `PT24H`;
             break;
         case `${TIME.day}`:
