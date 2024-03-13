@@ -6,7 +6,7 @@ import {
     FREQUENCY_TEXT,
     INTERACT_TEXT,
     TIME,
-} from "./misc";
+} from "./misc.js";
 
 export function hasActivations(item) {
     return item.system.description.value.includes(`<p><strong>${ACTIVATE_TEXT}`);
@@ -50,7 +50,7 @@ export function generateActivations(item) {
                 .slice(1, -1)
                 .split(",");
         } else {
-            action.name = `${ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ``}`;
+            action.name = `${ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ""}`;
             action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));
         }
         action.system.slug = game.pf2e?.system?.sluggify(action.name);

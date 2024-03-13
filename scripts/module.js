@@ -1,3 +1,4 @@
+import { debugLog } from "./helpers/debug.js";
 import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { generateActivations, hasActivations } from "./helpers/generate-activation.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
@@ -283,8 +284,4 @@ export async function addOrDeleteActivation(item, changeType) {
         debugLog({ actions, deleteIds }, "Delete");
         await actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
-}
-
-export function debugLog(data, context = "") {
-    if (game.settings.get(MODULE_ID, "debug-mode")) console.log(`PF2E-ITEM-ACTIVATIONS: ${context}`, data);
 }
