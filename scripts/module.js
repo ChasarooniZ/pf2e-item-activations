@@ -16,105 +16,101 @@ Hooks.on("setup", () => {
 // Main function for 'ready' hook
 function onReady() {
     Hooks.on("updateItem", async (item, changes, diff, userID) => {
-        await onUpdateItem(item, changes, diff, userID);
+        if (skipUpdateItem(item, userID)) {
+            return;
+        }
+
+        debugLog({ item, changes, diff, userID }, "Start");
+
+        if (!checkIfMatters(item, changes)) {
+            return;
+        }
+
+        const conditions = getActivationConditions(item);
+        const changeType =
+            item.actor.type === "npc"
+                ? checkChangeTypeNPC(item?.system?.equipped, changes?.system?.equipped, conditions)
+                : checkChangeTypePC(item?.system?.equipped, changes?.system?.equipped, conditions);
+
+        debugLog(changeType, item.actor.type === "npc" ? "ChangeTypeNPC" : "ChangeType");
+
+        if (changeType !== "None") {
+            await turnOnOffActivation(item, changeType);
+        }
     });
     Hooks.on("createItem", async (item, _options, userID) => {
-        await onCreateItem(item, _options, userID);
+        if (skipCreateItem(item, userID)) {
+            return;
+        }
+
+        debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, item }, "createItem");
+
+        const conditions = getActivationConditions(item);
+        await addOrDeleteActivation(item, "Add");
+
+        if (
+            item.actor.type === "npc"
+                ? !isQualifiedNPC(item?.system?.equipped, conditions)
+                : !item.isIdentified || !isQualifiedPC(item?.system?.equipped, conditions)
+        ) {
+            await turnOnOffActivation(item, "Off");
+        }
     });
     Hooks.on("preDeleteItem", async (item, _options, userID) => {
-        await onPreDeleteItem(item, _options, userID);
+        if (skipDeleteItem(item, userID)) {
+            return;
+        }
+
+        await addOrDeleteActivation(item, "Delete");
     });
     Hooks.on("createToken", async (token, _details, userID) => {
-        await onCreateToken(token, _details, userID);
+        if (skipCreateToken(userID, token)) {
+            return;
+        }
+
+        await updateTokensActivations(token);
     });
     console.log("PF2e Item Activation is initialized");
 }
 
-// Function for 'updateItem' hook
-async function onUpdateItem(item, changes, diff, userID) {
-    if (
+function skipUpdateItem(item, userID) {
+    return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
         item.actor.type === "party" ||
         userID !== game.user.id
-    ) {
-        return;
-    }
-
-    debugLog({ item, changes, diff, userID }, "Start");
-
-    if (!checkIfMatters(item, changes)) {
-        return;
-    }
-
-    const conditions = getActivationConditions(item);
-    const changeType =
-        item.actor.type === "npc"
-            ? checkChangeTypeNPC(item?.system?.equipped, changes?.system?.equipped, conditions)
-            : checkChangeTypePC(item?.system?.equipped, changes?.system?.equipped, conditions);
-
-    debugLog(changeType, item.actor.type === "npc" ? "ChangeTypeNPC" : "ChangeType");
-
-    if (changeType !== "None") {
-        await turnOnOffActivation(item, changeType);
-    }
+    );
 }
 
-// Function for 'createItem' hook
-async function onCreateItem(item, _options, userID) {
-    if (
+function skipCreateItem(item, userID) {
+    return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
         userID !== game.user.id ||
         !checkIfMatters(item) ||
         (item.actor.type === "npc" && !game.settings.get(MODULE_ID, "npc.enabled"))
-    ) {
-        return;
-    }
-
-    debugLog({ actorType: item.actor.type, equipped: item?.system?.equipped, item }, "createItem");
-
-    const conditions = getActivationConditions(item);
-    await addOrDeleteActivation(item, "Add");
-
-    if (
-        item.actor.type === "npc"
-            ? !isQualifiedNPC(item?.system?.equipped, conditions)
-            : !item.isIdentified || !isQualifiedPC(item?.system?.equipped, conditions)
-    ) {
-        await turnOnOffActivation(item, "Off");
-    }
+    );
 }
 
-// Function for 'preDeleteItem' hook
-async function onPreDeleteItem(item, _options, userID) {
-    if (
+function skipCreateToken(userID, token) {
+    return (
+        !game.settings.get(MODULE_ID, "enabled") ||
+        !game.settings.get(MODULE_ID, "npc.enabled") ||
+        !game.settings.get(MODULE_ID, "npc.on-create-token") ||
+        userID !== game.user.id ||
+        token.actor.type !== "npc"
+    );
+}
+
+function skipDeleteItem(item, userID) {
+    return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
         userID !== game.user.id ||
         (item.actor.type === "npc" && !game.settings.get(MODULE_ID, "npc.enabled")) ||
         !checkIfMatters(item) ||
         !item.isIdentified
-    ) {
-        return;
-    }
-
-    await addOrDeleteActivation(item, "Delete");
-}
-
-// Function for 'createToken' hook
-async function onCreateToken(token, _details, userID) {
-    if (
-        !game.settings.get(MODULE_ID, "enabled") ||
-        !game.settings.get(MODULE_ID, "npc.enabled") ||
-        !game.settings.get(MODULE_ID, "npc.on-create-token") ||
-        userID !== game.user.id ||
-        token.actor.type !== "npc"
-    ) {
-        return;
-    }
-
-    await updateTokensActivations(token);
+    );
 }
 
 // Function for 'renderActorSheet' hook
