@@ -9,18 +9,15 @@ import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 
 // Hook attachment functions
 Hooks.on("ready", onReady);
-Hooks.on("updateItem", onUpdateItem);
-Hooks.on("createItem", onCreateItem);
-Hooks.on("preDeleteItem", onPreDeleteItem);
-Hooks.on("createToken", onCreateToken);
 //TODO Hooks.on("renderActorSheet", onRenderActorSheet);
 
 // Main function for 'ready' hook
 function onReady() {
-    if (game.settings.get(MODULE_ID, "enabled")) {
-        indexSlugs();
-    }
     console.log("PF2e Item Activation is ready");
+    Hooks.on("updateItem", onUpdateItem);
+    Hooks.on("createItem", onCreateItem);
+    Hooks.on("preDeleteItem", onPreDeleteItem);
+    Hooks.on("createToken", onCreateToken);
 }
 
 // Function for 'updateItem' hook
@@ -189,7 +186,7 @@ export function getActivationConditions(item) {
  * @param {object} usageConditions Usage conditions
  * @returns {boolean} True if the change is important
  */
-export function isChangeImportant(changesToEquipment, usageConditions) {
+export function isChangeImportant(changesToEquipment, _usageConditions) {
     return (
         changesToEquipment?.invested !== null ||
         changesToEquipment?.handsHeld !== null ||
