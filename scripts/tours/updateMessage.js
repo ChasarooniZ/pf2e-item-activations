@@ -4,12 +4,12 @@ import { TOUR_LIST, TOURS, TOUR_BASICS } from "./tour-setup.js";
 
 export function sendUpdateMessage() {
     let pastVersion = "0.0.0";
-    const version = game.modules.get("pf2e-item-activations").version;
+    const version = game.modules.get(MODULE_ID).version;
     try {
-        pastVersion = game.settings.get(MODULE_ID, "updateMessage");
+        pastVersion = game.settings.get(MODULE_ID, "last-version");
     } catch (e) {}
     const toursToRun = getNewTourList(splitVersions(version), splitVersions(pastVersion));
-    game.settings.set(MODULE_ID, "updateMessage", version);
+    game.settings.set(MODULE_ID, "last-version", version);
     runTour(toursToRun);
 }
 

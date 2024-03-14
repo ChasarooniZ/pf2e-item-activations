@@ -45,9 +45,7 @@ Hooks.on("ready", () => {
         const conditions = getActivationConditions(item);
         await addOrDeleteActivation(item, "Add");
 
-        if (
-            isQualified(item, conditions)
-        ) {
+        if (isQualified(item, conditions)) {
             await turnOnOffActivation(item, "Off");
         }
     });
