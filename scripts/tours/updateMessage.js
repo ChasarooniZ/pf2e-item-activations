@@ -18,7 +18,7 @@ function getNewTourList(pastVersion, version) {
     //TODO const [verMajor, verMinor, verPatch] = version;
     return TOUR_LIST.map(splitVersions)
         .filter((item) => {
-            if (item === pastVersion || item === version) return false;
+            if (item.equals(pastVersion) || item.equals(version)) return false;
             const [itemMajor, itemMinor, itemPatch] = item;
             return (
                 itemMajor > pastMajor ||
