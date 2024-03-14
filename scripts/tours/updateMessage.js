@@ -10,7 +10,7 @@ export function sendUpdateMessage() {
     } catch (e) {}
     const toursToRun = getNewTourList(splitVersions(version), splitVersions(pastVersion));
     game.settings.set(MODULE_ID, "updateMessage", version);
-    await runTour(toursToRun);
+    runTour(toursToRun);
 }
 
 function getNewTourList(pastVersion, version) {
