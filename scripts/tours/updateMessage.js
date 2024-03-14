@@ -15,17 +15,15 @@ export function sendUpdateMessage() {
 
 function getNewTourList(pastVersion, version) {
     const [pastMajor, pastMinor, pastPatch] = pastVersion;
-    const [verMajor, verMinor, verPatch] = version;
+    //TODO const [verMajor, verMinor, verPatch] = version;
     return TOUR_LIST.map(splitVersions)
         .filter((item) => {
+            if (item === pastVersion || item === version) return false;
             const [itemMajor, itemMinor, itemPatch] = item;
-            return !!(
-                itemMajor >= pastMajor &&
-                itemMajor <= verMajor &&
-                (itemMajor !== pastMajor ||
-                    itemMinor > pastMinor ||
-                    (itemMinor === pastMinor && itemPatch > pastPatch)) &&
-                (itemMajor !== verMajor || itemMinor < verMinor || (itemMinor === verMinor && itemPatch < verPatch))
+            return (
+                itemMajor > pastMajor ||
+                (itemMajor === pastMajor && itemMinor > pastMinor) ||
+                (itemMajor === pastMajor && itemMinor === pastMinor && itemPatch > pastPatch)
             );
         })
         .map((it) => it.join("."));
