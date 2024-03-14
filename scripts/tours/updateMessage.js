@@ -1,6 +1,6 @@
 import { TOUR_LIST, TOURS, TOUR_BASICS } from "./tour-setup.js";
 
-export function sendUpdateChatMessage() {
+export function sendUpdateMessage() {
     let pastVersion = "0.0.0";
     try {
         pastVersion = game.settings.get(MODULE_ID, "updateMessage");

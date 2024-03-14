@@ -7,6 +7,7 @@ import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 import { registerAPI } from "./api.js";
+import { sendUpdateMessage } from "./tours/updateMessage.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
@@ -67,7 +68,7 @@ Hooks.on("ready", () => {
         await updateTokensActivations(token);
     });
     registerAPI();
-    sendUpdateChatMessage();
+    sendUpdateMessage();
     console.log("PF2e Item Activation is initialized");
 });
 
