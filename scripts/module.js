@@ -6,7 +6,7 @@ import { MODULE_ID } from "./helpers/misc.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
-import { PF2eItemActivations } from "./api.js";
+import { registerAPI } from "./api.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
