@@ -68,7 +68,9 @@ Hooks.on("ready", () => {
         await updateTokensActivations(token);
     });
     registerAPI();
-    sendUpdateMessage();
+    if (game.user.isGM) {
+        sendUpdateMessage();
+    }
     console.log("PF2e Item Activation is initialized");
 });
 
