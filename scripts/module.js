@@ -66,7 +66,7 @@ Hooks.on("ready", () => {
 
         await updateTokensActivations(token);
     });
-    game.PF2eItemActivations = new PF2eItemActivations();
+    registerAPI();
     console.log("PF2e Item Activation is initialized");
 });
 
