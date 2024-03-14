@@ -10,6 +10,7 @@ export function sendUpdateMessage() {
     } catch (e) {}
     const toursToRun = getNewTourList(splitVersions(version), splitVersions(pastVersion));
     game.settings.set(MODULE_ID, "last-version", version);
+    if (toursToRun.length === 0) return;
     runTour(toursToRun);
 }
 
