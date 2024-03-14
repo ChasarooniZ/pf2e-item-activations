@@ -1,4 +1,5 @@
 import { MODULE_ID } from "../helpers/misc.js";
+import { EnhancedTour } from "../library/EnhancedTour.js";
 import { TOUR_LIST, TOURS, TOUR_BASICS } from "./tour-setup.js";
 
 export async function sendUpdateMessage() {
@@ -36,8 +37,9 @@ function splitVersions(version) {
 }
 
 async function runTour(tourStepsArray) {
-    let tour = TOUR_BASICS;
-    tourStepsArray.forEach((t) => tour.steps = tour.steps.concat(TOURS[t]));
+    let tourData = TOUR_BASICS;
+    tourStepsArray.forEach((t) => (tourData.steps = tourData.steps.concat(TOURS[t])));
+    const tour = new EnhancedTour(tourData);
     await tour.reset();
     await tour.start();
 }
