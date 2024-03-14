@@ -68,7 +68,7 @@ Hooks.on("ready", () => {
         await updateTokensActivations(token);
     });
     registerAPI();
-    await sendUpdateMessage();
+    sendUpdateMessage();
     console.log("PF2e Item Activation is initialized");
 });
 
