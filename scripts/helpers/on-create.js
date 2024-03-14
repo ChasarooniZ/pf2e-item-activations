@@ -10,7 +10,7 @@ import { TEXT, MODULE_ID, setModuleFlag } from "./misc.js";
 export function augmentAction(action, item) {
     let resultAction = { ...action };
     // Set module flag indicating the item granting the action
-    resultAction = setModuleFlag(resultAction , "grantedBy", item);
+    resultAction = setModuleFlag(resultAction, "grantedBy", item);
 
     // Concatenate item information to action description
     resultAction.system.description.value = `<p>${TEXT.GRANTED_BY_TEXT} ${item.link}</p>`.concat(
@@ -19,7 +19,6 @@ export function augmentAction(action, item) {
 
     //Update Icons
     if (game.settings.get(MODULE_ID, "action-type-icon")) resultAction.img = getActionImage(action);
-
 
     return resultAction;
 }
