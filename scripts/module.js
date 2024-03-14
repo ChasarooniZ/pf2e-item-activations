@@ -46,9 +46,7 @@ Hooks.on("ready", () => {
         await addOrDeleteActivation(item, "Add");
 
         if (
-            item.actor.type === "npc"
-                ? !isQualifiedNPC(item?.system?.equipped, conditions)
-                : !item.isIdentified || !isQualifiedPC(item?.system?.equipped, conditions)
+            isQualified(item, conditions)
         ) {
             await turnOnOffActivation(item, "Off");
         }
@@ -73,6 +71,12 @@ Hooks.on("ready", () => {
     }
     console.log("PF2e Item Activation is initialized");
 });
+
+function isQualified(item, conditions) {
+    return item.actor.type === "npc"
+        ? !isQualifiedNPC(item?.system?.equipped, conditions)
+        : !item.isIdentified || !isQualifiedPC(item?.system?.equipped, conditions);
+}
 
 export function skipUpdateItem(item, userID) {
     return (

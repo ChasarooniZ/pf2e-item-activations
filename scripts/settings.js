@@ -59,4 +59,12 @@ Hooks.on("init", () => {
         default: false,
         type: Boolean,
     });
+
+
+    game.settings.register("pf2e-item-activations", "last-version", {
+        scope: "world",
+        config: false,
+        default: "0.0.0",
+        type: String,
+    });
 });
