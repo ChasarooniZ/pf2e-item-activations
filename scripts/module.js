@@ -6,6 +6,7 @@ import { MODULE_ID } from "./helpers/misc.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
+import { PF2eItemActivations } from "./api.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
@@ -65,6 +66,7 @@ Hooks.on("ready", () => {
 
         await updateTokensActivations(token);
     });
+    game.PF2eItemActivations = new PF2eItemActivations();
     console.log("PF2e Item Activation is initialized");
 });
 
