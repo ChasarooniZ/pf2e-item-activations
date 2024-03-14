@@ -68,7 +68,7 @@ Hooks.on("ready", () => {
         await updateTokensActivations(token);
     });
     registerAPI();
-    sendUpdateMessage();
+    await sendUpdateMessage();
     console.log("PF2e Item Activation is initialized");
 });
 
@@ -147,11 +147,9 @@ export async function updateTokensActivations(token) {
 export function checkIfMatters(item, changes) {
     return (
         (ITEM_SLUGS.includes(item.system.slug) ||
-            (hasActivations(item) &&
-                game.settings.get(MODULE_ID, "auto-gen.enabled") &&
-                !["consumable", "action", "feat", "heritage", "ancestry", "background", "class", "spell"].includes(
-                    item.type
-                ))) &&
+            !["consumable", "action", "feat", "heritage", "ancestry", "background", "class", "spell"].includes(
+                item.type && game.settings.get(MODULE_ID, "auto-gen.enabled") && hasActivations(item)
+            )) &&
         (changes?.system?.equipped || changes === undefined)
     );
 }
@@ -162,18 +160,19 @@ export function checkIfMatters(item, changes) {
  * @returns {object} Item Activation conditions
  */
 export function getActivationConditions(item) {
+    const { system } = item;
     const usage = {
-        carryType: item?.system?.usage?.type,
+        carryType: system?.usage?.type,
         handsHeld: 0,
         invested: false,
         inSlot: false,
     };
 
-    if (item?.system?.traits?.value?.includes("invested")) usage.invested = true;
+    if (system?.traits?.value?.includes("invested")) usage.invested = true;
 
-    switch (item?.system?.usage?.type) {
+    switch (system?.usage?.type) {
         case "worn":
-            if (item?.system?.usage?.value !== "worn") {
+            if (system?.usage?.value !== "worn") {
                 usage.inSlot = true;
             }
             break;
@@ -185,6 +184,7 @@ export function getActivationConditions(item) {
     }
     return usage;
 }
+
 /**
  * Checks if the change in equipment is important
  * @param {object} changesToEquipment Changes to equipment
@@ -247,32 +247,31 @@ export async function checkAndGetMissingActivations(item, conditions) {
  */
 export async function addOrDeleteActivation(item, changeType) {
     const actor = item.actor;
-    const slug = item.system.slug;
-    let actions = [];
 
     if (changeType === "Add") {
-        if (ITEM_SLUGS.includes(item.system.slug)) {
-            //Premade
-            const actions_uuid = ITEM_LIST[slug].actions;
+        let actions = [];
 
-            if (actions_uuid.length === 0) return;
+        if (ITEM_SLUGS.includes(item.system.slug)) {
+            // Premade
+            const actions_uuid = ITEM_LIST[item.system.slug].actions;
 
             for (const uuid of actions_uuid) {
                 let actionItem = await fromUuid(uuid);
-                actionItem = actionItem.toObject();
-                actions.push(augmentAction(actionItem, item));
+                actions.push(augmentAction(actionItem.toObject(), item));
             }
         } else {
-            //On the Fly
+            // On the Fly
             actions = generateActivations(item).map((act) => augmentAction(act, item));
             debugLog({ actions }, "Auto Create");
         }
 
-        if (
+        const usageConditions = getActivationConditions(item);
+        const qualified =
             actor.type === "npc"
-                ? !isQualifiedNPC(item?.system?.equipped, getActivationConditions(item))
-                : !isQualifiedPC(item?.system?.equipped, getActivationConditions(item))
-        ) {
+                ? isQualifiedNPC(item.system.equipped, usageConditions)
+                : isQualifiedPC(item.system.equipped, usageConditions);
+
+        if (!qualified) {
             actions = actions.map((action) => deactivateAction(action));
         }
 
@@ -283,7 +282,7 @@ export async function addOrDeleteActivation(item, changeType) {
             .filter((existingItem) => existingItem?.flags?.[MODULE_ID]?.grantedBy?._id === item.id)
             .map((existingItem) => existingItem.id);
 
-        debugLog({ actions, deleteIds }, "Delete");
+        debugLog({ deleteIds }, "Delete");
         await actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
 }

@@ -35,4 +35,4 @@ export const TOURS = {
     "11.2.0": [],
 };
 
-export const TOUR_LIST = Object.keys(tours);
+export const TOUR_LIST = Object.keys(TOURS);
