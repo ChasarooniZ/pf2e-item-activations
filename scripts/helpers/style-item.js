@@ -23,7 +23,7 @@ export function actionStyling(actor) {
 function styleAllDisabledActions(ids) {
     // Apply styling to each disabled action
     ids.forEach((id) => {
-        styleDisabledAction(id);
+        styleDisabledActionF(id);
     });
 }
 
