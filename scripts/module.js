@@ -80,7 +80,7 @@ export function skipUpdateItem(item, userID) {
     return (
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
-        item.actor.type === "party" ||
+        ["party", "loot", "hazard", "vehicle"].includes(item.actor.type) ||
         userID !== game.user.id
     );
 }
@@ -90,6 +90,7 @@ export function skipCreateItem(item, userID) {
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
         userID !== game.user.id ||
+        ["party", "loot", "hazard", "vehicle"].includes(item.actor.type) ||
         !checkIfMatters(item) ||
         (item.actor.type === "npc" && !game.settings.get(MODULE_ID, "npc.enabled"))
     );
