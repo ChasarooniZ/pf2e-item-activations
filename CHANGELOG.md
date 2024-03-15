@@ -1,3 +1,5 @@
+## 11.2.1 Exclusion Fixes
+- Added exclusions for the "party", "loot", "hazard", "vehicle" actor types
 ## 11.2.0 Better Beginnings
 - **Update Tours**
   - On major updates with new features I will be adding a tour that will play for the gm the first time they start foundry after the update
