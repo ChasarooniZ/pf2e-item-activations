@@ -19,8 +19,8 @@ export function checkChangeTypeNPC(itemEquipmentStatus, changesToEquipment, usag
 
 export function isQualifiedNPC(itemEquipmentStatus, usageConditions) {
     return (
-        usageConditions.handsHeld <= itemEquipmentStatus.handsHeld &&
-        ((usageConditions.carryType === "held" && itemEquipmentStatus.carryType === "held") ||
-            (usageConditions.carryType !== "held" && itemEquipmentStatus.carryType === "worn"))
+        usageConditions?.handsHeld <= itemEquipmentStatus?.handsHeld &&
+        ((usageConditions?.carryType === "held" && itemEquipmentStatus?.carryType === "held") ||
+            (usageConditions?.carryType !== "held" && itemEquipmentStatus?.carryType === "worn"))
     );
 }

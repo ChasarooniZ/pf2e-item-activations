@@ -21,14 +21,14 @@ export function checkChangeTypePC(itemEquipmentStatus, changesToEquipment, usage
 }
 
 export function isQualifiedPC(itemEquipmentStatus, usageConditions) {
-    if (usageConditions.invested && !itemEquipmentStatus?.invested) {
+    if (usageConditions?.invested && !itemEquipmentStatus?.invested) {
         return false;
     }
-    if (usageConditions.handsHeld > itemEquipmentStatus.handsHeld) {
+    if (usageConditions?.handsHeld > itemEquipmentStatus?.handsHeld) {
         return false;
     }
-    if (usageConditions.inSlot && !itemEquipmentStatus.inSlot) {
+    if (usageConditions?.inSlot && !itemEquipmentStatus?.inSlot) {
         return false;
     }
-    return usageConditions.carryType === itemEquipmentStatus.carryType;
+    return usageConditions?.carryType === itemEquipmentStatus?.carryType;
 }
