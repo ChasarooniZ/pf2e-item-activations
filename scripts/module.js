@@ -152,9 +152,12 @@ export async function updateTokensActivations(token) {
 export function checkIfMatters(item, changes) {
     return (
         (ITEM_SLUGS.includes(item.system.slug) ||
-            !["consumable", "action", "feat", "heritage", "ancestry", "background", "class", "spell"].includes(
-                item.type && game.settings.get(MODULE_ID, "auto-gen.enabled") && hasActivations(item)
-            )) &&
+            (!["consumable", "action", "feat", "heritage", "ancestry", "background", "class", "spell"].includes(
+                item.type
+            ) &&
+                item.system.traits.value.includes("consumable") &&
+                game.settings.get(MODULE_ID, "auto-gen.enabled") &&
+                hasActivations(item))) &&
         (changes?.system?.equipped || changes === undefined)
     );
 }
