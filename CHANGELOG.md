@@ -1,3 +1,7 @@
+## 11.2.3 - Fixed Issue Ignoring Consumables
+- Fixed logic error for ignoring consumables where it did the opposite (@motherofgod)
+## 11.2.2 Exclude Consumable Trait
+- Excludes items that have the consumable trait from generation (@maplealmond)
 ## 11.2.1 Exclusion Fixes
 - Added exclusions for the "party", "loot", "hazard", "vehicle" actor types
 ## 11.2.0 Better Beginnings
@@ -8,9 +12,9 @@
   - By Default when actions are generated they will now use their action count icon
   - This can be disabled in settings to use the icon of the item that generated them
 - **Localization Options**
-  - Added support for various localiziations see the [Language Support](https://github.com/ChasarooniZ/pf2e-item-activations?tab=readme-ov-file#language-support) section for more details on adding other languages (@TaleSale)
+  - Added support for various localizations see the [Language Support](https://github.com/ChasarooniZ/pf2e-item-activations?tab=readme-ov-file#language-support) section for more details on adding other languages (@TaleSale)
 - **Bug Fixes**
-  - Activaitons taht should be siabled now start as disabled when generated in user inventory
+  - Activations that should be disabled now start as disabled when generated in user inventory
   - Fixed Issue with activation for `Whispering Reeds` not having effect linked (@MrPeach774)
   - Removed `party` from being considered for activation generation
   - Removed `feats`, `heritages`, `ancestry`, `background`, and `actions` from being acceptable for activation generation
