@@ -1,3 +1,5 @@
+## 11.2.4 - Fixed Checking NPC Attacks
+- Module no longer checks NPC attacks for activations
 ## 11.2.3 - Fixed Issue Ignoring Consumables
 - Fixed logic error for ignoring consumables where it did the opposite (@motherofgod)
 ## 11.2.2 Exclude Consumable Trait
