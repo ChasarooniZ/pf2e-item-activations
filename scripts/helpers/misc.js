@@ -1,6 +1,18 @@
 // Constant defining the module ID
 export const MODULE_ID = "pf2e-item-activations";
 export const TEXT = {};
+export const IGNORED_TYPES = [
+    "consumable",
+    "action",
+    "feat",
+    "heritage",
+    "ancestry",
+    "background",
+    "class",
+    "spell",
+    "melee",
+    "ranged",
+];
 Hooks.on("ready", () => {
     TEXT.ACTIVATE_TEXT = game.i18n.format("pf2e-item-activations.code.activate");
     TEXT.ACTIVATION_TEXT = game.i18n.format("pf2e-item-activations.code.activation");
