@@ -6,6 +6,8 @@
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-item-activations&colorB=4aa94a)
 
 
+![module_banner](https://github.com/ChasarooniZ/pf2e-usage-updater/assets/79132112/3b2a4f8c-7ba1-4647-b073-d8ecac9d93a6)
+
 # PF2e Item Activations
 Adds actions based on items activations. There are manually inputted items (see [Supported Items](#supported-items)), but there is also an automatic generation system to generate items.
 ![Module In Action](https://media.discordapp.net/attachments/880969157846392842/1216869819153121280/ItemActivationsInAction.gif?ex=6601f555&is=65ef8055&hm=bc150d7c0c52030df17ca34faba7bb19ac42fb270aeddb694cf26030af45ba90&=)
