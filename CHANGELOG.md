@@ -1,3 +1,5 @@
+## 11.2.5 - Fix Grabbing Unidentified item info
+- Fixed bug where unidentified items were generating activations (@Pyroman2xxx) 
 ## 11.2.4 - Fixed Checking NPC Attacks
 - Module no longer checks NPC attacks for activations
 ## 11.2.3 - Fixed Issue Ignoring Consumables
