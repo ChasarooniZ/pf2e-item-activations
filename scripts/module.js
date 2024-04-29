@@ -158,6 +158,7 @@ export function checkIfMatters(item, changes) {
                 !item.system?.traits?.value?.includes("consumable") &&
                 game.settings.get(MODULE_ID, "auto-gen.enabled") &&
                 hasActivations(item))) &&
+                item.isIdentified &&
         (changes?.system?.equipped || changes === undefined)
     );
 }
