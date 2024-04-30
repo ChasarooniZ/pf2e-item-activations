@@ -32,10 +32,12 @@ Adds actions based on items activations. There are manually inputted items (see 
 - Activations in actors aren't updated unless you remove them and get them readded
 - Activations only appear when an item is added/updated
 - Activations currently don't have their own action category, I may look into that to see how difficult it would be
-- Activations don't automatically update their uses you need to use the **PF2e Item Actions Module** to have that work
-- Activations aren't disable when a player can't use them they just put an [X] in front of them
+- Activations don't automatically update their uses you need to use a module that does that such as my [Pf2e Usage Updater](https://github.com/ChasarooniZ/pf2e-usage-updater/tree/master) module
+- Activations aren't disable when a player can't use them they just put an `[X]` in front of them
 ## Features
-Adds and removes actions from your inventory when you equip item etc.. Do note, you are unable to save the state of items at the moment, I may refactor in the future to have it show you items in your inventory that aren't equipped etc, but that's a later me problem
+- Adds and removes actions from your inventory when you equip item etc..
+- Now supports automatic generation, follows the format of any of the currently manualyl support activations. You'll need to copy some of the formatting exactly for the system to pick up on it'
+    - But this also allows for the support of custom items
 ### Supported Items
 [Full List of Supported Items Here](https://github.com/chasarooniZ/pf2e-item-activations/blob/main/ITEMS.md)
 ## Settings
@@ -52,6 +54,6 @@ To add support for other languages you simply need to submit a PR for the `en.js
 
 A: This module will only support the **PF2e** system
 
-**Q: Will you support Pre Remaster versions of items?**
+**Q: Will you officially support Pre Remaster versions of items?**
 
 A: Don't plan on it, when I add homebrew support someone else can add support for them though!
