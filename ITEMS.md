@@ -1,4 +1,5 @@
 # Supported Items
+This is a list of all **explicitly** support items. Other items are technically support via tyhe automatic generation feature but your mileage may vary from item to item.
 ## Table of Contents
 - [Supported Items](#supported-items)
   - [Table of Contents](#table-of-contents)
