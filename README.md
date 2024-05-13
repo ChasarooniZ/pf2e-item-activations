@@ -28,8 +28,8 @@ Adds actions based on items activations. There are manually inputted items (see 
 - This module will exist until this feature is implemented into the core system
 - Module will be updated sporadically as I get time and motivation
 #### Limitations
-- Currently no Custom Activations (will most likely be a later feature)
-- Activations in actors aren't updated unless you remove them and get them readded
+- ~~Currently no Custom Activations (will most likely be a later feature)~~
+- Activations in actors aren't updated unless you remove them and readd them
 - Activations only appear when an item is added/updated
 - Activations currently don't have their own action category, I may look into that to see how difficult it would be
 - Activations don't automatically update their uses you need to use a module that does that such as my [Pf2e Usage Updater](https://github.com/ChasarooniZ/pf2e-usage-updater/tree/master) module
