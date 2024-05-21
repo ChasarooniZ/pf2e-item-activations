@@ -2,6 +2,7 @@
 ## Table of Contents
 - [Supported Items](#supported-items)
   - [Table of Contents](#table-of-contents)
+    - [Core Rulebook](#core-rulebook)
     - [GM Core](#gm-core)
     - [Pathfinder Core Rulebook](#pathfinder-core-rulebook)
   - [Adventure Paths](#adventure-paths)
@@ -11,6 +12,8 @@
       - [Hands of the Devil](#hands-of-the-devil)
   - [Homebrew](#homebrew)
 
+### Core Rulebook
+- Necklace of Fireballs I - VII
 ### GM Core
 - Bracers of Missile Deflection
 - Bracers of Missile Deflection (Greater)
@@ -43,5 +46,6 @@
 - The Whispering Reeds
 #### Hands of the Devil
 - Hunter's Brooch
+
 
 ## Homebrew
