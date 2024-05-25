@@ -1,0 +1,60 @@
+{
+    "I18N.LANGUAGE": "Polski",
+    "pf2e-item-activations": {
+        "module-settings": {
+            "enabled": {
+                "name": "Włącz moduł",
+                "hint": "Włącza wszystkie funkcje modułu"
+            },
+            "action-type-icon": {
+                "enabled": {
+                    "name": "Nadpisz ikonę do ikony licznika akcji",
+                    "hint": "Podczas generowania akcji będzie używana ikona licznika akcji dla wszystkich istotnych (np. 1, 2, 3 itd.)"
+                }
+            },
+            "npc": {
+                "enabled": {
+                    "name": "Włącz aktywacje NPC",
+                    "hint": "Włącza wszystkie funkcje modułu dla postaci niezależnych"
+                },
+                "on-create-token": {
+                    "name": "Dodanie aktywacji NPC przy tworzeniu tokena",
+                    "hint": "Po umieszczeniu tokenów postaci niezależnych przeprowadza kontrolę w celu dodania brakujących aktywacji"
+                }
+            },
+            "auto-gen": {
+                "enabled": {
+                    "name": "Włącz automatyczne generowanie",
+                    "hint": "Umożliwia automatyczne generowanie aktywacji, które nie zostały stworzone ręcznie. Należy pamiętać, że mogą one mieć mniejszą implementację/funkcjonalność."
+                }
+            },
+            "debug-mode": {
+                "name": "Tryb debugowania",
+                "hint": "Niech konsola odbiera komunikaty dla różnych rzeczy"
+            }
+        },
+        "code": {
+            "activation": "Aktywacja",
+            "activate": "Aktywuj",
+            "frequency": "Częstotliwość",
+            "granted-by": "Przyznane przez",
+            "activation-traits": {
+                "command": "polecenie",
+                "envision": "przewidywanie",
+                "interact": "interakcja"
+            },
+            "time": {
+                "turn": "tura",
+                "round": "runda",
+                "minute": "minuta",
+                "ten-minutes": "10 minut",
+                "hour": "godzina",
+                "twenty-four-hours": "24 godziny",
+                "day": "dzień",
+                "week": "tydzień",
+                "month": "miesiąc",
+                "year": "rok"
+            }
+        }
+    }
+}
