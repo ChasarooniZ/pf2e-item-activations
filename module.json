@@ -26,9 +26,9 @@
         ],
         "recommends": [
             {
-                "id": "pf2e-action-support",
+                "id": "pf2e-usage-updater",
                 "type": "module",
-                "reason": "This module allows for the automation of action use counting, which helps out with this module a lot. (note needs to be turned on in Action Support's Settings)",
+                "reason": "This module allows for the automation of action use counting, which helps out with this module a lot.",
                 "compatibility": {}
             }
         ]
