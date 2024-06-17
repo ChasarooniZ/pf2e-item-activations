@@ -1,4 +1,6 @@
-## 11.2.6 Fix activation Autogen bug
+## 12.0.0 - V12 Support
+- Added support for fvtt `v12`
+## 11.2.6 - Fix activation Autogen bug
 - Fix Bug with activations not autogenerating when activation is updated
 ## 11.2.5 - Fix Grabbing Unidentified item info
 - Fixed bug where unidentified items were generating activations (@Pyroman2xxx) 
