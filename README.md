@@ -37,8 +37,8 @@ Adds actions based on items activations. There are manually inputted items (see 
 - Activations aren't disable when a player can't use them they just put an `[X]` in front of them
 ## Features
 - Adds and removes actions from your inventory when you equip item etc..
-- Now supports automatic generation, follows the format of any of the currently manualyl support activations. You'll need to copy some of the formatting exactly for the system to pick up on it'
-    - But this also allows for the support of custom items
+- Now supports automatic generation, follows the format of any of the currently manually support activations. You'll need to copy some of the formatting exactly for the system to pick up on it'
+  - But this also allows for the support of custom items
 ### Supported Items
 [Full List of Supported Items Here](https://github.com/chasarooniZ/pf2e-item-activations/blob/main/ITEMS.md)
 ## Settings
