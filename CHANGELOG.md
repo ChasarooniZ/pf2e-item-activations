@@ -1,3 +1,5 @@
+## [12.0.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.0...12.0.1) - Reduce Console spam
+- Called function in a better way to reduce console spam (@xdy)
 ## 12.0.0 - V12 Support
 - Added support for fvtt `v12`
 ## 11.2.6 - Fix activation Autogen bug
