@@ -2,7 +2,7 @@ import { MODULE_ID } from "./helpers/misc.js";
 import { EnhancedTour } from "./library/EnhancedTour.js";
 
 export function registerAPI() {
-    game.PF2eItemActivations = mergeObject(game.PF2eItemActivations ?? {}, {
+    game.PF2eItemActivations = foundry.utils.mergeObject(game.PF2eItemActivations ?? {}, {
         createTour: createTour,
         createTourFromJSON: createTourFromJSON,
         registerTour: registerTour,
