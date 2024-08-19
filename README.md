@@ -1,11 +1,7 @@
 ![](https://img.shields.io/badge/Foundry-v12-informational)
 ![All Downloads](https://img.shields.io/github/downloads/ChasarooniZ/pf2e-item-activations/total?color=5e0000&label=All%20Downloads)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/ChasarooniZ/pf2e-item-activations/latest/module.zip)
-
-<!--- Forge Bazaar Install % Badge -->
-<!--- replace <your-module-name> with the `name` in your manifest -->
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-item-activations&colorB=4aa94a)
-
 
 ![module_banner](https://github.com/ChasarooniZ/pf2e-usage-updater/assets/79132112/3b2a4f8c-7ba1-4647-b073-d8ecac9d93a6)
 
@@ -37,8 +33,8 @@ Adds actions based on items activations. There are manually inputted items (see 
 - Activations aren't disable when a player can't use them they just put an `[X]` in front of them
 ## Features
 - Adds and removes actions from your inventory when you equip item etc..
-- Now supports automatic generation, follows the format of any of the currently manualyl support activations. You'll need to copy some of the formatting exactly for the system to pick up on it'
-    - But this also allows for the support of custom items
+- Now supports automatic generation, follows the format of any of the currently manually support activations. You'll need to copy some of the formatting exactly for the system to pick up on it'
+  - But this also allows for the support of custom items
 ### Supported Items
 [Full List of Supported Items Here](https://github.com/chasarooniZ/pf2e-item-activations/blob/main/ITEMS.md)
 ## Settings
@@ -46,6 +42,7 @@ Coming Soon
 ## Language Support
 Currently only supports the following languages:
 - English
+- Polski
 
 To add support for other languages you simply need to submit a PR for the `en.json` but in your chosen language based on the [language support listing for fvtt](https://foundryvtt.wiki/en/languages).
 **Note** the translations under the code section in the translation __MUST MATCH THE SAME CAPITALIZATION AND MUST MATCH THE WORD USED IN YOUR TRANSLATION OF PF2e__. The capitalization + word matching are critical to allowing any of the automation for automatically generating activations to work.

@@ -1,0 +1,2 @@
+- @xdy
+  -  Helped fix console spam when merging objects

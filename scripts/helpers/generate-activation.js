@@ -52,7 +52,7 @@ export function generateActivations(item) {
 }
 
 function getActionInfo(type) {
-    switch (type.toLowerCase()) {
+    switch (type?.toLowerCase()) {
         case `1`:
         case `a`:
             return { type: `action`, cnt: 1 };
