@@ -62,9 +62,9 @@ function getActionInfo(type) {
         case `3`:
         case `t`:
             return { type: `action`, cnt: 3 };
-        case `R`:
+        case `r`:
             return { type: `reaction`, cnt: null };
-        case `F`:
+        case `f`:
             return { type: `free`, cnt: null };
         default:
             return { type: `passive`, cnt: null };
