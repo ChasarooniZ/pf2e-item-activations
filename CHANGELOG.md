@@ -1,3 +1,6 @@
+## [12.0.2](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.0...12.0.1) - Reduce Console spam
+- Fixed issue where reactions  and free actions weren't getting processed
+
 ## [12.0.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.0...12.0.1) - Reduce Console spam
 - Called function in a better way to reduce console spam (@xdy)
 ## 12.0.0 - V12 Support
