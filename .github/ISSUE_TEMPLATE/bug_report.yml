@@ -53,14 +53,7 @@ body:
   - type: input
     attributes:
       label: Browser
-      description: e.g. chrome, safari
-    validations:
-      required: true
-
-  - type: input
-    attributes:
-      label: Version
-      description: e.g. 22
+      description: e.g. chrome 21.7, safari 11
     validations:
       required: true
 
