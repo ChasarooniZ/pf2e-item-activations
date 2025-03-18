@@ -119,6 +119,7 @@ jobs:
             module.json                          \
             README.md                            \
             LICENSE                              \
+            CHANGELOG.md                         \
             templates                            \
             scripts/                             \
             styles/                              \
