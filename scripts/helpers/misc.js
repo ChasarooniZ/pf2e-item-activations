@@ -13,6 +13,8 @@ export const IGNORED_TYPES = [
     "melee",
     "ranged",
 ];
+export const IGNORE_IN_SLOT = ["tattooed-on-the-body"];
+
 Hooks.on("ready", () => {
     TEXT.ACTIVATE_TEXT = game.i18n.format("pf2e-item-activations.code.activate");
     TEXT.ACTIVATION_TEXT = game.i18n.format("pf2e-item-activations.code.activation");
@@ -33,6 +35,9 @@ Hooks.on("ready", () => {
         month: game.i18n.format("pf2e-item-activations.code.time.month"),
         year: game.i18n.format("pf2e-item-activations.code.time.year"),
     };
+    TEXT.INVALID_ACTIVATIONS = [game.i18n.format("pf2e-item-activations.code.invalid-activations.staff")].map(
+        (t) => new RegExp(t)
+    );
 });
 /**
  * Sets a module flag for the given item

@@ -66,6 +66,11 @@ export async function turnOnOffActivation(item, changeType) {
         const nameIds = actions.map((action) => ({
             _id: action.id,
             name: activateAction(action).name,
+            flags: {
+                [MODULE_ID]: {
+                    enabled: true,
+                },
+            },
         }));
 
         await actor.updateEmbeddedDocuments("Item", nameIds);
@@ -75,9 +80,12 @@ export async function turnOnOffActivation(item, changeType) {
             existingActions.map((action) => ({
                 _id: action._id,
                 name: deactivateAction(action).name,
+                flags: {
+                    [MODULE_ID]: {
+                        enabled: false,
+                    },
+                },
             }))
         );
-
-        //TODO actionStyling(actor);
     }
 }

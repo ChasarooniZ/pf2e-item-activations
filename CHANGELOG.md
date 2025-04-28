@@ -1,96 +1,147 @@
-## [12.0.2](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.0...12.0.1) - Reacting into Free
-- Fixed issue where reactions  and free actions weren't getting processed
+## [12.1.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.2...12.1.0) - Specific Handling
+
+-   **New**
+    -   `Specific Filtering`
+        -   Started to filter out some activations that are best handled in other ways
+        -   This includes the following:
+            -   `Staff`
+    -   `Styling`
+        -   Added styling for disabled and enabled activations to make it clearer
+-   `Fix`
+    -   Now handles whether `Tattoo` activations are usable properly
+
+## [12.0.2](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.1...12.0.2) - Reacting into Free
+
+-   Fixed issue where reactions and free actions weren't getting processed
 
 ## [12.0.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.0...12.0.1) - Reduce Console spam
-- Called function in a better way to reduce console spam (@xdy)
+
+-   Called function in a better way to reduce console spam (@xdy)
+
 ## 12.0.0 - V12 Support
-- Added support for fvtt `v12`
+
+-   Added support for fvtt `v12`
+
 ## 11.2.6 - Fix activation Autogen bug
-- Fix Bug with activations not autogenerating when activation is updated
+
+-   Fix Bug with activations not autogenerating when activation is updated
+
 ## 11.2.5 - Fix Grabbing Unidentified item info
-- Fixed bug where unidentified items were generating activations (@Pyroman2xxx) 
+
+-   Fixed bug where unidentified items were generating activations (@Pyroman2xxx)
+
 ## 11.2.4 - Fixed Checking NPC Attacks
-- Module no longer checks NPC attacks for activations
+
+-   Module no longer checks NPC attacks for activations
+
 ## 11.2.3 - Fixed Issue Ignoring Consumables
-- Fixed logic error for ignoring consumables where it did the opposite (@motherofgod)
+
+-   Fixed logic error for ignoring consumables where it did the opposite (@motherofgod)
+
 ## 11.2.2 Exclude Consumable Trait
-- Excludes items that have the consumable trait from generation (@maplealmond)
+
+-   Excludes items that have the consumable trait from generation (@maplealmond)
+
 ## 11.2.1 Exclusion Fixes
-- Added exclusions for the "party", "loot", "hazard", "vehicle" actor types
+
+-   Added exclusions for the "party", "loot", "hazard", "vehicle" actor types
+
 ## 11.2.0 Better Beginnings
-- **Update Tours**
-  - On major updates with new features I will be adding a tour that will play for the gm the first time they start foundry after the update
-  - The goal being to introduce users to new features and the features of the module in a way that is more easily understood
-- **Action Count Icons**
-  - By Default when actions are generated they will now use their action count icon
-  - This can be disabled in settings to use the icon of the item that generated them
-- **Localization Options**
-  - Added support for various localizations see the [Language Support](https://github.com/ChasarooniZ/pf2e-item-activations?tab=readme-ov-file#language-support) section for more details on adding other languages (@TaleSale)
-- **Bug Fixes**
-  - Activations that should be disabled now start as disabled when generated in user inventory
-  - Fixed Issue with activation for `Whispering Reeds` not having effect linked (@MrPeach774)
-  - Removed `party` from being considered for activation generation
-  - Removed `feats`, `heritages`, `ancestry`, `background`, and `actions` from being acceptable for activation generation
-  - Added support for letter input of action cost as well as `<span class="pf2-icon">` (@TaleSale)
-- Refactor of much of the code
-*Note* If you want to regenerate your activations simply delete them, and then unequip and reequip the item. In the future I will add a refresh activation button + option to have them automatically refresh at particular points (On a version update etc.)
-*Extra Note* If you used this module Prior to version `11.1.0` you will need to regenerate your activations for them to continue functioning
+
+-   **Update Tours**
+    -   On major updates with new features I will be adding a tour that will play for the gm the first time they start foundry after the update
+    -   The goal being to introduce users to new features and the features of the module in a way that is more easily understood
+-   **Action Count Icons**
+    -   By Default when actions are generated they will now use their action count icon
+    -   This can be disabled in settings to use the icon of the item that generated them
+-   **Localization Options**
+    -   Added support for various localizations see the [Language Support](https://github.com/ChasarooniZ/pf2e-item-activations?tab=readme-ov-file#language-support) section for more details on adding other languages (@TaleSale)
+-   **Bug Fixes**
+    -   Activations that should be disabled now start as disabled when generated in user inventory
+    -   Fixed Issue with activation for `Whispering Reeds` not having effect linked (@MrPeach774)
+    -   Removed `party` from being considered for activation generation
+    -   Removed `feats`, `heritages`, `ancestry`, `background`, and `actions` from being acceptable for activation generation
+    -   Added support for letter input of action cost as well as `<span class="pf2-icon">` (@TaleSale)
+-   Refactor of much of the code
+    _Note_ If you want to regenerate your activations simply delete them, and then unequip and reequip the item. In the future I will add a refresh activation button + option to have them automatically refresh at particular points (On a version update etc.)
+    _Extra Note_ If you used this module Prior to version `11.1.0` you will need to regenerate your activations for them to continue functioning
+
 ## 11.1.3 Removing Consumables Terror Reign
-- Removes consumables from being considered for auto generation
+
+-   Removes consumables from being considered for auto generation
+
 ## 11.1.2 Recommendations
-- Added Recommendation to use in conjunction with Action Support
+
+-   Added Recommendation to use in conjunction with Action Support
+
 ## 11.1.1 Early Bug Fixes
-- Fixed slugs not being added for autogenerated items
-- Simplified code for adding activations for manually made ones
+
+-   Fixed slugs not being added for autogenerated items
+-   Simplified code for adding activations for manually made ones
+
 ## 11.1.0 First Full Release
- - **Added Automatic Generation**
-   - Activations that haven't been manually implemented will now *Auto Generate*
-   - Relies on the activations to be formatted the same way as items built in
-   - Can account for both Remaster format, and pre remaster format
- - Major backend changes to help support automatic generation
+
+-   **Added Automatic Generation**
+    -   Activations that haven't been manually implemented will now _Auto Generate_
+    -   Relies on the activations to be formatted the same way as items built in
+    -   Can account for both Remaster format, and pre remaster format
+-   Major backend changes to help support automatic generation
+
 ## 11.0.48
- - Added `Cape of the Mountebank`
+
+-   Added `Cape of the Mountebank`
+
 ## 11.0.47 NPCs
-- **Added NPC Support**
-  - Added Settings for NPCs (to include in normal item add/update)
-  - Also added setting for updating NPCs when you spawn them in the world
-- **Item Updates**
-  - `Activation Effect: Douse Fire` description
-  - `Activation Effect: Through the Flames` description, effects
-  - `Activation Effect: Empty Death` description
-  - `Activation: Elven Alacrity` traits
-  - `Activation: Droskar's Dominance` traits
-  - `Activation: Masquerade` frequency
-- Item Additions
-  - `Boots of Elvenkind (Greater)`
-  - `Bracers of Missile Deflection (Greater)`
-  - `Heartripper Blade`
-  - `Masquerade Scarf (Greater)`
-  - `Ventriloquist's Ring (Greater)`
-  - `Skeleton Key (Greater)`
+
+-   **Added NPC Support**
+    -   Added Settings for NPCs (to include in normal item add/update)
+    -   Also added setting for updating NPCs when you spawn them in the world
+-   **Item Updates**
+    -   `Activation Effect: Douse Fire` description
+    -   `Activation Effect: Through the Flames` description, effects
+    -   `Activation Effect: Empty Death` description
+    -   `Activation: Elven Alacrity` traits
+    -   `Activation: Droskar's Dominance` traits
+    -   `Activation: Masquerade` frequency
+-   Item Additions
+    -   `Boots of Elvenkind (Greater)`
+    -   `Bracers of Missile Deflection (Greater)`
+    -   `Heartripper Blade`
+    -   `Masquerade Scarf (Greater)`
+    -   `Ventriloquist's Ring (Greater)`
+    -   `Skeleton Key (Greater)`
+
 ## 11.0.46 Item Link bug Fix
-- Fixed bug where description of activations wasn't adding the source
+
+-   Fixed bug where description of activations wasn't adding the source
+
 ## 11.0.45 Fixed infinite Item Dupes bug
-- Fixed Bug where items were duplicated when they had activations instead of adding the activations
+
+-   Fixed Bug where items were duplicated when they had activations instead of adding the activations
+
 ## 11.0.44 Actually Fixed Issue
+
 ## 11.0.43 Fixed issue with Delete
-- Fixed issue where activations weren't getting deleted
+
+-   Fixed issue where activations weren't getting deleted
+
 ## 11.0.42 Initial Release
-- Releases with the following items
-  - Boots of Elevenkind
-  - Bottled Air
-  - Bracelet of Dashing
-  - Bracers of Missile Deflection
-  - Caterwaul Sling
-  - Grasp of Droskar
-  - Hunter's Brooch
-  - Lantern of Empty Light
-  - Lifting Belt
-  - Masquerade Scarf
-  - Ring of Torag
-  - Serpent Dagger
-  - Skeleton Key
-  - Soulspeaker
-  - The Whispering Reeds
-  - Ventriloquist's Ring
-  - Wayfinder
+
+-   Releases with the following items
+    -   Boots of Elevenkind
+    -   Bottled Air
+    -   Bracelet of Dashing
+    -   Bracers of Missile Deflection
+    -   Caterwaul Sling
+    -   Grasp of Droskar
+    -   Hunter's Brooch
+    -   Lantern of Empty Light
+    -   Lifting Belt
+    -   Masquerade Scarf
+    -   Ring of Torag
+    -   Serpent Dagger
+    -   Skeleton Key
+    -   Soulspeaker
+    -   The Whispering Reeds
+    -   Ventriloquist's Ring
+    -   Wayfinder

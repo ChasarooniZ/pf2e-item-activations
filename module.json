@@ -59,6 +59,7 @@
             "packs": ["item-activations", "item-activations-effects"]
         }
     ],
+    "styles": ["styles/style.css"],
     "esmodules": ["scripts/module.js", "scripts/settings.js"],
     "languages": [
         {

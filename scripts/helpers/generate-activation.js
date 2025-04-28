@@ -8,46 +8,48 @@ export function generateActivations(item) {
     const description = item.system.description.value;
     const isRemaster = description.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}—`);
     let result = description.split(`<p><strong>${TEXT.ACTIVATE_TEXT}`).slice(1) ?? [];
-    result = result.map((descAction, num) => {
-        const type = descAction.includes(`<span class="action-glyph">`)
-            ? descAction.split(`<span class="action-glyph">`)[1]?.split(`</span>`)[0]
-            : descAction.split(`<span class="action-glyph">`)[1]?.split(`<span class="pf2-icon">`)[0];
-        const actionType = getActionInfo(type);
-        const action = {
-            img: item.img,
-            type: "action",
-            system: {
-                description: {
-                    value: `<p><strong>${TEXT.ACTIVATE_TEXT}` + descAction.substring(descAction),
+    result = result
+        .filter((description) => isValidActivation(description))
+        .map((descAction, num) => {
+            const type = descAction.includes(`<span class="action-glyph">`)
+                ? descAction.split(`<span class="action-glyph">`)[1]?.split(`</span>`)[0]
+                : descAction.split(`<span class="action-glyph">`)[1]?.split(`<span class="pf2-icon">`)[0];
+            const actionType = getActionInfo(type);
+            const action = {
+                img: item.img,
+                type: "action",
+                system: {
+                    description: {
+                        value: `<p><strong>${TEXT.ACTIVATE_TEXT}` + descAction.substring(descAction),
+                    },
+                    traits: {
+                        value: [],
+                    },
+                    actions: {
+                        value: actionType.cnt,
+                    },
+                    actionType: {
+                        value: actionType.type,
+                    },
                 },
-                traits: {
-                    value: [],
-                },
-                actions: {
-                    value: actionType.cnt,
-                },
-                actionType: {
-                    value: actionType.type,
-                },
-            },
-        };
-        if (descAction.includes(`<strong>${TEXT.FREQUENCY_TEXT}</strong> `))
-            action.system.frequency = getFrequency(
-                descAction.split(`<strong>${TEXT.FREQUENCY_TEXT}</strong> `)[1]?.split(`</p>`)[0]
-            );
-        if (isRemaster) {
-            action.name = `${TEXT.ACTIVATION_TEXT}: ${descAction.split("</strong>")[0].replace("—", "")}`;
-            action.system.traits.value = descAction
-                .match(/\(([^)]+)\)/g)[0]
-                .slice(1, -1)
-                .split(",");
-        } else {
-            action.name = `${TEXT.ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ""}`;
-            action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));
-        }
-        action.system.slug = game.pf2e?.system?.sluggify(action.name);
-        return action;
-    });
+            };
+            if (descAction.includes(`<strong>${TEXT.FREQUENCY_TEXT}</strong> `))
+                action.system.frequency = getFrequency(
+                    descAction.split(`<strong>${TEXT.FREQUENCY_TEXT}</strong> `)[1]?.split(`</p>`)[0]
+                );
+            if (isRemaster) {
+                action.name = `${TEXT.ACTIVATION_TEXT}: ${descAction.split("</strong>")[0].replace("—", "")}`;
+                action.system.traits.value = descAction
+                    .match(/\(([^)]+)\)/g)[0]
+                    .slice(1, -1)
+                    .split(",");
+            } else {
+                action.name = `${TEXT.ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ""}`;
+                action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));
+            }
+            action.system.slug = game.pf2e?.system?.sluggify(action.name);
+            return action;
+        });
     return result;
 }
 
@@ -176,4 +178,8 @@ function getFrequency(str) {
         default:
     }
     return re;
+}
+
+function isValidActivation(desc) {
+    return !TEXT.INVALID_ACTIVATIONS.some((regex) => regex.test(desc));
 }
