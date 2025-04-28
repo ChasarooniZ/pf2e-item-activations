@@ -2,16 +2,18 @@ import { debugLog } from "./helpers/debug.js";
 import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { generateActivations, hasActivations } from "./helpers/generate-activation.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
-import { IGNORED_TYPES, MODULE_ID } from "./helpers/misc.js";
+import { IGNORE_IN_SLOT, IGNORED_TYPES, MODULE_ID } from "./helpers/misc.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 import { registerAPI } from "./api.js";
 import { sendUpdateMessage } from "./tours/updateMessage.js";
+import { actionStyling } from "./helpers/style-item.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
     console.log("PF2e Item Activations is getting ready....");
+    registerAPI();
     Hooks.on("updateItem", async (item, changes, diff, userID) => {
         if (skipUpdateItem(item, userID)) {
             return;
@@ -63,7 +65,10 @@ Hooks.on("ready", () => {
 
         await updateTokensActivations(token);
     });
-    registerAPI();
+    Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
+        const actor = _sheet.actor;
+        actionStyling(actor, html);
+    });
     if (game.user.isGM) {
         sendUpdateMessage();
     }
@@ -152,13 +157,11 @@ export async function updateTokensActivations(token) {
 export function checkIfMatters(item, changes) {
     return (
         (ITEM_SLUGS.includes(item.system.slug) ||
-            (!IGNORED_TYPES.includes(
-                item.type
-            ) &&
+            (!IGNORED_TYPES.includes(item.type) &&
                 !item.system?.traits?.value?.includes("consumable") &&
                 game.settings.get(MODULE_ID, "auto-gen.enabled") &&
                 hasActivations(item))) &&
-                item.isIdentified &&
+        item.isIdentified &&
         (changes?.system?.equipped || changes === undefined)
     );
 }
@@ -181,7 +184,7 @@ export function getActivationConditions(item) {
 
     switch (system?.usage?.type) {
         case "worn":
-            if (system?.usage?.value !== "worn") {
+            if (system?.usage?.value !== "worn" && !IGNORE_IN_SLOT.includes(system?.usage?.value)) {
                 usage.inSlot = true;
             }
             break;
@@ -237,13 +240,10 @@ export async function checkAndGetMissingActivations(item, conditions) {
     );
 
     if (toAdd.length > 0) {
-        const notQualified = isQualifiedPC(item?.system?.equipped, conditions);
+        const qualified = isQualifiedPC(item?.system?.equipped, conditions);
 
-        if (notQualified) {
-            toAdd = toAdd.map((action) => ({
-                ...action,
-                name: activateAction(action).name,
-            }));
+        if (qualified) {
+            toAdd = toAdd.map((action) => activateAction(action));
         }
         actor.createEmbeddedDocuments("Item", toAdd);
     }
