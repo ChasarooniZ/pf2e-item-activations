@@ -1,4 +1,6 @@
-## [12.1.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.2...12.1.0) - Specific Handling
+## [12.1.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.1.0...12.0.1) - Poland
+- Updated `Polish` translation (@Lioheart)
+## [12.1.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.2...12.1.0) - Specific Handling- Specific Handling
 
 -   **New**
     -   `Specific Filtering`
