@@ -54,6 +54,9 @@
                 "week": "tydzień",
                 "month": "miesiąc",
                 "year": "rok"
+            },
+            "invalid-activations": {
+                "staff": "Wydajesz określoną liczbę ładunków z kostura, aby rzucić zaklęcie z listy."
             }
         }
     }
