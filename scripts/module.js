@@ -21,6 +21,7 @@ Hooks.on("ready", () => {
 
         debugLog({ item, changes, diff, userID }, "Start");
 
+        // TODO before checking if it matters, handle Rune Rule element and activation
         if (!checkIfMatters(item, changes)) {
             return;
         }
@@ -155,6 +156,7 @@ export async function updateTokensActivations(token) {
  * @returns {boolean} True if the item is relevant for activation
  */
 export function checkIfMatters(item, changes) {
+    //TODO incldue checks to see 
     return (
         (ITEM_SLUGS.includes(item.system.slug) ||
             (!IGNORED_TYPES.includes(item.type) &&
@@ -272,6 +274,15 @@ export async function addOrDeleteActivation(item, changeType) {
             // On the Fly
             actions = generateActivations(item).map((act) => augmentAction(act, item));
             debugLog({ actions }, "Auto Create");
+        }
+
+        //Property Runes
+        const { actives, rules } = handlePropertyRunes(item);
+        activations.push(...actives);
+        if (rules.length > 0) {
+            await actor.updateEmbeddedDocuments("Item", {
+                system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
+            });
         }
 
         const usageConditions = getActivationConditions(item);

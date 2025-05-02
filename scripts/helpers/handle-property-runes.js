@@ -308,7 +308,9 @@ export async function handlePropertyRunes(item) {
 
 export function getRelevantPropertyRunes(item) {
     return {
-        rule_elements: (item?.system?.runes?.property ?? []).filter((r) => RULE_ELEMENT_LIST.includes(r)),
+        rule_elements: (item?.system?.runes?.property ?? [])
+            .filter((r) => RULE_ELEMENT_LIST.includes(r))
+            .map({ ...r, flags: { grantedBy: item.uuid } }),
         activations: (item?.system?.runes?.property ?? []).filter((r) => ACTIVATIONS_LIST.includes(r)),
     };
 }
