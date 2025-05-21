@@ -1,7 +1,8 @@
-## [12.1.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.1.0...12.1.1) - Toggle Bug
-- Fixed bug where activation didn't update to allowed sometimes
+## [12.1.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.1.0...12.0.1) - Poland
 
-## [12.1.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.2...12.1.0) - Specific Handling
+-   Updated `Polish` translation (@Lioheart)
+
+## [12.1.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.0.2...12.1.0) - Specific Handling- Specific Handling
 
 -   **New**
     -   `Specific Filtering`
