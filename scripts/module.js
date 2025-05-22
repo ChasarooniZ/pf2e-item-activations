@@ -310,7 +310,7 @@ export async function addOrDeleteActivation(item, changeType) {
 
         //Property Runes
         const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
-        activations.push(...actives);
+        actions.push(...actives);
         if (rules?.length > 0) {
             await actor.updateEmbeddedDocuments("Item", [
                 {
