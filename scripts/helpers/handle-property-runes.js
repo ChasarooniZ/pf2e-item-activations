@@ -1,5 +1,5 @@
 import { generateActivations } from "./generate-activation.js";
-import { MODULE_ID, setModuleFlag } from "./misc.js";
+import { makeFlatCheckAlteration, makeFlatModifier, makeResistance, MODULE_ID, setModuleFlag } from "./misc.js";
 import { augmentAction } from "./on-create.js";
 
 const RUNE_ACTIVATIONS = {
@@ -27,196 +27,25 @@ const RUNE_ACTIVATIONS = {
     greaterInvisibility: "Compendium.pf2e.equipment-srd.Item.bxz885LMjLCkpDq3",
 };
 
-const ACTIVATIONS_LIST = Object.keys(RUNE_ACTIVATIONS);
-
 const RUNE_RULE_ELEMENTS = {
     assisting: [
         { key: "ActiveEffectLike", mode: "add", path: "inventory.bulk.encumberedAfterAddend", value: 1 },
         { key: "ActiveEffectLike", mode: "add", path: "inventory.bulk.maxAddend", value: 1 },
     ],
-    slick: [
-        {
-            key: "FlatModifier",
-            predicate: [
-                {
-                    or: ["action:escape", "action:squeeze"],
-                },
-            ],
-            selector: "acrobatics",
-            type: "item",
-            value: 1,
-        },
-    ],
-    greaterSlick: [
-        {
-            key: "FlatModifier",
-            predicate: [
-                {
-                    or: ["action:escape", "action:squeeze"],
-                },
-            ],
-            selector: "acrobatics",
-            type: "item",
-            value: 2,
-        },
-    ],
-    majorSlick: [
-        {
-            key: "FlatModifier",
-            predicate: [
-                {
-                    or: ["action:escape", "action:squeeze"],
-                },
-            ],
-            selector: "acrobatics",
-            type: "item",
-            value: 3,
-        },
-    ],
-    shadow: [
-        {
-            key: "FlatModifier",
-            selector: "stealth",
-            type: "item",
-            value: 1,
-        },
-    ],
-    greaterShadow: [
-        {
-            key: "FlatModifier",
-            selector: "stealth",
-            type: "item",
-            value: 2,
-        },
-    ],
-    majorShadow: [
-        {
-            key: "FlatModifier",
-            selector: "stealth",
-            type: "item",
-            value: 3,
-        },
-    ],
-    stanching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:bleed"],
-            property: "pd-recovery-dc",
-            value: 12,
-        },
-    ],
-    greaterStanching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:bleed"],
-            property: "pd-recovery-dc",
-            value: 10,
-        },
-    ],
-    majorStanching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:bleed"],
-            property: "pd-recovery-dc",
-            value: 8,
-        },
-    ],
-    trueStanching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:acid"],
-            property: "pd-recovery-dc",
-            value: 5,
-        },
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:fire"],
-            property: "pd-recovery-dc",
-            value: 5,
-        },
-    ],
-    quenching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:acid"],
-            property: "pd-recovery-dc",
-            value: 12,
-        },
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:fire"],
-            property: "pd-recovery-dc",
-            value: 12,
-        },
-    ],
-    greaterQuenching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:acid"],
-            property: "pd-recovery-dc",
-            value: 10,
-        },
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:fire"],
-            property: "pd-recovery-dc",
-            value: 10,
-        },
-    ],
-    majorQuenching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:acid"],
-            property: "pd-recovery-dc",
-            value: 8,
-        },
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:fire"],
-            property: "pd-recovery-dc",
-            value: 8,
-        },
-    ],
-    trueQuenching: [
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:acid"],
-            property: "pd-recovery-dc",
-            value: 5,
-        },
-        {
-            itemType: "condition",
-            key: "ItemAlteration",
-            mode: "downgrade",
-            predicate: ["item:damage:type:fire"],
-            property: "pd-recovery-dc",
-            value: 5,
-        },
-    ],
+    slick: makeFlatModifier("acrobatics", 1, [{ or: ["action:escape", "action:squeeze"] }]),
+    greaterSlick: makeFlatModifier("acrobatics", 2, [{ or: ["action:escape", "action:squeeze"] }]),
+    majorSlick: makeFlatModifier("acrobatics", 3, [{ or: ["action:escape", "action:squeeze"] }]),
+    shadow: makeFlatModifier("stealth", 1),
+    greaterShadow: makeFlatModifier("stealth", 2),
+    majorShadow: makeFlatModifier("stealth", 3),
+    stanching: makeFlatCheckAlteration("bleed", 12),
+    greaterStanching: makeFlatCheckAlteration("bleed", 10),
+    majorStanching: makeFlatCheckAlteration("bleed", 8),
+    trueStanching: [...makeFlatCheckAlteration("acid", 5), ...makeFlatCheckAlteration("fire", 5)],
+    quenching: [...makeFlatCheckAlteration("acid", 12), ...makeFlatCheckAlteration("fire", 12)],
+    greaterQuenching: [...makeFlatCheckAlteration("acid", 10), ...makeFlatCheckAlteration("fire", 10)],
+    majorQuenching: [...makeFlatCheckAlteration("acid", 8), ...makeFlatCheckAlteration("fire", 8)],
+    trueQuenching: [...makeFlatCheckAlteration("acid", 5), ...makeFlatCheckAlteration("fire", 5)],
     deathdrinking: [
         {
             key: "FlatModifier",
@@ -228,92 +57,33 @@ const RUNE_RULE_ELEMENTS = {
             value: 1,
         },
     ],
-    acidResistant: [
-        {
-            key: "resistance",
-            type: "acid",
-            value: 5,
-        },
-    ],
-    coldResistant: [
-        {
-            key: "resistance",
-            type: "cold",
-            value: 5,
-        },
-    ],
-    electricityResistant: [
-        {
-            key: "resistance",
-            type: "electricity",
-            value: 5,
-        },
-    ],
-    fireResistant: [
-        {
-            key: "resistance",
-            type: "fire",
-            value: 5,
-        },
-    ],
-    greaterAcidResistant: [
-        {
-            key: "resistance",
-            type: "acid",
-            value: 5,
-        },
-    ],
-    greaterColdResistant: [
-        {
-            key: "resistance",
-            type: "cold",
-            value: 5,
-        },
-    ],
-    greaterElectricityResistant: [
-        {
-            key: "resistance",
-            type: "electricity",
-            value: 5,
-        },
-    ],
-    greaterFireResistant: [
-        {
-            key: "resistance",
-            type: "fire",
-            value: 5,
-        },
-    ],
+    acidResistant: makeResistance("acid"),
+    coldResistant: makeResistance("cold"),
+    electricityResistant: makeResistance("electricity"),
+    fireResistant: makeResistance("fire"),
+    greaterAcidResistant: makeResistance("acid"),
+    greaterColdResistant: makeResistance("cold"),
+    greaterElectricityResistant: makeResistance("electricity"),
+    greaterFireResistant: makeResistance("fire"),
 };
+
+const ACTIVATIONS_LIST = Object.keys(RUNE_ACTIVATIONS);
 
 export const RULE_ELEMENT_LIST = Object.keys(RUNE_RULE_ELEMENTS);
 
 export const RELEVANT_PROPERTY_RUNE_LIST = [...ACTIVATIONS_LIST, ...RULE_ELEMENT_LIST];
 
-export async function handlePropertyRunes(item) {
-    //TODO Finishing handling rule elements adding anre vmoing properly
-    if (!item?.system?.runes?.property?.some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r))) return;
-    const { rule_elements, activations } = getRelevantPropertyRunes(item);
-    const final_activations = [];
-    for (const rune of activations) {
-        //TODO turn into promise all for efficiency
-        const actives = await generateActivationForARune(item, RUNE_ACTIVATIONS[rune]);
-        final_activations.push(...actives.map((act) => setModuleFlag(act, "rune", rune)));
-    }
-    const final_rules = [];
-    for (const rune of rule_elements) {
-        final_rules.push(...rune);
-    }
-
-    return { actives: final_activations, rules: final_rules };
+function filterRelevantRunes(runes, list) {
+    return (runes ?? []).filter((r) => list.includes(r));
 }
 
 export function getRelevantPropertyRunes(item) {
+    const runes = item?.system?.runes?.property ?? [];
     return {
-        rule_elements: (item?.system?.runes?.property ?? [])
-            .filter((r) => RULE_ELEMENT_LIST.includes(r))
-            .map((r) => getREsForARune(r).map((re) => ({ ...re, flags: { grantedBy: item.uuid, rune: r } }))),
-        activations: (item?.system?.runes?.property ?? []).filter((r) => ACTIVATIONS_LIST.includes(r)),
+        rule_elements: filterRelevantRunes(runes, RULE_ELEMENT_LIST).flatMap((r) =>
+            getREsForARune(r).map((re) => ({ ...re, flags: { grantedBy: item.uuid, rune: r } }))
+        ),
+        activations: filterRelevantRunes(runes, ACTIVATIONS_LIST),
     };
 }
 
@@ -326,17 +96,31 @@ function getREsForARune(runeShortName) {
     return RUNE_RULE_ELEMENTS?.[runeShortName] ?? [];
 }
 
-export function getRelevantRunesRemoved(changed_runes, current_runes) {
-    const relevantChangedRunes = changed_runes.filter((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r));
-    const relevantRunesRemoved = current_runes.filter(
-        (r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r) && !relevantChangedRunes.includes(r)
+export async function handlePropertyRunes(item) {
+    const runes = item?.system?.runes?.property;
+    if (!runes?.some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r))) return;
+
+    const { rule_elements, activations } = getRelevantPropertyRunes(item);
+
+    const activationPromises = activations.map((rune) =>
+        generateActivationForARune(item, RUNE_ACTIVATIONS[rune]).then((acts) =>
+            acts.map((act) => setModuleFlag(act, "rune", rune))
+        )
     );
-    return relevantRunesRemoved;
+    const final_activations = (await Promise.all(activationPromises)).flat();
+
+    return { actives: final_activations, rules: rule_elements };
+}
+
+export function getRelevantRunesRemoved(changed_runes, current_runes) {
+    const relevantChanged = filterRelevantRunes(changed_runes, RELEVANT_PROPERTY_RUNE_LIST);
+    return filterRelevantRunes(current_runes, RELEVANT_PROPERTY_RUNE_LIST).filter((r) => !relevantChanged.includes(r));
 }
 
 export async function handleRemovedRunes(item, runes) {
     const actor = item?.actor;
-    // Handle Activations
+    if (!actor) return;
+
     if (runes.some((r) => ACTIVATIONS_LIST.includes(r))) {
         const deleteIds = actor.items
             .filter(
@@ -345,7 +129,6 @@ export async function handleRemovedRunes(item, runes) {
                     runes.includes(existingItem?.flags?.[MODULE_ID]?.rune)
             )
             .map((existingItem) => existingItem.id);
-
         await actor.deleteEmbeddedDocuments("Item", deleteIds);
     }
 
@@ -353,36 +136,27 @@ export async function handleRemovedRunes(item, runes) {
         await actor.updateEmbeddedDocuments("Item", [
             {
                 _id: item.id,
-                system: { rules: item.system.rules?.filter((r) => !runes.includes(r?.flags?.rune)) },
+                system: { rules: (item.system.rules ?? []).filter((r) => !runes.includes(r?.flags?.rune)) },
             },
         ]);
     }
-    return;
 }
 
 export function getRelevantRunesAdded(changed_runes, current_runes) {
-    const relevantCurrentRunes = current_runes.filter((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r));
-    const relevantRunesAdded = changed_runes.filter(
-        (r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r) && !relevantCurrentRunes.includes(r)
-    );
-    return relevantRunesAdded;
+    const relevantCurrent = filterRelevantRunes(current_runes, RELEVANT_PROPERTY_RUNE_LIST);
+    return filterRelevantRunes(changed_runes, RELEVANT_PROPERTY_RUNE_LIST).filter((r) => !relevantCurrent.includes(r));
 }
 
-/**
- *
- * @param {Item} item Item that runes are from
- * @param {String[]} runes Runes to add
- */
 export async function handleAddedRunes(item, runes) {
     const actor = item?.actor;
+    if (!actor) return;
     item.system.runes.property = runes;
 
     const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
-    // Handle Activations
-    if (actives.length > 0) {
+    if (actives.length) {
         await actor.createEmbeddedDocuments("Item", actives);
     }
-    if (rules.length > 0) {
+    if (rules.length) {
         await actor.updateEmbeddedDocuments("Item", [
             {
                 _id: item.id,
@@ -390,5 +164,4 @@ export async function handleAddedRunes(item, runes) {
             },
         ]);
     }
-    return;
 }

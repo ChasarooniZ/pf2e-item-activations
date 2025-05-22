@@ -13,6 +13,7 @@ import {
     getRelevantRunesAdded,
     getRelevantRunesRemoved,
     handleAddedRunes,
+    handlePropertyRunes,
     handleRemovedRunes,
     RELEVANT_PROPERTY_RUNE_LIST,
 } from "./helpers/handle-property-runes.js";
@@ -60,7 +61,7 @@ Hooks.on("ready", () => {
 
         debugLog(changeType, item.actor.type === "npc" ? "ChangeTypeNPC" : "ChangeType");
 
-    4
+        4;
 
         if (changeType !== "None") {
             await turnOnOffActivation(item, changeType);
