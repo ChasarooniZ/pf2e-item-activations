@@ -48,7 +48,7 @@ export async function turnOnOffActivation(item, changeType) {
 
             if (ITEM_SLUGS.includes(slug)) {
                 // Custom Built
-                for (const actionUuid in ITEM_LIST[slug].actions) {
+                for (const actionUuid of ITEM_LIST[slug].actions) {
                     let action = await fromUuid(actionUuid);
                     action = action.toObject();
                     action = augmentAction(action, item);
