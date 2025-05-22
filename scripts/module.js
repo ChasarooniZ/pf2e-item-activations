@@ -9,19 +9,45 @@ import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
 import { registerAPI } from "./api.js";
 import { sendUpdateMessage } from "./tours/updateMessage.js";
 import { actionStyling } from "./helpers/style-item.js";
+import {
+    getRelevantRunesAdded,
+    getRelevantRunesRemoved,
+    handleAddedRunes,
+    handleRemovedRunes,
+    RELEVANT_PROPERTY_RUNE_LIST,
+} from "./helpers/handle-property-runes.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
     console.log("PF2e Item Activations is getting ready....");
     registerAPI();
-    Hooks.on("updateItem", async (item, changes, diff, userID) => {
+    Hooks.on("preUpdateItem", async (item, changes, diff, userID) => {
         if (skipUpdateItem(item, userID)) {
             return;
         }
 
+        if (changes?.system?.rules) {
+            return; // handles rules update loop
+        }
+
         debugLog({ item, changes, diff, userID }, "Start");
 
-        // TODO before checking if it matters, handle Rune Rule element and activation
+        const removedRunes = getRelevantRunesRemoved(
+            changes?.system?.runes?.property || [],
+            item?.system?.runes?.property || []
+        );
+        if (removedRunes.length > 0) {
+            await handleRemovedRunes(item, removedRunes);
+        }
+
+        const addedRunes = getRelevantRunesAdded(
+            changes?.system?.runes?.property || [],
+            item?.system?.runes?.property || []
+        );
+        if (addedRunes.length > 0) {
+            await handleAddedRunes(item, addedRunes);
+        }
+
         if (!checkIfMatters(item, changes)) {
             return;
         }
@@ -33,6 +59,8 @@ Hooks.on("ready", () => {
                 : checkChangeTypePC(item?.system?.equipped, changes?.system?.equipped, conditions);
 
         debugLog(changeType, item.actor.type === "npc" ? "ChangeTypeNPC" : "ChangeType");
+
+    4
 
         if (changeType !== "None") {
             await turnOnOffActivation(item, changeType);
@@ -156,15 +184,17 @@ export async function updateTokensActivations(token) {
  * @returns {boolean} True if the item is relevant for activation
  */
 export function checkIfMatters(item, changes) {
-    //TODO incldue checks to see 
+    //TODO not always getting rune stuff
     return (
         (ITEM_SLUGS.includes(item.system.slug) ||
             (!IGNORED_TYPES.includes(item.type) &&
                 !item.system?.traits?.value?.includes("consumable") &&
                 game.settings.get(MODULE_ID, "auto-gen.enabled") &&
-                hasActivations(item))) &&
+                hasActivations(item)) ||
+            (item?.system?.runes?.property ?? []).some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r)) ||
+            (changes?.system?.runes?.property ?? []).some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r))) &&
         item.isIdentified &&
-        (changes?.system?.equipped || changes === undefined)
+        (changes?.system?.equipped || changes?.system?.runes?.property?.length > 0 || changes === undefined)
     );
 }
 
@@ -259,6 +289,7 @@ export async function checkAndGetMissingActivations(item, conditions) {
 export async function addOrDeleteActivation(item, changeType) {
     const actor = item.actor;
 
+    // Add A specific carve out for when runes change
     if (changeType === "Add") {
         let actions = [];
 
@@ -277,12 +308,15 @@ export async function addOrDeleteActivation(item, changeType) {
         }
 
         //Property Runes
-        const { actives, rules } = handlePropertyRunes(item);
+        const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
         activations.push(...actives);
-        if (rules.length > 0) {
-            await actor.updateEmbeddedDocuments("Item", {
-                system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
-            });
+        if (rules?.length > 0) {
+            await actor.updateEmbeddedDocuments("Item", [
+                {
+                    _id: item.id,
+                    system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
+                },
+            ]);
         }
 
         const usageConditions = getActivationConditions(item);

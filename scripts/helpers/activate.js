@@ -1,5 +1,6 @@
 // Import groups and constants
 import { generateActivations } from "./generate-activation.js";
+import { handlePropertyRunes } from "./handle-property-runes.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./item-list.js";
 import { MODULE_ID, setModuleFlag } from "./misc.js";
 import { augmentAction } from "./on-create.js";
@@ -58,12 +59,15 @@ export async function turnOnOffActivation(item, changeType) {
                 activations.push(...generateActivations(item).map((act) => augmentAction(act, item)));
             }
             //Property Runes
-            const { actives, rules } = handlePropertyRunes(item);
+            const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
             activations.push(...actives);
             if (rules.length > 0) {
-                await actor.updateEmbeddedDocuments("Item", {
-                    system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
-                });
+                await actor.updateEmbeddedDocuments("Item", [
+                    {
+                        _id: item.id,
+                        system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
+                    },
+                ]);
             }
 
             await actor.createEmbeddedDocuments("Item", activations);

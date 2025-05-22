@@ -1,4 +1,5 @@
 import { generateActivations } from "./generate-activation.js";
+import { MODULE_ID, setModuleFlag } from "./misc.js";
 import { augmentAction } from "./on-create.js";
 
 const RUNE_ACTIVATIONS = {
@@ -72,7 +73,7 @@ const RUNE_RULE_ELEMENTS = {
             value: 3,
         },
     ],
-    stealth: [
+    shadow: [
         {
             key: "FlatModifier",
             selector: "stealth",
@@ -80,7 +81,7 @@ const RUNE_RULE_ELEMENTS = {
             value: 1,
         },
     ],
-    greaterStealth: [
+    greaterShadow: [
         {
             key: "FlatModifier",
             selector: "stealth",
@@ -88,7 +89,7 @@ const RUNE_RULE_ELEMENTS = {
             value: 2,
         },
     ],
-    majorStealth: [
+    majorShadow: [
         {
             key: "FlatModifier",
             selector: "stealth",
@@ -290,17 +291,18 @@ export const RULE_ELEMENT_LIST = Object.keys(RUNE_RULE_ELEMENTS);
 export const RELEVANT_PROPERTY_RUNE_LIST = [...ACTIVATIONS_LIST, ...RULE_ELEMENT_LIST];
 
 export async function handlePropertyRunes(item) {
+    //TODO Finishing handling rule elements adding anre vmoing properly
     if (!item?.system?.runes?.property?.some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r))) return;
     const { rule_elements, activations } = getRelevantPropertyRunes(item);
     const final_activations = [];
     for (const rune of activations) {
         //TODO turn into promise all for efficiency
         const actives = await generateActivationForARune(item, RUNE_ACTIVATIONS[rune]);
-        final_activations.push(...actives);
+        final_activations.push(...actives.map((act) => setModuleFlag(act, "rune", rune)));
     }
     const final_rules = [];
     for (const rune of rule_elements) {
-        final_rules.push(...getREsForARune(rune));
+        final_rules.push(...rune);
     }
 
     return { actives: final_activations, rules: final_rules };
@@ -310,7 +312,7 @@ export function getRelevantPropertyRunes(item) {
     return {
         rule_elements: (item?.system?.runes?.property ?? [])
             .filter((r) => RULE_ELEMENT_LIST.includes(r))
-            .map({ ...r, flags: { grantedBy: item.uuid } }),
+            .map((r) => getREsForARune(r).map((re) => ({ ...re, flags: { grantedBy: item.uuid, rune: r } }))),
         activations: (item?.system?.runes?.property ?? []).filter((r) => ACTIVATIONS_LIST.includes(r)),
     };
 }
@@ -322,4 +324,71 @@ async function generateActivationForARune(item, runeUUID) {
 
 function getREsForARune(runeShortName) {
     return RUNE_RULE_ELEMENTS?.[runeShortName] ?? [];
+}
+
+export function getRelevantRunesRemoved(changed_runes, current_runes) {
+    const relevantChangedRunes = changed_runes.filter((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r));
+    const relevantRunesRemoved = current_runes.filter(
+        (r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r) && !relevantChangedRunes.includes(r)
+    );
+    return relevantRunesRemoved;
+}
+
+export async function handleRemovedRunes(item, runes) {
+    const actor = item?.actor;
+    // Handle Activations
+    if (runes.some((r) => ACTIVATIONS_LIST.includes(r))) {
+        const deleteIds = actor.items
+            .filter(
+                (existingItem) =>
+                    existingItem?.flags?.[MODULE_ID]?.grantedBy?._id === item.id &&
+                    runes.includes(existingItem?.flags?.[MODULE_ID]?.rune)
+            )
+            .map((existingItem) => existingItem.id);
+
+        await actor.deleteEmbeddedDocuments("Item", deleteIds);
+    }
+
+    if (runes.some((r) => RULE_ELEMENT_LIST.includes(r))) {
+        await actor.updateEmbeddedDocuments("Item", [
+            {
+                _id: item.id,
+                system: { rules: item.system.rules?.filter((r) => !runes.includes(r?.flags?.rune)) },
+            },
+        ]);
+    }
+    return;
+}
+
+export function getRelevantRunesAdded(changed_runes, current_runes) {
+    const relevantCurrentRunes = current_runes.filter((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r));
+    const relevantRunesAdded = changed_runes.filter(
+        (r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r) && !relevantCurrentRunes.includes(r)
+    );
+    return relevantRunesAdded;
+}
+
+/**
+ *
+ * @param {Item} item Item that runes are from
+ * @param {String[]} runes Runes to add
+ */
+export async function handleAddedRunes(item, runes) {
+    const actor = item?.actor;
+    item.system.runes.property = runes;
+
+    const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
+    // Handle Activations
+    if (actives.length > 0) {
+        await actor.createEmbeddedDocuments("Item", actives);
+    }
+    if (rules.length > 0) {
+        await actor.updateEmbeddedDocuments("Item", [
+            {
+                _id: item.id,
+                system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
+            },
+        ]);
+    }
+    return;
 }
