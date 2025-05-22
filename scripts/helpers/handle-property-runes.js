@@ -25,7 +25,11 @@ const RUNE_ACTIVATIONS = {
     gliding: "Compendium.pf2e.equipment-srd.Item.A2Z7Mh8A59wZb5vv",
     invisibility: "Compendium.pf2e.equipment-srd.Item.VDudQ4x2ozosAbTb",
     greaterInvisibility: "Compendium.pf2e.equipment-srd.Item.bxz885LMjLCkpDq3",
+    deathdrinking: "Compendium.pf2e.equipment-srd.Item.4DXupoMmwenFn4Kc",
+    conducting: "Compendium.pf2e.actionspf2e.Item.BKnN9la3WNrRgZ6n",
 };
+
+const SPECIFIC_ACTION_RUNE_ACTIVATIONS = ["conducting"];
 
 const RUNE_RULE_ELEMENTS = {
     assisting: [
@@ -102,11 +106,17 @@ export async function handlePropertyRunes(item) {
 
     const { rule_elements, activations } = getRelevantPropertyRunes(item);
 
-    const activationPromises = activations.map((rune) =>
-        generateActivationForARune(item, RUNE_ACTIVATIONS[rune]).then((acts) =>
-            acts.map((act) => setModuleFlag(act, "rune", rune))
-        )
-    );
+    const activationPromises = activations.map((rune) => {
+        if (SPECIFIC_ACTION_RUNE_ACTIVATIONS.includes(rune)) {
+            return fromUuid(RUNE_ACTIVATIONS[rune]).then((act) =>
+                setModuleFlag(augmentAction(act, item), "rune", rune)
+            );
+        } else {
+            return generateActivationForARune(item, RUNE_ACTIVATIONS[rune]).then((acts) =>
+                acts.map((act) => setModuleFlag(act, "rune", rune))
+            );
+        }
+    });
     const final_activations = (await Promise.all(activationPromises)).flat();
 
     return { actives: final_activations, rules: rule_elements };
@@ -160,7 +170,7 @@ export async function handleAddedRunes(item, runes) {
         await actor.updateEmbeddedDocuments("Item", [
             {
                 _id: item.id,
-                system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
+                system: { rules: [...item.system.rules, ...rules] },
             },
         ]);
     }

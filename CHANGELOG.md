@@ -1,4 +1,20 @@
-## [12.1.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.1.0...12.0.1) - Poland
+## [12.2.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.1.1...12.2.0) - RUNES, RUNES, RUNES
+
+-   `Added`
+
+    -   **Property Rune Support**
+        -   `Activations`
+            -   Added support to automatically add property rune activations when items have property runes
+        -   `Rule Elements`
+            -   Added support to automatically add and remove relevant rule elements for runes
+        -   **Note:**
+            -   All relevant propertry runes except the following are automated:
+                - `Bane`
+
+-   `Fixes`
+    -   Makes updates to items adding activations respect the `Enabled for NPC settings`
+
+## [12.1.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.1.0...12.1.1) - Poland
 
 -   Updated `Polish` translation (@Lioheart)
 

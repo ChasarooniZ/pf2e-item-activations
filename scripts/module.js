@@ -116,7 +116,8 @@ export function skipUpdateItem(item, userID) {
         !game.settings.get(MODULE_ID, "enabled") ||
         !item.actor ||
         ["party", "loot", "hazard", "vehicle"].includes(item.actor.type) ||
-        userID !== game.user.id
+        userID !== game.user.id ||
+        (item.actor.type === "npc" && !game.settings.get(MODULE_ID, "npc.enabled"))
     );
 }
 
@@ -185,7 +186,6 @@ export async function updateTokensActivations(token) {
  * @returns {boolean} True if the item is relevant for activation
  */
 export function checkIfMatters(item, changes) {
-    //TODO not always getting rune stuff
     return (
         (ITEM_SLUGS.includes(item.system.slug) ||
             (!IGNORED_TYPES.includes(item.type) &&
@@ -315,7 +315,7 @@ export async function addOrDeleteActivation(item, changeType) {
             await actor.updateEmbeddedDocuments("Item", [
                 {
                     _id: item.id,
-                    system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
+                    system: { rules: [...item.system.rules, ...rules] },
                 },
             ]);
         }

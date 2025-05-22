@@ -65,7 +65,7 @@ export async function turnOnOffActivation(item, changeType) {
                 await actor.updateEmbeddedDocuments("Item", [
                     {
                         _id: item.id,
-                        system: { rules: foundry.utils.mergeObject(item.system.rules, rules) },
+                        system: { rules: [...item.system.rules, ...rules] },
                     },
                 ]);
             }
