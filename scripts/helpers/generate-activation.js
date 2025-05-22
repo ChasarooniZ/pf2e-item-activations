@@ -4,6 +4,11 @@ export function hasActivations(item) {
     return item.system.description.value.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}`);
 }
 
+/**
+ * Generates the Activation Items
+ * @param {Item} item  Item to get Activations from
+ * @returns {Item} An array of Activations
+ */
 export function generateActivations(item) {
     const description = item.system.description.value;
     const isRemaster = description.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}—`);

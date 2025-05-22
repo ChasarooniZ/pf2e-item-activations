@@ -58,3 +58,33 @@ export function setModuleFlag(item, flagName, value) {
 
     return item;
 }
+
+// Helper to generate similar rule elements
+export const makeFlatModifier = (selector, value, predicate = undefined) => [
+    {
+        key: "FlatModifier",
+        selector,
+        type: "item",
+        value,
+        ...(predicate && { predicate }),
+    },
+];
+
+export const makeFlatCheckAlteration = (type, value) => [
+    {
+        itemType: "condition",
+        key: "ItemAlteration",
+        mode: "downgrade",
+        predicate: [`item:damage:type:${type}`],
+        property: "pd-recovery-dc",
+        value,
+    },
+];
+
+export const makeResistance = (type, value = 5) => [
+    {
+        key: "resistance",
+        type,
+        value,
+    },
+];
