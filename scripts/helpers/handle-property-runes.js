@@ -27,6 +27,8 @@ const RUNE_ACTIVATIONS = {
     greaterInvisibility: "Compendium.pf2e.equipment-srd.Item.bxz885LMjLCkpDq3",
     deathdrinking: "Compendium.pf2e.equipment-srd.Item.4DXupoMmwenFn4Kc",
     conducting: "Compendium.pf2e.actionspf2e.Item.BKnN9la3WNrRgZ6n",
+    holy: "Compendium.pf2e.equipment-srd.Item.DH0kB9Wbr5pDeunX",
+    brilliant: "Compendium.pf2e.equipment-srd.Item.LbdnZFlyLFdAE617",
 };
 
 const SPECIFIC_ACTION_RUNE_ACTIVATIONS = ["conducting"];
@@ -85,7 +87,7 @@ export function getRelevantPropertyRunes(item) {
     const runes = item?.system?.runes?.property ?? [];
     return {
         rule_elements: filterRelevantRunes(runes, RULE_ELEMENT_LIST).flatMap((r) =>
-            getREsForARune(r).map((re) => ({ ...re, flags: { grantedBy: item.uuid, rune: r } }))
+            getREsForARune(r).map((re) => ({ ...re, flags: { grantedBy: item.toObject(), rune: r } }))
         ),
         activations: filterRelevantRunes(runes, ACTIVATIONS_LIST),
     };

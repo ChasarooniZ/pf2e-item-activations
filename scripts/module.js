@@ -34,7 +34,7 @@ Hooks.on("ready", () => {
         debugLog({ item, changes, diff, userID }, "Start");
 
         const removedRunes = getRelevantRunesRemoved(
-            changes?.system?.runes?.property || [],
+            changes?.system?.runes?.property || item?.system?.runes?.property || [],
             item?.system?.runes?.property || []
         );
         if (removedRunes.length > 0) {
