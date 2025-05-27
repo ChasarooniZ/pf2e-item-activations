@@ -61,8 +61,6 @@ Hooks.on("ready", () => {
 
         debugLog(changeType, item.actor.type === "npc" ? "ChangeTypeNPC" : "ChangeType");
 
-        4;
-
         if (changeType !== "None") {
             await turnOnOffActivation(item, changeType);
         }
@@ -152,12 +150,6 @@ export function skipDeleteItem(item, userID) {
         !item.isIdentified
     );
 }
-
-// Function for 'renderActorSheet' hook
-/* TODO function onRenderActorSheet(sheet, html, info) {
-  const actor = info.actor;
-  actionStyling(actor);
-}*/
 
 export async function updateTokensActivations(token) {
     const actor = token.actor;
