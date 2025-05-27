@@ -71,6 +71,36 @@ const RUNE_RULE_ELEMENTS = {
     greaterColdResistant: makeResistance("cold"),
     greaterElectricityResistant: makeResistance("electricity"),
     greaterFireResistant: makeResistance("fire"),
+    bane: [
+        {
+            key: "ChoiceSet",
+            choices: [
+                { label: "PF2E.TraitAberration", value: "target:trait:aberration" },
+                { label: "PF2E.TraitAnimal", value: "target:trait:animal" },
+                { label: "PF2E.TraitBeast", value: "target:trait:beast" },
+                { label: "PF2E.TraitCelestial", value: "target:trait:celestial" },
+                { label: "PF2E.TraitConstruct", value: "target:trait:construct" },
+                { label: "PF2E.TraitDragon", value: "target:trait:dragon" },
+                { label: "PF2E.TraitElemental", value: "target:trait:elemental" },
+                { label: "PF2E.TraitFey", value: "target:trait:fey" },
+                { label: "PF2E.TraitFiend", value: "target:trait:fiend" },
+                { label: "PF2E.TraitGiant", value: "target:trait:giant" },
+                { label: "PF2E.TraitMonitor", value: "target:trait:monitor" },
+                { label: "PF2E.TraitOoze", value: "target:trait:ooze" },
+                { label: "PF2E.TraitPlant", value: "target:trait:plant" },
+                { label: "PF2E.TraitFungus", value: "target:trait:fungus" },
+            ],
+            flag: "bane",
+        },
+        {
+            key: "DamageDice",
+            selector: "{item|id}-damage",
+            diceNumber: 1,
+            dieSize: "d6",
+            predicate: ["{item|flags.pf2e.rulesSelections.bane}"],
+            label: "Bane",
+        },
+    ],
 };
 
 const ACTIVATIONS_LIST = Object.keys(RUNE_ACTIVATIONS);
@@ -87,7 +117,7 @@ export function getRelevantPropertyRunes(item) {
     const runes = item?.system?.runes?.property ?? [];
     return {
         rule_elements: filterRelevantRunes(runes, RULE_ELEMENT_LIST).flatMap((r) =>
-            getREsForARune(r).map((re) => ({ ...re, flags: { grantedBy: item.toObject(), rune: r } }))
+            getREsForARune(r).map((re) => ({ ...re, flags: { grantedBy: { uuid: item.uuid }, rune: r } }))
         ),
         activations: filterRelevantRunes(runes, ACTIVATIONS_LIST),
     };
@@ -129,6 +159,12 @@ export function getRelevantRunesRemoved(changed_runes, current_runes) {
     return filterRelevantRunes(current_runes, RELEVANT_PROPERTY_RUNE_LIST).filter((r) => !relevantChanged.includes(r));
 }
 
+/**
+ *
+ * @param {*} item
+ * @param {string[]} runes Rune IDs
+ * @returns
+ */
 export async function handleRemovedRunes(item, runes) {
     const actor = item?.actor;
     if (!actor) return;

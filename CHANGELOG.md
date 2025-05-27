@@ -1,3 +1,10 @@
+## [12.2.2](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.2.1..12.2.2) - No one cared who I was till I put on the mask
+
+-   **Added**
+    -   Handles most of the `Bane` rune (it currently handles Fungus and Plant as 2 separate entities though)
+-   **Fixed**
+    -   Fixes rune rule elements sometimes generating as garbage json (🐛 Dharkus BSc MInst)
+
 ## [12.2.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.2.0...12.2.1) - Some Runic Fixes
 
 -   **Added**
