@@ -1,0 +1,63 @@
+{
+    "pf2e-item-activations": {
+        "module-settings": {
+            "auto-gen": {
+                "enabled": {
+                    "hint": "对那些没有手动定义的物品，使用自动生成功能。注意有些描述不规范的物品可能无法生成（请向汉化组反馈BUG）。",
+                    "name": "启用自动生成"
+                }
+            },
+            "npc": {
+                "on-create-token": {
+                    "name": "在指示物创建时添加NPC的启动动作",
+                    "hint": "当NPC的指示物被放置到场景上时，检查时候有遗漏的启动动作并添加之"
+                },
+                "enabled": {
+                    "name": "启用NPC启动动作",
+                    "hint": "为NPC启用模组的所有功能"
+                }
+            },
+            "enabled": {
+                "name": "启用模组",
+                "hint": "启用模组的所有功能"
+            },
+            "action-type-icon": {
+                "enabled": {
+                    "name": "使用动作数图标",
+                    "hint": "当生成动作时，会使用一个动作数（像1，2，3这样的）"
+                }
+            },
+            "debug-mode": {
+                "name": "Debug模式",
+                "hint": "在Console终端可以查看消息"
+            }
+        },
+        "code": {
+            "activation": "启动",
+            "activate": "启动",
+            "frequency": "频率",
+            "granted-by": "效果来自",
+            "activation-traits": {
+                "command": "命令",
+                "envision": "想象",
+                "interact": "互动"
+            },
+            "time": {
+                "turn": "回合",
+                "round": "轮",
+                "minute": "分钟",
+                "ten-minutes": "10分钟",
+                "hour": "小时",
+                "twenty-four-hours": "24小时",
+                "day": "天",
+                "week": "周",
+                "month": "月",
+                "year": "年"
+            },
+            "invalid-activations": {
+                "staff": "你从法杖中花费一定数量的充能次数以从其列表中施展一个法术。"
+            }
+        }
+    },
+    "I18N.LANGUAGE": "中文"
+}
