@@ -42,8 +42,8 @@ Adds actions based on items activations. There are manually inputted items (see 
 ## Language Support
 Currently only supports the following languages:
 - English
-- Polski
-- Chinese
+- Polish (Polski)
+- Chinese (中文)
 
 To add support for other languages you simply need to submit a PR for the `en.json` but in your chosen language based on the [language support listing for fvtt](https://foundryvtt.wiki/en/languages).
 **Note** the translations under the code section in the translation __MUST MATCH THE SAME CAPITALIZATION AND MUST MATCH THE WORD USED IN YOUR TRANSLATION OF PF2e__. The capitalization + word matching are critical to allowing any of the automation for automatically generating activations to work.
