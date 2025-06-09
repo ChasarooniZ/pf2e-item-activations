@@ -1,15 +1,25 @@
+## [13.0.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.2.2..13.0.0) - China #13
+
+-   **Updates**
+    -   Support for Version `13`
+    -   Fixes issue where resistance wasn't added properly (🐛 @elpossum)
+    -   Fixed issue where rule elements for runes kept being duplicated (🐛 @elpossum)
+    -   Fixed issue where blank trait was added
+-   **Added**
+    -   Chinese Localization (@AlphaStarguide)
+
 ## [12.2.2](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.2.1..12.2.2) - No one cared who I was till I put on the mask
 
 -   **Added**
     -   Handles most of the `Bane` rune (it currently handles Fungus and Plant as 2 separate entities though)
 -   **Fixed**
-    -   Fixes rune rule elements sometimes generating as garbage json (🐛 Dharkus BSc MInst)
+    -   Fixes rune rule elements sometimes generating as garbage json (🐛 @Dharkus BSc MInst)
 
 ## [12.2.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.2.0...12.2.1) - Some Runic Fixes
 
 -   **Added**
-    -   Handling `Holy` rune (🐛 Dharkus BSc MInst)
-    -   Handle `Brilliant` rune (🐛 Dharkus BSc MInst)
+    -   Handling `Holy` rune (🐛 @Dharkus BSc MInst)
+    -   Handle `Brilliant` rune (🐛 @Dharkus BSc MInst)
 -   **Updates**
     -   Fixed flags being set incorrectly when handling runes
     -   Fixed issue where errors could appear when investing in an item with runes for the first time

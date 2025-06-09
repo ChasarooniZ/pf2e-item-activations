@@ -83,7 +83,7 @@ export const makeFlatCheckAlteration = (type, value) => [
 
 export const makeResistance = (type, value = 5) => [
     {
-        key: "resistance",
+        key: "Resistance",
         type,
         value,
     },

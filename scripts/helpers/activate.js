@@ -62,12 +62,18 @@ export async function turnOnOffActivation(item, changeType) {
             const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
             activations.push(...actives);
             if (rules.length > 0) {
-                await actor.updateEmbeddedDocuments("Item", [
-                    {
-                        _id: item.id,
-                        system: { rules: [...item.system.rules, ...rules] },
-                    },
-                ]);
+                const currentRuleRunes = item.system.rules
+                    .filter((r) => r?.flags?.grantedBy?.uuid === item.uuid)
+                    .map((r) => r?.flags?.rune);
+                const rulesToAdd = rules.filter((r) => !currentRuleRunes.includes(r.flags.rune));
+                if (rulesToAdd.length > 0) {
+                    await actor.updateEmbeddedDocuments("Item", [
+                        {
+                            _id: item.id,
+                            system: { rules: [...item.system.rules, ...rulesToAdd] },
+                        },
+                    ]);
+                }
             }
 
             await actor.createEmbeddedDocuments("Item", activations);

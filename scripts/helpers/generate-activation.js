@@ -47,7 +47,8 @@ export function generateActivations(item) {
                 action.system.traits.value = descAction
                     .match(/\(([^)]+)\)/g)[0]
                     .slice(1, -1)
-                    .split(",");
+                    .split(",")
+                    .filter((t) => t.trim().length > 0);
             } else {
                 action.name = `${TEXT.ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ""}`;
                 action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));

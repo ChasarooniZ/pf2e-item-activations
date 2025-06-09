@@ -7,6 +7,9 @@ import { isChangeImportant } from "../module.js";
  * @param {carryType?: string, handsHeld?: number, invested?: boolean, inSlot?: boolean} usageConditions usage type
  */
 export function checkChangeTypePC(itemEquipmentStatus, changesToEquipment, usageConditions) {
+    //Special case where no changes to equipment
+    if (changesToEquipment === undefined) return "None";
+
     const combinedStatus = Object.assign(itemEquipmentStatus, changesToEquipment);
     const qualified = isQualifiedPC(combinedStatus, usageConditions);
     const importantChange = isChangeImportant(changesToEquipment, usageConditions);
