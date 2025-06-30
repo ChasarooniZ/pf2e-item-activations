@@ -1,3 +1,8 @@
+## [13.0.2](https://github.com/ChasarooniZ/pf2e-item-activations/compare/13.0.1..13.0.2) - Handle Issues
+
+-   **Updates**
+    -   Added error handling for missing info
+
 ## [13.0.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/13.0.0..13.0.1) - Invested
 
 -   **Updates**
