@@ -16,6 +16,9 @@ export function augmentAction(action, item) {
     resultAction.system.description.value = `<p>${TEXT.GRANTED_BY_TEXT} ${item.link}</p>`.concat(
         action.system.description.value
     );
+    if (item.system.traits.value.includes("invested")) {
+        resultAction.system.traits.value = [...resultAction.system.traits.value, "invested"];
+    }
 
     //Update Icons
     if (game.settings.get(MODULE_ID, "action-type-icon")) resultAction.img = getActionImage(action);

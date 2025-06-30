@@ -1,3 +1,9 @@
+## [13.0.1](https://github.com/ChasarooniZ/pf2e-item-activations/compare/13.0.0..13.0.1) - Invested
+
+-   **Updates**
+    -   Added invested trait to actions from actions that are invested to support for Thaum's [Intensify Investiture](https://2e.aonprd.com/Feats.aspx?ID=3721)
+    -   Added `sourceId` to rune activations (this maybe fixes translation issue if not idek)
+
 ## [13.0.0](https://github.com/ChasarooniZ/pf2e-item-activations/compare/12.2.2..13.0.0) - China #13
 
 -   **Updates**

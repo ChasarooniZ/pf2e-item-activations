@@ -140,12 +140,13 @@ export async function handlePropertyRunes(item) {
 
     const activationPromises = activations.map((rune) => {
         if (SPECIFIC_ACTION_RUNE_ACTIVATIONS.includes(rune)) {
-            return fromUuid(RUNE_ACTIVATIONS[rune]).then((act) =>
-                setModuleFlag(augmentAction(act, item), "rune", rune)
-            );
+            return fromUuid(RUNE_ACTIVATIONS[rune]).then((act) => ({
+                ...setModuleFlag(augmentAction(act, item), "rune", rune),
+                sourceId: RUNE_ACTIVATIONS[rune],
+            }));
         } else {
             return generateActivationForARune(item, RUNE_ACTIVATIONS[rune]).then((acts) =>
-                acts.map((act) => setModuleFlag(act, "rune", rune))
+                acts.map((act) => ({ ...setModuleFlag(act, "rune", rune), sourceId: RUNE_ACTIVATIONS[rune] }))
             );
         }
     });
