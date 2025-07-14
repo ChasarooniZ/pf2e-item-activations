@@ -10,6 +10,7 @@ import { registerAPI } from "./api.js";
 import { sendUpdateMessage } from "./tours/updateMessage.js";
 import { actionStyling } from "./helpers/style-item.js";
 import {
+    getRelevantRuneDescAndTitle,
     getRelevantRunesAdded,
     getRelevantRunesRemoved,
     handleAddedRunes,
@@ -97,6 +98,25 @@ Hooks.on("ready", () => {
         const actor = _sheet.actor;
         actionStyling(actor, html);
     });
+
+    Hooks.on("renderWeaponSheetPF2e", async (sheet, html, info) => {
+        const item = sheet.object;
+        const { activations, rules } = getRelevantPropertyRunes(item);
+        if (activations.length === 0 && rules.length === 0) return;
+        const runes = await getRelevantRuneDescAndTitle([...activations, ...rules]);
+        const rune_res = runes.reduce((str, rune) => (str += `<h3>${rune.name}</h3>${rune.desc}`), "");
+        html.find(".editor-content").append(rune_res);
+    });
+
+    Hooks.on("renderArmorSheetPF2e", async (sheet, html, info) => {
+        const item = sheet.object;
+        const { activations, rules } = getRelevantPropertyRunes(item);
+        if (activations.length === 0 && rules.length === 0) return;
+        const runes = await getRelevantRuneDescAndTitle([...activations, ...rules]);
+        const rune_res = runes.reduce((str, rune) => (str += `<h3>${rune.name}</h3>${rune.desc}`), "");
+        html.find(".editor-content").append(rune_res);
+    });
+
     if (game.user.isGM) {
         sendUpdateMessage();
     }
