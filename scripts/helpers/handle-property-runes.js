@@ -214,3 +214,12 @@ export async function handleAddedRunes(item, runes) {
         ]);
     }
 }
+
+export async function getRelevantRuneDescAndTitle(runeIDs) {
+    fromUuid(RUNE_ACTIVATIONS[rune]).then((act) => ({
+        name: act.name,
+        desc: act.system.description.value,
+    }));
+
+    return await Promise.all(activationPromises)
+}
