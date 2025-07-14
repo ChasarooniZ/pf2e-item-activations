@@ -1,3 +1,6 @@
+## [13.0.3](https://github.com/ChasarooniZ/pf2e-item-activations/compare/13.0.2..13.0.3) - Fix Reisatance RE
+- Fixed RE values for Greater resistance runes (@nyths)
+  
 ## [13.0.2](https://github.com/ChasarooniZ/pf2e-item-activations/compare/13.0.1..13.0.2) - Handle Issues
 
 -   **Updates**
