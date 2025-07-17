@@ -1,11 +1,13 @@
+[![module_banner](https://github.com/ChasarooniZ/pf2e-usage-updater/assets/79132112/3b2a4f8c-7ba1-4647-b073-d8ecac9d93a6)](https://chasarooniz.github.io/)
+
 ![](https://img.shields.io/badge/Foundry-v12--13-informational)
 ![All Downloads](https://img.shields.io/github/downloads/ChasarooniZ/pf2e-item-activations/total?color=5e0000&label=All%20Downloads)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/ChasarooniZ/pf2e-item-activations/latest/module.zip)
-
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-item-activations&colorB=4aa94a)
+
+[![gitlocalized ](https://gitlocalize.com/repo/10298/whole_project/badge.svg)](https://gitlocalize.com/repo/10298?utm_source=badge)
 [![Kofi](https://img.shields.io/badge/Kofi-F16061.svg?logo=ko-fi&logoColor=white)](https://ko-fi.com/Chasarooni)
 
-![module_banner](https://github.com/ChasarooniZ/pf2e-usage-updater/assets/79132112/3b2a4f8c-7ba1-4647-b073-d8ecac9d93a6)
 
 # PF2e Item Activations
 Adds actions based on items activations. There are manually inputted items (see [Supported Items](#supported-items)), but there is also an automatic generation system to generate items.
