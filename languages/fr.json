@@ -1,0 +1,63 @@
+{
+  "I18N.LANGUAGE": "Français",
+  "pf2e-item-activations": {
+    "module-settings": {
+      "enabled": {
+        "name": "Activer le module",
+        "hint": "Active toutes les fonctionnalités du module"
+      },
+      "action-type-icon": {
+        "enabled": {
+          "name": "Remplacer l'icône par l'icône du nombre d'actions",
+          "hint": "Lors de la génération d'actions, une icône de comptage d'actions sera utilisée pour toutes les actions pertinentes (ex 1, 2, 3, etc.)."
+        }
+      },
+      "npc": {
+        "enabled": {
+          "name": "Activer les activations des PNJ",
+          "hint": "Active toutes les fonctionnalités du module pour les PNJ."
+        },
+        "on-create-token": {
+          "name": "Ajouter les activations de PNJ lors de la création du token",
+          "hint": "Lorsque des tokens de PNJ sont placés, effectue une vérification pour ajouter les activations manquantes"
+        }
+      },
+      "auto-gen": {
+        "enabled": {
+          "name": "Activer la génération automatique",
+          "hint": "Active la génération automatique pour les activations qui n'ont pas été créées manuellement. Notez que celles-ci peuvent avoir moins de fonctionnalités/d'implémentations."
+        }
+      },
+      "debug-mode": {
+        "name": "Mode débogage",
+        "hint": "Faites en sorte que la console reçoive des messages pour différentes choses"
+      }
+    },
+    "code": {
+      "activation": "Activation",
+      "activate": "Activation",
+      "frequency": "Fréquence",
+      "granted-by": "Accordé par",
+      "activation-traits": {
+        "command": "concentration",
+        "envision": "concentration",
+        "interact": "manipulation"
+      },
+      "time": {
+        "turn": "tour",
+        "round": "round",
+        "minute": "minute",
+        "ten-minutes": "10 minutes",
+        "hour": "heure",
+        "twenty-four-hours": "24 heures",
+        "day": "jour",
+        "week": "semaine",
+        "month": "mois",
+        "year": "année"
+      },
+      "invalid-activations": {
+        "staff": "Vous dépensez un certain nombre de charges du bâton pour lancer un sort de sa liste."
+      }
+    }
+  }
+}
