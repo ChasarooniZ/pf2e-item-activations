@@ -77,6 +77,11 @@
             "name": "polski",
             "path": "languages/pl.json",
             "flags": {}
+        },
+        {
+            "lang": "fr",
+            "name": "français",
+            "path": "languages/fr.json"
         }
     ],
     "flags": {
