@@ -26,7 +26,7 @@ Hooks.on("ready", () => {
     TEXT.TIME = {
         turn: game.i18n.format("pf2e-item-activations.code.time.turn"),
         round: game.i18n.format("pf2e-item-activations.code.time.round"),
-        minute: game.i18n.format("pf2e-item-activations.code.time.minutes"),
+        minute: game.i18n.format("pf2e-item-activations.code.time.minute"),
         "ten-minutes": game.i18n.format("pf2e-item-activations.code.time.ten-minutes"),
         hour: game.i18n.format("pf2e-item-activations.code.time.hour"),
         "twenty-four-hours": game.i18n.format("pf2e-item-activations.code.time.twenty-four-hours"),
@@ -35,6 +35,11 @@ Hooks.on("ready", () => {
         month: game.i18n.format("pf2e-item-activations.code.time.month"),
         year: game.i18n.format("pf2e-item-activations.code.time.year"),
     };
+    TEXT.COUNT = {
+        once: game.i18n.format("pf2e-item-activations.code.count.once"),
+        twice: game.i18n.format("pf2e-item-activations.code.count.twice"),
+    }
+    TEXT.PER = game.i18n.format("pf2e-item-activations.code.per")
     TEXT.INVALID_ACTIVATIONS = [game.i18n.format("pf2e-item-activations.code.invalid-activations.staff")].map(
         (t) => new RegExp(t)
     );

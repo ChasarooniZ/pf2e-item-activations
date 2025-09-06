@@ -57,6 +57,11 @@
             },
             "invalid-activations": {
                 "staff": "You expend a number of charges from the staff to cast a spell from its list."
+            },
+            "per": "per",
+            "count": {
+                "once": "once",
+                "twice": "twice"
             }
         }
     }

@@ -1,3 +1,9 @@
+## 13.0.5
+
+-   **Updates**
+    -   Fixed bug where `minute` wasn't being localized properly causing issue with `per minute` frequencies (🐛 @overkongen)
+    -   Added localization for `once`, `twice`, and `per` to account for other languages
+
 ## [13.0.4](https://github.com/ChasarooniZ/pf2e-item-activations/compare/13.0.3..13.0.4) - Added French
 
 -   Added french version (@rectulo)

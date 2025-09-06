@@ -133,7 +133,7 @@ function getFrequency(str) {
         str.split(" ")[0],
         str
             .substring(str.split(" ")[0].length + 1)
-            .replace("per", "")
+            .replace(TEXT.PER, "")
             .trim(),
     ];
     const re = {
@@ -141,10 +141,10 @@ function getFrequency(str) {
         per: "day",
     };
     switch (amt.toLowerCase()) {
-        case "once":
+        case TEXT.COUNT.once:
             re.max = 1;
             break;
-        case "twice":
+        case TEXT.COUNT.twice:
             re.max = 2;
             break;
         default:
@@ -176,7 +176,7 @@ function getFrequency(str) {
             re.per = `P1W`;
             break;
         case `${TEXT.TIME.month}`:
-            re.per = `PT1M`;
+            re.per = `P1M`;
             break;
         case `${TEXT.TIME.year}`:
             re.per = `P1Y`;
