@@ -57,6 +57,11 @@
       },
       "invalid-activations": {
         "staff": "Vous dépensez un certain nombre de charges du bâton pour lancer un sort de sa liste."
+      },
+      "per": "par",
+      "count": {
+        "once": "Une fois",
+        "twice": "deux fois"
       }
     }
   }
