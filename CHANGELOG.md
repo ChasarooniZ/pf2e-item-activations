@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Updated**
+  - Updated French translation (@rectulo)
+
 ## 13.0.5
 
 -   **Updates**
@@ -217,3 +222,4 @@
     -   The Whispering Reeds
     -   Ventriloquist's Ring
     -   Wayfinder
+
