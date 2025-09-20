@@ -1,3 +1,7 @@
+## 13.0.7
+- **Updated**
+  - Updated French translation (🌐 @AlphaStarguide)
+
 ## 13.0.6
 
 - **Updated**
@@ -222,5 +226,6 @@
     -   The Whispering Reeds
     -   Ventriloquist's Ring
     -   Wayfinder
+
 
 
