@@ -110,7 +110,7 @@ export const RULE_ELEMENT_LIST = Object.keys(RUNE_RULE_ELEMENTS);
 export const RELEVANT_PROPERTY_RUNE_LIST = [...ACTIVATIONS_LIST, ...RULE_ELEMENT_LIST];
 
 function filterRelevantRunes(runes, list) {
-    return (runes || [])?.filter((r) => list.includes(r)) ?? [];
+    return Array.isArray(runes) ? runes.filter((r) => list.includes(r)) : [];
 }
 
 export function getRelevantPropertyRunes(item) {

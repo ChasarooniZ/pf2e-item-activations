@@ -1,11 +1,16 @@
+## 13.0.8
+
+-   Fixed error with checking for relevant runes on items without runes
+
 ## 13.0.7
-- **Updated**
-  - Updated French translation (🌐 @AlphaStarguide)
+
+-   **Updated**
+    -   Updated French translation (🌐 @AlphaStarguide)
 
 ## 13.0.6
 
-- **Updated**
-  - Updated French translation (@rectulo)
+-   **Updated**
+    -   Updated French translation (@rectulo)
 
 ## 13.0.5
 
@@ -226,6 +231,3 @@
     -   The Whispering Reeds
     -   Ventriloquist's Ring
     -   Wayfinder
-
-
-
