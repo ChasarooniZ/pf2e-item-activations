@@ -38,6 +38,7 @@ Hooks.on("ready", () => {
     TEXT.COUNT = {
         once: game.i18n.format("pf2e-item-activations.code.count.once"),
         twice: game.i18n.format("pf2e-item-activations.code.count.twice"),
+        threeTimes: game.i18n.format("pf2e-item-activations.code.count.three-times"),
     }
     TEXT.PER = game.i18n.format("pf2e-item-activations.code.per")
     TEXT.INVALID_ACTIVATIONS = [game.i18n.format("pf2e-item-activations.code.invalid-activations.staff")].map(
