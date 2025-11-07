@@ -1,6 +1,6 @@
 ## 13.0.9
 
--   Added support for `three times` per X frequency (@Dharkus BSc MInstP)
+-   Added support for `three times` per X frequency (🐛 @Dharkus BSc MInstP)
 
 ## 13.0.8
 
