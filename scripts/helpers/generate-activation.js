@@ -148,7 +148,7 @@ function getFrequency(str) {
             re.max = 2;
             break;
         case TEXT.COUNT.threeTimes:
-            re.max = 2;
+            re.max = 3;
             break;
         default:
             if (!isNaN(amt)) re.max = parseInt(amt);

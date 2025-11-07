@@ -1,3 +1,7 @@
+## 13.0.10
+
+- Actually set `three times` to 3 (🐛 @fotoply)
+
 ## 13.0.9
 
 -   Added support for `three times` per X frequency (🐛 @Dharkus BSc MInstP)
