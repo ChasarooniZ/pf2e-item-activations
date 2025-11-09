@@ -1,3 +1,6 @@
+## 13.0.11
+- Updated Chinese translation (🌐 @AlphaStarguide)
+
 ## 13.0.10
 
 - Actually set `three times` to 3 (🐛 @fotoply)
@@ -239,3 +242,4 @@
     -   The Whispering Reeds
     -   Ventriloquist's Ring
     -   Wayfinder
+
