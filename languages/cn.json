@@ -10,7 +10,7 @@
             "npc": {
                 "on-create-token": {
                     "name": "在指示物创建时添加NPC的启动动作",
-                    "hint": "当NPC的指示物被放置到场景上时，检查时候有遗漏的启动动作并添加之"
+                    "hint": "当NPC的指示物被放置到场景上时，检查是否有遗漏的启动项并添加之"
                 },
                 "enabled": {
                     "name": "启用NPC启动动作",
@@ -19,7 +19,7 @@
             },
             "enabled": {
                 "name": "启用模组",
-                "hint": "启用模组的所有功能"
+                "hint": "启用模组的全部功能"
             },
             "action-type-icon": {
                 "enabled": {
@@ -28,19 +28,19 @@
                 }
             },
             "debug-mode": {
-                "name": "Debug模式",
-                "hint": "在Console终端可以查看消息"
+                "name": "调试模式",
+                "hint": "让控制台接收不同类型的信息"
             }
         },
         "code": {
-            "activation": "启动",
+            "activation": "启动项",
             "activate": "启动",
             "frequency": "频率",
             "granted-by": "效果来自",
             "activation-traits": {
                 "command": "命令",
                 "envision": "想象",
-                "interact": "互动"
+                "interact": "交互"
             },
             "time": {
                 "turn": "回合",
@@ -49,7 +49,7 @@
                 "ten-minutes": "10分钟",
                 "hour": "小时",
                 "twenty-four-hours": "24小时",
-                "day": "天",
+                "day": "日",
                 "week": "周",
                 "month": "月",
                 "year": "年"
@@ -60,7 +60,8 @@
             "per": "每",
             "count": {
                 "once": "一次",
-                "twice": "两次"
+                "twice": "两次",
+                "three-times": "三次"
             }
         }
     },
