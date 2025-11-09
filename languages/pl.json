@@ -61,7 +61,8 @@
       "per": "na",
       "count": {
         "once": "raz",
-        "twice": "dwa"
+        "twice": "dwa",
+        "three-times": "trzy razy"
       }
     }
   }
