@@ -1,3 +1,7 @@
+## 13.0.13
+
+- Updated French translation (🌐 @rectulo)
+
 ## 13.0.12
 
 -   **Updated**
@@ -247,5 +251,6 @@
     -   The Whispering Reeds
     -   Ventriloquist's Ring
     -   Wayfinder
+
 
 
