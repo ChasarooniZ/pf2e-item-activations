@@ -1,0 +1,68 @@
+{
+	"folder": null,
+	"name": "Activation: Douse Fire",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Activate</strong> <span class=\"action-glyph\">1</span> Interact</p>\n<p><strong>Frequency</strong> once per round</p>\n<p><strong>Requirements</strong> You're taking persistent fire damage</p>\n<p><strong>Effect</strong> You call upon the ring to put out the flame and its magic attempts to bring the fire under control. This is especially effective assistance against persistent fire damage, so you gain an immediate flat check to remove the persistent fire damage, and the DC typically decreases from 15 to 10.</p>"
+		},
+		"rules": [],
+		"slug": "activation-douse-fire",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"manipulate"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "action"
+		},
+		"category": "interaction",
+		"actions": {
+			"value": 1
+		},
+		"deathNote": false,
+		"frequency": {
+			"max": 1,
+			"per": "round"
+		},
+		"selfEffect": {
+			"uuid": "Compendium.pf2e-item-activations.item-activations-effects.Item.yiNMwsAOWTvrr89l",
+			"name": "Activation Effect: Douse Fire"
+		}
+	},
+	"img": "icons/equipment/finger/ring-cabochon-squared-gold-red.webp",
+	"ownership": {
+		"default": 0,
+		"f2k2gSjLBf5ozThY": 3
+	},
+	"flags": {
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1707117156087,
+		"modifiedTime": 1716277855799,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "STS9lnXLFGYeCVpz",
+	"sort": 2700000,
+	"_key": "!items!STS9lnXLFGYeCVpz"
+}

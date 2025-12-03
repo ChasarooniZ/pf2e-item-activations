@@ -1,0 +1,88 @@
+{
+	"name": "Activation Effect: Echoes of an Eerie Tale",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p>The mists, whispers, and strange divots fade away at the end of the round, but any creature that takes mental damage from the effect also takes a -1 penalty to saving throws against effects with the emotion trait for 1 minute. </p>"
+		},
+		"rules": [
+			{
+				"key": "FlatModifier",
+				"selector": "saving-throw",
+				"value": "-1",
+				"predicate": [
+					"emotion"
+				]
+			}
+		],
+		"slug": "activation-effect-echoes-of-an-eerie-tale",
+		"_migration": {
+			"version": 0.925,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.911,
+				"foundry": "11.315",
+				"system": "5.14.2"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"level": {
+			"value": 1
+		},
+		"duration": {
+			"value": -1,
+			"unit": "unlimited",
+			"expiry": null,
+			"sustained": false
+		},
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"badge": null,
+		"context": null,
+		"unidentified": false
+	},
+	"img": "icons/magic/death/undead-ghost-scream-teal.webp",
+	"folder": null,
+	"flags": {
+		"LocknKey": {
+			"IDKeysFlag": "",
+			"RemoveKeyonUseFlag": false,
+			"ReplacementItemFlag": ""
+		},
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.14.2",
+		"coreVersion": "13.351",
+		"createdTime": 1699349390299,
+		"modifiedTime": 1764795974311,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"_id": "3sYi2GQ5h5279DwJ",
+	"sort": 100000,
+	"_key": "!items!3sYi2GQ5h5279DwJ"
+}

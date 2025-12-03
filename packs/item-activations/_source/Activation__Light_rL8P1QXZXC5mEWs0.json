@@ -1,0 +1,60 @@
+{
+	"folder": null,
+	"name": "Activation: Light",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Activate—Light</strong> <span class=\"action-glyph\">A</span> (concentrate)</p>\n<hr />\n<p><strong>Effect</strong> The <em>wayfinder</em> is targeted by a 1st-rank <em>@UUID[Compendium.pf2e.spells-srd.Item.WBmvzNDfpwka3qT4]{Light}</em> spell.</p>"
+		},
+		"rules": [],
+		"slug": "activation-light",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"concentrate"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "passive"
+		},
+		"category": null,
+		"actions": {
+			"value": null
+		},
+		"deathNote": false
+	},
+	"img": "systems/pf2e/icons/equipment/worn-items/other-worn-items/wayfinder.webp",
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"flags": {
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1706948075243,
+		"modifiedTime": 1716277855799,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "rL8P1QXZXC5mEWs0",
+	"sort": 4000000,
+	"_key": "!items!rL8P1QXZXC5mEWs0"
+}

@@ -1,0 +1,110 @@
+{
+	"folder": null,
+	"name": "Activation Effect: Through the Flames",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p>Granted by @UUID[Compendium.pf2e-item-activations.item-activations.Item.mBoDXpeUodhvbhpb]{Activation: Through the Flames}</p>\n<p>The ring's red gemstone flashes with light, granting you resistance 5 against fire and a +1 status bonus on your AC or saving throw against the fire effect targeting you; these benefits end as soon as the fire effect is resolved.</p>"
+		},
+		"rules": [
+			{
+				"key": "Resistance",
+				"type": "fire",
+				"value": 5
+			},
+			{
+				"key": "FlatModifier",
+				"selector": "ac",
+				"value": 1,
+				"type": "status",
+				"predicate": [
+					"through-the-flames:ac"
+				]
+			},
+			{
+				"key": "FlatModifier",
+				"selector": "saving-throw",
+				"value": 1,
+				"type": "status",
+				"predicate": [
+					"through-the-flames:save"
+				]
+			},
+			{
+				"key": "ChoiceSet",
+				"prompt": "Select +1 Status Bonus",
+				"choices": [
+					{
+						"label": "AC",
+						"value": "ac"
+					},
+					{
+						"label": "Saving Throw",
+						"value": "save"
+					}
+				],
+				"rollOption": "through-the-flames",
+				"flag": "bonus",
+				"priority": 70
+			}
+		],
+		"slug": "activation-effect-through-the-flames",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null
+		},
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"level": {
+			"value": 3
+		},
+		"duration": {
+			"value": 0,
+			"unit": "rounds",
+			"expiry": "round-end",
+			"sustained": false
+		},
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"badge": null,
+		"context": null,
+		"unidentified": false
+	},
+	"img": "icons/equipment/finger/ring-cabochon-squared-gold-red.webp",
+	"ownership": {
+		"default": 0,
+		"f2k2gSjLBf5ozThY": 3
+	},
+	"flags": {
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.13.2",
+		"coreVersion": "13.351",
+		"createdTime": 1707117502399,
+		"modifiedTime": 1764795974311,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "9wV7XrNsrp8eB0pF",
+	"sort": 300000,
+	"_key": "!items!9wV7XrNsrp8eB0pF"
+}

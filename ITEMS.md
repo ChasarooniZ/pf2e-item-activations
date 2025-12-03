@@ -16,34 +16,14 @@ This is a list of all **explicitly** support items. Other items are technically 
 ### Core Rulebook
 - Necklace of Fireballs I - VII
 ### GM Core
-- Bracers of Missile Deflection
-- Bracers of Missile Deflection (Greater)
-- Caterwaul Sling
-- Lifting Belt
-- Masquerade Scarf
-- Masquerade Scarf (Greater)
-- Serpent Dagger
-- Skeleton Key
-- Skeleton Key (Greater)
-- Ventriloquist's Ring
-- Ventriloquist's Ring (Greater)
 - Wayfinder
 ### Pathfinder Core Rulebook
-- Boots of Elevenkind
-- Boots of Elevenkind (Greater)
-- Bottled Air
-- Bracelet of Dashing
-- Cape of the Mountebank
 
 ## Adventure Paths
 ### Crown of Kobold King
-- Grasp of Droskar
-- Heartripper Blade
 - Ring of Torag
-- Soulspeaker
 ### Abomination Vaults
 #### Ruins of Gauntlight
-- Lantern of Empty Light
 - The Whispering Reeds
 #### Hands of the Devil
 - Hunter's Brooch

@@ -1,0 +1,80 @@
+{
+	"folder": null,
+	"name": "Activation Effect: Douse Fire",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p>Granted by @UUID[Compendium.pf2e-item-activations.item-activations.Item.STS9lnXLFGYeCVpz]{Activation: Douse Fire}</p>\n<p>Resistance 5 against fire and a +1 status bonus on your AC or saving throw against the fire effect targeting you; these benefits end as soon as the fire effect is resolved.</p>"
+		},
+		"rules": [
+			{
+				"itemType": "condition",
+				"key": "ItemAlteration",
+				"mode": "downgrade",
+				"predicate": [
+					"item:damage:type:fire"
+				],
+				"property": "pd-recovery-dc",
+				"value": 10
+			}
+		],
+		"slug": "activation-effect-douse-fire",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null
+		},
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"level": {
+			"value": 3
+		},
+		"duration": {
+			"value": 0,
+			"unit": "rounds",
+			"expiry": "turn-end",
+			"sustained": false
+		},
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"badge": null,
+		"context": null,
+		"unidentified": false
+	},
+	"img": "icons/equipment/finger/ring-cabochon-squared-gold-red.webp",
+	"ownership": {
+		"default": 0,
+		"f2k2gSjLBf5ozThY": 3
+	},
+	"flags": {
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.13.2",
+		"coreVersion": "13.351",
+		"createdTime": 1707117502399,
+		"modifiedTime": 1764795974311,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "yiNMwsAOWTvrr89l",
+	"sort": 500000,
+	"_key": "!items!yiNMwsAOWTvrr89l"
+}

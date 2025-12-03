@@ -1,0 +1,81 @@
+{
+	"name": "Activation Effect: Fortification",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"_migration": {
+			"version": 0.953,
+			"previous": null
+		},
+		"description": {
+			"value": "<p>Granted by @UUID[Compendium.pf2e.equipment-srd.8buhFcGwuaJRrp0y]{Fortification}<br />@Localize[pf2e-item-activations.notes.fortification]</p>",
+			"gm": ""
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"rules": [
+			{
+				"key": "Note",
+				"outcome": [
+					"criticalSuccess"
+				],
+				"title": "@Localize[PF2E.ArmorPropertyRuneFortification]",
+				"text": "@Localize[pf2e-item-activations.notes.fortification]",
+				"selector": [
+					"strike-attack-roll",
+					"spell-attack-roll"
+				]
+			}
+		],
+		"slug": "activation-effect-fortification",
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"level": {
+			"value": 1
+		},
+		"duration": {
+			"value": -1,
+			"unit": "unlimited",
+			"expiry": null,
+			"sustained": false
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"unidentified": false,
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"badge": null,
+		"fromSpell": false,
+		"context": null
+	},
+	"img": "icons/magic/defensive/barrier-shield-dome-deflect-teal.webp",
+	"folder": null,
+	"flags": {},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null,
+		"coreVersion": "13.351",
+		"systemId": "pf2e",
+		"systemVersion": "7.7.4",
+		"createdTime": 1764795974229,
+		"modifiedTime": 1764795974311,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2"
+	},
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"_id": "B4gaHFhQA7EXsNhv",
+	"sort": 200000,
+	"_key": "!items!B4gaHFhQA7EXsNhv"
+}

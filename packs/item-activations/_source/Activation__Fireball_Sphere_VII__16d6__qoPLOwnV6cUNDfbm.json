@@ -1,0 +1,69 @@
+{
+	"folder": null,
+	"name": "Activation: Fireball Sphere VII (16d6)",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Activate</strong> <span class=\"action-glyph\">A</span> Interact</p>\n<hr />\n<p><strong>Effect</strong> You detach a sphere from the necklace, causing it to glow with orange light. After you activate a sphere, if you or anyone else hurls it (an Interact action with the ranged trait), it detonates as a @UUID[Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd]{Fireball} where it lands. Your toss can place the center of the fireball anywhere within 70 feet, though at the GM's discretion you might need to make an attack roll if the throw is unusually challenging. If no one hurls the sphere by the start of your next turn, it turns into a non-magical red bead.</p>\n<hr />\n<p>A roaring blast of fire that explodes in a @Template[type:burst|distance:20] dealing @Damage[16d6[fire]|traits:area-damage] with a @Check[type:reflex|dc:39|basic:true|showDC:all] save.</p>\n<hr />\n<p><em>Note: The listed cooldown is simply the largest refresh I could put, but as noted on the item this does not refreshed. It also lacks the ranged trait (specified by item) and action cost represents the cost to detach and throw this.</em></p>"
+		},
+		"rules": [],
+		"slug": "activation-fireball-sphere-vii-16d6",
+		"_migration": {
+			"version": 0.926,
+			"lastMigration": null
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"fire",
+				"manipulate"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "action"
+		},
+		"category": "interaction",
+		"actions": {
+			"value": 2
+		},
+		"deathNote": false,
+		"frequency": {
+			"max": 3,
+			"per": "P1Y"
+		}
+	},
+	"img": "icons/commodities/gems/pearl-fire-swirl.webp",
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"flags": {
+		"scene-packer": {
+			"hash": "7b9c2c9be8b9c37ff39c0dccc84c7365f2185fa1",
+			"sourceId": "Item.DzE3M0Q0sJW7sapC"
+		},
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1716275911106,
+		"modifiedTime": 1716278090670,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "qoPLOwnV6cUNDfbm",
+	"sort": 0,
+	"_key": "!items!qoPLOwnV6cUNDfbm"
+}

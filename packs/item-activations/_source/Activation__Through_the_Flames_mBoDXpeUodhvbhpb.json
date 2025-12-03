@@ -1,0 +1,68 @@
+{
+	"folder": null,
+	"name": "Activation: Through the Flames",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Activate</strong> <span class=\"action-glyph\">R</span> envision</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Trigger</strong> You're targeted by a fire effect</p>\n<p><strong>Effect</strong> The ring's red gemstone flashes with light, granting you resistance 5 against fire and a +1 status bonus on your AC or saving throw against the fire effect targeting you; these benefits end as soon as the fire effect is resolved.</p>"
+		},
+		"rules": [],
+		"slug": "activation-through-the-flames",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"concentrate"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "reaction"
+		},
+		"category": null,
+		"actions": {
+			"value": null
+		},
+		"deathNote": false,
+		"frequency": {
+			"max": 1,
+			"per": "day"
+		},
+		"selfEffect": {
+			"uuid": "Compendium.pf2e-item-activations.item-activations-effects.Item.9wV7XrNsrp8eB0pF",
+			"name": "Activation Effect: Through the Flames"
+		}
+	},
+	"img": "icons/equipment/finger/ring-cabochon-squared-gold-red.webp",
+	"ownership": {
+		"default": 0,
+		"f2k2gSjLBf5ozThY": 3
+	},
+	"flags": {
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1707117156087,
+		"modifiedTime": 1716277855799,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "mBoDXpeUodhvbhpb",
+	"sort": 2500000,
+	"_key": "!items!mBoDXpeUodhvbhpb"
+}

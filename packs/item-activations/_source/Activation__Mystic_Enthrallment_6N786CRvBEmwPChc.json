@@ -1,0 +1,82 @@
+{
+	"folder": null,
+	"name": "Activation: Mystic Enthrallment",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p><strong>Activate</strong> <span class=\"pf2-icon\">2</span> Interact (emotion, visual)</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> You direct the lantern's light upon a single living creature within 60 feet. That creature must attempt a @Check[type:will|dc:20|traits:emotion,visual] save to resist the light's effects.</p>\n<hr />\n<p><strong>Critical Success</strong> The creature is unaffected and realizes that you attempted to mentally influence them with the light.</p>\n<p><strong>Success</strong> The creature is unaffected but thinks the light was harmless, unless it knows the true nature of the lantern already.</p>\n<p><strong>Failure</strong> The creature becomes @UUID[Compendium.pf2e.conditionitems.AdPVz7rbaVSRxHFg]{Fascinated} by the lantern's light, and remains fascinated as long as you Sustain the Activation, up to 10 minutes.</p>\n<p><strong>Critical Failure</strong> As failure, but you can Sustain the Activation for up to 1 hour. When the effect ends, the fascinated creature remembers any events that took place while fascinated only as indistinct, dream-like memories.</p>"
+		},
+		"rules": [],
+		"slug": "activation-mystic-enthrallment",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.916,
+				"foundry": "11.315",
+				"system": "5.13.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"emotion",
+				"manipulate",
+				"visual"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "action"
+		},
+		"category": "interaction",
+		"actions": {
+			"value": 2
+		},
+		"deathNote": false,
+		"requirements": {
+			"value": ""
+		},
+		"trigger": {
+			"value": ""
+		},
+		"frequency": {
+			"max": 1,
+			"per": "day"
+		}
+	},
+	"img": "systems/pf2e/icons/equipment/held-items/lantern-of-empty-light.webp",
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"flags": {
+		"LocknKey": {
+			"IDKeysFlag": "",
+			"RemoveKeyonUseFlag": false,
+			"ReplacementItemFlag": ""
+		},
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1692170046551,
+		"modifiedTime": 1716277855799,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_id": "6N786CRvBEmwPChc",
+	"sort": 3800000,
+	"_key": "!items!6N786CRvBEmwPChc"
+}

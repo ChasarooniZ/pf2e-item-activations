@@ -1,0 +1,82 @@
+{
+	"name": "Activation: Soul Siphon",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "<p>You are exposed to the @UUID[Compendium.pf2e-item-activations.item-activations-effects.Item.AQeYkFzIp2skEyV5]{Empty Death} each time you use this ability.</p>",
+			"value": "<p><strong>Activate</strong> <span class=\"pf2-icon\">2</span> command, Interact</p>\n<p><strong>Frequency</strong> once per hour</p>\n<p><strong>Effect</strong> You read aloud a phrase from the book and target a single incorporeal undead creature within 30 feet. That undead creature takes @Damage[(5d6)[vitality]] damage (@Check[type:will|dc:27|basic:true] save) as portions of their incorporeal being are consumed in patches of seven equally spaced holes.</p>"
+		},
+		"rules": [],
+		"slug": "activation-soul-siphon",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.916,
+				"foundry": "11.315",
+				"system": "5.13.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"auditory",
+				"concentrate",
+				"manipulate"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "action"
+		},
+		"category": "interaction",
+		"actions": {
+			"value": 2
+		},
+		"deathNote": false,
+		"requirements": {
+			"value": ""
+		},
+		"trigger": {
+			"value": ""
+		},
+		"frequency": {
+			"max": 1,
+			"per": "PT1H"
+		}
+	},
+	"img": "systems/pf2e/icons/equipment/artifacts/the-whispering-reeds.webp",
+	"folder": null,
+	"flags": {
+		"LocknKey": {
+			"IDKeysFlag": "",
+			"RemoveKeyonUseFlag": false,
+			"ReplacementItemFlag": ""
+		},
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1699348978086,
+		"modifiedTime": 1716277855799,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"_id": "Ggy8zHKPaWbTBtzZ",
+	"sort": 4500000,
+	"_key": "!items!Ggy8zHKPaWbTBtzZ"
+}

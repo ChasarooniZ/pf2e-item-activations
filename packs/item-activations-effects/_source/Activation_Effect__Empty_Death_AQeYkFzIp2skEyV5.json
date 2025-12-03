@@ -1,0 +1,95 @@
+{
+	"name": "Activation Effect: Empty Death",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "",
+			"value": "<p>Granted by @UUID[Compendium.pf2e.equipment-srd.QT1jTPlf3ATYUh4I]{The Whispering Reeds}</p>\n<p><strong>Empty Death (curse, necromancy, occult)</strong></p>\n<p><strong>Saving Throw</strong> @Check[type:will|dc:27|traits:curse,necromancy]</p>\n<p><strong>Effect</strong> If you activate @UUID[Compendium.pf2e.equipment-srd.QT1jTPlf3ATYUh4I]{The Whispering Reeds} and are not a worshipper of Nhimbaloth, you become @Compendium[pf2e.conditionitems.e1XGnhKNSQIm5IXg]{Stupefied 2} for 24 hours as your thoughts fill with paranoia that something is watching you from the other side of death. If you die while affected by the Empty Death, you immediately become a chaotic evil ghost. Every 7 days that pass after you become a ghost, you must succeed at a @Check[type:flat|dc:2]— failure indicates that you are consumed by Nhimbaloth. A creature whose ghost is consumed in this way does not travel to the River of Souls and is utterly annihilated; this creature can only be restored to life via a 10th-level spell effect or ritual like @Compendium[pf2e.spells-srd.6dDtGIUerazSHIOu]{Wish}.</p>"
+		},
+		"rules": [
+			{
+				"alterations": [
+					{
+						"mode": "override",
+						"property": "badge-value",
+						"value": 2
+					}
+				],
+				"inMemoryOnly": true,
+				"onDeleteActions": {
+					"grantee": "restrict"
+				},
+				"key": "GrantItem",
+				"uuid": "Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg"
+			}
+		],
+		"slug": "activation-effect-empty-death",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.879,
+				"foundry": "11.315",
+				"system": "5.13.2"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"level": {
+			"value": 10
+		},
+		"duration": {
+			"value": 1,
+			"unit": "days",
+			"expiry": "turn-start",
+			"sustained": false
+		},
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"badge": null,
+		"context": null,
+		"unidentified": true
+	},
+	"img": "icons/magic/death/skull-horned-worn-fire-blue.webp",
+	"folder": null,
+	"flags": {
+		"LocknKey": {
+			"IDKeysFlag": "",
+			"RemoveKeyonUseFlag": false,
+			"ReplacementItemFlag": ""
+		},
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.13.3",
+		"coreVersion": "13.351",
+		"createdTime": 1699342339489,
+		"modifiedTime": 1764795974311,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"_id": "AQeYkFzIp2skEyV5",
+	"sort": 400000,
+	"_key": "!items!AQeYkFzIp2skEyV5"
+}

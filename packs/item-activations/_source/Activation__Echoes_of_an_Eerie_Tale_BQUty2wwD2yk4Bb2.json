@@ -1,0 +1,81 @@
+{
+	"name": "Activation: Echoes of an Eerie Tale",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "<p>You are exposed to the @UUID[Compendium.pf2e-item-activations.item-activations-effects.Item.AQeYkFzIp2skEyV5]{Empty Death} each time you use this ability.</p>",
+			"value": "<p><strong>Activate</strong> <span class=\"pf2-icon\">1</span> command, Interact</p>\n<p><strong>Frequency</strong> once per day</p>\n<p><strong>Effect</strong> You invoke a tale from The Whispering Reeds that parallels the situation, environment, or creatures nearby. Eerie mists and indistinct whispers rise in a @Template[type:emanation|distance:20] around you, and clusters of seven perfectly spaced divots manifest in the ground, vegetation, and flesh of creatures in the emanation other than yourself and up to three creatures you designate at the time of activation. Creatures afflicted with these divots suffer from agonizing mental anguish in the form of crippling despair and take @Damage[(4d6)[mental]] damage (@Check[type:will|dc:27|basic:true] save). The mists, whispers, and strange divots fade away at the end of the round, but any creature that takes mental damage from the effect also takes a -1 penalty to saving throws against effects with the emotion trait for 1 minute. </p>\n<p>@UUID[Compendium.pf2e-item-activations.item-activations-effects.Item.3sYi2GQ5h5279DwJ]{Activation Effect: Echoes of an Eerie Tale}</p>"
+		},
+		"rules": [],
+		"slug": "activation-echoes-of-an-eerie-tale",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.916,
+				"foundry": "11.315",
+				"system": "5.13.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"auditory",
+				"concentrate"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "action"
+		},
+		"category": "interaction",
+		"actions": {
+			"value": 1
+		},
+		"deathNote": false,
+		"requirements": {
+			"value": ""
+		},
+		"trigger": {
+			"value": ""
+		},
+		"frequency": {
+			"max": 1,
+			"per": "day"
+		}
+	},
+	"img": "systems/pf2e/icons/equipment/artifacts/the-whispering-reeds.webp",
+	"folder": null,
+	"flags": {
+		"LocknKey": {
+			"IDKeysFlag": "",
+			"RemoveKeyonUseFlag": false,
+			"ReplacementItemFlag": ""
+		},
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1699349295483,
+		"modifiedTime": 1716277855799,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"_id": "BQUty2wwD2yk4Bb2",
+	"sort": 4200000,
+	"_key": "!items!BQUty2wwD2yk4Bb2"
+}

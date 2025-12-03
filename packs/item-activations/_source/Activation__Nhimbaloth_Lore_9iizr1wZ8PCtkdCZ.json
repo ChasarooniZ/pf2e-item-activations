@@ -1,0 +1,81 @@
+{
+	"name": "Activation: Nhimbaloth Lore",
+	"type": "action",
+	"effects": [],
+	"system": {
+		"description": {
+			"gm": "<p>You are exposed to the @UUID[Compendium.pf2e-item-activations.item-activations-effects.Item.AQeYkFzIp2skEyV5]{Empty Death} each time you use this ability.</p>",
+			"value": "<p><strong>Activate</strong> 10 minutes (Investigate)</p>\n<p><strong>Effect</strong> You gain a +2 item bonus to skill checks to Recall Knowledge about Nhimbaloth, her faith, or creatures associated with her (such as incorporeal undead, vampiric mists, wisps, and other incorporeal creatures associated with death).</p>"
+		},
+		"rules": [],
+		"slug": "activation-nhimbaloth-lore",
+		"_migration": {
+			"version": 0.917,
+			"lastMigration": null,
+			"previous": {
+				"schema": 0.916,
+				"foundry": "11.315",
+				"system": "5.13.1"
+			}
+		},
+		"traits": {
+			"otherTags": [],
+			"value": [
+				"concentrate",
+				"exploration"
+			]
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"actionType": {
+			"value": "action"
+		},
+		"category": "interaction",
+		"actions": {
+			"value": 1
+		},
+		"deathNote": false,
+		"requirements": {
+			"value": ""
+		},
+		"trigger": {
+			"value": ""
+		},
+		"frequency": {
+			"max": 1,
+			"per": "day"
+		}
+	},
+	"img": "systems/pf2e/icons/equipment/artifacts/the-whispering-reeds.webp",
+	"folder": null,
+	"flags": {
+		"LocknKey": {
+			"IDKeysFlag": "",
+			"RemoveKeyonUseFlag": false,
+			"ReplacementItemFlag": ""
+		},
+		"core": {}
+	},
+	"_stats": {
+		"systemId": "pf2e",
+		"systemVersion": "5.15.4",
+		"coreVersion": "13.351",
+		"createdTime": 1699349295483,
+		"modifiedTime": 1716277855799,
+		"lastModifiedBy": "J3oConv1eQRLao6j",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"ownership": {
+		"default": 0,
+		"J3oConv1eQRLao6j": 3
+	},
+	"_id": "9iizr1wZ8PCtkdCZ",
+	"sort": 3200000,
+	"_key": "!items!9iizr1wZ8PCtkdCZ"
+}
