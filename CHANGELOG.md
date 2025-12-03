@@ -1,6 +1,25 @@
+## 13.1.0
+
+-   **Added Support for the following Rune Activations**:
+    -   Advancing
+    -   Advancing (Greater)
+    -   Antimagic
+    -   || Cavern's Heart ||
+    -   Energy Adaptive
+    -   Ethereal
+    -   Immovable
+    -   Magnetizing
+    -   Malleable
+    -   Misleading
+    -   Portable
+    -   Sinister Knight
+    -   Soaring
+    -   Winged
+    -   Winged (Greater)
+
 ## 13.0.13
 
-- Updated French translation (🌐 @rectulo)
+-   Updated French translation (🌐 @rectulo)
 
 ## 13.0.12
 
@@ -8,11 +27,12 @@
     -   Updated Polish translation (🌐 @Lioheart)
 
 ## 13.0.11
-- Updated Chinese translation (🌐 @AlphaStarguide)
+
+-   Updated Chinese translation (🌐 @AlphaStarguide)
 
 ## 13.0.10
 
-- Actually set `three times` to 3 (🐛 @fotoply)
+-   Actually set `three times` to 3 (🐛 @fotoply)
 
 ## 13.0.9
 
@@ -251,6 +271,3 @@
     -   The Whispering Reeds
     -   Ventriloquist's Ring
     -   Wayfinder
-
-
-
