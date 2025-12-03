@@ -15,8 +15,8 @@ import {
     handleAddedRunes,
     handlePropertyRunes,
     handleRemovedRunes,
-    RELEVANT_PROPERTY_RUNE_LIST,
 } from "./helpers/handle-property-runes.js";
+import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
