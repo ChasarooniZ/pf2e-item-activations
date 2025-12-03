@@ -39,13 +39,9 @@ Adds actions based on items activations. There are manually inputted items (see 
 - Adds and removes actions from your inventory when you equip item etc..
 - Now supports automatic generation, follows the format of any of the currently manually support activations. You'll need to copy some of the formatting exactly for the system to pick up on it'
   - But this also allows for the support of custom items
-### Specificly Handled Items
+### Specifically Handled Items
 [Full List of Specifically handled items here](https://github.com/chasarooniZ/pf2e-item-activations/blob/main/ITEMS.md)
 ## Language Support
-Currently only supports the following languages:
-- English
-- Polish (Polski)
-- Chinese (中文)
 
 To add support for other languages you simply need to submit a PR for the `en.json` but in your chosen language based on the [language support listing for fvtt](https://foundryvtt.wiki/en/languages).
 **Note** the translations under the code section in the translation __MUST MATCH THE SAME CAPITALIZATION AND MUST MATCH THE WORD USED IN YOUR TRANSLATION OF PF2e__. The capitalization + word matching are critical to allowing any of the automation for automatically generating activations to work.
