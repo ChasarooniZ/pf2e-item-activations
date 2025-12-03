@@ -3,17 +3,35 @@
 -   **Added Support for the following Rune Activations**:
     -   Advancing
     -   Advancing (Greater)
+    -   Animated
     -   Antimagic
+    -   Bolka's Blessing
+    -   Bolka's Blessing (Greater)
+    -   Bloodthirsty
+    -   Brilliant (Greater)
+    -   Coating
     -   || Cavern's Heart ||
     -   Energy Adaptive
     -   Ethereal
+    -   Extending
+    -   Extending (Greater)
     -   Immovable
+    -   Impossible
+    -   Kols's Oath
+    -   Kols's Oath (Greater)
     -   Magnetizing
     -   Malleable
     -   Misleading
     -   Portable
+    -   Quickstrike
+    -   Serrating
     -   Sinister Knight
     -   Soaring
+    -   Swarming
+    -   Trudd's Strength
+    -   Trudd's Strength (Greater)
+    -   Unholy
+    -   Vorpal
     -   Winged
     -   Winged (Greater)
 
