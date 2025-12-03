@@ -59,6 +59,7 @@ const RUNE_RULE_ELEMENTS = {
     shadow: makeFlatModifier("stealth", 1),
     greaterShadow: makeFlatModifier("stealth", 2),
     majorShadow: makeFlatModifier("stealth", 3),
+    sinisterKnight: makeFlatModifier("deception", 3),
     stanching: makeFlatCheckAlteration("bleed", 12),
     greaterStanching: makeFlatCheckAlteration("bleed", 10),
     majorStanching: makeFlatCheckAlteration("bleed", 8),
