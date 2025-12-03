@@ -79,6 +79,17 @@ const RUNE_RULE_ELEMENTS = {
             value: 1,
         },
     ],
+    antimagic: [
+        {
+            key: "FlatModifier",
+            label: "{item|name}",
+            predicate: ["magical"],
+            selector: "saving-throw",
+            slug: "antimagic",
+            type: "status",
+            value: 1,
+        },
+    ],
     acidResistant: makeResistance("acid", 5),
     coldResistant: makeResistance("cold", 5),
     electricityResistant: makeResistance("electricity", 5),
