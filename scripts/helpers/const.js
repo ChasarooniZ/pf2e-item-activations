@@ -227,7 +227,7 @@ export const RUNE_RULE_ELEMENTS = {
             mode: "override",
             predicate: ["item:id:{item|_id}"],
             property: "bulk",
-            value: item?.system?.bulk?.value ?? 1,
+            value: item?.system?.bulk?.value + 1 ?? 2,
         },
     ],
     greaterFortification: (item) => [
