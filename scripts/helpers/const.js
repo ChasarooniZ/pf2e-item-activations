@@ -83,7 +83,7 @@ export const RUNE_ACTIVATIONS = {
     winged: "Compendium.pf2e.equipment-srd.Item.ds7j3D8IIyxWd2XI",
 };
 export const SPECIFIC_ACTION_RUNE_ACTIVATIONS = ["conducting"];
-export const DYNAMIC_RUNE_RULE_ELEMENTS = new Set("fortification", "greaterFortification");
+export const DYNAMIC_RUNE_RULE_ELEMENTS = new Set(["fortification", "greaterFortification"]);
 export const RUNE_RULE_ELEMENTS = {
     assisting: [
         { key: "ActiveEffectLike", mode: "add", path: "inventory.bulk.encumberedAfterAddend", value: 1 },
