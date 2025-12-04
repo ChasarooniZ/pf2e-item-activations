@@ -227,7 +227,7 @@ export const RUNE_RULE_ELEMENTS = {
             mode: "override",
             predicate: ["item:id:{item|_id}"],
             property: "bulk",
-            value: item?.system?.bulk?.value + 1 ?? 2,
+            value: Number.isNaN(Number(item?.system?.bulk?.value)) ? 2 : item?.system?.bulk?.value + 1,
         },
     ],
     greaterFortification: (item) => [
