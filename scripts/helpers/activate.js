@@ -2,7 +2,8 @@
 import { generateActivations } from "./generate-activation.js";
 import { handlePropertyRunes } from "./handle-property-runes.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./item-list.js";
-import { MODULE_ID, setModuleFlag } from "./misc.js";
+import { setModuleFlag } from "./misc.js";
+import { MODULE_ID } from "./const.js";
 import { augmentAction } from "./on-create.js";
 
 // Constant marker

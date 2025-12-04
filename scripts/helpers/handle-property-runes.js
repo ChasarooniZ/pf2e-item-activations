@@ -8,7 +8,8 @@ import {
     SPECIFIC_ACTION_RUNE_ACTIVATIONS,
 } from "./const.js";
 import { generateActivations } from "./generate-activation.js";
-import { MODULE_ID, setModuleFlag } from "./misc.js";
+import { setModuleFlag } from "./misc.js";
+import { MODULE_ID } from "./const.js";
 import { augmentAction } from "./on-create.js";
 
 function filterRelevantRunes(runes, list) {

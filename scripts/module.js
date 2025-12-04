@@ -2,7 +2,7 @@ import { debugLog } from "./helpers/debug.js";
 import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { generateActivations, hasActivations } from "./helpers/generate-activation.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
-import { IGNORE_IN_SLOT, IGNORED_TYPES, MODULE_ID } from "./helpers/misc.js";
+import { IGNORE_IN_SLOT, IGNORED_TYPES, MODULE_ID } from "./helpers/const.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";

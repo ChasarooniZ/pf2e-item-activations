@@ -1,5 +1,5 @@
 // Import necessary constants and functions
-import { MODULE_ID } from "./misc.js";
+import { MODULE_ID } from "./const.js";
 
 /**
  * Styles disabled actions for the given actor

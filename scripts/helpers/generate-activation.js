@@ -1,4 +1,4 @@
-import { TEXT } from "./misc.js";
+import { TEXT } from "./const.js";
 
 export function hasActivations(item) {
     return item.system.description.value.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}`);

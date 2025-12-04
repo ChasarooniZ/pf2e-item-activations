@@ -1,4 +1,20 @@
-import { makeFlatModifier, makeFlatCheckAlteration, makeResistance } from "./misc";
+import { makeFlatModifier, makeFlatCheckAlteration, makeResistance } from "./misc.js";
+
+export const MODULE_ID = "pf2e-item-activations";
+export const TEXT = {};
+export const IGNORED_TYPES = [
+    "consumable",
+    "action",
+    "feat",
+    "heritage",
+    "ancestry",
+    "background",
+    "class",
+    "spell",
+    "melee",
+    "ranged",
+];
+export const IGNORE_IN_SLOT = ["tattooed-on-the-body"];
 
 export const EFFECTS = {
     FORTIFICATION: "Compendium.pf2e-item-activations.item-activations-effects.Item.B4gaHFhQA7EXsNhv",
@@ -273,4 +289,4 @@ export const ACTIVATIONS_LIST = Object.keys(RUNE_ACTIVATIONS);
 
 export const RULE_ELEMENT_LIST = Object.keys(RUNE_RULE_ELEMENTS);
 
-export const RELEVANT_PROPERTY_RUNE_LIST = [...ACTIVATIONS_LIST, ...RULE_ELEMENT_LIST];
+export const RELEVANT_PROPERTY_RUNE_LIST = [...ACTIVATIONS_LIST, ...RULE_ELEMENT_LIST]; // Constant defining the module ID

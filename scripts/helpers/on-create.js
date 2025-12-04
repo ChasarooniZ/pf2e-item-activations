@@ -1,5 +1,6 @@
 // Import groups
-import { TEXT, MODULE_ID, setModuleFlag } from "./misc.js";
+import { setModuleFlag } from "./misc.js";
+import { TEXT, MODULE_ID } from "./const.js";
 
 /**
  * Augments an action with item information

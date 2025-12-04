@@ -1,4 +1,4 @@
-import { MODULE_ID } from "./helpers/misc.js";
+import { MODULE_ID } from "./helpers/const.js";
 import { EnhancedTour } from "./library/EnhancedTour.js";
 
 export function registerAPI() {
