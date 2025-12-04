@@ -206,6 +206,16 @@ export const RUNE_RULE_ELEMENTS = {
     greaterColdResistant: makeResistance("cold", 10),
     greaterElectricityResistant: makeResistance("electricity", 10),
     greaterFireResistant: makeResistance("fire", 10),
+    impossible: [
+        {
+            itemType: "weapon",
+            key: "ItemAlteration",
+            mode: "multiply",
+            predicate: ["item:id:{item|_id}"],
+            property: "range-increment",
+            value: 2,
+        },
+    ],
     fortification: (item) => [
         {
             key: "EphemeralEffect",

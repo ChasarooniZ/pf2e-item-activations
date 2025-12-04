@@ -1,3 +1,8 @@
+## 13.2.1
+
+- **Updated**
+    - Added rule element to automate `Impossible` weapon rune's ranged increment increase
+
 ## 13.2.0
 
 - **New**
