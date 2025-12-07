@@ -1,3 +1,8 @@
+## 13.2.2
+
+- **Updated**
+    - Updated Polish translation (🌐 @Lioheart)
+
 ## 13.2.1
 
 - **Updated**
@@ -300,3 +305,4 @@
     - The Whispering Reeds
     - Ventriloquist's Ring
     - Wayfinder
+
