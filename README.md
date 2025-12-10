@@ -47,10 +47,10 @@ To add support for other languages you simply need to submit a PR for the `en.js
 **Note** the translations under the code section in the translation __MUST MATCH THE SAME CAPITALIZATION AND MUST MATCH THE WORD USED IN YOUR TRANSLATION OF PF2e__. The capitalization + word matching are critical to allowing any of the automation for automatically generating activations to work.
 
 ## FAQ
-**Q: My activations aren't being created  for a custom item, What is going wrong?**
+**A. My activations aren't being created  for a custom item, What is going wrong?**
 
-A: Open an item that has activations in the sytsem (ie [Icycle](https://2e.aonprd.com/Equipment.aspx?ID=2868)) and edit the description as HTML. Compare that description and yours to see what is wrong, it could be an extra space or something of that nature.
+Open an item that has activations in the sytsem (ie [Icycle](https://2e.aonprd.com/Equipment.aspx?ID=2868)) and edit the description as HTML. Compare that description and yours to see what is wrong, it could be an extra space or something of that nature.
 
-**Q: Does this support premaster formatting?**
+**B. Does this support premaster formatting?**
 
-A: Yes it should support the premaster activation formatting as long as you copy the exact formatting style the system used.
+Yes it should support the premaster activation formatting as long as you copy the exact formatting style the system used.
