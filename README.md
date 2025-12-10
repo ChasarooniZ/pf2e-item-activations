@@ -47,10 +47,10 @@ To add support for other languages you simply need to submit a PR for the `en.js
 **Note** the translations under the code section in the translation __MUST MATCH THE SAME CAPITALIZATION AND MUST MATCH THE WORD USED IN YOUR TRANSLATION OF PF2e__. The capitalization + word matching are critical to allowing any of the automation for automatically generating activations to work.
 
 ## FAQ
-**Q: Will you add support for \<Insert System Here\>?**
+**Q: My activations aren't being created  for a custom item, What is going wrong?**
 
-A: This module will only support the **PF2e** system
+A: Open an item that has activations in the sytsem (ie [Icycle](https://2e.aonprd.com/Equipment.aspx?ID=2868)) and edit the description as HTML. Compare that description and yours to see what is wrong, it could be an extra space or something of that nature.
 
-**Q: Will you officially support Pre Remaster versions of items?**
+**Q: Does this support premaster formatting?**
 
-A: Don't plan on it, when I add homebrew support someone else can add support for them though!
+A: Yes it should support the premaster activation formatting as long as you copy the exact formatting style the system used.
