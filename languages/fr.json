@@ -64,6 +64,10 @@
         "twice": "deux fois",
         "three-times": "trois fois"
       }
+    },
+    "notes": {
+      "fortification": "Chaque fois que le défenseur subit un coup critique alors qu'il porte l'armure gravée, effectuez un jet de (@Check[flat|dc:17|showDC:all]). En cas de succès, cela devient un coup normal.",
+      "greater-fortification": "Chaque fois que le défenseur subit un coup critique alors qu'il porte l'armure gravée, effectuez un jet de (@Check[flat|dc:14|showDC:all]). En cas de succès, cela devient un coup normal."
     }
   }
 }
