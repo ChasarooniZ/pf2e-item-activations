@@ -3,6 +3,19 @@
 - **New**
   - Enabled `SF2e` support
 
+## 13.2.4
+
+- Updated French translation (🌐 @rectulo)
+
+## 13.2.3
+
+- Updated Chinese translation (🌐 @AlphaStarguide)
+
+## 13.2.2
+
+- **Updated**
+    - Updated Polish translation (🌐 @Lioheart)
+
 ## 13.2.1
 
 - **Updated**
@@ -305,3 +318,6 @@
     - The Whispering Reeds
     - Ventriloquist's Ring
     - Wayfinder
+
+
+

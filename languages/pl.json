@@ -64,6 +64,10 @@
         "twice": "dwa",
         "three-times": "trzy razy"
       }
+    },
+    "notes": {
+      "fortification": "Za każdym razem, gdy obrońca zostanie trafiony krytycznie podczas noszenia wytrawionej zbroi, należy wykonać test @Check[flat|dc:17|showDC:all]. W przypadku powodzenia trafienie krytyczne staje się normalnym trafieniem.\n",
+      "greater-fortification": "Za każdym razem, gdy obrońca zostanie trafiony krytycznie podczas noszenia wytrawionej zbroi, należy wykonać test @Check[flat|dc:14|showDC:all]. W przypadku powodzenia trafienie krytyczne staje się normalnym trafieniem.\n"
     }
   }
 }
