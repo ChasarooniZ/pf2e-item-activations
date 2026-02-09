@@ -1,3 +1,8 @@
+## 13.3.0
+
+- **New**
+  - Enabled `SF2e` support
+
 ## 13.2.1
 
 - **Updated**

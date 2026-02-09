@@ -21,6 +21,14 @@
                     "minimum": "6.0.0",
                     "verified": "6.0.2"
                 }
+            },
+            {
+                "id": "sf2e",
+                "type": "system",
+                "manifest": "https://github.com/foundryvtt/pf2e/releases/download/latest/system.json",
+                "compatibility": {
+                    "minimum": "0.0.3"
+                }
             }
         ],
         "recommends": [
