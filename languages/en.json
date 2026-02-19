@@ -67,7 +67,21 @@
         },
         "notes": {
             "fortification": "Each time the defender is critically hit while wearing the etched armor, attempt a @Check[flat|dc:17|showDC:all]. On a success, it becomes a normal hit.",
-            "greater-fortification": "Each time the defender is critically hit while wearing the etched armor, attempt a @Check[flat|dc:14|showDC:all]. On a success, it becomes a normal hit."
+            "greater-fortification": "Each time the defender is critically hit while wearing the etched armor, attempt a @Check[flat|dc:14|showDC:all]. On a success, it becomes a normal hit.",
+            "spellhearts": {
+                "terms": {
+                    "armor": "Armor",
+                    "weapon": "Weapon"
+                },
+                "items": {
+                    "grim-sandglass": {
+                        "weapon": "Your Strikes with the weapon deal additional void damage."
+                    },
+                    "flaming-star": {
+                        "weapon": "Your Strikes with the weapon deal an additional die of fire damage."
+                    }
+                }
+            }
         }
     }
 }

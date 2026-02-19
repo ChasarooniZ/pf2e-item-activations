@@ -9,18 +9,22 @@ const ITEMS = {
         "flaming-star": {
             dc: 17,
             spells: [SPELLS.IGNITION],
+            notes: getSpellHeartNotes("flaming-star"),
         },
         "flaming-star-greater": {
             dc: 24,
             spells: [SPELLS.IGNITION, SPELLS.FIREBALL],
+            notes: getSpellHeartNotes("flaming-star"),
         },
         "flaming-star-major": {
             dc: 29,
             spells: [SPELLS.IGNITION, { rank: 4, uuid: SPELLS.FIREBALL }, SPELLS.WALL_OF_FIRE],
+            notes: getSpellHeartNotes("flaming-star"),
         },
         "grim-sandglass": {
             dc: 17,
             spells: [SPELLS.VOID_WARP],
+            notes: getSpellHeartNotes("grim-sandglass"),
         },
         "grim-sandglass-greater": {
             dc: 24,
@@ -31,6 +35,7 @@ const ITEMS = {
                     { rank: 2, uuid: SPELLS.HARM },
                 ],
             ],
+            notes: getSpellHeartNotes("grim-sandglass"),
         },
         "grim-sandglass-major": {
             dc: 29,
@@ -42,9 +47,74 @@ const ITEMS = {
                 ],
                 [SPELLS.ENERVATION, { rank: 4, uuid: SPELLS.RESTORATION }],
             ],
+            notes: getSpellHeartNotes("grim-sandglass"),
         },
     },
 };
+
+const SPELLHEART_EFFECTS = {
+    "grim-sandglass": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.V4JoVnOfKze8cRan",
+    },
+    "flaming-star": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.OxCVZSvWVJsOGAZN",
+    },
+};
+
+const SPELL_ITEM_LIST = [...Object.keys(ITEMS.SPELLHEART)];
+
+function getSpellHeartNotes(id) {
+    const keys = Object.keys(game.i18n.translations?.["pf2e-item-activations"]?.notes?.spellhearts?.items?.[id]);
+    const notes = [
+        {
+            key: "RollOption",
+            label: "{item|name}",
+            option: "{item|slug}",
+            placement: "spellcasting",
+            toggleable: true,
+            suboptions: [
+                { label: "pf2e-item-activations.notes.spellhearts.terms.weapon", value: "weapon" },
+                { label: "pf2e-item-activations.notes.spellhearts.terms.armor", value: "armor" },
+            ],
+            alwaysActive: true,
+            value: true,
+        },
+        ...(keys.includes("armor")
+            ? [
+                  {
+                      itemType: "spell",
+                      key: "ItemAlteration",
+                      mode: "add",
+                      predicate: ["{item|slug}:armor"],
+                      property: "description",
+                      value: [
+                          {
+                              text: `<p>@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.armor]</p>${SPELLHEART_EFFECTS?.[id]?.armor ? `@UUID[${SPELLHEART_EFFECTS?.[id]?.armor}]` : ""}`,
+                              title: "pf2e-item-activations.notes.spellhearts.terms.armor",
+                          },
+                      ],
+                  },
+              ]
+            : []),
+        ...(keys.includes("weapon")
+            ? [
+                  {
+                      itemType: "spell",
+                      key: "ItemAlteration",
+                      mode: "add",
+                      predicate: ["{item|slug}:weapon"],
+                      property: "description",
+                      value: [
+                          {
+                              text: `<p>@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.weapon]</p>${SPELLHEART_EFFECTS?.[id]?.weapon ? `@UUID[${SPELLHEART_EFFECTS?.[id]?.weapon}]` : ""}`,
+                              title: "pf2e-item-activations.notes.spellhearts.terms.weapon",
+                          },
+                      ],
+                  },
+              ]
+            : []),
+    ];
+}
 
 const SPELLS = {
     ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
