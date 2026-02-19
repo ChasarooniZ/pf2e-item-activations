@@ -48,6 +48,49 @@ export const SPELL_ITEMS = {
         ],
         notes: getSpellHeartNotes("grim-sandglass"),
     },
+    "jolt-coil": {
+        dc: 17,
+        spells: [SPELLS.ELECTRIC_ARC],
+        notes: getSpellHeartNotes("jolt-coil"),
+    },
+    "jolt-coil-greater": {
+        dc: 24,
+        spells: [SPELLS.ELECTRIC_ARC, SPELLS.LIGHTNING_BOLT],
+        notes: getSpellHeartNotes("jolt-coil"),
+    },
+    "jolt-coil-major": {
+        dc: 29,
+        spells: [SPELLS.ELECTRIC_ARC, { rank: 4, uuid: SPELLS.LIGHTNING_BOLT }, SPELLS.DRAW_THE_LIGHTNING],
+        notes: getSpellHeartNotes("jolt-coil"),
+    },
+    "perfect-droplet": {
+        dc: 17,
+        spells: [SPELLS.SPOUT],
+        notes: getSpellHeartNotes("perfect-droplet"),
+    },
+    "perfect-droplet-greater": {
+        dc: 24,
+        spells: [
+            SPELLS.SPOUT,
+            [
+                SPELLS.AQUEOUS_ORB,
+                SPELLS.FEET_TO_FINS,
+            ],
+        ],
+        notes: getSpellHeartNotes("perfect-droplet"),
+    },
+    "perfect-droplet-major": {
+        dc: 29,
+        spells: [
+            SPELLS.SPOUT,
+            [
+                { rank: 4, uuid: SPELLS.AQUEOUS_ORB },
+                { rank: 4, uuid: SPELLS.FEET_TO_FINS },
+            ],
+            SPELLS.HYDRAULIC_TORRENT,
+        ],
+        notes: getSpellHeartNotes("perfect-droplet"),
+    },
 };
 
 const SPELLHEART_EFFECTS = {
@@ -56,6 +99,12 @@ const SPELLHEART_EFFECTS = {
     },
     "flaming-star": {
         weapon: "Compendium.pf2e.equipment-effects.Item.OxCVZSvWVJsOGAZN",
+    },
+    "jolt-coil": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.mHIdEC7RX6isILiM",
+    },
+    "perfect-droplet": {
+        armor: "Compendium.pf2e.equipment-effects.Item.VZCcjwsQX1wnYlTn",
     },
 };
 
@@ -115,12 +164,19 @@ function getSpellHeartNotes(id) {
 }
 
 const SPELLS = {
+    AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
+    DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
+    ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
     ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
+    FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
     FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
     HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
     HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
+    HYDRAULIC_TORRENT: "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
     IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
+    LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
     RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
+    SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
     VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };

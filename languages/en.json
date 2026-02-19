@@ -75,10 +75,16 @@
                 },
                 "items": {
                     "grim-sandglass": {
-                        "weapon": "Your Strikes with the weapon deal additional void damage."
+                        "weapon": "After you Cast a Spell by Activating the sandglass, your Strikes with the weapon deal additional void damage until the end of your next turn."
                     },
                     "flaming-star": {
-                        "weapon": "Your Strikes with the weapon deal an additional die of fire damage."
+                        "weapon": "After you cast a fire spell by Activating the star, Your your Strikes with the weapon deal an additional fire damage until the end of your next turn."
+                    },
+                    "jolt-coil": {
+                        "weapon": "After you cast an electricity spell by activating the coil, your Strikes with the weapon deal additional electricity damage until the end of your next turn."
+                    },
+                    "perfect-droplet": {
+                        "armor": "After you cast a water spell by Activating the droplet, your body becomes mistlike. Until the end of the turn, you can move through enemies' spaces. You can't move through creatures that have the water trait in this way."
                     }
                 }
             }
