@@ -17,6 +17,7 @@ import {
     handleRemovedRunes,
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
+import { SPELL_ITEMS } from "./helpers/spellcasting-items.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
@@ -320,6 +321,17 @@ export async function addOrDeleteActivation(item, changeType) {
 
         if (!qualified) {
             actions = actions.map((action) => deactivateAction(action));
+        } else {
+            const spellInfo = SPELL_ITEMS?.[item.system.slug];
+            if (spellInfo) {
+                createSpellcastingEntry({
+                    spellsAdded: spellInfo.spells,
+                    dc: spellInfo.dc,
+                    entryNoteData: spellInfo.note,
+                    actor,
+                    item,
+                });
+            }
         }
 
         debugLog({ actions }, "Add");

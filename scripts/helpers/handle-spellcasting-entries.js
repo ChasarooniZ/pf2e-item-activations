@@ -54,42 +54,45 @@ function isTheSpellACantrip(spellObject) {
     return spellObject?.system?.traits?.value?.contains("cantrip");
 }
 
-function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItemDC, item }) {
+function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItemDC, item, entryNoteData }) {
     return {
         name: item.name,
         type: "spellcastingEntry",
         system: {
-            rules: useItemDC
-                ? [
-                      {
-                          key: "AdjustModifier",
-                          selector: "spell-dc",
-                          predicate: [
-                              "spellcasting:id:{item|id}",
-                              { or: ["modifier:type:ability", "bonus:type:proficiency"] },
-                              { not: "slug:{item|slug}" },
-                          ],
-                          suppress: true,
-                      },
-                      {
-                          key: "AdjustModifier",
-                          selector: "spell-attack",
-                          predicate: [
-                              "spellcasting:id:{item|id}",
-                              { or: ["modifier:type:ability", "bonus:type:proficiency"] },
-                              { not: "slug:{item|slug}" },
-                          ],
-                          suppress: true,
-                      },
-                      {
-                          key: "FlatModifier",
-                          value: dc - 10,
-                          slug: "{item|slug}",
-                          selector: ["spell-dc", "spell-attack"],
-                          label: "{item|name}",
-                      },
-                  ]
-                : [],
+            rules: [
+                ...(useItemDC
+                    ? [
+                          {
+                              key: "AdjustModifier",
+                              selector: "spell-dc",
+                              predicate: [
+                                  "spellcasting:id:{item|id}",
+                                  { or: ["modifier:type:ability", "bonus:type:proficiency"] },
+                                  { not: "slug:{item|slug}" },
+                              ],
+                              suppress: true,
+                          },
+                          {
+                              key: "AdjustModifier",
+                              selector: "spell-attack",
+                              predicate: [
+                                  "spellcasting:id:{item|id}",
+                                  { or: ["modifier:type:ability", "bonus:type:proficiency"] },
+                                  { not: "slug:{item|slug}" },
+                              ],
+                              suppress: true,
+                          },
+                          {
+                              key: "FlatModifier",
+                              value: dc - 10,
+                              slug: "{item|slug}",
+                              selector: ["spell-dc", "spell-attack"],
+                              label: "{item|name}",
+                          },
+                      ]
+                    : []),
+                ...(entryNoteData ? entryNoteData : []),
+            ],
             slug: item.slug,
             traits: {
                 otherTags: [],
@@ -109,7 +112,7 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
         },
         flags: {
             [MODULE_ID]: {
-                grantedBy: item.uuid,
+                grantedBy: item.id,
             },
         },
     };

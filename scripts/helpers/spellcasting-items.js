@@ -4,51 +4,49 @@
 // Defaults to default spell rank
 // If array then its pick one
 // strictDC = dc must be the value set
-const ITEMS = {
-    SPELLHEART: {
-        "flaming-star": {
-            dc: 17,
-            spells: [SPELLS.IGNITION],
-            notes: getSpellHeartNotes("flaming-star"),
-        },
-        "flaming-star-greater": {
-            dc: 24,
-            spells: [SPELLS.IGNITION, SPELLS.FIREBALL],
-            notes: getSpellHeartNotes("flaming-star"),
-        },
-        "flaming-star-major": {
-            dc: 29,
-            spells: [SPELLS.IGNITION, { rank: 4, uuid: SPELLS.FIREBALL }, SPELLS.WALL_OF_FIRE],
-            notes: getSpellHeartNotes("flaming-star"),
-        },
-        "grim-sandglass": {
-            dc: 17,
-            spells: [SPELLS.VOID_WARP],
-            notes: getSpellHeartNotes("grim-sandglass"),
-        },
-        "grim-sandglass-greater": {
-            dc: 24,
-            spells: [
-                SPELLS.VOID_WARP,
-                [
-                    { rank: 2, uuid: SPELLS.HEAL },
-                    { rank: 2, uuid: SPELLS.HARM },
-                ],
+export const SPELL_ITEMS = {
+    "flaming-star": {
+        dc: 17,
+        spells: [SPELLS.IGNITION],
+        notes: getSpellHeartNotes("flaming-star"),
+    },
+    "flaming-star-greater": {
+        dc: 24,
+        spells: [SPELLS.IGNITION, SPELLS.FIREBALL],
+        notes: getSpellHeartNotes("flaming-star"),
+    },
+    "flaming-star-major": {
+        dc: 29,
+        spells: [SPELLS.IGNITION, { rank: 4, uuid: SPELLS.FIREBALL }, SPELLS.WALL_OF_FIRE],
+        notes: getSpellHeartNotes("flaming-star"),
+    },
+    "grim-sandglass": {
+        dc: 17,
+        spells: [SPELLS.VOID_WARP],
+        notes: getSpellHeartNotes("grim-sandglass"),
+    },
+    "grim-sandglass-greater": {
+        dc: 24,
+        spells: [
+            SPELLS.VOID_WARP,
+            [
+                { rank: 2, uuid: SPELLS.HEAL },
+                { rank: 2, uuid: SPELLS.HARM },
             ],
-            notes: getSpellHeartNotes("grim-sandglass"),
-        },
-        "grim-sandglass-major": {
-            dc: 29,
-            spells: [
-                SPELLS.VOID_WARP,
-                [
-                    { rank: 4, uuid: SPELLS.HEAL },
-                    { rank: 4, uuid: SPELLS.HARM },
-                ],
-                [SPELLS.ENERVATION, { rank: 4, uuid: SPELLS.RESTORATION }],
+        ],
+        notes: getSpellHeartNotes("grim-sandglass"),
+    },
+    "grim-sandglass-major": {
+        dc: 29,
+        spells: [
+            SPELLS.VOID_WARP,
+            [
+                { rank: 4, uuid: SPELLS.HEAL },
+                { rank: 4, uuid: SPELLS.HARM },
             ],
-            notes: getSpellHeartNotes("grim-sandglass"),
-        },
+            [SPELLS.ENERVATION, { rank: 4, uuid: SPELLS.RESTORATION }],
+        ],
+        notes: getSpellHeartNotes("grim-sandglass"),
     },
 };
 
@@ -61,11 +59,11 @@ const SPELLHEART_EFFECTS = {
     },
 };
 
-const SPELL_ITEM_LIST = [...Object.keys(ITEMS.SPELLHEART)];
+export const SPELL_ITEM_SLUG_LIST = [...Object.keys(SPELL_ITEMS)];
 
 function getSpellHeartNotes(id) {
     const keys = Object.keys(game.i18n.translations?.["pf2e-item-activations"]?.notes?.spellhearts?.items?.[id]);
-    const notes = [
+    return [
         {
             key: "RollOption",
             label: "{item|name}",
