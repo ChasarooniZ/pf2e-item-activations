@@ -74,11 +74,14 @@
                     "weapon": "Weapon"
                 },
                 "items": {
-                    "grim-sandglass": {
-                        "weapon": "After you Cast a Spell by Activating the sandglass, your Strikes with the weapon deal additional void damage until the end of your next turn."
+                    "clay-sphere": {
+                        "weapon": "After you cast a morph or polymorph spell by activating the clay sphere, the weapon becomes malleable, shifting its form to your whims. Your Strikes with the affixed weapon have the versatile bludgeoning, versatile piercing, and versatile slashing trait for 1 minute. Until the end of your next turn, Strikes with the affixed weapon have their damage dice increase by one step."
                     },
                     "flaming-star": {
                         "weapon": "After you cast a fire spell by Activating the star, Your your Strikes with the weapon deal an additional fire damage until the end of your next turn."
+                    },
+                    "grim-sandglass": {
+                        "weapon": "After you Cast a Spell by Activating the sandglass, your Strikes with the weapon deal additional void damage until the end of your next turn."
                     },
                     "jolt-coil": {
                         "weapon": "After you cast an electricity spell by activating the coil, your Strikes with the weapon deal additional electricity damage until the end of your next turn."
@@ -88,6 +91,10 @@
                     },
                     "rime-crystal": {
                         "weapon": "After you cast an cold spell by activating the crystal, your Strikes with the weapon deal additional cold damage until the end of your next turn."
+                    },
+                    "trinity-geode": {
+                        "armor": "After you cast an earth spell by Activating the geode, you gain resistance to physical damage (except adamantine) until the end of your next turn, or double the resistance for a non-cantrip spell.",
+                        "weapon": "After you cast an earth spell by activating the geode, your Strikes with the weapon deal additional bludgeoning damage until the end of your next turn."
                     }
                 }
             }

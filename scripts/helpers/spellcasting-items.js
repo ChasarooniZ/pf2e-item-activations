@@ -1,12 +1,15 @@
 const SPELLS = {
     AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
     CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
+    CURSED_METAMORPHOSIS: "Compendium.pf2e.spells-srd.Item.dN8QBNuTiaBHCKUe",
     DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
     ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
     ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
+    ENLARGE: "Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV",
     FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
     FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
     FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
+    GOUGING_CLAW: "Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO",
     HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
     HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
     HOWLING_BLIZZARD: "Compendium.pf2e.spells-srd.Item.xxWhyl81w3ckslAU",
@@ -14,18 +17,25 @@ const SPELLS = {
     ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
     IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
     LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
+    ONE_WITH_STONE: "Compendium.pf2e.spells-srd.Item.vh1RpbWfqdNC4L3P",
+    PLANT_FORM: "Compendium.pf2e.spells-srd.Item.zCcfPS4y5SrZzU2x",
     RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
+    SCATTER_SCREE: "Compendium.pf2e.spells-srd.Item.zA0jNIBRgLsyTpbm",
+    SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
     VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };
 
 const SPELLHEART_EFFECTS = {
-    "grim-sandglass": {
-        weapon: "Compendium.pf2e.equipment-effects.Item.V4JoVnOfKze8cRan",
+    "clay-sphere": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.La2ziyuLYKG0thOj",
     },
     "flaming-star": {
         weapon: "Compendium.pf2e.equipment-effects.Item.OxCVZSvWVJsOGAZN",
+    },
+    "grim-sandglass": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.V4JoVnOfKze8cRan",
     },
     "jolt-coil": {
         weapon: "Compendium.pf2e.equipment-effects.Item.mHIdEC7RX6isILiM",
@@ -36,6 +46,10 @@ const SPELLHEART_EFFECTS = {
     "rime-crystal": {
         weapon: "Compendium.pf2e.equipment-effects.Item.IiDpW99zrh7zHxmQ",
     },
+    "trinity-geode": {
+        armor: "Compendium.pf2e.equipment-effects.Item.oqwrw6XztVlS9tEG",
+        weapon: "Compendium.pf2e.equipment-effects.Item.WRV0XjiEHdlBpduS"
+    }
 };
 
 // Defaults to 1 / day
@@ -45,6 +59,21 @@ const SPELLHEART_EFFECTS = {
 // If array then its pick one
 // strictDC = dc must be the value set
 export const SPELL_ITEMS = {
+    "clay-sphere": {
+        dc: 17,
+        spells: [SPELLS.GOUGING_CLAW],
+        notes: getSpellHeartNotes("clay-sphere"),
+    },
+    "clay-sphere-greater": {
+        dc: 20,
+        spells: [SPELLS.GOUGING_CLAW, SPELLS.ENLARGE],
+        notes: getSpellHeartNotes("clay-sphere"),
+    },
+    "clay-sphere-major": {
+        dc: 31,
+        spells: [SPELLS.GOUGING_CLAW, SPELLS.CURSED_METAMORPHOSIS, SPELLS.PLANT_FORM],
+        notes: getSpellHeartNotes("clay-sphere"),
+    },
     "flaming-star": {
         dc: 17,
         spells: [SPELLS.IGNITION],
@@ -139,6 +168,21 @@ export const SPELL_ITEMS = {
         dc: 29,
         spells: [SPELLS.FROSTBITE, SPELLS.ICE_STORM, SPELLS.HOWLING_BLIZZARD],
         notes: getSpellHeartNotes("rime-crystal"),
+    },
+     "trinity-geode": {
+        dc: 17,
+        spells: [SPELLS.SCATTER_SCREE],
+        notes: getSpellHeartNotes("trinity-geode"),
+    },
+    "trinity-geode-greater": {
+        dc: 24,
+        spells: [SPELLS.SCATTER_SCREE, SPELLS.ONE_WITH_STONE],
+        notes: getSpellHeartNotes("trinity-geode"),
+    },
+    "trinity-geode-major": {
+        dc: 29,
+        spells: [SPELLS.SCATTER_SCREE, { rank: 4, uuid: SPELLS.ONE_WITH_STONE }, SPELLS.SPIKE_STONES],
+        notes: getSpellHeartNotes("trinity-geode"),
     },
 };
 
