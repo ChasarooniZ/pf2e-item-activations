@@ -80,6 +80,9 @@
                     "flaming-star": {
                         "weapon": "After you cast a fire spell by Activating the star, Your your Strikes with the weapon deal an additional fire damage until the end of your next turn."
                     },
+                    "foxglove-token": {
+                        "weapon": "After you cast an plant spell by activating the foxglove token, your Strikes with the weapon deal additional poison damage until the end of your next turn."
+                    },
                     "grim-sandglass": {
                         "weapon": "After you Cast a Spell by Activating the sandglass, your Strikes with the weapon deal additional void damage until the end of your next turn."
                     },
@@ -88,6 +91,12 @@
                     },
                     "perfect-droplet": {
                         "armor": "After you cast a water spell by Activating the droplet, your body becomes mistlike. Until the end of the turn, you can move through enemies' spaces. You can't move through creatures that have the water trait in this way."
+                    },
+                    "pickled-demon-tongue": {
+                        "weapon": "After you cast an acid spell by activating the pickled demon tongue, your Strikes with the weapon deal additional acid damage until the end of your next turn."
+                    },
+                    "polished-demon-horn": {
+                        "weapon": "After you cast an enchantment spell by activating the horn, your Strikes with the weapon deal additional mental damage until the end of your next turn."
                     },
                     "rime-crystal": {
                         "weapon": "After you cast an cold spell by activating the crystal, your Strikes with the weapon deal additional cold damage until the end of your next turn."

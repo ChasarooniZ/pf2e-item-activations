@@ -1,11 +1,16 @@
 const SPELLS = {
+    ACID_GRIP: "Compendium.pf2e.spells-srd.Item.9h9YCncqah6VNsKf",
+    ACIDIC_BURST: "Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws",
     AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
+    CAUSTIC_BLAST: "Compendium.pf2e.spells-srd.Item.thAHF1zxNplLCJPO",
     CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
     CURSED_METAMORPHOSIS: "Compendium.pf2e.spells-srd.Item.dN8QBNuTiaBHCKUe",
+    DAZE: "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4",
     DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
     ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
     ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
     ENLARGE: "Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV",
+    FEAR: "Compendium.pf2e.spells-srd.Item.4koZzrnMXhhosn0D",
     FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
     FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
     FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
@@ -17,13 +22,19 @@ const SPELLS = {
     ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
     IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
     LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
+    NOXIOUS_VAPOURS: "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv",
     ONE_WITH_STONE: "Compendium.pf2e.spells-srd.Item.vh1RpbWfqdNC4L3P",
+    OUTCASTS_CURSE: "Compendium.pf2e.spells-srd.Item.KSAEhNfZyXMO7Z7V",
+    PETAL_STORM: "Compendium.pf2e.spells-srd.Item.D31YX7zvRBvenTAz",
     PLANT_FORM: "Compendium.pf2e.spells-srd.Item.zCcfPS4y5SrZzU2x",
+    PUFF_OF_POISON: "Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4",
     RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
     SCATTER_SCREE: "Compendium.pf2e.spells-srd.Item.zA0jNIBRgLsyTpbm",
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
+    WALL_OF_THORNS: "Compendium.pf2e.spells-srd.Item.KsWhliKfUs3IpW3c",
+    VISION_OF_DEATH: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n",
     VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };
 
@@ -34,6 +45,9 @@ const SPELLHEART_EFFECTS = {
     "flaming-star": {
         weapon: "Compendium.pf2e.equipment-effects.Item.OxCVZSvWVJsOGAZN",
     },
+    "fox-glove-token": {
+        weapon: "",
+    },
     "grim-sandglass": {
         weapon: "Compendium.pf2e.equipment-effects.Item.V4JoVnOfKze8cRan",
     },
@@ -43,13 +57,19 @@ const SPELLHEART_EFFECTS = {
     "perfect-droplet": {
         armor: "Compendium.pf2e.equipment-effects.Item.VZCcjwsQX1wnYlTn",
     },
+    "pickled-demon-tongue": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.LbaYzs0dQuFj8FXJ",
+    },
+    "polished-demon-horn": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.WARLTi8unmPgmnNw",
+    },
     "rime-crystal": {
         weapon: "Compendium.pf2e.equipment-effects.Item.IiDpW99zrh7zHxmQ",
     },
     "trinity-geode": {
         armor: "Compendium.pf2e.equipment-effects.Item.oqwrw6XztVlS9tEG",
-        weapon: "Compendium.pf2e.equipment-effects.Item.WRV0XjiEHdlBpduS"
-    }
+        weapon: "Compendium.pf2e.equipment-effects.Item.WRV0XjiEHdlBpduS",
+    },
 };
 
 // Defaults to 1 / day
@@ -88,6 +108,26 @@ export const SPELL_ITEMS = {
         dc: 29,
         spells: [SPELLS.IGNITION, { rank: 4, uuid: SPELLS.FIREBALL }, SPELLS.WALL_OF_FIRE],
         notes: getSpellHeartNotes("flaming-star"),
+    },
+    "foxglove-token": {
+        dc: 17,
+        spells: [SPELLS.PUFF_OF_POISON],
+        notes: getSpellHeartNotes("foxglove-token"),
+    },
+    "foxglove-token-greater": {
+        dc: 24,
+        spells: [SPELLS.PUFF_OF_POISON, { rank: 3, uuid: SPELLS.NOXIOUS_VAPOURS }],
+        notes: getSpellHeartNotes("foxglove-token"),
+    },
+    "foxglove-token-major": {
+        dc: 29,
+        spells: [
+            SPELLS.PUFF_OF_POISON,
+            { rank: 3, uuid: SPELLS.NOXIOUS_VAPOURS },
+            SPELLS.PETAL_STORM,
+            { rank: 4, uuid: SPELLS.WALL_OF_THORNS },
+        ],
+        notes: getSpellHeartNotes("foxglove-token"),
     },
     "grim-sandglass": {
         dc: 17,
@@ -154,6 +194,36 @@ export const SPELL_ITEMS = {
         ],
         notes: getSpellHeartNotes("perfect-droplet"),
     },
+    "pickled-demon-tongue": {
+        dc: 17,
+        spells: [SPELLS.CAUSTIC_BLAST],
+        notes: getSpellHeartNotes("pickled-demon-tongue"),
+    },
+    "pickled-demon-tongue-greater": {
+        dc: 24,
+        spells: [SPELLS.CAUSTIC_BLAST, { rank: 3, uuid: SPELLS.ACIDIC_BURST }],
+        notes: getSpellHeartNotes("pickled-demon-tongue"),
+    },
+    "pickled-demon-tongue-major": {
+        dc: 29,
+        spells: [SPELLS.CAUSTIC_BLAST, SPELLS.ACID_GRIP, { rank: 4, uuid: SPELLS.ACIDIC_BURST }],
+        notes: getSpellHeartNotes("pickled-demon-tongue"),
+    },
+    "polished-demon-horn": {
+        dc: 17,
+        spells: [SPELLS.DAZE],
+        notes: getSpellHeartNotes("polished-demon-horn"),
+    },
+    "polished-demon-horn-greater": {
+        dc: 24,
+        spells: [SPELLS.DAZE, { rank: 3, uuid: SPELLS.FEAR }],
+        notes: getSpellHeartNotes("polished-demon-horn"),
+    },
+    "polished-demon-horn-major": {
+        dc: 29,
+        spells: [SPELLS.DAZE, { rank: 3, uuid: SPELLS.FEAR }, SPELLS.OUTCASTS_CURSE, SPELLS.VISION_OF_DEATH],
+        notes: getSpellHeartNotes("polished-demon-horn"),
+    },
     "rime-crystal": {
         dc: 17,
         spells: [SPELLS.FROSTBITE],
@@ -169,7 +239,7 @@ export const SPELL_ITEMS = {
         spells: [SPELLS.FROSTBITE, SPELLS.ICE_STORM, SPELLS.HOWLING_BLIZZARD],
         notes: getSpellHeartNotes("rime-crystal"),
     },
-     "trinity-geode": {
+    "trinity-geode": {
         dc: 17,
         spells: [SPELLS.SCATTER_SCREE],
         notes: getSpellHeartNotes("trinity-geode"),
@@ -228,23 +298,6 @@ function getSpellHeartNotes(id) {
                       key: "ItemAlteration",
                       mode: "add",
                       predicate: ["{item|slug}:weapon", "spellcasting:id:{item|id}"],
-                      property: "description",
-                      value: [
-                          {
-                              text: `<p>@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.weapon]</p>${SPELLHEART_EFFECTS?.[id]?.weapon ? `@UUID[${SPELLHEART_EFFECTS?.[id]?.weapon}]` : ""}`,
-                              title: "pf2e-item-activations.notes.spellhearts.terms.weapon",
-                          },
-                      ],
-                  },
-              ]
-            : []),
-            ...(keys.includes("all")
-            ? [
-                  {
-                      itemType: "spell",
-                      key: "ItemAlteration",
-                      mode: "add",
-                      predicate: ["spellcasting:id:{item|id}"],
                       property: "description",
                       value: [
                           {
