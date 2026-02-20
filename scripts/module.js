@@ -328,7 +328,7 @@ export async function addOrDeleteActivation(item, changeType) {
                 createSpellcastingEntry({
                     spellsAdded: spellInfo.spells,
                     dc: spellInfo.dc,
-                    useSpellDC: spellInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellInfo.dc,
+                    useItemDC: spellInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellInfo.dc,
                     entryNoteData: spellInfo.note,
                     actor,
                     item,
