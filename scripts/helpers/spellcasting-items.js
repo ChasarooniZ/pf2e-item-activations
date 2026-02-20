@@ -70,13 +70,7 @@ export const SPELL_ITEMS = {
     },
     "perfect-droplet-greater": {
         dc: 24,
-        spells: [
-            SPELLS.SPOUT,
-            [
-                SPELLS.AQUEOUS_ORB,
-                SPELLS.FEET_TO_FINS,
-            ],
-        ],
+        spells: [SPELLS.SPOUT, [SPELLS.AQUEOUS_ORB, SPELLS.FEET_TO_FINS]],
         notes: getSpellHeartNotes("perfect-droplet"),
     },
     "perfect-droplet-major": {
@@ -90,6 +84,21 @@ export const SPELL_ITEMS = {
             SPELLS.HYDRAULIC_TORRENT,
         ],
         notes: getSpellHeartNotes("perfect-droplet"),
+    },
+    "rime-crystal": {
+        dc: 17,
+        spells: [SPELLS.FROSTBITE],
+        notes: getSpellHeartNotes("rime-crystal"),
+    },
+    "rime-crystal-greater": {
+        dc: 24,
+        spells: [SPELLS.FROSTBITE, { rank: 3, uuid: SPELLS.CHILLING_SPRAY }],
+        notes: getSpellHeartNotes("rime-crystal"),
+    },
+    "rime-crystal-major": {
+        dc: 29,
+        spells: [SPELLS.FROSTBITE, SPELLS.ICE_STORM, SPELLS.HOWLING_BLIZZARD],
+        notes: getSpellHeartNotes("rime-crystal"),
     },
 };
 
@@ -106,6 +115,31 @@ const SPELLHEART_EFFECTS = {
     "perfect-droplet": {
         armor: "Compendium.pf2e.equipment-effects.Item.VZCcjwsQX1wnYlTn",
     },
+    "rime-crystal": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.IiDpW99zrh7zHxmQ",
+    },
+};
+
+const SPELLS = {
+    AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
+    CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
+    DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
+    ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
+    ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
+    FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
+    FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
+    FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
+    HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
+    HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
+    HOWLING_BLIZZARD: "Compendium.pf2e.spells-srd.Item.xxWhyl81w3ckslAU",
+    HYDRAULIC_TORRENT: "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
+    ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
+    IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
+    LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
+    RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
+    SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
+    WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
+    VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };
 
 export const SPELL_ITEM_SLUG_LIST = [...Object.keys(SPELL_ITEMS)];
@@ -162,21 +196,3 @@ function getSpellHeartNotes(id) {
             : []),
     ];
 }
-
-const SPELLS = {
-    AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
-    DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
-    ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
-    ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
-    FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
-    FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
-    HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
-    HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
-    HYDRAULIC_TORRENT: "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
-    IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
-    LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
-    RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
-    SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
-    WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
-    VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
-};

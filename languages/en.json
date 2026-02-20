@@ -85,6 +85,9 @@
                     },
                     "perfect-droplet": {
                         "armor": "After you cast a water spell by Activating the droplet, your body becomes mistlike. Until the end of the turn, you can move through enemies' spaces. You can't move through creatures that have the water trait in this way."
+                    },
+                    "rime-crystal": {
+                        "weapon": "After you cast an cold spell by activating the crystal, your Strikes with the weapon deal additional cold damage until the end of your next turn."
                     }
                 }
             }
