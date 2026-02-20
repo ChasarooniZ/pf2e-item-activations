@@ -17,6 +17,7 @@ const SPELLS = {
     GOUGING_CLAW: "Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO",
     HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
     HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
+    HEALING_WELL: "Compendium.pf2e.spells-srd.Item.CzjQtkRuRlzRvwzg",
     HOWLING_BLIZZARD: "Compendium.pf2e.spells-srd.Item.xxWhyl81w3ckslAU",
     HYDRAULIC_TORRENT: "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
     ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
@@ -31,8 +32,10 @@ const SPELLS = {
     PUFF_OF_POISON: "Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4",
     RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
     SCATTER_SCREE: "Compendium.pf2e.spells-srd.Item.zA0jNIBRgLsyTpbm",
+    SOUND_BODY: "Compendium.pf2e.spells-srd.Item.Et8RSCLx8w7uOLvo",
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
+    STABILIZE: "Compendium.pf2e.spells-srd.Item.SnjhtQYexDtNDdEg",
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
     WALL_OF_THORNS: "Compendium.pf2e.spells-srd.Item.KsWhliKfUs3IpW3c",
     VISION_OF_DEATH: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n",
@@ -51,6 +54,9 @@ const SPELLHEART_EFFECTS = {
     },
     "grim-sandglass": {
         weapon: "Compendium.pf2e.equipment-effects.Item.V4JoVnOfKze8cRan",
+    },
+    heartmoss: {
+        weapon: "",
     },
     "jolt-coil": {
         weapon: "Compendium.pf2e.equipment-effects.Item.mHIdEC7RX6isILiM",
@@ -94,6 +100,16 @@ export const SPELL_ITEMS = {
         dc: 31,
         spells: [SPELLS.GOUGING_CLAW, SPELLS.CURSED_METAMORPHOSIS, SPELLS.PLANT_FORM],
         notes: getSpellHeartNotes("clay-sphere"),
+    },
+    "compass-of-luong-phung": {
+        dc: 0,
+        spells: [SPELLS.KNOW_THE_WAY],
+        note: [
+            getSpellNote({
+                spellSlug: "compass-of-luong-phung",
+                textPath: "pf2e-item-activations.notes.spellhearts.items.compass-of-luong-phung",
+            }),
+        ],
     },
     "flaming-star": {
         dc: 17,
@@ -157,6 +173,26 @@ export const SPELL_ITEMS = {
             [SPELLS.ENERVATION, { rank: 4, uuid: SPELLS.RESTORATION }],
         ],
         notes: getSpellHeartNotes("grim-sandglass"),
+    },
+    heartmoss: {
+        dc: 17,
+        spells: [SPELLS.STABILIZE],
+        notes: getSpellHeartNotes("heartmoss"),
+    },
+    "heartmoss-greater": {
+        dc: 24,
+        spells: [SPELLS.STABILIZE, { rank: 3, uuid: SPELLS.HEAL }],
+        notes: getSpellHeartNotes("heartmoss"),
+    },
+    "heartmoss-major": {
+        dc: 29,
+        spells: [
+            SPELLS.STABILIZE,
+            { rank: 3, uuid: SPELLS.HEAL },
+            { rank: 4, uuid: SPELLS.SOUND_BODY },
+            SPELLS.HEALING_WELL,
+        ],
+        notes: getSpellHeartNotes("heartmoss"),
     },
     "jolt-coil": {
         dc: 17,
@@ -310,4 +346,19 @@ function getSpellHeartNotes(id) {
               ]
             : []),
     ];
+}
+
+function getSpellNote({ spellSlug, textPath }) {
+    return {
+        itemType: "spell",
+        key: "ItemAlteration",
+        mode: "add",
+        predicate: [`item:slug:${spellSlug}`, "spellcasting:id:{item|id}"],
+        property: "description",
+        value: [
+            {
+                text: `<p>@Localize[${textPath}]</p>`,
+            },
+        ],
+    };
 }
