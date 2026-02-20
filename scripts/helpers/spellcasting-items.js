@@ -210,7 +210,7 @@ function getSpellHeartNotes(id) {
                       itemType: "spell",
                       key: "ItemAlteration",
                       mode: "add",
-                      predicate: ["{item|slug}:armor"],
+                      predicate: ["{item|slug}:armor", "spellcasting:id:{item|id}"],
                       property: "description",
                       value: [
                           {
@@ -227,7 +227,24 @@ function getSpellHeartNotes(id) {
                       itemType: "spell",
                       key: "ItemAlteration",
                       mode: "add",
-                      predicate: ["{item|slug}:weapon"],
+                      predicate: ["{item|slug}:weapon", "spellcasting:id:{item|id}"],
+                      property: "description",
+                      value: [
+                          {
+                              text: `<p>@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.weapon]</p>${SPELLHEART_EFFECTS?.[id]?.weapon ? `@UUID[${SPELLHEART_EFFECTS?.[id]?.weapon}]` : ""}`,
+                              title: "pf2e-item-activations.notes.spellhearts.terms.weapon",
+                          },
+                      ],
+                  },
+              ]
+            : []),
+            ...(keys.includes("all")
+            ? [
+                  {
+                      itemType: "spell",
+                      key: "ItemAlteration",
+                      mode: "add",
+                      predicate: ["spellcasting:id:{item|id}"],
                       property: "description",
                       value: [
                           {
