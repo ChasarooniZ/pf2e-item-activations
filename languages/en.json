@@ -78,6 +78,9 @@
                         "weapon": "After you cast a morph or polymorph spell by activating the clay sphere, the weapon becomes malleable, shifting its form to your whims. Your Strikes with the affixed weapon have the versatile bludgeoning, versatile piercing, and versatile slashing trait for 1 minute. Until the end of your next turn, Strikes with the affixed weapon have their damage dice increase by one step."
                     },
                     "compass-of-luong-phung": "In addition to the effects of the cantrip, the compass itself points in the general direction of a sea dragon for 1 minute, with the point glowing brighter as you get closer. Aligning the compass with the constellation of the Sea Dragon at night instead creates a beam for 1 minute to find Luong Phung again.",
+                     "five-feather-wreath": {
+                        "weapon": "After you cast an air spell by Activating the wreath, you can Fly 5 feet as a single action, or you can Fly (Normal 10, Greater 25, Fly 40) feet as a free action if the spell you cast wasn't a cantrip. This must be your next action, and if you don't have a fly Speed, you must end the flight on solid ground or fall."
+                    },
                     "flaming-star": {
                         "weapon": "After you cast a fire spell by Activating the star, Your your Strikes with the weapon deal an additional fire damage until the end of your next turn."
                     },

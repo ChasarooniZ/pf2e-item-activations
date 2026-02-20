@@ -97,6 +97,10 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
                 ...(entryNoteData ? entryNoteData : []),
             ],
             slug: item.slug || game.pf2e.system.sluggify(item.name),
+            spellDC: {
+                value: (useItemDC ? dc : actor.system.attributes.spellDC.value) - 10,
+                dc: useItemDC ? dc : actor.system.attributes.spellDC.value,
+            },
             traits: {
                 otherTags: [],
             },

@@ -1,4 +1,5 @@
 const SPELLS = {
+    AIR_WALK: "Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0",
     ACID_GRIP: "Compendium.pf2e.spells-srd.Item.9h9YCncqah6VNsKf",
     ACIDIC_BURST: "Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws",
     AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
@@ -14,6 +15,7 @@ const SPELLS = {
     FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
     FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
     FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
+    GALE_BLAST: "Compendium.pf2e.spells-srd.Item.dDiOnjcsBFbAvP6t",
     GOUGING_CLAW: "Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO",
     HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
     HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
@@ -38,6 +40,7 @@ const SPELLS = {
     STABILIZE: "Compendium.pf2e.spells-srd.Item.SnjhtQYexDtNDdEg",
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
     WALL_OF_THORNS: "Compendium.pf2e.spells-srd.Item.KsWhliKfUs3IpW3c",
+    WALL_OF_WIND: "Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc",
     VISION_OF_DEATH: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n",
     VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };
@@ -45,6 +48,9 @@ const SPELLS = {
 const SPELLHEART_EFFECTS = {
     "clay-sphere": {
         weapon: "Compendium.pf2e.equipment-effects.Item.La2ziyuLYKG0thOj",
+    },
+    "five-feather-wreath": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.nQ6vM1CRLyvQdGLG",
     },
     "flaming-star": {
         weapon: "Compendium.pf2e.equipment-effects.Item.OxCVZSvWVJsOGAZN",
@@ -110,6 +116,21 @@ export const SPELL_ITEMS = {
                 textPath: "pf2e-item-activations.notes.spellhearts.items.compass-of-luong-phung",
             }),
         ],
+    },
+    "five-feather-wreath": {
+        dc: 18,
+        spells: [SPELLS.GALE_BLAST],
+        notes: getSpellHeartNotes("five-feather-wreath"),
+    },
+    "five-feather-wreath-greater": {
+        dc: 24,
+        spells: [SPELLS.GALE_BLAST, SPELLS.WALL_OF_WIND],
+        notes: getSpellHeartNotes("five-feather-wreath"),
+    },
+    "five-feather-wreath-major": {
+        dc: 29,
+        spells: [SPELLS.GALE_BLAST, { rank: 4, uuid: SPELLS.WALL_OF_WIND }, SPELLS.AIR_WALK],
+        notes: getSpellHeartNotes("five-feather-wreath"),
     },
     "flaming-star": {
         dc: 17,
