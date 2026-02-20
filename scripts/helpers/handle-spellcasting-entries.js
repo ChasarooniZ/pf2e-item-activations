@@ -42,8 +42,11 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
                           },
                       }),
             };
+            spell.flags[MODULE_ID] = {
+                grantedBy: item.toObject(),
+            };
 
-            spells.push(spellClone);
+            spells.push(spell);
         }
     }
 
@@ -51,7 +54,7 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
 }
 
 function isTheSpellACantrip(spellObject) {
-    return spellObject?.system?.traits?.value?.contains("cantrip");
+    return spellObject?.system?.traits?.value?.includes("cantrip");
 }
 
 function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItemDC, item, entryNoteData }) {
@@ -112,7 +115,7 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
         },
         flags: {
             [MODULE_ID]: {
-                grantedBy: item.id,
+                grantedBy: item.toObject(),
             },
         },
     };

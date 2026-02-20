@@ -329,7 +329,7 @@ export async function addOrDeleteActivation(item, changeType) {
                     spellsAdded: spellInfo.spells,
                     dc: spellInfo.dc,
                     useItemDC: spellInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellInfo.dc,
-                    entryNoteData: spellInfo.note,
+                    entryNoteData: spellInfo.notes,
                     actor,
                     item,
                 });
