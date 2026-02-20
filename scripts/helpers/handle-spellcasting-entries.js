@@ -2,7 +2,7 @@
 
 import { MODULE_ID } from "./const.js";
 
-async function createSpellcastingEntry({ spellsAdded, dc, actor, item, entryNoteData }) {
+export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, entryNoteData }) {
     const spellEntryDocument = createSpellcastingEntryDocument({
         tradition: getMostCommonSpellcastingTradition(actor),
         type: "innate",

@@ -18,6 +18,7 @@ import {
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
 import { SPELL_ITEMS } from "./helpers/spellcasting-items.js";
+import { createSpellcastingEntry } from "./helpers/handle-spellcasting-entries.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
@@ -327,6 +328,7 @@ export async function addOrDeleteActivation(item, changeType) {
                 createSpellcastingEntry({
                     spellsAdded: spellInfo.spells,
                     dc: spellInfo.dc,
+                    useSpellDC: spellInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellInfo.dc,
                     entryNoteData: spellInfo.note,
                     actor,
                     item,
