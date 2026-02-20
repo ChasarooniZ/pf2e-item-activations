@@ -1,3 +1,43 @@
+const SPELLS = {
+    AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
+    CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
+    DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
+    ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
+    ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
+    FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
+    FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
+    FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
+    HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
+    HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
+    HOWLING_BLIZZARD: "Compendium.pf2e.spells-srd.Item.xxWhyl81w3ckslAU",
+    HYDRAULIC_TORRENT: "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
+    ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
+    IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
+    LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
+    RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
+    SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
+    WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
+    VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
+};
+
+const SPELLHEART_EFFECTS = {
+    "grim-sandglass": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.V4JoVnOfKze8cRan",
+    },
+    "flaming-star": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.OxCVZSvWVJsOGAZN",
+    },
+    "jolt-coil": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.mHIdEC7RX6isILiM",
+    },
+    "perfect-droplet": {
+        armor: "Compendium.pf2e.equipment-effects.Item.VZCcjwsQX1wnYlTn",
+    },
+    "rime-crystal": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.IiDpW99zrh7zHxmQ",
+    },
+};
+
 // Defaults to 1 / day
 // Only handles per day spells
 // {uses: 2} is for multiple uses
@@ -102,50 +142,10 @@ export const SPELL_ITEMS = {
     },
 };
 
-const SPELLHEART_EFFECTS = {
-    "grim-sandglass": {
-        weapon: "Compendium.pf2e.equipment-effects.Item.V4JoVnOfKze8cRan",
-    },
-    "flaming-star": {
-        weapon: "Compendium.pf2e.equipment-effects.Item.OxCVZSvWVJsOGAZN",
-    },
-    "jolt-coil": {
-        weapon: "Compendium.pf2e.equipment-effects.Item.mHIdEC7RX6isILiM",
-    },
-    "perfect-droplet": {
-        armor: "Compendium.pf2e.equipment-effects.Item.VZCcjwsQX1wnYlTn",
-    },
-    "rime-crystal": {
-        weapon: "Compendium.pf2e.equipment-effects.Item.IiDpW99zrh7zHxmQ",
-    },
-};
-
-const SPELLS = {
-    AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
-    CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
-    DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
-    ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
-    ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
-    FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
-    FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
-    FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
-    HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
-    HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
-    HOWLING_BLIZZARD: "Compendium.pf2e.spells-srd.Item.xxWhyl81w3ckslAU",
-    HYDRAULIC_TORRENT: "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
-    ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
-    IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
-    LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
-    RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
-    SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
-    WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
-    VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
-};
-
 export const SPELL_ITEM_SLUG_LIST = [...Object.keys(SPELL_ITEMS)];
 
 function getSpellHeartNotes(id) {
-    const keys = Object.keys(game.i18n.translations?.["pf2e-item-activations"]?.notes?.spellhearts?.items?.[id]);
+    const keys = Object.keys(SPELLHEART_EFFECTS?.[id]);
     return [
         {
             key: "RollOption",
