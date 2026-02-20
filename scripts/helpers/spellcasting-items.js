@@ -26,6 +26,8 @@ const SPELLS = {
     IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
     KNOW_THE_WAY: "Compendium.pf2e.spells-srd.Item.tXa5vOu5giBNCjdR",
     LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
+    MAGNETIC_ACCELERATION: "Compendium.pf2e.spells-srd.Item.Tx8OqkBFA2QlaldW",
+    NEEDLE_DARTS: "Compendium.pf2e.spells-srd.Item.iYRDFxeVpJ5KIjmr",
     NOXIOUS_VAPOURS: "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv",
     ONE_WITH_STONE: "Compendium.pf2e.spells-srd.Item.vh1RpbWfqdNC4L3P",
     OUTCASTS_CURSE: "Compendium.pf2e.spells-srd.Item.KSAEhNfZyXMO7Z7V",
@@ -33,6 +35,7 @@ const SPELLS = {
     PLANT_FORM: "Compendium.pf2e.spells-srd.Item.zCcfPS4y5SrZzU2x",
     PUFF_OF_POISON: "Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4",
     RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
+    RUST_CLOUD: "Compendium.pf2e.spells-srd.Item.yy2K51kK3a60rRIe",
     SCATTER_SCREE: "Compendium.pf2e.spells-srd.Item.zA0jNIBRgLsyTpbm",
     SOUND_BODY: "Compendium.pf2e.spells-srd.Item.Et8RSCLx8w7uOLvo",
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
@@ -78,6 +81,9 @@ const SPELLHEART_EFFECTS = {
     },
     "rime-crystal": {
         weapon: "Compendium.pf2e.equipment-effects.Item.IiDpW99zrh7zHxmQ",
+    },
+    "spiny-lodestone": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.m6z7OrJgF4XQFNpa",
     },
     "trinity-geode": {
         armor: "Compendium.pf2e.equipment-effects.Item.oqwrw6XztVlS9tEG",
@@ -296,6 +302,21 @@ export const SPELL_ITEMS = {
         dc: 29,
         spells: [SPELLS.FROSTBITE, SPELLS.ICE_STORM, SPELLS.HOWLING_BLIZZARD],
         notes: getSpellHeartNotes("rime-crystal"),
+    },
+    "spiny-lodestone": {
+        dc: 18,
+        spells: [SPELLS.NEEDLE_DARTS],
+        notes: getSpellHeartNotes("spiny-lodestone"),
+    },
+    "spiny-lodestone-greater": {
+        dc: 24,
+        spells: [SPELLS.NEEDLE_DARTS, SPELLS.MAGNETIC_ACCELERATION],
+        notes: getSpellHeartNotes("spiny-lodestone"),
+    },
+    "spiny-lodestone-major": {
+        dc: 29,
+        spells: [SPELLS.NEEDLE_DARTS, { rank: 4, uuid: SPELLS.MAGNETIC_ACCELERATION }, SPELLS.RUST_CLOUD],
+        notes: getSpellHeartNotes("spiny-lodestone"),
     },
     "trinity-geode": {
         dc: 17,

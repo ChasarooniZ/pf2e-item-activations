@@ -108,6 +108,9 @@
                     "rime-crystal": {
                         "weapon": "After you cast an cold spell by activating the crystal, your Strikes with the weapon deal additional cold damage until the end of your next turn."
                     },
+                    "spiny-lodestone": {
+                        "weapon": "After you cast a spell by Activating the spiny lodestone, your Strikes with the weapon deal an additional piercing damage until the end of your next turn."
+                    },
                     "trinity-geode": {
                         "armor": "After you cast an earth spell by Activating the geode, you gain resistance to physical damage (except adamantine) until the end of your next turn, or double the resistance for a non-cantrip spell.",
                         "weapon": "After you cast an earth spell by activating the geode, your Strikes with the weapon deal additional bludgeoning damage until the end of your next turn."
