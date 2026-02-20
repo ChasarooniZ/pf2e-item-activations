@@ -323,7 +323,7 @@ export async function addOrDeleteActivation(item, changeType) {
         if (!qualified) {
             actions = actions.map((action) => deactivateAction(action));
         } else {
-            const spellInfo = SPELL_ITEMS?.[item.system.slug];
+            const spellInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
             if (spellInfo) {
                 createSpellcastingEntry({
                     spellsAdded: spellInfo.spells,

@@ -96,7 +96,7 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
                     : []),
                 ...(entryNoteData ? entryNoteData : []),
             ],
-            slug: item.slug,
+            slug: item.slug || game.pf2e.system.sluggify(item.name),
             traits: {
                 otherTags: [],
             },
