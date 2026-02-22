@@ -17,7 +17,7 @@ import {
     handleRemovedRunes,
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
-import { SPELL_ITEMS } from "./helpers/spellcasting-items.js";
+import { isSpellHeart, SPELL_ITEMS } from "./helpers/spellcasting-items.js";
 import { createSpellcastingEntry } from "./helpers/handle-spellcasting-entries.js";
 
 // Hook attachment functions
@@ -296,7 +296,7 @@ export async function addOrDeleteActivation(item, changeType) {
                 let actionItem = await fromUuid(uuid);
                 actions.push(augmentAction(actionItem.toObject(), item));
             }
-        } else {
+        } else if (!isSpellHeart(item)) {
             // On the Fly
             actions = generateActivations(item).map((act) => augmentAction(act, item));
             debugLog({ actions }, "Auto Create");
@@ -322,7 +322,7 @@ export async function addOrDeleteActivation(item, changeType) {
 
         if (!qualified) {
             actions = actions.map((action) => deactivateAction(action));
-        } else {
+        } else if (!needsSpellcasting(item) || actor.isSpellcaster) {
             const spellInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
             if (spellInfo) {
                 createSpellcastingEntry({

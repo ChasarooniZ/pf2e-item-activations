@@ -111,6 +111,10 @@
                     "spiny-lodestone": {
                         "weapon": "After you cast a spell by Activating the spiny lodestone, your Strikes with the weapon deal an additional piercing damage until the end of your next turn."
                     },
+                    "thorn-triad": {
+                        "armor": "After you cast a plant spell by activating the triad, you gain resistance to bludgeoning and piercing damage and weakness to fire until the end of your next turn, or double the resistance for a non-cantrip spell.",
+                        "weapon": "After you cast a plant spell by activating the triad, thorns erupt from the weapon. Your Strikes with the weapon deal additional persistent bleed damage until the end of your next turn."
+                    },
                     "trinity-geode": {
                         "armor": "After you cast an earth spell by Activating the geode, you gain resistance to physical damage (except adamantine) until the end of your next turn, or double the resistance for a non-cantrip spell.",
                         "weapon": "After you cast an earth spell by activating the geode, your Strikes with the weapon deal additional bludgeoning damage until the end of your next turn."

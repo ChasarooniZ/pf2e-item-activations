@@ -41,6 +41,7 @@ const SPELLS = {
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     STABILIZE: "Compendium.pf2e.spells-srd.Item.SnjhtQYexDtNDdEg",
+    TIMBER: "Compendium.pf2e.spells-srd.Item.9I8mp7RkjeXbkYfx",
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
     WALL_OF_THORNS: "Compendium.pf2e.spells-srd.Item.KsWhliKfUs3IpW3c",
     WALL_OF_WIND: "Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc",
@@ -84,6 +85,10 @@ const SPELLHEART_EFFECTS = {
     },
     "spiny-lodestone": {
         weapon: "Compendium.pf2e.equipment-effects.Item.m6z7OrJgF4XQFNpa",
+    },
+    "thorn-triad": {
+        armor: "Compendium.pf2e.equipment-effects.Item.JaPNzmgD7p7hHH8o",
+        weapon: "Compendium.pf2e.equipment-effects.Item.FTj94xTqZbaCs4jT",
     },
     "trinity-geode": {
         armor: "Compendium.pf2e.equipment-effects.Item.oqwrw6XztVlS9tEG",
@@ -318,6 +323,21 @@ export const SPELL_ITEMS = {
         spells: [SPELLS.NEEDLE_DARTS, { rank: 4, uuid: SPELLS.MAGNETIC_ACCELERATION }, SPELLS.RUST_CLOUD],
         notes: getSpellHeartNotes("spiny-lodestone"),
     },
+    "thorn-triad": {
+        dc: 18,
+        spells: [SPELLS.TIMBER],
+        notes: getSpellHeartNotes("thorn-triad"),
+    },
+    "thorn-triad-greater": {
+        dc: 24,
+        spells: [SPELLS.TIMBER, SPELLS.WALL_OF_THORNS],
+        notes: getSpellHeartNotes("thorn-triad"),
+    },
+    "thorn-triad-major": {
+        dc: 29,
+        spells: [SPELLS.TIMBER, { rank: 4, uuid: SPELLS.WALL_OF_THORNS }, SPELLS.PETAL_STORM],
+        notes: getSpellHeartNotes("thorn-triad"),
+    },
     "trinity-geode": {
         dc: 17,
         spells: [SPELLS.SCATTER_SCREE],
@@ -403,4 +423,12 @@ function getSpellNote({ spellSlug, textPath }) {
             },
         ],
     };
+}
+
+export function isSpellHeart(item) {
+    return item.system.traits.value.includes("spellheart");
+}
+
+export function needsSpellcasting(item) {
+    return item.system.traits.value.includes("spellheart");
 }
