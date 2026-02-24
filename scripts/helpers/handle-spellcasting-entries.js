@@ -24,9 +24,9 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
         const grabbedSpells = await Promise.all(
             spellItems.map(async (s) => await getSpell(typeof s === "string" ? s : s?.uuid))
         );
-        const sharedSpellSlugs = [];
-        if (grabbedSpells.length > 0) {
-            sharedSpellSlugs = grabbedSpells.map((s) => s.slug);
+        let sharedSpellSlugs = [];
+        if (grabbedSpells.length > 1) {
+            sharedSpellSlugs = grabbedSpells.map((s) => s.system.slug);
             sharedSpellList.push(sharedSpellSlugs);
         }
         let cnt = 0;
@@ -61,13 +61,13 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
         }
     }
 
-    const [addedSpells] = await actor.createEmbeddedDocuments("Item", spells);
+    const addedSpells = await actor.createEmbeddedDocuments("Item", spells);
     if (sharedSpellList.length > 0) {
         spellcastingEntry.setFlag(
             MODULE_ID,
             "entrySharedSpells",
             sharedSpellList.map((spellSlugs) =>
-                spellSlugs.map((slug) => addedSpells.find((spell) => spell.slug === slug))
+                spellSlugs.map((slug) => addedSpells.find((spell) => spell.system.slug === slug))
             )
         );
     }
@@ -116,10 +116,10 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
                     : []),
                 ...(entryNoteData ? entryNoteData : []),
             ],
-            slug: item.slug || game.pf2e.system.sluggify(item.name),
+            slug: item.system.slug || game.pf2e.system.sluggify(item.name),
             spellDC: {
-                value: (useItemDC ? dc : actor.system.attributes.spellDC.value) - 10,
-                dc: useItemDC ? dc : actor.system.attributes.spellDC.value,
+                value: (useItemDC ? dc : item.actor.system.attributes.spellDC.value) - 10,
+                dc: useItemDC ? dc : item.actor.system.attributes.spellDC.value,
             },
             traits: {
                 otherTags: [],
@@ -172,14 +172,14 @@ async function getSpell(uuid) {
 }
 
 /**
- *
+ * Turns Array or object into an array of a single object or an array of objects
  * @param {string | (string | object)[] | object} spell
  */
 function getSpellOptions(spellOrSpells) {
-    if (typeof spellOrSpells === "string" || typeof spellOrSpells === "object") {
-        return [spellOrSpells];
-    } else {
+    if (Array.isArray(spellOrSpells)) {
         return spellOrSpells;
+    } else {
+        return [spellOrSpells];
     }
 }
 
@@ -189,15 +189,15 @@ function createLinkHTML(spellNames) {
 }
 
 export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
-    if (!Object.hasOwn(changes?.system?.location?.uses, "value")) return;
+    if (!Object.hasOwn(changes?.system?.location?.uses ?? {}, "value")) return;
     const sharedSpellSlugs = item.getFlag(MODULE_ID, "sharedSpells");
     if (!sharedSpellSlugs) return;
     const actor = item.actor;
     const linkedSpellItems = actor.items.filter(
         (i) =>
             i?.system?.location?.value === item.system?.location?.value &&
-            sharedSpellSlugs.includes(i.slug) &&
-            i.slug !== item.slug
+            sharedSpellSlugs.includes(i.system.slug) &&
+            i.system.slug !== item.system.slug
     );
     const diff = changes?.system?.location?.uses?.value ?? 0 - item?.system?.location?.uses?.value ?? 0;
     actor.updateEmbeddedDocuments(
@@ -214,7 +214,7 @@ export function linkedSpellStyling(actor, html) {
     for (const entry of entries) {
         const sharedSpellGroups = entry.getFlag(MODULE_ID, "entrySharedSpells");
         for (const sharedSpellGroup of sharedSpellGroups) {
-            const spells = actor.items.filter((actorItem) => sharedSpellGroup.includes(actorItem.slug));
+            const spells = actor.items.filter((actorItem) => sharedSpellGroup.includes(actorItem.system.slug));
             const text = createLinkHTML(spells.map((spell) => spell.name));
             for (const spell of spells) {
                 html.find(

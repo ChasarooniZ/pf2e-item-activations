@@ -1,6 +1,9 @@
 ## List of Supported Spellcasting items
 
 ### Spellhearts
+
+_**Note.** Every spellheart includes its variants as well (Greater, Major, etc.)_
+
 - Clay Sphere
 - Compass Of Luong Phung
 - Five Feather Wreath
