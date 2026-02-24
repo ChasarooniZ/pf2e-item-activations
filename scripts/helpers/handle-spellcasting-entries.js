@@ -21,64 +21,43 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
     for (const spellInfo of spellsAdded) {
         const spellItems = getSpellOptions(spellInfo);
 
+        const grabbedSpells = await Promise.all(
+            spellItems.map(async (s) => await getSpell(typeof s === "string" ? s : s?.uuid))
+        );
+        const sharedSpellSlugs = [];
+        if (grabbedSpells.length > 0) {
+            sharedSpellSlugs = grabbedSpells.map((s) => s.slug);
+            sharedSpellList.push(sharedSpellSlugs);
+        }
+        let cnt = 0;
+
         for (const spellItem of spellItems) {
-            if (typeof spellItem === "array") {
-                const sharedSpells = Promise.all(
-                    spellItem.map(async (s) => await getSpell(typeof s === "string" ? s : s?.uuid))
-                );
-                sharedSpellList.push(sharedSpells.map((s) => s.slug));
-                for (const sharedSpell of sharedSpells) {
-                    const spellRank = spellItem?.rank ?? sharedSpell?.system?.level?.value ?? 1;
-                    const isCantrip = isTheSpellACantrip(sharedSpell);
-                    const uses = spellItem?.uses ?? 1;
+            const spell = grabbedSpells[cnt];
+            if (!spell) continue;
 
-                    sharedSpell.system.location = {
-                        value: spellcastingEntry.id,
-                        ...(isCantrip
-                            ? {}
-                            : {
-                                  rank: spellRank,
-                                  uses: {
-                                      value: uses,
-                                      max: uses,
-                                  },
-                              }),
-                    };
-                    sharedSpell.flags[MODULE_ID] = {
-                        grantedBy: item.toObject(),
-                        sharedSpells: sharedSpells.map((s) => s.slug),
-                    };
+            const spellRank = spellItem?.rank ?? spell?.system?.level?.value ?? 1;
+            const isCantrip = isTheSpellACantrip(spell);
+            const uses = spellItem?.uses ?? 1;
 
-                    spells.push(sharedSpell);
-                }
-            } else {
-                const spellUUID = typeof spellItem === "string" ? spellItem : spellItem?.uuid;
+            spell.system.location = {
+                value: spellcastingEntry.id,
+                ...(isCantrip
+                    ? {}
+                    : {
+                          rank: spellRank,
+                          uses: {
+                              value: uses,
+                              max: uses,
+                          },
+                      }),
+            };
+            spell.flags[MODULE_ID] = {
+                grantedBy: item.toObject(),
+                ...(sharedSpellSlugs.length > 0 ? { sharedSpells: sharedSpellSlugs } : {}),
+            };
 
-                const spell = await getSpell(spellUUID);
-                if (!spell) continue;
-
-                const spellRank = spellItem?.rank ?? spell?.system?.level?.value ?? 1;
-                const isCantrip = isTheSpellACantrip(spell);
-                const uses = spellItem?.uses ?? 1;
-
-                spell.system.location = {
-                    value: spellcastingEntry.id,
-                    ...(isCantrip
-                        ? {}
-                        : {
-                              rank: spellRank,
-                              uses: {
-                                  value: uses,
-                                  max: uses,
-                              },
-                          }),
-                };
-                spell.flags[MODULE_ID] = {
-                    grantedBy: item.toObject(),
-                };
-
-                spells.push(spell);
-            }
+            spells.push(spell);
+            cnt++;
         }
     }
 
@@ -211,19 +190,19 @@ function createLinkHTML(spellNames) {
 
 export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
     if (!Object.hasOwn(changes?.system?.location?.uses, "value")) return;
-    const sharedSpellSlugs = item.getFlag(MODULE_ID, sharedSpells);
-    if (!sharedSpells) return;
+    const sharedSpellSlugs = item.getFlag(MODULE_ID, "sharedSpells");
+    if (!sharedSpellSlugs) return;
     const actor = item.actor;
-    const sharedSpells = actor.items.filter(
+    const linkedSpellItems = actor.items.filter(
         (i) =>
             i?.system?.location?.value === item.system?.location?.value &&
             sharedSpellSlugs.includes(i.slug) &&
             i.slug !== item.slug
     );
-    const diff = changes?.system?.location?.uses - item?.system?.location?.uses;
+    const diff = changes?.system?.location?.uses?.value ?? 0 - item?.system?.location?.uses?.value ?? 0;
     actor.updateEmbeddedDocuments(
         "Item",
-        sharedSpells.map((spell) => ({
+        linkedSpellItems.map((spell) => ({
             _id: spell.id,
             system: { location: { uses: spell.system.location.uses + diff } },
         }))
@@ -235,7 +214,7 @@ export function linkedSpellStyling(actor, html) {
     for (const entry of entries) {
         const sharedSpellGroups = entry.getFlag(MODULE_ID, "entrySharedSpells");
         for (const sharedSpellGroup of sharedSpellGroups) {
-            const spells = actor.items.filter(item === sharedSpellGroup.includes(item.slug));
+            const spells = actor.items.filter((actorItem) => sharedSpellGroup.includes(actorItem.slug));
             const text = createLinkHTML(spells.map((spell) => spell.name));
             for (const spell of spells) {
                 html.find(

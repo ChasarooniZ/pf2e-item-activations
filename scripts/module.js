@@ -17,14 +17,16 @@ import {
     handleRemovedRunes,
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
-import { isSpellHeart, SPELL_ITEMS } from "./helpers/spellcasting-items.js";
-import { createSpellcastingEntry } from "./helpers/handle-spellcasting-entries.js";
+import { isSpellHeart, needsSpellcasting, SPELL_ITEMS } from "./helpers/spellcasting-items.js";
+import { checkAndUpdateLinkedSpellcastingItem, createSpellcastingEntry, linkedSpellStyling } from "./helpers/handle-spellcasting-entries.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
     console.log("PF2e Item Activations is getting ready....");
     registerAPI();
     Hooks.on("preUpdateItem", async (item, changes, diff, userID) => {
+        checkAndUpdateLinkedSpellcastingItem(item, changes);
+
         if (skipUpdateItem(item, userID)) {
             return;
         }
@@ -98,6 +100,7 @@ Hooks.on("ready", () => {
     Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
         const actor = _sheet.actor;
         actionStyling(actor, html);
+        linkedSpellStyling(actor, html)
     });
     if (game.user.isGM) {
         sendUpdateMessage();

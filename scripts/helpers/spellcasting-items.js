@@ -358,7 +358,7 @@ export const SPELL_ITEMS = {
 export const SPELL_ITEM_SLUG_LIST = [...Object.keys(SPELL_ITEMS)];
 
 function getSpellHeartNotes(id) {
-    const keys = Object.keys(SPELLHEART_EFFECTS?.[id]);
+    const keys = Object.keys(SPELLHEART_EFFECTS?.[id] || {});
     return [
         {
             key: "RollOption",
