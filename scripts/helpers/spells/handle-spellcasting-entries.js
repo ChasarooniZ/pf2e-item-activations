@@ -184,8 +184,8 @@ function getSpellOptions(spellOrSpells) {
 }
 
 //TODO use this when rendering the character sheet I guess?
-function createLinkHTML(spellNames) {
-    return `<i class="fa-solid fa-link linked-spells-icon" data-tooltip="${game.i18n.format("pf2e-item-activations.notes.spells.joined", { spells: spellNames.join(", ") })}"></i>`;
+function createLinkHTML(spellNames, colorGroup = "") {
+    return `<i class="fa-solid fa-link linked-spells-icon ${colorGroup}" data-tooltip="${game.i18n.format("pf2e-item-activations.notes.spells.joined", { spells: spellNames.join(", ") })}"></i>`;
 }
 
 export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
@@ -216,13 +216,19 @@ export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
     );
 }
 
+const colorGroups = ["a", "b", "c", "d"];
+
 export function linkedSpellStyling(actor, html) {
     const entries = actor.items.filter((item) => item.getFlag(MODULE_ID, "entrySharedSpells"));
     for (const entry of entries) {
         const sharedSpellGroups = entry.getFlag(MODULE_ID, "entrySharedSpells");
+        let cnt = 0;
         for (const sharedSpellGroup of sharedSpellGroups) {
             const spells = sharedSpellGroup.map((spellID) => actor.items.get(spellID));
-            const text = createLinkHTML(spells.map((spell) => spell.name));
+            const text = createLinkHTML(
+                spells.map((spell) => spell.name),
+                sharedSpellGroups.length > 1 ? colorGroups[cnt] : ""
+            );
             for (const spell of spells) {
                 html.find(
                     `li.spellcasting-entry[data-item-id="${entry.id}"] li.spell[data-item-id="${spell.id}"] h4.name a`

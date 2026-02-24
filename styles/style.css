@@ -17,4 +17,16 @@
 
 i.linked-spells-icon {
     padding-left: 3px;
+    & .a {
+        text-shadow: 0 4px #8cf777;
+    }
+    & .b {
+        text-shadow: 0 4px #64f2ff;
+    }
+    & .c {
+        text-shadow: 0 4px #836ef8;
+    }
+    & .d {
+        text-shadow: 0 4px #fa78fa;
+    }
 }
