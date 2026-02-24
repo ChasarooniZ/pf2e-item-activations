@@ -120,6 +120,9 @@
                         "weapon": "After you cast an earth spell by activating the geode, your Strikes with the weapon deal additional bludgeoning damage until the end of your next turn."
                     }
                 }
+            },
+            "spells": {
+                "joined": "The following spells in this entry are linked together and when one is expended the other will be as well ({spells})"
             }
         }
     }

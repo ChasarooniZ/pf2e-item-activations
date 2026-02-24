@@ -16,41 +16,82 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
     const [spellcastingEntry] = await actor.createEmbeddedDocuments("Item", [spellEntryDocument]);
 
     const spells = [];
+    const sharedSpellList = [];
 
     for (const spellInfo of spellsAdded) {
         const spellItems = getSpellOptions(spellInfo);
 
         for (const spellItem of spellItems) {
-            const spellUUID = typeof spellItem === "string" ? spellItem : spellItem?.uuid;
+            if (typeof spellItem === "array") {
+                const sharedSpells = Promise.all(
+                    spellItem.map(async (s) => await getSpell(typeof s === "string" ? s : s?.uuid))
+                );
+                sharedSpellList.push(sharedSpells.map((s) => s.slug));
+                for (const sharedSpell of sharedSpells) {
+                    const spellRank = spellItem?.rank ?? sharedSpell?.system?.level?.value ?? 1;
+                    const isCantrip = isTheSpellACantrip(sharedSpell);
+                    const uses = spellItem?.uses ?? 1;
 
-            const spell = await getSpell(spellUUID);
-            if (!spell) continue;
+                    sharedSpell.system.location = {
+                        value: spellcastingEntry.id,
+                        ...(isCantrip
+                            ? {}
+                            : {
+                                  rank: spellRank,
+                                  uses: {
+                                      value: uses,
+                                      max: uses,
+                                  },
+                              }),
+                    };
+                    sharedSpell.flags[MODULE_ID] = {
+                        grantedBy: item.toObject(),
+                        sharedSpells: sharedSpells.map((s) => s.slug),
+                    };
 
-            const spellRank = spellItem?.rank ?? spell?.system?.level?.value ?? 1;
-            const isCantrip = isTheSpellACantrip(spell);
-            const uses = spellItem?.uses ?? 1;
+                    spells.push(sharedSpell);
+                }
+            } else {
+                const spellUUID = typeof spellItem === "string" ? spellItem : spellItem?.uuid;
 
-            spell.system.location = {
-                value: spellcastingEntry.id,
-                ...(isCantrip
-                    ? {}
-                    : {
-                          rank: spellRank,
-                          uses: {
-                              value: uses,
-                              max: uses,
-                          },
-                      }),
-            };
-            spell.flags[MODULE_ID] = {
-                grantedBy: item.toObject(),
-            };
+                const spell = await getSpell(spellUUID);
+                if (!spell) continue;
 
-            spells.push(spell);
+                const spellRank = spellItem?.rank ?? spell?.system?.level?.value ?? 1;
+                const isCantrip = isTheSpellACantrip(spell);
+                const uses = spellItem?.uses ?? 1;
+
+                spell.system.location = {
+                    value: spellcastingEntry.id,
+                    ...(isCantrip
+                        ? {}
+                        : {
+                              rank: spellRank,
+                              uses: {
+                                  value: uses,
+                                  max: uses,
+                              },
+                          }),
+                };
+                spell.flags[MODULE_ID] = {
+                    grantedBy: item.toObject(),
+                };
+
+                spells.push(spell);
+            }
         }
     }
 
     const [addedSpells] = await actor.createEmbeddedDocuments("Item", spells);
+    if (sharedSpellList.length > 0) {
+        spellcastingEntry.setFlag(
+            MODULE_ID,
+            "entrySharedSpells",
+            sharedSpellList.map((spellSlugs) =>
+                spellSlugs.map((slug) => addedSpells.find((spell) => spell.slug === slug))
+            )
+        );
+    }
 }
 
 function isTheSpellACantrip(spellObject) {
@@ -160,5 +201,47 @@ function getSpellOptions(spellOrSpells) {
         return [spellOrSpells];
     } else {
         return spellOrSpells;
+    }
+}
+
+//TODO use this when rendering the character sheet I guess?
+function createLinkHTML(spellNames) {
+    return `<i class="fa-solid fa-link" data-tooltip="${game.i18n.format("pf2e-item-activations.notes.spells.joined", { spells: spellNames.join(", ") })}"></i>`;
+}
+
+export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
+    if (!Object.hasOwn(changes?.system?.location?.uses, "value")) return;
+    const sharedSpellSlugs = item.getFlag(MODULE_ID, sharedSpells);
+    if (!sharedSpells) return;
+    const actor = item.actor;
+    const sharedSpells = actor.items.filter(
+        (i) =>
+            i?.system?.location?.value === item.system?.location?.value &&
+            sharedSpellSlugs.includes(i.slug) &&
+            i.slug !== item.slug
+    );
+    const diff = changes?.system?.location?.uses - item?.system?.location?.uses;
+    actor.updateEmbeddedDocuments(
+        "Item",
+        sharedSpells.map((spell) => ({
+            _id: spell.id,
+            system: { location: { uses: spell.system.location.uses + diff } },
+        }))
+    );
+}
+
+export function linkedSpellStyling(actor, html) {
+    const entries = actor.items.filter((item) => item.getFlag(MODULE_ID, "entrySharedSpells"));
+    for (const entry of entries) {
+        const sharedSpellGroups = entry.getFlag(MODULE_ID, "entrySharedSpells");
+        for (const sharedSpellGroup of sharedSpellGroups) {
+            const spells = actor.items.filter(item === sharedSpellGroup.includes(item.slug));
+            const text = createLinkHTML(spells.map((spell) => spell.name));
+            for (const spell of spells) {
+                html.find(
+                    `li.spellcasting-entry[data-item-id="${entry.id}"] li.spell[data-item-id="${spell.id}"] h4.name a`
+                ).after(text);
+            }
+        }
     }
 }
