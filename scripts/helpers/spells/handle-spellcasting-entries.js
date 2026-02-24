@@ -234,6 +234,7 @@ export function linkedSpellStyling(actor, html) {
                     `li.spellcasting-entry[data-item-id="${entry.id}"] li.spell[data-item-id="${spell.id}"] h4.name a`
                 ).after(text);
             }
+            cnt++;
         }
     }
 }
