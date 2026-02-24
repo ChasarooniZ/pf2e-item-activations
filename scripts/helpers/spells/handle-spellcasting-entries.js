@@ -1,6 +1,6 @@
 // Code Initially Sourced and referenced from https://github.com/jessev14/pf2e-staves/tree/main
 
-import { MODULE_ID } from "./const.js";
+import { MODULE_ID } from "../const.js";
 
 export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, useItemDC, entryNoteData }) {
     const spellEntryDocument = createSpellcastingEntryDocument({
@@ -67,7 +67,7 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
             MODULE_ID,
             "entrySharedSpells",
             sharedSpellList.map((spellSlugs) =>
-                spellSlugs.map((slug) => addedSpells.find((spell) => spell.system.slug === slug))
+                spellSlugs.map((slug) => addedSpells.find((spell) => spell.system.slug === slug).id)
             )
         );
     }
@@ -185,7 +185,7 @@ function getSpellOptions(spellOrSpells) {
 
 //TODO use this when rendering the character sheet I guess?
 function createLinkHTML(spellNames) {
-    return `<i class="fa-solid fa-link" data-tooltip="${game.i18n.format("pf2e-item-activations.notes.spells.joined", { spells: spellNames.join(", ") })}"></i>`;
+    return `<i class="fa-solid fa-link linked-spells-icon" data-tooltip="${game.i18n.format("pf2e-item-activations.notes.spells.joined", { spells: spellNames.join(", ") })}"></i>`;
 }
 
 export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
@@ -199,12 +199,17 @@ export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
             sharedSpellSlugs.includes(i.system.slug) &&
             i.system.slug !== item.system.slug
     );
-    const diff = changes?.system?.location?.uses?.value ?? 0 - item?.system?.location?.uses?.value ?? 0;
     actor.updateEmbeddedDocuments(
         "Item",
         linkedSpellItems.map((spell) => ({
             _id: spell.id,
-            system: { location: { uses: spell.system.location.uses + diff } },
+            system: {
+                location: {
+                    uses: {
+                        value: item?.system?.location?.uses?.value,
+                    },
+                },
+            },
         }))
     );
 }
@@ -214,7 +219,7 @@ export function linkedSpellStyling(actor, html) {
     for (const entry of entries) {
         const sharedSpellGroups = entry.getFlag(MODULE_ID, "entrySharedSpells");
         for (const sharedSpellGroup of sharedSpellGroups) {
-            const spells = actor.items.filter((actorItem) => sharedSpellGroup.includes(actorItem.system.slug));
+            const spells = sharedSpellGroup.map((spellID) => actor.items.get(spellID));
             const text = createLinkHTML(spells.map((spell) => spell.name));
             for (const spell of spells) {
                 html.find(

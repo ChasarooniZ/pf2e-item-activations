@@ -17,8 +17,8 @@ import {
     handleRemovedRunes,
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
-import { isSpellHeart, needsSpellcasting, SPELL_ITEMS } from "./helpers/spellcasting-items.js";
-import { checkAndUpdateLinkedSpellcastingItem, createSpellcastingEntry, linkedSpellStyling } from "./helpers/handle-spellcasting-entries.js";
+import { isSpellHeart, needsSpellcasting, SPELL_ITEMS } from "./helpers/spells/spellcasting-items.js";
+import { checkAndUpdateLinkedSpellcastingItem, createSpellcastingEntry, linkedSpellStyling } from "./helpers/spells/handle-spellcasting-entries.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
