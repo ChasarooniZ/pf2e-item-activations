@@ -18,7 +18,11 @@ import {
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
 import { isSpellHeart, needsSpellcasting, SPELL_ITEMS } from "./helpers/spells/spellcasting-items.js";
-import { checkAndUpdateLinkedSpellcastingItem, createSpellcastingEntry, linkedSpellStyling } from "./helpers/spells/handle-spellcasting-entries.js";
+import {
+    checkAndUpdateLinkedSpellcastingItem,
+    createSpellcastingEntry,
+    linkedSpellStyling,
+} from "./helpers/spells/handle-spellcasting-entries.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
@@ -100,7 +104,7 @@ Hooks.on("ready", () => {
     Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
         const actor = _sheet.actor;
         actionStyling(actor, html);
-        linkedSpellStyling(actor, html)
+        linkedSpellStyling(actor, html);
     });
     if (game.user.isGM) {
         sendUpdateMessage();

@@ -44,7 +44,7 @@ export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, us
                 ...(isCantrip
                     ? {}
                     : {
-                          rank: spellRank,
+                          heightenedLevel: spellRank,
                           uses: {
                               value: uses,
                               max: uses,
@@ -196,6 +196,7 @@ export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
     const linkedSpellItems = actor.items.filter(
         (i) =>
             i?.system?.location?.value === item.system?.location?.value &&
+            i?.system?.location?.uses?.value !== changes?.system?.location?.uses?.value &&
             sharedSpellSlugs.includes(i.system.slug) &&
             i.system.slug !== item.system.slug
     );
@@ -206,11 +207,12 @@ export async function checkAndUpdateLinkedSpellcastingItem(item, changes) {
             system: {
                 location: {
                     uses: {
-                        value: item?.system?.location?.uses?.value,
+                        value: changes?.system?.location?.uses?.value,
                     },
                 },
             },
-        }))
+        })),
+        { noHook: true }
     );
 }
 
