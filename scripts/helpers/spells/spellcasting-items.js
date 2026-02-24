@@ -1,12 +1,15 @@
 const SPELLS = {
     AIR_WALK: "Compendium.pf2e.spells-srd.Item.b5sGjGlBf58f8jn0",
     ACID_GRIP: "Compendium.pf2e.spells-srd.Item.9h9YCncqah6VNsKf",
+    ACID_SPLASH: "Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt",
     ACIDIC_BURST: "Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws",
     AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
     CAUSTIC_BLAST: "Compendium.pf2e.spells-srd.Item.thAHF1zxNplLCJPO",
     CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
     CURSED_METAMORPHOSIS: "Compendium.pf2e.spells-srd.Item.dN8QBNuTiaBHCKUe",
     DAZE: "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4",
+    DETECT_MAGIC: "Compendium.pf2e.spells-srd.Item.gpzpAAAJ1Lza2JVl",
+    DIVINE_LANCE: "Compendium.pf2e.spells-srd.Item.qwZBXN6zBoB9BHXE",
     DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
     ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
     ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
@@ -14,9 +17,12 @@ const SPELLS = {
     FEAR: "Compendium.pf2e.spells-srd.Item.4koZzrnMXhhosn0D",
     FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
     FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
+    FORBIDDING_WARD: "Compendium.pf2e.spells-srd.Item.RA7VKcen3p56rVyZ",
     FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
     GALE_BLAST: "Compendium.pf2e.spells-srd.Item.dDiOnjcsBFbAvP6t",
+    GHOST_SOUND: "Compendium.pf2e.spells-srd.Item.atlgGNI1E1Ox3O3a",
     GOUGING_CLAW: "Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO",
+    GUIDANCE: "Compendium.pf2e.spells-srd.Item.izcxFQFwf3woCnFs",
     HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
     HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
     HEALING_WELL: "Compendium.pf2e.spells-srd.Item.CzjQtkRuRlzRvwzg",
@@ -25,27 +31,38 @@ const SPELLS = {
     ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
     IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
     KNOW_THE_WAY: "Compendium.pf2e.spells-srd.Item.tXa5vOu5giBNCjdR",
+    LIGHT: "Compendium.pf2e.spells-srd.Item.WBmvzNDfpwka3qT4",
     LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
     MAGNETIC_ACCELERATION: "Compendium.pf2e.spells-srd.Item.Tx8OqkBFA2QlaldW",
+    MESSAGE: "Compendium.pf2e.spells-srd.Item.vLzFcIaSXs7YTIqJ",
     NEEDLE_DARTS: "Compendium.pf2e.spells-srd.Item.iYRDFxeVpJ5KIjmr",
     NOXIOUS_VAPOURS: "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv",
     ONE_WITH_STONE: "Compendium.pf2e.spells-srd.Item.vh1RpbWfqdNC4L3P",
     OUTCASTS_CURSE: "Compendium.pf2e.spells-srd.Item.KSAEhNfZyXMO7Z7V",
     PETAL_STORM: "Compendium.pf2e.spells-srd.Item.D31YX7zvRBvenTAz",
     PLANT_FORM: "Compendium.pf2e.spells-srd.Item.zCcfPS4y5SrZzU2x",
+    PRESTIDIGITATION: "Compendium.pf2e.spells-srd.Item.Qw3fnUlaUbnn7ipC",
     PUFF_OF_POISON: "Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4",
+    RAY_OF_FROST: "Compendium.pf2e.spells-srd.Item.gYjPm7YwGtEa1oxh",
+    READ_AURA: "Compendium.pf2e.spells-srd.Item.OhD2Z6rIGGD5ocZA",
     RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
     RUST_CLOUD: "Compendium.pf2e.spells-srd.Item.yy2K51kK3a60rRIe",
     SCATTER_SCREE: "Compendium.pf2e.spells-srd.Item.zA0jNIBRgLsyTpbm",
+    SHIELD: "Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR",
+    SIGIL: "Compendium.pf2e.spells-srd.Item.AUctDF2fqPZN2w4W",
     SOUND_BODY: "Compendium.pf2e.spells-srd.Item.Et8RSCLx8w7uOLvo",
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     STABILIZE: "Compendium.pf2e.spells-srd.Item.SnjhtQYexDtNDdEg",
+    TANGLE_VINE: "Compendium.pf2e.spells-srd.Item.uZK2BYzPnxUBnDjr",
+    TELEKINETIC_HAND: "Compendium.pf2e.spells-srd.Item.pwzdSlJgYqN7bs2w",
+    TELEKINETIC_PROJECTILE: "Compendium.pf2e.spells-srd.Item.60sgbuMWN0268dB7",
     TIMBER: "Compendium.pf2e.spells-srd.Item.9I8mp7RkjeXbkYfx",
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
     WALL_OF_THORNS: "Compendium.pf2e.spells-srd.Item.KsWhliKfUs3IpW3c",
     WALL_OF_WIND: "Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc",
     VISION_OF_DEATH: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n",
+    VITALITY_LASH: "Compendium.pf2e.spells-srd.Item.kcelf6IHl3L9VXXg",
     VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };
 
@@ -103,6 +120,43 @@ const SPELLHEART_EFFECTS = {
 // If array then its pick one
 // strictDC = dc must be the value set
 export const SPELL_ITEMS = {
+    // "cantrip-deck-5-pack": {
+    //     dc: 0,
+    //     spells: [{uses: 1, }]
+    // For the spells it needs to search the item description for the spell
+    // It also needs to sync the count specifically with the uses
+    // },
+    // "cantrip-deck-full-pack": {
+    //     // Needs to store a flag on itself with what spells are left to be used
+    //     // add rule element to give all of the spells the manipulate and concentrate traits
+    //     // Find a way to force the rank
+    //     dc: 15,
+    //     spells: [
+    //         SPELLS.ACID_SPLASH,
+    //         SPELLS.VOID_WARP,
+    //         SPELLS.LIGHT,
+    //         SPELLS.DAZE,
+    //         SPELLS.DETECT_MAGIC,
+    //         SPELLS.VITALITY_LASH,
+    //         SPELLS.DIVINE_LANCE,
+    //         SPELLS.ELECTRIC_ARC,
+    //         SPELLS.FORBIDDING_WARD,
+    //         SPELLS.GHOST_SOUND.SPELLS.GUIDANCE,
+    //         SPELLS.KNOW_THE_WAY,
+    //         SPELLS.LIGHT,
+    //         SPELLS.TELEKINETIC_HAND,
+    //         SPELLS.MESSAGE,
+    //         SPELLS.PRESTIDIGITATION,
+    //         SPELLS.IGNITION,
+    //         SPELLS.RAY_OF_FROST,
+    //         SPELLS.READ_AURA,
+    //         SPELLS.SHIELD,
+    //         SPELLS.SIGIL,
+    //         SPELLS.STABILIZE,
+    //         SPELLS.TANGLE_VINE,
+    //         SPELLS.TELEKINETIC_PROJECTILE
+    //     ]
+    // },
     "clay-sphere": {
         dc: 17,
         spells: [SPELLS.GOUGING_CLAW],
