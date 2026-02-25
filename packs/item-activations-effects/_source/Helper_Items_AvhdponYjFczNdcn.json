@@ -1,0 +1,23 @@
+{
+	"type": "Item",
+	"folder": null,
+	"name": "Helper Items",
+	"color": "#af8c0e",
+	"sorting": "a",
+	"_id": "AvhdponYjFczNdcn",
+	"description": "",
+	"sort": 0,
+	"flags": {},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null,
+		"coreVersion": "13.351",
+		"systemId": "pf2e",
+		"systemVersion": "7.10.1",
+		"createdTime": 1772040518598,
+		"modifiedTime": 1772040524637,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2"
+	},
+	"_key": "!folders!AvhdponYjFczNdcn"
+}

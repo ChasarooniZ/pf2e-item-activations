@@ -1,0 +1,76 @@
+{
+	"folder": "AvhdponYjFczNdcn",
+	"name": "Effect: Enigma Mirror - Weapon",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"_migration": {
+			"version": 0.955,
+			"previous": null
+		},
+		"description": {
+			"value": "<p>Granted by @UUID[Compendium.pf2e.equipment-srd.Jx7cxxTqOENzlGaj]{Enigma Mirror}</p><p>@Localize[pf2e-item-activations.notes.spellhearts.items.enigma-mirror.weapon]</p>",
+			"gm": ""
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"rules": [
+			{
+				"key": "GrantItem",
+				"uuid": "Compendium.pf2e.spell-effects.Item.8ecGfjmxnBY3WWao",
+				"onDeleteActions": {
+					"grantee": "restrict"
+				}
+			}
+		],
+		"slug": "effect-enigma-mirror-weapon",
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"level": {
+			"value": 1
+		},
+		"duration": {
+			"value": 1,
+			"unit": "rounds",
+			"expiry": "turn-end",
+			"sustained": false
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"unidentified": false,
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"badge": null,
+		"fromSpell": false,
+		"context": null
+	},
+	"img": "icons/commodities/metal/plate-steel-pink.webp",
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null,
+		"coreVersion": "13.351",
+		"systemId": "pf2e",
+		"systemVersion": "7.10.1",
+		"createdTime": 1772040600055,
+		"modifiedTime": 1772040919491,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2"
+	},
+	"_id": "ydHmaMoiG1HupZm9",
+	"sort": 0,
+	"_key": "!items!ydHmaMoiG1HupZm9"
+}

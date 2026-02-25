@@ -136,419 +136,423 @@ const SPELLHEART_EFFECTS = {
 // Defaults to default spell rank
 // If array then its pick one
 // strictDC = dc must be the value set
-export const SPELL_ITEMS = {
-    "aeon-stone-agate-ellipsoid": {
-        dc: 0,
-        spells: [SPELLS.AUGURY],
-        tradition: "divine",
-        ability: "cha",
-    },
-    "beastmasters-sigil": {
-        dc: 17,
-        spells: [SPELLS.TAME, { rank: 2, uuid: SPELLS.SUMMON_ANIMAL }],
-        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL(""),
-    },
-    "beastmasters-sigil-greater": {
-        dc: 23,
-        spells: [SPELLS.TAME, { rank: 3, uuid: SPELLS.SUMMON_ANIMAL }],
-        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("greater"),
-    },
-    "beastmasters-sigil-major": {
-        dc: 25,
-        spells: [SPELLS.TAME, { rank: 4, uuid: SPELLS.SUMMON_ANIMAL }],
-        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL(""),
-    },
-    // "cantrip-deck-5-pack": {
-    //     dc: 0,
-    //     spells: [{uses: 1, }]
-    // For the spells it needs to search the item description for the spell
-    // It also needs to sync the count specifically with the uses
-    // },
-    // "cantrip-deck-full-pack": {
-    //     // Needs to store a flag on itself with what spells are left to be used
-    //     // add rule element to give all of the spells the manipulate and concentrate traits
-    //     // Find a way to force the rank
-    //     dc: 15,
-    //     spells: [
-    //         SPELLS.ACID_SPLASH,
-    //         SPELLS.VOID_WARP,
-    //         SPELLS.LIGHT,
-    //         SPELLS.DAZE,
-    //         SPELLS.DETECT_MAGIC,
-    //         SPELLS.VITALITY_LASH,
-    //         SPELLS.DIVINE_LANCE,
-    //         SPELLS.ELECTRIC_ARC,
-    //         SPELLS.FORBIDDING_WARD,
-    //         SPELLS.GHOST_SOUND.SPELLS.GUIDANCE,
-    //         SPELLS.KNOW_THE_WAY,
-    //         SPELLS.LIGHT,
-    //         SPELLS.TELEKINETIC_HAND,
-    //         SPELLS.MESSAGE,
-    //         SPELLS.PRESTIDIGITATION,
-    //         SPELLS.IGNITION,
-    //         SPELLS.RAY_OF_FROST,
-    //         SPELLS.READ_AURA,
-    //         SPELLS.SHIELD,
-    //         SPELLS.SIGIL,
-    //         SPELLS.STABILIZE,
-    //         SPELLS.TANGLE_VINE,
-    //         SPELLS.TELEKINETIC_PROJECTILE
-    //     ]
-    // },
-    "charlatans-gloves": {
-        dc: 0,
-        spells: [SPELLS.TELEKINETIC_HAND],
-        tradition: "occult",
-        ability: "cha",
-    },
-    "charlatans-gloves-greater": {
-        dc: 0,
-        spells: [SPELLS.TELEKINETIC_HAND],
-        tradition: "occult",
-        ability: "cha",
-        notes: SPECIFIC_NOTES.CHARLATANS_GLOVES_GREATER,
-    },
-    "clay-sphere": {
-        dc: 17,
-        spells: [SPELLS.GOUGING_CLAW],
-        notes: getSpellHeartNotes("clay-sphere"),
-    },
-    "clay-sphere-greater": {
-        dc: 20,
-        spells: [SPELLS.GOUGING_CLAW, SPELLS.ENLARGE],
-        notes: getSpellHeartNotes("clay-sphere"),
-    },
-    "clay-sphere-major": {
-        dc: 31,
-        spells: [SPELLS.GOUGING_CLAW, SPELLS.CURSED_METAMORPHOSIS, SPELLS.PLANT_FORM],
-        notes: getSpellHeartNotes("clay-sphere"),
-    },
-    "cloak-of-illusions": {
-        dc: 0,
-        spells: [SPELLS.FIGMENT],
-        tradition: "occult",
-        ability: "cha",
-    },
-    "cloak-of-illusions-greater": {
-        dc: 0,
-        spells: [SPELLS.FIGMENT],
-        tradition: "occult",
-        ability: "cha",
-        notes: SPECIFIC_NOTES.CHARLATANS_GLOVES_GREATER,
-    },
-    "compass-of-luong-phung": {
-        dc: 0,
-        spells: [SPELLS.KNOW_THE_WAY],
-        note: [
-            getSpellNote({
-                spellSlug: "compass-of-luong-phung",
-                textPath: "pf2e-item-activations.notes.spellhearts.items.compass-of-luong-phung",
-            }),
-        ],
-    },
-    "enigma-mirror": {
-        dc: 23,
-        spells: [SPELLS.FORBIDDING_WARD, SPELLS.BLUR],
-        notes: getSpellHeartNotes("enigma-mirror"),
-    },
-    "enigma-mirror-greater": {
-        dc: 27,
-        spells: [SPELLS.FORBIDDING_WARD, SPELLS.MIRRORS_MISFORTUNE],
-        notes: getSpellHeartNotes("enigma-mirror"),
-    },
-    "enigma-mirror-major": {
-        dc: 30,
-        spells: [SPELLS.FORBIDDING_WARD, SPELLS.MIRRORS_MISFORTUNE, SPELLS.MIRROR_MALEFACTORS],
-        notes: getSpellHeartNotes("enigma-mirror"),
-    },
-    "five-feather-wreath": {
-        dc: 18,
-        spells: [SPELLS.GALE_BLAST],
-        notes: getSpellHeartNotes("five-feather-wreath"),
-    },
-    "five-feather-wreath-greater": {
-        dc: 24,
-        spells: [SPELLS.GALE_BLAST, SPELLS.WALL_OF_WIND],
-        notes: getSpellHeartNotes("five-feather-wreath"),
-    },
-    "five-feather-wreath-major": {
-        dc: 29,
-        spells: [SPELLS.GALE_BLAST, { rank: 4, uuid: SPELLS.WALL_OF_WIND }, SPELLS.AIR_WALK],
-        notes: getSpellHeartNotes("five-feather-wreath"),
-    },
-    "flaming-star": {
-        dc: 17,
-        spells: [SPELLS.IGNITION],
-        notes: getSpellHeartNotes("flaming-star"),
-    },
-    "flaming-star-greater": {
-        dc: 24,
-        spells: [SPELLS.IGNITION, SPELLS.FIREBALL],
-        notes: getSpellHeartNotes("flaming-star"),
-    },
-    "flaming-star-major": {
-        dc: 29,
-        spells: [SPELLS.IGNITION, { rank: 4, uuid: SPELLS.FIREBALL }, SPELLS.WALL_OF_FIRE],
-        notes: getSpellHeartNotes("flaming-star"),
-    },
-    "foxglove-token": {
-        dc: 17,
-        spells: [SPELLS.PUFF_OF_POISON],
-        notes: getSpellHeartNotes("foxglove-token"),
-    },
-    "foxglove-token-greater": {
-        dc: 24,
-        spells: [SPELLS.PUFF_OF_POISON, { rank: 3, uuid: SPELLS.NOXIOUS_VAPOURS }],
-        notes: getSpellHeartNotes("foxglove-token"),
-    },
-    "foxglove-token-major": {
-        dc: 29,
-        spells: [
-            SPELLS.PUFF_OF_POISON,
-            { rank: 3, uuid: SPELLS.NOXIOUS_VAPOURS },
-            SPELLS.PETAL_STORM,
-            { rank: 4, uuid: SPELLS.WALL_OF_THORNS },
-        ],
-        notes: getSpellHeartNotes("foxglove-token"),
-    },
-    "grim-sandglass": {
-        dc: 17,
-        spells: [SPELLS.VOID_WARP],
-        notes: getSpellHeartNotes("grim-sandglass"),
-    },
-    "grim-sandglass-greater": {
-        dc: 24,
-        spells: [
-            SPELLS.VOID_WARP,
-            [
-                { rank: 2, uuid: SPELLS.HEAL },
-                { rank: 2, uuid: SPELLS.HARM },
+export let SPELL_ITEMS = {};
+
+export function setupSpellItems() {
+    SPELL_ITEMS = {
+        "aeon-stone-agate-ellipsoid": {
+            dc: 0,
+            spells: [SPELLS.AUGURY],
+            tradition: "divine",
+            ability: "cha",
+        },
+        "beastmasters-sigil": {
+            dc: 17,
+            spells: [SPELLS.TAME, { rank: 2, uuid: SPELLS.SUMMON_ANIMAL }],
+            notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL(""),
+        },
+        "beastmasters-sigil-greater": {
+            dc: 23,
+            spells: [SPELLS.TAME, { rank: 3, uuid: SPELLS.SUMMON_ANIMAL }],
+            notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("greater"),
+        },
+        "beastmasters-sigil-major": {
+            dc: 25,
+            spells: [SPELLS.TAME, { rank: 4, uuid: SPELLS.SUMMON_ANIMAL }],
+            notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("major"),
+        },
+        // "cantrip-deck-5-pack": {
+        //     dc: 0,
+        //     spells: [{uses: 1, }]
+        // For the spells it needs to search the item description for the spell
+        // It also needs to sync the count specifically with the uses
+        // },
+        // "cantrip-deck-full-pack": {
+        //     // Needs to store a flag on itself with what spells are left to be used
+        //     // add rule element to give all of the spells the manipulate and concentrate traits
+        //     // Find a way to force the rank
+        //     dc: 15,
+        //     spells: [
+        //         SPELLS.ACID_SPLASH,
+        //         SPELLS.VOID_WARP,
+        //         SPELLS.LIGHT,
+        //         SPELLS.DAZE,
+        //         SPELLS.DETECT_MAGIC,
+        //         SPELLS.VITALITY_LASH,
+        //         SPELLS.DIVINE_LANCE,
+        //         SPELLS.ELECTRIC_ARC,
+        //         SPELLS.FORBIDDING_WARD,
+        //         SPELLS.GHOST_SOUND.SPELLS.GUIDANCE,
+        //         SPELLS.KNOW_THE_WAY,
+        //         SPELLS.LIGHT,
+        //         SPELLS.TELEKINETIC_HAND,
+        //         SPELLS.MESSAGE,
+        //         SPELLS.PRESTIDIGITATION,
+        //         SPELLS.IGNITION,
+        //         SPELLS.RAY_OF_FROST,
+        //         SPELLS.READ_AURA,
+        //         SPELLS.SHIELD,
+        //         SPELLS.SIGIL,
+        //         SPELLS.STABILIZE,
+        //         SPELLS.TANGLE_VINE,
+        //         SPELLS.TELEKINETIC_PROJECTILE
+        //     ]
+        // },
+        "charlatans-gloves": {
+            dc: 0,
+            spells: [SPELLS.TELEKINETIC_HAND],
+            tradition: "occult",
+            ability: "cha",
+        },
+        "charlatans-gloves-greater": {
+            dc: 0,
+            spells: [SPELLS.TELEKINETIC_HAND],
+            tradition: "occult",
+            ability: "cha",
+            notes: SPECIFIC_NOTES.CHARLATANS_GLOVES_GREATER,
+        },
+        "clay-sphere": {
+            dc: 17,
+            spells: [SPELLS.GOUGING_CLAW],
+            notes: getSpellHeartNotes("clay-sphere"),
+        },
+        "clay-sphere-greater": {
+            dc: 20,
+            spells: [SPELLS.GOUGING_CLAW, SPELLS.ENLARGE],
+            notes: getSpellHeartNotes("clay-sphere"),
+        },
+        "clay-sphere-major": {
+            dc: 31,
+            spells: [SPELLS.GOUGING_CLAW, SPELLS.CURSED_METAMORPHOSIS, SPELLS.PLANT_FORM],
+            notes: getSpellHeartNotes("clay-sphere"),
+        },
+        "cloak-of-illusions": {
+            dc: 0,
+            spells: [SPELLS.FIGMENT],
+            tradition: "occult",
+            ability: "cha",
+        },
+        "cloak-of-illusions-greater": {
+            dc: 0,
+            spells: [SPELLS.FIGMENT],
+            tradition: "occult",
+            ability: "cha",
+            notes: SPECIFIC_NOTES.CHARLATANS_GLOVES_GREATER,
+        },
+        "compass-of-luong-phung": {
+            dc: 0,
+            spells: [SPELLS.KNOW_THE_WAY],
+            note: [
+                getSpellNote({
+                    spellSlug: "compass-of-luong-phung",
+                    textPath: "pf2e-item-activations.notes.spellhearts.items.compass-of-luong-phung",
+                }),
             ],
-        ],
-        notes: getSpellHeartNotes("grim-sandglass"),
-    },
-    "grim-sandglass-major": {
-        dc: 29,
-        spells: [
-            SPELLS.VOID_WARP,
-            [
-                { rank: 4, uuid: SPELLS.HEAL },
-                { rank: 4, uuid: SPELLS.HARM },
+        },
+        "enigma-mirror": {
+            dc: 23,
+            spells: [SPELLS.FORBIDDING_WARD, SPELLS.BLUR],
+            notes: getSpellHeartNotes("enigma-mirror"),
+        },
+        "enigma-mirror-greater": {
+            dc: 27,
+            spells: [SPELLS.FORBIDDING_WARD, SPELLS.MIRRORS_MISFORTUNE],
+            notes: getSpellHeartNotes("enigma-mirror"),
+        },
+        "enigma-mirror-major": {
+            dc: 30,
+            spells: [SPELLS.FORBIDDING_WARD, SPELLS.MIRRORS_MISFORTUNE, SPELLS.MIRROR_MALEFACTORS],
+            notes: getSpellHeartNotes("enigma-mirror"),
+        },
+        "five-feather-wreath": {
+            dc: 18,
+            spells: [SPELLS.GALE_BLAST],
+            notes: getSpellHeartNotes("five-feather-wreath"),
+        },
+        "five-feather-wreath-greater": {
+            dc: 24,
+            spells: [SPELLS.GALE_BLAST, SPELLS.WALL_OF_WIND],
+            notes: getSpellHeartNotes("five-feather-wreath"),
+        },
+        "five-feather-wreath-major": {
+            dc: 29,
+            spells: [SPELLS.GALE_BLAST, { rank: 4, uuid: SPELLS.WALL_OF_WIND }, SPELLS.AIR_WALK],
+            notes: getSpellHeartNotes("five-feather-wreath"),
+        },
+        "flaming-star": {
+            dc: 17,
+            spells: [SPELLS.IGNITION],
+            notes: getSpellHeartNotes("flaming-star"),
+        },
+        "flaming-star-greater": {
+            dc: 24,
+            spells: [SPELLS.IGNITION, SPELLS.FIREBALL],
+            notes: getSpellHeartNotes("flaming-star"),
+        },
+        "flaming-star-major": {
+            dc: 29,
+            spells: [SPELLS.IGNITION, { rank: 4, uuid: SPELLS.FIREBALL }, SPELLS.WALL_OF_FIRE],
+            notes: getSpellHeartNotes("flaming-star"),
+        },
+        "foxglove-token": {
+            dc: 17,
+            spells: [SPELLS.PUFF_OF_POISON],
+            notes: getSpellHeartNotes("foxglove-token"),
+        },
+        "foxglove-token-greater": {
+            dc: 24,
+            spells: [SPELLS.PUFF_OF_POISON, { rank: 3, uuid: SPELLS.NOXIOUS_VAPOURS }],
+            notes: getSpellHeartNotes("foxglove-token"),
+        },
+        "foxglove-token-major": {
+            dc: 29,
+            spells: [
+                SPELLS.PUFF_OF_POISON,
+                { rank: 3, uuid: SPELLS.NOXIOUS_VAPOURS },
+                SPELLS.PETAL_STORM,
+                { rank: 4, uuid: SPELLS.WALL_OF_THORNS },
             ],
-            [SPELLS.ENERVATION, { rank: 4, uuid: SPELLS.RESTORATION }],
-        ],
-        notes: getSpellHeartNotes("grim-sandglass"),
-    },
-    heartmoss: {
-        dc: 17,
-        spells: [SPELLS.STABILIZE],
-        notes: getSpellHeartNotes("heartmoss"),
-    },
-    "heartmoss-greater": {
-        dc: 24,
-        spells: [SPELLS.STABILIZE, { rank: 3, uuid: SPELLS.HEAL }],
-        notes: getSpellHeartNotes("heartmoss"),
-    },
-    "heartmoss-major": {
-        dc: 29,
-        spells: [
-            SPELLS.STABILIZE,
-            { rank: 3, uuid: SPELLS.HEAL },
-            { rank: 4, uuid: SPELLS.SOUND_BODY },
-            SPELLS.HEALING_WELL,
-        ],
-        notes: getSpellHeartNotes("heartmoss"),
-    },
-    "hunters-brooch": {
-        dc: 0,
-        spells: [SPELLS.VITALITY_LASH],
-        tradition: "divine",
-        ability: "cha",
-    },
-    "jolt-coil": {
-        dc: 17,
-        spells: [SPELLS.ELECTRIC_ARC],
-        notes: getSpellHeartNotes("jolt-coil"),
-    },
-    "jolt-coil-greater": {
-        dc: 24,
-        spells: [SPELLS.ELECTRIC_ARC, SPELLS.LIGHTNING_BOLT],
-        notes: getSpellHeartNotes("jolt-coil"),
-    },
-    "jolt-coil-major": {
-        dc: 29,
-        spells: [SPELLS.ELECTRIC_ARC, { rank: 4, uuid: SPELLS.LIGHTNING_BOLT }, SPELLS.DRAW_THE_LIGHTNING],
-        notes: getSpellHeartNotes("jolt-coil"),
-    },
-    "mages-hat": {
-        dc: 0,
-        spells: [SPELLS.PRESTIDIGITATION],
-        tradition: "arcane",
-        ability: "cha",
-    },
-    "mages-hat-greater": {
-        dc: 0,
-        spells: [SPELLS.PRESTIDIGITATION],
-        tradition: "arcane",
-        ability: "cha",
-    },
-    "magical-medal-griffons-heart": {
-        dc: 0,
-        spells: [SPELLS.FORBIDDING_WARD],
-        ability: "cha",
-    },
-    "perfect-droplet": {
-        dc: 17,
-        spells: [SPELLS.SPOUT],
-        notes: getSpellHeartNotes("perfect-droplet"),
-    },
-    "perfect-droplet-greater": {
-        dc: 24,
-        spells: [SPELLS.SPOUT, [SPELLS.AQUEOUS_ORB, SPELLS.FEET_TO_FINS]],
-        notes: getSpellHeartNotes("perfect-droplet"),
-    },
-    "phantasmal-doorknob": {
-        dc: 20,
-        spells: [SPELLS.FIGMENT, SPELLS.PHANTASMAL_TREASURE],
-    },
-    "phantasmal-doorknob-greater": {
-        dc: 27,
-        spells: [SPELLS.FIGMENT, SPELLS.VISION_OF_DEATH],
-    },
-    "phantasmal-doorknob-major": {
-        dc: 34,
-        spells: [SPELLS.FIGMENT, { rank: 6, uuid: SPELLS.VISION_OF_DEATH }, SPELLS.PHANTASMAL_CALAMITY],
-    },
-    "perfect-droplet-major": {
-        dc: 29,
-        spells: [
-            SPELLS.SPOUT,
-            [
-                { rank: 4, uuid: SPELLS.AQUEOUS_ORB },
-                { rank: 4, uuid: SPELLS.FEET_TO_FINS },
+            notes: getSpellHeartNotes("foxglove-token"),
+        },
+        "grim-sandglass": {
+            dc: 17,
+            spells: [SPELLS.VOID_WARP],
+            notes: getSpellHeartNotes("grim-sandglass"),
+        },
+        "grim-sandglass-greater": {
+            dc: 24,
+            spells: [
+                SPELLS.VOID_WARP,
+                [
+                    { rank: 2, uuid: SPELLS.HEAL },
+                    { rank: 2, uuid: SPELLS.HARM },
+                ],
             ],
-            SPELLS.HYDRAULIC_TORRENT,
-        ],
-        notes: getSpellHeartNotes("perfect-droplet"),
-    },
-    "pickled-demon-tongue": {
-        dc: 17,
-        spells: [SPELLS.CAUSTIC_BLAST],
-        notes: getSpellHeartNotes("pickled-demon-tongue"),
-    },
-    "pickled-demon-tongue-greater": {
-        dc: 24,
-        spells: [SPELLS.CAUSTIC_BLAST, { rank: 3, uuid: SPELLS.ACIDIC_BURST }],
-        notes: getSpellHeartNotes("pickled-demon-tongue"),
-    },
-    "pickled-demon-tongue-major": {
-        dc: 29,
-        spells: [SPELLS.CAUSTIC_BLAST, SPELLS.ACID_GRIP, { rank: 4, uuid: SPELLS.ACIDIC_BURST }],
-        notes: getSpellHeartNotes("pickled-demon-tongue"),
-    },
-    "polished-demon-horn": {
-        dc: 17,
-        spells: [SPELLS.DAZE],
-        notes: getSpellHeartNotes("polished-demon-horn"),
-    },
-    "polished-demon-horn-greater": {
-        dc: 24,
-        spells: [SPELLS.DAZE, { rank: 3, uuid: SPELLS.FEAR }],
-        notes: getSpellHeartNotes("polished-demon-horn"),
-    },
-    "polished-demon-horn-major": {
-        dc: 29,
-        spells: [SPELLS.DAZE, { rank: 3, uuid: SPELLS.FEAR }, SPELLS.OUTCASTS_CURSE, SPELLS.VISION_OF_DEATH],
-        notes: getSpellHeartNotes("polished-demon-horn"),
-    },
-    "resonating-fork": {
-        dc: 19,
-        spells: [SPELLS.BULLHORN, SPELLS.BITING_WORDS],
-        notes: SPECIFIC_NOTES.RESONATING_FORK(""),
-    },
-    "resonating-fork-greater": {
-        dc: 23,
-        spells: [SPELLS.BULLHORN, { rank: 2, uuid: SPELLS.BITING_WORDS }, SPELLS.NOISE_BLAST],
-        notes: SPECIFIC_NOTES.RESONATING_FORK("greater"),
-    },
-    "resonating-fork-major": {
-        dc: 29,
-        spells: [SPELLS.BULLHORN, { rank: 4, uuid: SPELLS.BITING_WORDS }, SPELLS.PAINFUL_VIBRATIONS],
-        notes: SPECIFIC_NOTES.RESONATING_FORK("major"),
-    },
-    "rime-crystal": {
-        dc: 17,
-        spells: [SPELLS.FROSTBITE],
-        notes: getSpellHeartNotes("rime-crystal"),
-    },
-    "rime-crystal-greater": {
-        dc: 24,
-        spells: [SPELLS.FROSTBITE, { rank: 3, uuid: SPELLS.CHILLING_SPRAY }],
-        notes: getSpellHeartNotes("rime-crystal"),
-    },
-    "rime-crystal-major": {
-        dc: 29,
-        spells: [SPELLS.FROSTBITE, SPELLS.ICE_STORM, SPELLS.HOWLING_BLIZZARD],
-        notes: getSpellHeartNotes("rime-crystal"),
-    },
-    "ring-of-sigils": {
-        dc: 0,
-        spells: [SPELLS.SIGIL],
-        tradition: "arcane",
-        ability: "cha",
-    },
-    "ring-of-sigils-greater": {
-        dc: 0,
-        spells: [SPELLS.SIGIL],
-        tradition: "arcane",
-        ability: "cha",
-    },
-    "spiny-lodestone": {
-        dc: 18,
-        spells: [SPELLS.NEEDLE_DARTS],
-        notes: getSpellHeartNotes("spiny-lodestone"),
-    },
-    "spiny-lodestone-greater": {
-        dc: 24,
-        spells: [SPELLS.NEEDLE_DARTS, SPELLS.MAGNETIC_ACCELERATION],
-        notes: getSpellHeartNotes("spiny-lodestone"),
-    },
-    "spiny-lodestone-major": {
-        dc: 29,
-        spells: [SPELLS.NEEDLE_DARTS, { rank: 4, uuid: SPELLS.MAGNETIC_ACCELERATION }, SPELLS.RUST_CLOUD],
-        notes: getSpellHeartNotes("spiny-lodestone"),
-    },
-    "thorn-triad": {
-        dc: 18,
-        spells: [SPELLS.TIMBER],
-        notes: getSpellHeartNotes("thorn-triad"),
-    },
-    "thorn-triad-greater": {
-        dc: 24,
-        spells: [SPELLS.TIMBER, SPELLS.WALL_OF_THORNS],
-        notes: getSpellHeartNotes("thorn-triad"),
-    },
-    "thorn-triad-major": {
-        dc: 29,
-        spells: [SPELLS.TIMBER, { rank: 4, uuid: SPELLS.WALL_OF_THORNS }, SPELLS.PETAL_STORM],
-        notes: getSpellHeartNotes("thorn-triad"),
-    },
-    "trinity-geode": {
-        dc: 17,
-        spells: [SPELLS.SCATTER_SCREE],
-        notes: getSpellHeartNotes("trinity-geode"),
-    },
-    "trinity-geode-greater": {
-        dc: 24,
-        spells: [SPELLS.SCATTER_SCREE, SPELLS.ONE_WITH_STONE],
-        notes: getSpellHeartNotes("trinity-geode"),
-    },
-    "trinity-geode-major": {
-        dc: 29,
-        spells: [SPELLS.SCATTER_SCREE, { rank: 4, uuid: SPELLS.ONE_WITH_STONE }, SPELLS.SPIKE_STONES],
-        notes: getSpellHeartNotes("trinity-geode"),
-    },
-};
+            notes: getSpellHeartNotes("grim-sandglass"),
+        },
+        "grim-sandglass-major": {
+            dc: 29,
+            spells: [
+                SPELLS.VOID_WARP,
+                [
+                    { rank: 4, uuid: SPELLS.HEAL },
+                    { rank: 4, uuid: SPELLS.HARM },
+                ],
+                [SPELLS.ENERVATION, { rank: 4, uuid: SPELLS.RESTORATION }],
+            ],
+            notes: getSpellHeartNotes("grim-sandglass"),
+        },
+        heartmoss: {
+            dc: 17,
+            spells: [SPELLS.STABILIZE],
+            notes: getSpellHeartNotes("heartmoss"),
+        },
+        "heartmoss-greater": {
+            dc: 24,
+            spells: [SPELLS.STABILIZE, { rank: 3, uuid: SPELLS.HEAL }],
+            notes: getSpellHeartNotes("heartmoss"),
+        },
+        "heartmoss-major": {
+            dc: 29,
+            spells: [
+                SPELLS.STABILIZE,
+                { rank: 3, uuid: SPELLS.HEAL },
+                { rank: 4, uuid: SPELLS.SOUND_BODY },
+                SPELLS.HEALING_WELL,
+            ],
+            notes: getSpellHeartNotes("heartmoss"),
+        },
+        "hunters-brooch": {
+            dc: 0,
+            spells: [SPELLS.VITALITY_LASH],
+            tradition: "divine",
+            ability: "cha",
+        },
+        "jolt-coil": {
+            dc: 17,
+            spells: [SPELLS.ELECTRIC_ARC],
+            notes: getSpellHeartNotes("jolt-coil"),
+        },
+        "jolt-coil-greater": {
+            dc: 24,
+            spells: [SPELLS.ELECTRIC_ARC, SPELLS.LIGHTNING_BOLT],
+            notes: getSpellHeartNotes("jolt-coil"),
+        },
+        "jolt-coil-major": {
+            dc: 29,
+            spells: [SPELLS.ELECTRIC_ARC, { rank: 4, uuid: SPELLS.LIGHTNING_BOLT }, SPELLS.DRAW_THE_LIGHTNING],
+            notes: getSpellHeartNotes("jolt-coil"),
+        },
+        "mages-hat": {
+            dc: 0,
+            spells: [SPELLS.PRESTIDIGITATION],
+            tradition: "arcane",
+            ability: "cha",
+        },
+        "mages-hat-greater": {
+            dc: 0,
+            spells: [SPELLS.PRESTIDIGITATION],
+            tradition: "arcane",
+            ability: "cha",
+        },
+        "magical-medal-griffons-heart": {
+            dc: 0,
+            spells: [SPELLS.FORBIDDING_WARD],
+            ability: "cha",
+        },
+        "perfect-droplet": {
+            dc: 17,
+            spells: [SPELLS.SPOUT],
+            notes: getSpellHeartNotes("perfect-droplet"),
+        },
+        "perfect-droplet-greater": {
+            dc: 24,
+            spells: [SPELLS.SPOUT, [SPELLS.AQUEOUS_ORB, SPELLS.FEET_TO_FINS]],
+            notes: getSpellHeartNotes("perfect-droplet"),
+        },
+        "phantasmal-doorknob": {
+            dc: 20,
+            spells: [SPELLS.FIGMENT, SPELLS.PHANTASMAL_TREASURE],
+        },
+        "phantasmal-doorknob-greater": {
+            dc: 27,
+            spells: [SPELLS.FIGMENT, SPELLS.VISION_OF_DEATH],
+        },
+        "phantasmal-doorknob-major": {
+            dc: 34,
+            spells: [SPELLS.FIGMENT, { rank: 6, uuid: SPELLS.VISION_OF_DEATH }, SPELLS.PHANTASMAL_CALAMITY],
+        },
+        "perfect-droplet-major": {
+            dc: 29,
+            spells: [
+                SPELLS.SPOUT,
+                [
+                    { rank: 4, uuid: SPELLS.AQUEOUS_ORB },
+                    { rank: 4, uuid: SPELLS.FEET_TO_FINS },
+                ],
+                SPELLS.HYDRAULIC_TORRENT,
+            ],
+            notes: getSpellHeartNotes("perfect-droplet"),
+        },
+        "pickled-demon-tongue": {
+            dc: 17,
+            spells: [SPELLS.CAUSTIC_BLAST],
+            notes: getSpellHeartNotes("pickled-demon-tongue"),
+        },
+        "pickled-demon-tongue-greater": {
+            dc: 24,
+            spells: [SPELLS.CAUSTIC_BLAST, { rank: 3, uuid: SPELLS.ACIDIC_BURST }],
+            notes: getSpellHeartNotes("pickled-demon-tongue"),
+        },
+        "pickled-demon-tongue-major": {
+            dc: 29,
+            spells: [SPELLS.CAUSTIC_BLAST, SPELLS.ACID_GRIP, { rank: 4, uuid: SPELLS.ACIDIC_BURST }],
+            notes: getSpellHeartNotes("pickled-demon-tongue"),
+        },
+        "polished-demon-horn": {
+            dc: 17,
+            spells: [SPELLS.DAZE],
+            notes: getSpellHeartNotes("polished-demon-horn"),
+        },
+        "polished-demon-horn-greater": {
+            dc: 24,
+            spells: [SPELLS.DAZE, { rank: 3, uuid: SPELLS.FEAR }],
+            notes: getSpellHeartNotes("polished-demon-horn"),
+        },
+        "polished-demon-horn-major": {
+            dc: 29,
+            spells: [SPELLS.DAZE, { rank: 3, uuid: SPELLS.FEAR }, SPELLS.OUTCASTS_CURSE, SPELLS.VISION_OF_DEATH],
+            notes: getSpellHeartNotes("polished-demon-horn"),
+        },
+        "resonating-fork": {
+            dc: 19,
+            spells: [SPELLS.BULLHORN, SPELLS.BITING_WORDS],
+            notes: SPECIFIC_NOTES.RESONATING_FORK(""),
+        },
+        "resonating-fork-greater": {
+            dc: 23,
+            spells: [SPELLS.BULLHORN, { rank: 2, uuid: SPELLS.BITING_WORDS }, SPELLS.NOISE_BLAST],
+            notes: SPECIFIC_NOTES.RESONATING_FORK("greater"),
+        },
+        "resonating-fork-major": {
+            dc: 29,
+            spells: [SPELLS.BULLHORN, { rank: 4, uuid: SPELLS.BITING_WORDS }, SPELLS.PAINFUL_VIBRATIONS],
+            notes: SPECIFIC_NOTES.RESONATING_FORK("major"),
+        },
+        "rime-crystal": {
+            dc: 17,
+            spells: [SPELLS.FROSTBITE],
+            notes: getSpellHeartNotes("rime-crystal"),
+        },
+        "rime-crystal-greater": {
+            dc: 24,
+            spells: [SPELLS.FROSTBITE, { rank: 3, uuid: SPELLS.CHILLING_SPRAY }],
+            notes: getSpellHeartNotes("rime-crystal"),
+        },
+        "rime-crystal-major": {
+            dc: 29,
+            spells: [SPELLS.FROSTBITE, SPELLS.ICE_STORM, SPELLS.HOWLING_BLIZZARD],
+            notes: getSpellHeartNotes("rime-crystal"),
+        },
+        "ring-of-sigils": {
+            dc: 0,
+            spells: [SPELLS.SIGIL],
+            tradition: "arcane",
+            ability: "cha",
+        },
+        "ring-of-sigils-greater": {
+            dc: 0,
+            spells: [SPELLS.SIGIL],
+            tradition: "arcane",
+            ability: "cha",
+        },
+        "spiny-lodestone": {
+            dc: 18,
+            spells: [SPELLS.NEEDLE_DARTS],
+            notes: getSpellHeartNotes("spiny-lodestone"),
+        },
+        "spiny-lodestone-greater": {
+            dc: 24,
+            spells: [SPELLS.NEEDLE_DARTS, SPELLS.MAGNETIC_ACCELERATION],
+            notes: getSpellHeartNotes("spiny-lodestone"),
+        },
+        "spiny-lodestone-major": {
+            dc: 29,
+            spells: [SPELLS.NEEDLE_DARTS, { rank: 4, uuid: SPELLS.MAGNETIC_ACCELERATION }, SPELLS.RUST_CLOUD],
+            notes: getSpellHeartNotes("spiny-lodestone"),
+        },
+        "thorn-triad": {
+            dc: 18,
+            spells: [SPELLS.TIMBER],
+            notes: getSpellHeartNotes("thorn-triad"),
+        },
+        "thorn-triad-greater": {
+            dc: 24,
+            spells: [SPELLS.TIMBER, SPELLS.WALL_OF_THORNS],
+            notes: getSpellHeartNotes("thorn-triad"),
+        },
+        "thorn-triad-major": {
+            dc: 29,
+            spells: [SPELLS.TIMBER, { rank: 4, uuid: SPELLS.WALL_OF_THORNS }, SPELLS.PETAL_STORM],
+            notes: getSpellHeartNotes("thorn-triad"),
+        },
+        "trinity-geode": {
+            dc: 17,
+            spells: [SPELLS.SCATTER_SCREE],
+            notes: getSpellHeartNotes("trinity-geode"),
+        },
+        "trinity-geode-greater": {
+            dc: 24,
+            spells: [SPELLS.SCATTER_SCREE, SPELLS.ONE_WITH_STONE],
+            notes: getSpellHeartNotes("trinity-geode"),
+        },
+        "trinity-geode-major": {
+            dc: 29,
+            spells: [SPELLS.SCATTER_SCREE, { rank: 4, uuid: SPELLS.ONE_WITH_STONE }, SPELLS.SPIKE_STONES],
+            notes: getSpellHeartNotes("trinity-geode"),
+        },
+    };
+}
 
 export const SPELL_ITEM_SLUG_LIST = [...Object.keys(SPELL_ITEMS)];
 
