@@ -17,12 +17,20 @@ import {
     handleRemovedRunes,
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
+import { isSpellHeart, needsSpellcasting, SPELL_ITEMS } from "./helpers/spells/spellcasting-items.js";
+import {
+    checkAndUpdateLinkedSpellcastingItem,
+    createSpellcastingEntry,
+    linkedSpellStyling,
+} from "./helpers/spells/handle-spellcasting-entries.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
     console.log("PF2e Item Activations is getting ready....");
     registerAPI();
     Hooks.on("preUpdateItem", async (item, changes, diff, userID) => {
+        checkAndUpdateLinkedSpellcastingItem(item, changes);
+
         if (skipUpdateItem(item, userID)) {
             return;
         }
@@ -96,6 +104,7 @@ Hooks.on("ready", () => {
     Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
         const actor = _sheet.actor;
         actionStyling(actor, html);
+        linkedSpellStyling(actor, html);
     });
     if (game.user.isGM) {
         sendUpdateMessage();
@@ -294,7 +303,7 @@ export async function addOrDeleteActivation(item, changeType) {
                 let actionItem = await fromUuid(uuid);
                 actions.push(augmentAction(actionItem.toObject(), item));
             }
-        } else {
+        } else if (!isSpellHeart(item)) {
             // On the Fly
             actions = generateActivations(item).map((act) => augmentAction(act, item));
             debugLog({ actions }, "Auto Create");
@@ -320,6 +329,19 @@ export async function addOrDeleteActivation(item, changeType) {
 
         if (!qualified) {
             actions = actions.map((action) => deactivateAction(action));
+        } else if (!needsSpellcasting(item) || actor.isSpellcaster) {
+            const spellItemInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
+            if (spellItemInfo) {
+                createSpellcastingEntry({
+                    spellsAdded: spellItemInfo.spells,
+                    dc: spellItemInfo.dc,
+                    useItemDC: spellItemInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellItemInfo.dc,
+                    entryNoteData: spellItemInfo.notes,
+                    actor,
+                    item,
+                    spellItemInfo
+                });
+            }
         }
 
         debugLog({ actions }, "Add");

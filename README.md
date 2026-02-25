@@ -8,48 +8,59 @@
 [![gitlocalized ](https://gitlocalize.com/repo/10298/whole_project/badge.svg)](https://gitlocalize.com/repo/10298?utm_source=badge)
 [![Kofi](https://img.shields.io/badge/Kofi-F16061.svg?logo=ko-fi&logoColor=white)](https://ko-fi.com/Chasarooni)
 
-
 # PF2e Item Activations
+
 Adds actions based on items activations. There are manually inputted items (see [Supported Items](#supported-items)), but there is also an automatic generation system to generate items.
 ![Module In Action](https://media.discordapp.net/attachments/880969157846392842/1216869819153121280/ItemActivationsInAction.gif?ex=6601f555&is=65ef8055&hm=bc150d7c0c52030df17ca34faba7bb19ac42fb270aeddb694cf26030af45ba90&=)
+
 ## Table of Contents
+
 - [PF2e Item Activations](#pf2e-item-activations)
   - [Table of Contents](#table-of-contents)
     - [Notes and Limitations](#notes-and-limitations)
       - [Notes](#notes)
       - [Limitations](#limitations)
   - [Features](#features)
-    - [Supported Items](#supported-items)
-  - [Settings](#settings)
+    - [Specifically Handled Items](#specifically-handled-items)
   - [Language Support](#language-support)
   - [FAQ](#faq)
 
 ### Notes and Limitations
+
 #### Notes
+
 - This module will exist until this feature is implemented into the core system
 - Module will be updated sporadically as I get time and motivation
+
 #### Limitations
+
 - ~~Currently no Custom Activations (will most likely be a later feature)~~
 - Activations in actors aren't updated unless you remove them and readd them
 - Activations only appear when an item is added/updated
 - Activations currently don't have their own action category, I may look into that to see how difficult it would be
 - Activations don't automatically update their uses you need to use a module that does that such as my [Pf2e Usage Updater](https://github.com/ChasarooniZ/pf2e-usage-updater/tree/master) module
 - Activations aren't disable when a player can't use them they just put an `[X]` in front of them
+
 ## Features
+
 - Adds and removes actions from your inventory when you equip item etc..
 - Now supports automatic generation, follows the format of any of the currently manually support activations. You'll need to copy some of the formatting exactly for the system to pick up on it'
-  - But this also allows for the support of custom items
+    - But this also allows for the support of custom items
+
 ### Specifically Handled Items
-[Full List of Specifically handled items here](https://github.com/chasarooniZ/pf2e-item-activations/blob/main/ITEMS.md)
+
+[Handled Items with Spells](SPELL_ITEMS.md)
+
 ## Language Support
 
 To add support for other languages you simply need to submit a PR for the `en.json` but in your chosen language based on the [language support listing for fvtt](https://foundryvtt.wiki/en/languages).
-**Note** the translations under the code section in the translation __MUST MATCH THE SAME CAPITALIZATION AND MUST MATCH THE WORD USED IN YOUR TRANSLATION OF PF2e__. The capitalization + word matching are critical to allowing any of the automation for automatically generating activations to work.
+**Note** the translations under the code section in the translation **MUST MATCH THE SAME CAPITALIZATION AND MUST MATCH THE WORD USED IN YOUR TRANSLATION OF PF2e**. The capitalization + word matching are critical to allowing any of the automation for automatically generating activations to work.
 
 ## FAQ
-**A. My activations aren't being created  for a custom item, What is going wrong?**
 
-Open an item that has activations in the sytsem (ie [Icycle](https://2e.aonprd.com/Equipment.aspx?ID=2868)) and edit the description as HTML. Compare that description and yours to see what is wrong, it could be an extra space or something of that nature.
+**A. My activations aren't being created for a custom item, What is going wrong?**
+
+Open an item that has activations in the system (ie [Icicle](https://2e.aonprd.com/Equipment.aspx?ID=2868)) and edit the description as HTML. Compare that description and yours to see what is wrong, it could be an extra space or something of that nature.
 
 **B. Does this support premaster formatting?**
 

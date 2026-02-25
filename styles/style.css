@@ -14,3 +14,19 @@
 .enabled-activation {
     box-shadow: inset 0 0 3px 1px #8248e0;
 }
+
+i.linked-spells-icon {
+    padding-left: 3px;
+    &.a {
+        text-shadow: 0 2px #8cf777;
+    }
+    &.b {
+        text-shadow: 0 2px #64f2ff;
+    }
+    &.c {
+        text-shadow: 0 2px #836ef8;
+    }
+    &.d {
+        text-shadow: 0 2px #fa78fa;
+    }
+}

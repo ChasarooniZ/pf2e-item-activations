@@ -14,7 +14,7 @@ export const IGNORED_TYPES = [
     "melee",
     "ranged",
 ];
-export const IGNORE_IN_SLOT = ["tattooed-on-the-body"];
+export const IGNORE_IN_SLOT = ["tattooed-on-the-body", "affixed-to-armor-or-a-weapon"];
 
 export const EFFECTS = {
     FORTIFICATION: "Compendium.pf2e-item-activations.item-activations-effects.Item.B4gaHFhQA7EXsNhv",
