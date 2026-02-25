@@ -330,13 +330,13 @@ export async function addOrDeleteActivation(item, changeType) {
         if (!qualified) {
             actions = actions.map((action) => deactivateAction(action));
         } else if (!needsSpellcasting(item) || actor.isSpellcaster) {
-            const spellInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
-            if (spellInfo) {
+            const spellItemInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
+            if (spellItemInfo) {
                 createSpellcastingEntry({
-                    spellsAdded: spellInfo.spells,
-                    dc: spellInfo.dc,
-                    useItemDC: spellInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellInfo.dc,
-                    entryNoteData: spellInfo.notes,
+                    spellsAdded: spellItemInfo.spells,
+                    dc: spellItemInfo.dc,
+                    useItemDC: spellItemInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellItemInfo.dc,
+                    entryNoteData: spellItemInfo.notes,
                     actor,
                     item,
                     spellItemInfo
