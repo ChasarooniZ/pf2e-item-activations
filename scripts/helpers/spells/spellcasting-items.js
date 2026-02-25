@@ -8,11 +8,16 @@ const SPELLS = {
     BITING_WORDS: "Compendium.pf2e.spells-srd.Item.yafsV0ni7rFgqJBj",
     BLUR: "Compendium.pf2e.spells-srd.Item.3JG1t3T4mWn6vTke",
     BULLHORN: "Compendium.pf2e.spells-srd.Item.W02bHXylIpoXbO4e",
+    BURNING_BLOSSOMS: "Compendium.pf2e.spells-srd.Item.kWDt0JcKPgX6MvdD",
+    CANTICLE_OF_EVERLASTING_GRIEF: "Compendium.pf2e.spells-srd.Item.qlxM7Ik3uUeUIOcv",
     CAUSTIC_BLAST: "Compendium.pf2e.spells-srd.Item.thAHF1zxNplLCJPO",
     CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
+    CLAIRVOYANCE: "Compendium.pf2e.spells-srd.Item.zvKWclOZ7A53DObE",
+    CONFUSING_COLORS: "Compendium.pf2e.spells-srd.Item.uEyfLoFQsRKBRIcB",
     CURSED_METAMORPHOSIS: "Compendium.pf2e.spells-srd.Item.dN8QBNuTiaBHCKUe",
     DAZE: "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4",
     DETECT_MAGIC: "Compendium.pf2e.spells-srd.Item.gpzpAAAJ1Lza2JVl",
+    DINOSAUR_FORM: "Compendium.pf2e.spells-srd.Item.KhM8MhoUgoUjBMIz",
     DIVINE_LANCE: "Compendium.pf2e.spells-srd.Item.qwZBXN6zBoB9BHXE",
     DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
     ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
@@ -29,10 +34,12 @@ const SPELLS = {
     GOUGING_CLAW: "Compendium.pf2e.spells-srd.Item.MPxbKoR54gkYkqLO",
     GUIDANCE: "Compendium.pf2e.spells-srd.Item.izcxFQFwf3woCnFs",
     HARM: "Compendium.pf2e.spells-srd.Item.wdA52JJnsuQWeyqz",
+    HAUNTING_HYMN: "Compendium.pf2e.spells-srd.Item.b5BQbwmuBhgPXTyi",
     HEAL: "Compendium.pf2e.spells-srd.Item.rfZpqmj0AIIdkVIs",
     HEALING_WELL: "Compendium.pf2e.spells-srd.Item.CzjQtkRuRlzRvwzg",
     HOWLING_BLIZZARD: "Compendium.pf2e.spells-srd.Item.xxWhyl81w3ckslAU",
     HYDRAULIC_TORRENT: "Compendium.pf2e.spells-srd.Item.Y3G6Y6EDgCY0s3fq",
+    HYPNOTIZE: "Compendium.pf2e.spells-srd.Item.K2WpC3FFoHrqX9Q5",
     ICE_STORM: "Compendium.pf2e.spells-srd.Item.kHyjQbibRGPNCixx",
     IGNITION: "Compendium.pf2e.spells-srd.Item.6DfLZBl8wKIV03Iq",
     KNOW_THE_WAY: "Compendium.pf2e.spells-srd.Item.tXa5vOu5giBNCjdR",
@@ -59,8 +66,10 @@ const SPELLS = {
     RESTORATION: "Compendium.pf2e.spells-srd.Item.SnaLVgxZ9ryUFmUr",
     RUST_CLOUD: "Compendium.pf2e.spells-srd.Item.yy2K51kK3a60rRIe",
     SCATTER_SCREE: "Compendium.pf2e.spells-srd.Item.zA0jNIBRgLsyTpbm",
+    SCOUTING_EYE: "Compendium.pf2e.spells-srd.Item.Ek5XI0aEdZhBgm21",
     SHIELD: "Compendium.pf2e.spells-srd.Item.TVKNbcgTee19PXZR",
     SIGIL: "Compendium.pf2e.spells-srd.Item.AUctDF2fqPZN2w4W",
+    SOOTHING_BLOSSOMS: "Compendium.pf2e.spells-srd.Item.5XUn9NADr05IyiVw",
     SOUND_BODY: "Compendium.pf2e.spells-srd.Item.Et8RSCLx8w7uOLvo",
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
     SPRITUAL_ARMAMENT: "Compendium.pf2e.spells-srd.Item.WPu3UE3kTXSLqO40",
@@ -77,14 +86,25 @@ const SPELLS = {
     WALL_OF_FIRE: "Compendium.pf2e.spells-srd.Item.IarZrgCeaiUqOuRu",
     WALL_OF_THORNS: "Compendium.pf2e.spells-srd.Item.KsWhliKfUs3IpW3c",
     WALL_OF_WIND: "Compendium.pf2e.spells-srd.Item.it4ZsAi6XgvGcodc",
+    WAVE_OF_DESPAIR: "Compendium.pf2e.spells-srd.Item.GaRQlC9Yw1BGKHfN",
+    WEB_OF_EYES: "Compendium.pf2e.spells-srd.Item.XQSPJHOf3TyfqvgS",
+    VAMPIRIC_EXSANGUINATION: "Compendium.pf2e.spells-srd.Item.fd31tAHSSGXyOxW6",
+    VAMPIRIC_FEAST: "Compendium.pf2e.spells-srd.Item.N1Z1oLPdBxaSgrEE",
+    VIBRANT_PATTERN: "Compendium.pf2e.spells-srd.Item.RQjSQVZRG497cJhX",
     VISION_OF_DEATH: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n",
     VITALITY_LASH: "Compendium.pf2e.spells-srd.Item.kcelf6IHl3L9VXXg",
     VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };
 
 const SPELLHEART_EFFECTS = {
+    "brightbloom-posy": {
+        weapon: "",
+    },
     "clay-sphere": {
         weapon: "Compendium.pf2e.equipment-effects.Item.La2ziyuLYKG0thOj",
+    },
+    "desolation-locket": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.NwEVRZmLbM9QKoIH",
     },
     "enigma-mirror": {
         armor: "Compendium.pf2e-item-activations.item-activations-effects.Item.DWZgLolqLRcfQb5W",
@@ -108,6 +128,9 @@ const SPELLHEART_EFFECTS = {
     "jolt-coil": {
         weapon: "Compendium.pf2e.equipment-effects.Item.mHIdEC7RX6isILiM",
     },
+    "lightweave-scarf": {
+        weapon: "",
+    },
     "perfect-droplet": {
         armor: "Compendium.pf2e.equipment-effects.Item.VZCcjwsQX1wnYlTn",
     },
@@ -119,6 +142,9 @@ const SPELLHEART_EFFECTS = {
     },
     "rime-crystal": {
         weapon: "Compendium.pf2e.equipment-effects.Item.IiDpW99zrh7zHxmQ",
+    },
+    "sanguine-fang": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.bKEx53h6lrFOYvpu",
     },
     "spiny-lodestone": {
         weapon: "Compendium.pf2e.equipment-effects.Item.m6z7OrJgF4XQFNpa",
@@ -166,6 +192,21 @@ export function setupSpellItems() {
             dc: 25,
             spells: [SPELLS.TAME, { rank: 4, uuid: SPELLS.SUMMON_ANIMAL }],
             notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("major"),
+        },
+        "brightbloom-posy": {
+            dc: 24,
+            spells: [SPELLS.TANGLE_VINE, SPELLS.SOOTHING_BLOSSOMS],
+            notes: getSpellHeartNotes("brightbloom-posy"),
+        },
+        "brightbloom-posy-greater": {
+            dc: 28,
+            spells: [SPELLS.TANGLE_VINE, SPELLS.SOOTHING_BLOSSOMS, SPELLS.PETAL_STORM],
+            notes: getSpellHeartNotes("brightbloom-posy"),
+        },
+        "brightbloom-posy-major": {
+            dc: 31,
+            spells: [SPELLS.TANGLE_VINE, { rank: 6, uuid: SPELLS.SOOTHING_BLOSSOMS }, SPELLS.BURNING_BLOSSOMS],
+            notes: getSpellHeartNotes("brightbloom-posy"),
         },
         // "cantrip-deck-5-pack": {
         //     dc: 0,
@@ -254,6 +295,25 @@ export function setupSpellItems() {
                     textPath: "pf2e-item-activations.notes.spellhearts.items.compass-of-luong-phung",
                 }),
             ],
+        },
+        "desolation-locket": {
+            dc: 24,
+            spells: [SPELLS.HAUNTING_HYMN, SPELLS.FEAR],
+            notes: getSpellHeartNotes("desolation-locket", { dc: 24 }),
+        },
+        "desolation-locket-greater": {
+            dc: 30,
+            spells: [SPELLS.HAUNTING_HYMN, { rank: 4, uuid: SPELLS.FEAR }, SPELLS.WAVE_OF_DESPAIR],
+            notes: getSpellHeartNotes("desolation-locket", { dc: 30 }),
+        },
+        "desolation-locket-major": {
+            dc: 41,
+            spells: [
+                SPELLS.HAUNTING_HYMN,
+                { rank: 7, uuid: SPELLS.WAVE_OF_DESPAIR },
+                SPELLS.CANTICLE_OF_EVERLASTING_GRIEF,
+            ],
+            notes: getSpellHeartNotes("desolation-locket", { dc: 41 }),
         },
         "enigma-mirror": {
             dc: 23,
@@ -389,6 +449,21 @@ export function setupSpellItems() {
             spells: [SPELLS.ELECTRIC_ARC, { rank: 4, uuid: SPELLS.LIGHTNING_BOLT }, SPELLS.DRAW_THE_LIGHTNING],
             notes: getSpellHeartNotes("jolt-coil"),
         },
+        "lightweave-scarf": {
+            dc: 24,
+            spells: [SPELLS.LIGHT, SPELLS.HYPNOTIZE],
+            notes: getSpellHeartNotes("lightweave-scarf"),
+        },
+        "lightweave-scarf-greater": {
+            dc: 34,
+            spells: [SPELLS.LIGHT, { rank: 6, uuid: SPELLS.HYPNOTIZE }, SPELLS.VIBRANT_PATTERN],
+            notes: getSpellHeartNotes("lightweave-scarf"),
+        },
+        "lightweave-scarf-major": {
+            dc: 38,
+            spells: [SPELLS.LIGHT, { rank: 8, uuid: SPELLS.VIBRANT_PATTERN }, SPELLS.CONFUSING_COLORS],
+            notes: getSpellHeartNotes("lightweave-scarf"),
+        },
         "mages-hat": {
             dc: 0,
             spells: [SPELLS.PRESTIDIGITATION],
@@ -512,6 +587,36 @@ export function setupSpellItems() {
             tradition: "arcane",
             ability: "cha",
         },
+        "sanguine-fang": {
+            dc: 25,
+            spells: [SPELLS.VOID_WARP, SPELLS.VAMPIRIC_FEAST],
+            notes: getSpellHeartNotes("sanguine-fang"),
+        },
+        "sanguine-fang-greater": {
+            dc: 29,
+            spells: [SPELLS.VOID_WARP, { rank: 4, uuid: SPELLS.VAMPIRIC_FEAST }],
+            notes: getSpellHeartNotes("sanguine-fang"),
+        },
+        "sanguine-fang-major": {
+            dc: 34,
+            spells: [SPELLS.VOID_WARP, { rank: 5, uuid: SPELLS.VAMPIRIC_FEAST }, SPELLS.VAMPIRIC_EXSANGUINATION],
+            notes: getSpellHeartNotes("sanguine-fang"),
+        },
+        "saurian-spike": {
+            dc: 25,
+            spells: [SPELLS.GOUGING_CLAW, SPELLS.DINOSAUR_FORM],
+            notes: getSpellHeartNotes("saurian-spike", { dc: 27, fail: 1, critFail: 2 }),
+        },
+        "saurian-spike-greater": {
+            dc: 34,
+            spells: [SPELLS.GOUGING_CLAW, { rank: 5, uuid: SPELLS.DINOSAUR_FORM }],
+            notes: getSpellHeartNotes("saurian-spike", { dc: 34, fail: 1, critFail: 2 }),
+        },
+        "saurian-spike-major": {
+            dc: 41,
+            spells: [SPELLS.GOUGING_CLAW, { rank: 7, uuid: SPELLS.DINOSAUR_FORM }],
+            notes: getSpellHeartNotes("saurian-spike", { dc: 41, fail: 2, critFail: 3 }),
+        },
         "spiny-lodestone": {
             dc: 18,
             spells: [SPELLS.NEEDLE_DARTS],
@@ -557,6 +662,18 @@ export function setupSpellItems() {
             spells: [SPELLS.SCATTER_SCREE, { rank: 4, uuid: SPELLS.ONE_WITH_STONE }, SPELLS.SPIKE_STONES],
             notes: getSpellHeartNotes("trinity-geode"),
         },
+        "vigilant-eye": {
+            dc: 0,
+            spells: [SPELLS.DETECT_MAGIC, SPELLS.WEB_OF_EYES],
+        },
+        "vigilant-eye-greater": {
+            dc: 0,
+            spells: [SPELLS.DETECT_MAGIC, SPELLS.CLAIRVOYANCE],
+        },
+        "vigilant-eye-major": {
+            dc: 0,
+            spells: [SPELLS.DETECT_MAGIC, SPELLS.CLAIRVOYANCE, SPELLS.SCOUTING_EYE],
+        },
         "warding-statuette": {
             dc: 23,
             spells: [SPELLS.SHIELD, SPELLS.BLUR],
@@ -572,7 +689,7 @@ export function setupSpellItems() {
 
 export const SPELL_ITEM_SLUG_LIST = [...Object.keys(SPELL_ITEMS)];
 
-function getSpellHeartNotes(id) {
+function getSpellHeartNotes(id, cfg) {
     const keys = Object.keys(SPELLHEART_EFFECTS?.[id] || {});
     return [
         {
@@ -598,7 +715,9 @@ function getSpellHeartNotes(id) {
                       property: "description",
                       value: [
                           {
-                              text: `@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.armor]`,
+                              text: cfg
+                                  ? game.i18n.format(`pf2e-item-activations.notes.spellhearts.items.${id}.armor`, cfg)
+                                  : `@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.armor]`,
                               title: "pf2e-item-activations.notes.spellhearts.terms.armor",
                           },
                           ...(SPELLHEART_EFFECTS?.[id]?.armor
@@ -618,7 +737,9 @@ function getSpellHeartNotes(id) {
                       property: "description",
                       value: [
                           {
-                              text: `@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.weapon]`,
+                              text: cfg
+                                  ? game.i18n.format(`pf2e-item-activations.notes.spellhearts.items.${id}.weapon`, cfg)
+                                  : `@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.weapon]`,
                               title: "pf2e-item-activations.notes.spellhearts.terms.weapon",
                           },
                           ...(SPELLHEART_EFFECTS?.[id]?.weapon

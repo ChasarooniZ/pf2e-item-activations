@@ -77,10 +77,16 @@
                 },
                 "items": {
                     "beastmasters-sigil": "This summons a",
+                    "brightbloom-posy": {
+                        "weapon": "After you cast a plant spell by activating the posy, pollen coats your weapon. Your next Strike causes the target to be @UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{{Sickened 1}} on a hit (@UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{{Sickened 2}} on a critical hit). If the creature attempts to recover, it sneezes rather than retching (rolling against the spellheart's spell DC @Check[fortitude|dc:resolve(@item.spellcasting.system.spelldc.dc)|traits:action:retch,disease]. If you don't make a Strike by the end of your next turn, the pollen becomes inert. Plant creatures are immune."
+                    },
                     "clay-sphere": {
                         "weapon": "After you cast a morph or polymorph spell by activating the clay sphere, the weapon becomes malleable, shifting its form to your whims. Your Strikes with the affixed weapon have the versatile bludgeoning, versatile piercing, and versatile slashing trait for 1 minute. Until the end of your next turn, Strikes with the affixed weapon have their damage dice increase by one step."
                     },
                     "compass-of-luong-phung": "In addition to the effects of the cantrip, the compass itself points in the general direction of a sea dragon for 1 minute, with the point glowing brighter as you get closer. Aligning the compass with the constellation of the Sea Dragon at night instead creates a beam for 1 minute to find Luong Phung again.",
+                    "desolation-locket": {
+                        "weapon": "After you cast a non-cantrip spell by activating the locket, you emanate an aura of hopelessness in a @Template[emanation|distance:5] until the start of your next turn. A creature that ends its turn in the aura must succeed at a @Check[will|dc:{dc}|traits:emotion,mental] saving throw against the locket's spell DC or become @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{{Slowed 1}} (@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{{Slowed 2}} on a critical failure) until the end of its next turn."
+                    },
                     "enigma-mirror": {
                         "armor": "After you cast an illusion spell by activating the mirror, choose one ally within 30 feet. That ally is @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W] as if seen in a misty mirror, until the end of your next turn.",
                         "weapon": "After you cast an illusion spell by activating the mirror, illusory copies of the weapon swirl in the air around it. You're affected by the @UUID[Compendium.pf2e.spells-srd.Item.X56VdA98VedAfGTU] spell until the end of your next turn. The spell ends if you stop wielding the affixed weapon."
@@ -103,6 +109,9 @@
                     "jolt-coil": {
                         "weapon": "After you cast an electricity spell by activating the coil, your Strikes with the weapon deal additional electricity damage until the end of your next turn."
                     },
+                    "lightweave-scarf": {
+                        "weapon": "(visual) After you cast an illusion spell by activating the scarf, the weapon is shrouded in a mesmerizing illusory pattern. Your next Strike causes the target to be Confused for 1 round if it hits. If you don't make a Strike by the end of your next turn, the illusion ends with no effect."
+                    },
                     "perfect-droplet": {
                         "armor": "After you cast a water spell by Activating the droplet, your body becomes mistlike. Until the end of the turn, you can move through enemies' spaces. You can't move through creatures that have the water trait in this way."
                     },
@@ -115,6 +124,12 @@
                     "resonating-fork": " After you cast a sonic spell by activating the fork, the weapon reverberates with trapped sound waves. Your next Strike causes the target to be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR] for {duration} if it hits (or for {durationCrit} on a critical hit). If you don't make a Strike by the end of your next turn, the sound waves dissipate with no effect.",
                     "rime-crystal": {
                         "weapon": "After you cast an cold spell by activating the crystal, your Strikes with the weapon deal additional cold damage until the end of your next turn."
+                    },
+                    "sanguine-fang": {
+                        "weapon": "After you cast a spell by activating the fang, your Strikes with the weapon deal persistent bleed damage until the end of your next turn."
+                    },
+                    "saurian-spike": {
+                        "weapon": "When you cast a polymorph spell by activating the spike, your battle form is exceptionally fearsome. Each enemy in a @Template[emanation|distance:30] must succeed at a @Check[will|dc:{dc}|traits:auditory,emotion,fear,visual] saving throw or become @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{{Frightened {fail}}} (@UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{{Frightened {critFail}}} on a critical failure)."
                     },
                     "spiny-lodestone": {
                         "weapon": "After you cast a spell by Activating the spiny lodestone, your Strikes with the weapon deal an additional piercing damage until the end of your next turn."

@@ -6,9 +6,16 @@
     - Added Support for the Following:
         - **Spellhearts** _All variants of each_
             - `Beastmaster's Sigil`
+            - `Brightbloom Posy`
+            - `Desolation Locket`
+            - `Lightweave Scarf`
             - `Enigma Mirror`
             - `Phantasmal Doorknob`
             - `Resonating Fork`
+            - `Sanguine Fang`
+            - `Saurian Spike`
+            - `Warding Statuette`
+            - `Vigilant Eye`
         - **Misc**
             - `Aeon Stone (Agate Ellipsoid)`
             - `Charlatan's Gloves`
