@@ -2,6 +2,7 @@
 
 - **Updated**
     - Fixed spellheart formatting for `armor`
+    - Fixed styling for `Activation Spell Entries`
     - Added Support for the Following:
         - **Spellhearts** _All variants of each_
             - `Beastmaster's Sigil`

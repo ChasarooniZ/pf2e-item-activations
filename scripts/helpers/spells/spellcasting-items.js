@@ -63,6 +63,9 @@ const SPELLS = {
     SIGIL: "Compendium.pf2e.spells-srd.Item.AUctDF2fqPZN2w4W",
     SOUND_BODY: "Compendium.pf2e.spells-srd.Item.Et8RSCLx8w7uOLvo",
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
+    SPRITUAL_ARMAMENT: "Compendium.pf2e.spells-srd.Item.WPu3UE3kTXSLqO40",
+    SPRITUAL_GUARDIAN: "Compendium.pf2e.spells-srd.Item.jQdm301h6e8hIY4U",
+    SPIRITUAL_WEAPON: "Compendium.pf2e.spells-srd.Item.Fq9yCbqI2RDt6Orw",
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     STABILIZE: "Compendium.pf2e.spells-srd.Item.SnjhtQYexDtNDdEg",
     SUMMON_ANIMAL: "Compendium.pf2e.spells-srd.Item.4YnON9JHYqtLzccu",
@@ -127,6 +130,9 @@ const SPELLHEART_EFFECTS = {
     "trinity-geode": {
         armor: "Compendium.pf2e.equipment-effects.Item.oqwrw6XztVlS9tEG",
         weapon: "Compendium.pf2e.equipment-effects.Item.WRV0XjiEHdlBpduS",
+    },
+    "warding-statuette": {
+        weapon: "Compendium.pf2e.equipment-effects.Item.gwiyabYi92R97bXZ",
     },
 };
 
@@ -550,6 +556,16 @@ export function setupSpellItems() {
             dc: 29,
             spells: [SPELLS.SCATTER_SCREE, { rank: 4, uuid: SPELLS.ONE_WITH_STONE }, SPELLS.SPIKE_STONES],
             notes: getSpellHeartNotes("trinity-geode"),
+        },
+        "warding-statuette": {
+            dc: 23,
+            spells: [SPELLS.SHIELD, SPELLS.BLUR],
+            notes: getSpellHeartNotes("warding-statuette"),
+        },
+        "warding-statuette-greater": {
+            dc: 30,
+            spells: [SPELLS.SHIELD, SPELLS.MIRRORS_MISFORTUNE],
+            notes: getSpellHeartNotes("warding-statuette"),
         },
     };
 }

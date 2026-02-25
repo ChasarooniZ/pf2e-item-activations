@@ -61,6 +61,7 @@ export async function createSpellcastingEntry({
             };
             spell.flags[MODULE_ID] = {
                 grantedBy: item.toObject(),
+                enabled: true,
                 ...(sharedSpellSlugs.length > 0 ? { sharedSpells: sharedSpellSlugs } : {}),
             };
 
@@ -148,6 +149,7 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
         },
         flags: {
             [MODULE_ID]: {
+                enabled: true,
                 grantedBy: item.toObject(),
             },
         },
