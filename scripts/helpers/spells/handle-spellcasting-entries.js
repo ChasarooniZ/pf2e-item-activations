@@ -2,11 +2,19 @@
 
 import { MODULE_ID } from "../const.js";
 
-export async function createSpellcastingEntry({ spellsAdded, dc, actor, item, useItemDC, entryNoteData }) {
+export async function createSpellcastingEntry({
+    spellsAdded,
+    dc,
+    actor,
+    item,
+    useItemDC,
+    entryNoteData,
+    spellItemInfo,
+}) {
     const spellEntryDocument = createSpellcastingEntryDocument({
-        tradition: getMostCommonSpellcastingTradition(actor),
-        type: "innate",
-        ability: getBestMentalAbility(actor),
+        tradition: spellItemInfo?.tradition ?? getMostCommonSpellcastingTradition(actor),
+        type: spellItemInfo?.type ?? "innate",
+        ability: spellItemInfo?.ability ?? getBestMentalAbility(actor),
         dc,
         useItemDC,
         item,

@@ -1,7 +1,32 @@
+## Unreleased
+
+## 13.4.0
+
+- **New**
+    - Added support for adding spellcasting entries as item activations
+    - This also includes a lot of underlying work to also support options like Grim Sanglass's "Cast Harm or Heal"
+    - The following items are support at release with more to come
+      - **Spellhearts** *This includes all of their levelled variants*
+        - `Clay Sphere`
+        - `Compass Of Luong Phung`
+        - `Five Feather Wreath`
+        - `Flaming Star`
+        - `Foxglove Token`
+        - `Grim Sandglass`
+        - `Heartmoss`
+        - `Jolt Coil`
+        - `Perfect Droplet`
+        - `Pickled Demon Tongue`
+        - `Polished Demon Horn`
+        - `Rime Crystal`
+        - `Spiny Lodestone`
+        - `Thorn Triad`
+        - `Trinity Geode`
+
 ## 13.3.0
 
 - **New**
-  - Enabled `SF2e` support
+    - Enabled `SF2e` support
 
 ## 13.2.4
 
@@ -318,6 +343,3 @@
     - The Whispering Reeds
     - Ventriloquist's Ring
     - Wayfinder
-
-
-

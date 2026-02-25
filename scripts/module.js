@@ -339,6 +339,7 @@ export async function addOrDeleteActivation(item, changeType) {
                     entryNoteData: spellInfo.notes,
                     actor,
                     item,
+                    spellItemInfo
                 });
             }
         }
