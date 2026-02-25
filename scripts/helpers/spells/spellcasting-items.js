@@ -5,6 +5,9 @@ const SPELLS = {
     ACIDIC_BURST: "Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws",
     AUGURY: "Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X",
     AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
+    BITING_WORDS: "Compendium.pf2e.spells-srd.Item.yafsV0ni7rFgqJBj",
+    BLUR: "Compendium.pf2e.spells-srd.Item.3JG1t3T4mWn6vTke",
+    BULLHORN: "Compendium.pf2e.spells-srd.Item.W02bHXylIpoXbO4e",
     CAUSTIC_BLAST: "Compendium.pf2e.spells-srd.Item.thAHF1zxNplLCJPO",
     CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
     CURSED_METAMORPHOSIS: "Compendium.pf2e.spells-srd.Item.dN8QBNuTiaBHCKUe",
@@ -37,11 +40,17 @@ const SPELLS = {
     LIGHTNING_BOLT: "Compendium.pf2e.spells-srd.Item.9AAkVUCwF6WVNNY2",
     MAGNETIC_ACCELERATION: "Compendium.pf2e.spells-srd.Item.Tx8OqkBFA2QlaldW",
     MESSAGE: "Compendium.pf2e.spells-srd.Item.vLzFcIaSXs7YTIqJ",
+    MIRRORS_MISFORTUNE: "Compendium.pf2e.spells-srd.Item.A7w3YQBrFNH8KYsB",
+    MIRROR_MALEFACTORS: "Compendium.pf2e.spells-srd.Item.CmZCq4htcZ6W0TKk",
     NEEDLE_DARTS: "Compendium.pf2e.spells-srd.Item.iYRDFxeVpJ5KIjmr",
+    NOISE_BLAST: "Compendium.pf2e.spells-srd.Item.wzLkNU3AAqOSKFPR",
     NOXIOUS_VAPOURS: "Compendium.pf2e.spells-srd.Item.1meVElIu1CEVYWkv",
     ONE_WITH_STONE: "Compendium.pf2e.spells-srd.Item.vh1RpbWfqdNC4L3P",
     OUTCASTS_CURSE: "Compendium.pf2e.spells-srd.Item.KSAEhNfZyXMO7Z7V",
+    PAINFUL_VIBRATIONS: "Compendium.pf2e.spells-srd.Item.qTzvVnAMWL05VitC",
     PETAL_STORM: "Compendium.pf2e.spells-srd.Item.D31YX7zvRBvenTAz",
+    PHANTASMAL_CALAMITY: "Compendium.pf2e.spells-srd.Item.0XP2XOxT9VSiXFDr",
+    PHANTASMAL_TREASURE: "Compendium.pf2e.spells-srd.Item.L0GoJpHxSD0wRY5k",
     PLANT_FORM: "Compendium.pf2e.spells-srd.Item.zCcfPS4y5SrZzU2x",
     PRESTIDIGITATION: "Compendium.pf2e.spells-srd.Item.Qw3fnUlaUbnn7ipC",
     PUFF_OF_POISON: "Compendium.pf2e.spells-srd.Item.D7ZEhTNIDWDLC2J4",
@@ -73,6 +82,10 @@ const SPELLS = {
 const SPELLHEART_EFFECTS = {
     "clay-sphere": {
         weapon: "Compendium.pf2e.equipment-effects.Item.La2ziyuLYKG0thOj",
+    },
+    "enigma-mirror": {
+        armor: "Compendium.pf2e-item-activations.item-activations-effects.Item.DWZgLolqLRcfQb5W",
+        weapon: "Compendium.pf2e-item-activations.item-activations-effects.Item.ydHmaMoiG1HupZm9",
     },
     "five-feather-wreath": {
         weapon: "Compendium.pf2e.equipment-effects.Item.nQ6vM1CRLyvQdGLG",
@@ -132,18 +145,18 @@ export const SPELL_ITEMS = {
     },
     "beastmasters-sigil": {
         dc: 17,
-        spells: [SPELLS.TAME, { rank: 2, uuid: SPELLS.SUMMON_ANIMAL}],
+        spells: [SPELLS.TAME, { rank: 2, uuid: SPELLS.SUMMON_ANIMAL }],
         notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL(""),
     },
     "beastmasters-sigil-greater": {
         dc: 23,
-        spells: [SPELLS.TAME, { rank: 3, uuid: SPELLS.SUMMON_ANIMAL}],
+        spells: [SPELLS.TAME, { rank: 3, uuid: SPELLS.SUMMON_ANIMAL }],
         notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("greater"),
     },
     "beastmasters-sigil-major": {
         dc: 25,
-        spells: [SPELLS.TAME, { rank: 4, uuid: SPELLS.SUMMON_ANIMAL}],
-        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("major"),
+        spells: [SPELLS.TAME, { rank: 4, uuid: SPELLS.SUMMON_ANIMAL }],
+        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL(""),
     },
     // "cantrip-deck-5-pack": {
     //     dc: 0,
@@ -232,6 +245,21 @@ export const SPELL_ITEMS = {
                 textPath: "pf2e-item-activations.notes.spellhearts.items.compass-of-luong-phung",
             }),
         ],
+    },
+    "enigma-mirror": {
+        dc: 23,
+        spells: [SPELLS.FORBIDDING_WARD, SPELLS.BLUR],
+        notes: getSpellHeartNotes("enigma-mirror"),
+    },
+    "enigma-mirror-greater": {
+        dc: 27,
+        spells: [SPELLS.FORBIDDING_WARD, SPELLS.MIRRORS_MISFORTUNE],
+        notes: getSpellHeartNotes("enigma-mirror"),
+    },
+    "enigma-mirror-major": {
+        dc: 30,
+        spells: [SPELLS.FORBIDDING_WARD, SPELLS.MIRRORS_MISFORTUNE, SPELLS.MIRROR_MALEFACTORS],
+        notes: getSpellHeartNotes("enigma-mirror"),
     },
     "five-feather-wreath": {
         dc: 18,
@@ -379,6 +407,18 @@ export const SPELL_ITEMS = {
         spells: [SPELLS.SPOUT, [SPELLS.AQUEOUS_ORB, SPELLS.FEET_TO_FINS]],
         notes: getSpellHeartNotes("perfect-droplet"),
     },
+    "phantasmal-doorknob": {
+        dc: 20,
+        spells: [SPELLS.FIGMENT, SPELLS.PHANTASMAL_TREASURE],
+    },
+    "phantasmal-doorknob-greater": {
+        dc: 27,
+        spells: [SPELLS.FIGMENT, SPELLS.VISION_OF_DEATH],
+    },
+    "phantasmal-doorknob-major": {
+        dc: 34,
+        spells: [SPELLS.FIGMENT, { rank: 6, uuid: SPELLS.VISION_OF_DEATH }, SPELLS.PHANTASMAL_CALAMITY],
+    },
     "perfect-droplet-major": {
         dc: 29,
         spells: [
@@ -420,6 +460,21 @@ export const SPELL_ITEMS = {
         dc: 29,
         spells: [SPELLS.DAZE, { rank: 3, uuid: SPELLS.FEAR }, SPELLS.OUTCASTS_CURSE, SPELLS.VISION_OF_DEATH],
         notes: getSpellHeartNotes("polished-demon-horn"),
+    },
+    "resonating-fork": {
+        dc: 19,
+        spells: [SPELLS.BULLHORN, SPELLS.BITING_WORDS],
+        notes: SPECIFIC_NOTES.RESONATING_FORK(""),
+    },
+    "resonating-fork-greater": {
+        dc: 23,
+        spells: [SPELLS.BULLHORN, { rank: 2, uuid: SPELLS.BITING_WORDS }, SPELLS.NOISE_BLAST],
+        notes: SPECIFIC_NOTES.RESONATING_FORK("greater"),
+    },
+    "resonating-fork-major": {
+        dc: 29,
+        spells: [SPELLS.BULLHORN, { rank: 4, uuid: SPELLS.BITING_WORDS }, SPELLS.PAINFUL_VIBRATIONS],
+        notes: SPECIFIC_NOTES.RESONATING_FORK("major"),
     },
     "rime-crystal": {
         dc: 17,
@@ -580,20 +635,6 @@ export function needsSpellcasting(item) {
 }
 
 const SPECIFIC_NOTES = {
-    CHARLATANS_GLOVES_GREATER: [
-        {
-            itemType: "spell",
-            key: "ItemAlteration",
-            mode: "add",
-            predicate: ["spellcasting:id:{item|id}"],
-            property: "description",
-            value: [
-                {
-                    text: "@Localize[pf2e-item-activations.notes.misc.charlatans-gloves-greater]",
-                },
-            ],
-        },
-    ],
     BEASTMASTERS_SIGIL: (type) => {
         let creatures = {};
         switch (type) {
@@ -667,6 +708,65 @@ const SPECIFIC_NOTES = {
                 value: [
                     {
                         text: `@Localize[pf2e-item-activations.notes.spellhearts.items.beastmasters-sigil] @UUID[${creatures["armor"]}]`,
+                    },
+                ],
+            },
+        ];
+    },
+    CHARLATANS_GLOVES_GREATER: [
+        {
+            itemType: "spell",
+            key: "ItemAlteration",
+            mode: "add",
+            predicate: ["spellcasting:id:{item|id}"],
+            property: "description",
+            value: [
+                {
+                    text: "@Localize[pf2e-item-activations.notes.misc.charlatans-gloves-greater]",
+                },
+            ],
+        },
+    ],
+    RESONATING_FORK: (type) => {
+        const cfg = { duration: "", durationCrit: "" };
+        switch (type) {
+            case "":
+                cfg.duration = `1 ${game.i18n.localize("PF2E.Duration.round")}`;
+                cfg.durationCrit = `3 ${game.i18n.localize("PF2E.Time.Unit.Rounds").toLowerCase()}`;
+                break;
+            case "greater":
+                cfg.duration = `3 ${game.i18n.localize("PF2E.Time.Unit.Rounds").toLowerCase()}`;
+                cfg.durationCrit = `1 ${game.i18n.localize("PF2E.Duration.PT1M")}`;
+                break;
+            case "major":
+                cfg.duration = `1 ${game.i18n.localize("PF2E.Duration.PT1M")}}`;
+                cfg.durationCrit = `1 ${game.i18n.localize("PF2E.Duration.PT1H")}`;
+                break;
+        }
+
+        return [
+            {
+                key: "RollOption",
+                label: "{item|name}",
+                option: "{item|slug}",
+                placement: "spellcasting",
+                toggleable: true,
+                suboptions: [
+                    { label: "pf2e-item-activations.notes.spellhearts.terms.weapon", value: "weapon" },
+                    { label: "pf2e-item-activations.notes.spellhearts.terms.armor", value: "armor" },
+                ],
+                alwaysActive: true,
+                value: true,
+            },
+            {
+                itemType: "spell",
+                key: "ItemAlteration",
+                mode: "add",
+                predicate: ["{item|slug}:weapon", "spellcasting:id:{item|id}"],
+                property: "description",
+                value: [
+                    {
+                        text: game.i18n.format("pf2e-item-activations.notes.spellhearts.items.resonating-fork", cfg),
                     },
                 ],
             },

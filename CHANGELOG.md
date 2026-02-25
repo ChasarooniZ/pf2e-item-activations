@@ -5,6 +5,9 @@
     - Added Support for the Following:
         - **Spellhearts** _All variants of each_
             - `Beastmaster's Sigil`
+            - `Enigma Mirror`
+            - `Phantasmal Doorknob`
+            - `Resonating Fork`
         - **Misc**
             - `Aeon Stone (Agate Ellipsoid)`
             - `Charlatan's Gloves`
