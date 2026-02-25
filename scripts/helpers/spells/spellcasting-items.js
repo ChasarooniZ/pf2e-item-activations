@@ -454,9 +454,12 @@ function getSpellHeartNotes(id) {
                       property: "description",
                       value: [
                           {
-                              text: `<p>@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.weapon]</p>${SPELLHEART_EFFECTS?.[id]?.weapon ? `@UUID[${SPELLHEART_EFFECTS?.[id]?.weapon}]` : ""}`,
+                              text: `@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.weapon]`,
                               title: "pf2e-item-activations.notes.spellhearts.terms.weapon",
                           },
+                          ...(SPELLHEART_EFFECTS?.[id]?.weapon
+                              ? [{ text: `@UUID[${SPELLHEART_EFFECTS?.[id]?.weapon}]` }]
+                              : []),
                       ],
                   },
               ]

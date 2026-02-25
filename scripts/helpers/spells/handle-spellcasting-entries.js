@@ -83,7 +83,7 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
         type: "spellcastingEntry",
         system: {
             rules: [
-                ...(useItemDC
+                ...(useItemDC && item.actor.type !== "npc"
                     ? [
                           {
                               key: "AdjustModifier",
@@ -111,6 +111,7 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
                               slug: "{item|slug}",
                               selector: ["spell-dc", "spell-attack"],
                               label: "{item|name}",
+                              predicate: ["spellcasting:id:{item|id}"],
                           },
                       ]
                     : []),
