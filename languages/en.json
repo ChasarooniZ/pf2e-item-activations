@@ -71,14 +71,17 @@
             "spellhearts": {
                 "terms": {
                     "armor": "Armor",
-                    "weapon": "Weapon"
+                    "weapon": "Weapon",
+                    "melee-weapon": "Melee Weapon",
+                    "ranged-weapon": "Ranged Weapon"
                 },
                 "items": {
+                    "beastmasters-sigil": "This summons a",
                     "clay-sphere": {
                         "weapon": "After you cast a morph or polymorph spell by activating the clay sphere, the weapon becomes malleable, shifting its form to your whims. Your Strikes with the affixed weapon have the versatile bludgeoning, versatile piercing, and versatile slashing trait for 1 minute. Until the end of your next turn, Strikes with the affixed weapon have their damage dice increase by one step."
                     },
                     "compass-of-luong-phung": "In addition to the effects of the cantrip, the compass itself points in the general direction of a sea dragon for 1 minute, with the point glowing brighter as you get closer. Aligning the compass with the constellation of the Sea Dragon at night instead creates a beam for 1 minute to find Luong Phung again.",
-                     "five-feather-wreath": {
+                    "five-feather-wreath": {
                         "weapon": "After you cast an air spell by Activating the wreath, you can Fly 5 feet as a single action, or you can Fly (Normal 10, Greater 25, Fly 40) feet as a free action if the spell you cast wasn't a cantrip. This must be your next action, and if you don't have a fly Speed, you must end the flight on solid ground or fall."
                     },
                     "flaming-star": {
@@ -120,6 +123,9 @@
                         "weapon": "After you cast an earth spell by activating the geode, your Strikes with the weapon deal additional bludgeoning damage until the end of your next turn."
                     }
                 }
+            },
+            "misc": {
+                "charlatans-gloves-greater": "If you are also wearing a charlatan's cape, whenever you would move an object using telekinetic hand, you may instead have it disappear in a puff of smoke and reappear hovering in a space adjacent to yours. This is a teleportation effect. The item hovers until the end of your turn or until retrieved with an Interact action."
             },
             "spells": {
                 "joined": "The following spells in this entry are linked together and when one is expended the other will be as well ({spells})"

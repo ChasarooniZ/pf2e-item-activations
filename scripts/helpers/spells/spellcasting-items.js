@@ -3,6 +3,7 @@ const SPELLS = {
     ACID_GRIP: "Compendium.pf2e.spells-srd.Item.9h9YCncqah6VNsKf",
     ACID_SPLASH: "Compendium.pf2e.spells-srd.Item.gISYsBFby1TiXfBt",
     ACIDIC_BURST: "Compendium.pf2e.spells-srd.Item.rnNGALRtsjspFTws",
+    AUGURY: "Compendium.pf2e.spells-srd.Item.41TZEjhO6D1nWw2X",
     AQUEOUS_ORB: "Compendium.pf2e.spells-srd.Item.oUDNCArkQTdhllxD",
     CAUSTIC_BLAST: "Compendium.pf2e.spells-srd.Item.thAHF1zxNplLCJPO",
     CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
@@ -16,6 +17,7 @@ const SPELLS = {
     ENLARGE: "Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV",
     FEAR: "Compendium.pf2e.spells-srd.Item.4koZzrnMXhhosn0D",
     FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
+    FIGMENT: "Compendium.pf2e.spells-srd.Item.0zU8CPejjQFnhZFI",
     FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
     FORBIDDING_WARD: "Compendium.pf2e.spells-srd.Item.RA7VKcen3p56rVyZ",
     FROSTBITE: "Compendium.pf2e.spells-srd.Item.IxhGEKl63R4QBvkj",
@@ -54,6 +56,8 @@ const SPELLS = {
     SPIKE_STONES: "Compendium.pf2e.spells-srd.Item.3xD8DYrr8YDVYGg7",
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     STABILIZE: "Compendium.pf2e.spells-srd.Item.SnjhtQYexDtNDdEg",
+    SUMMON_ANIMAL: "Compendium.pf2e.spells-srd.Item.4YnON9JHYqtLzccu",
+    TAME: "Compendium.pf2e.spells-srd.Item.s7ILzY2xh1tc9U1v",
     TANGLE_VINE: "Compendium.pf2e.spells-srd.Item.uZK2BYzPnxUBnDjr",
     TELEKINETIC_HAND: "Compendium.pf2e.spells-srd.Item.pwzdSlJgYqN7bs2w",
     TELEKINETIC_PROJECTILE: "Compendium.pf2e.spells-srd.Item.60sgbuMWN0268dB7",
@@ -120,6 +124,27 @@ const SPELLHEART_EFFECTS = {
 // If array then its pick one
 // strictDC = dc must be the value set
 export const SPELL_ITEMS = {
+    "aeon-stone-agate-ellipsoid": {
+        dc: 0,
+        spells: [SPELLS.AUGURY],
+        tradition: "divine",
+        ability: "cha",
+    },
+    "beastmasters-sigil": {
+        dc: 17,
+        spells: [SPELLS.TAME, { rank: 2, uuid: SPELLS.SUMMON_ANIMAL}],
+        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL(""),
+    },
+    "beastmasters-sigil-greater": {
+        dc: 23,
+        spells: [SPELLS.TAME, { rank: 3, uuid: SPELLS.SUMMON_ANIMAL}],
+        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("greater"),
+    },
+    "beastmasters-sigil-major": {
+        dc: 25,
+        spells: [SPELLS.TAME, { rank: 4, uuid: SPELLS.SUMMON_ANIMAL}],
+        notes: SPECIFIC_NOTES.BEASTMASTERS_SIGIL("major"),
+    },
     // "cantrip-deck-5-pack": {
     //     dc: 0,
     //     spells: [{uses: 1, }]
@@ -157,6 +182,19 @@ export const SPELL_ITEMS = {
     //         SPELLS.TELEKINETIC_PROJECTILE
     //     ]
     // },
+    "charlatans-gloves": {
+        dc: 0,
+        spells: [SPELLS.TELEKINETIC_HAND],
+        tradition: "occult",
+        ability: "cha",
+    },
+    "charlatans-gloves-greater": {
+        dc: 0,
+        spells: [SPELLS.TELEKINETIC_HAND],
+        tradition: "occult",
+        ability: "cha",
+        notes: SPECIFIC_NOTES.CHARLATANS_GLOVES_GREATER,
+    },
     "clay-sphere": {
         dc: 17,
         spells: [SPELLS.GOUGING_CLAW],
@@ -171,6 +209,19 @@ export const SPELL_ITEMS = {
         dc: 31,
         spells: [SPELLS.GOUGING_CLAW, SPELLS.CURSED_METAMORPHOSIS, SPELLS.PLANT_FORM],
         notes: getSpellHeartNotes("clay-sphere"),
+    },
+    "cloak-of-illusions": {
+        dc: 0,
+        spells: [SPELLS.FIGMENT],
+        tradition: "occult",
+        ability: "cha",
+    },
+    "cloak-of-illusions-greater": {
+        dc: 0,
+        spells: [SPELLS.FIGMENT],
+        tradition: "occult",
+        ability: "cha",
+        notes: SPECIFIC_NOTES.CHARLATANS_GLOVES_GREATER,
     },
     "compass-of-luong-phung": {
         dc: 0,
@@ -280,6 +331,12 @@ export const SPELL_ITEMS = {
         ],
         notes: getSpellHeartNotes("heartmoss"),
     },
+    "hunters-brooch": {
+        dc: 0,
+        spells: [SPELLS.VITALITY_LASH],
+        tradition: "divine",
+        ability: "cha",
+    },
     "jolt-coil": {
         dc: 17,
         spells: [SPELLS.ELECTRIC_ARC],
@@ -294,6 +351,23 @@ export const SPELL_ITEMS = {
         dc: 29,
         spells: [SPELLS.ELECTRIC_ARC, { rank: 4, uuid: SPELLS.LIGHTNING_BOLT }, SPELLS.DRAW_THE_LIGHTNING],
         notes: getSpellHeartNotes("jolt-coil"),
+    },
+    "mages-hat": {
+        dc: 0,
+        spells: [SPELLS.PRESTIDIGITATION],
+        tradition: "arcane",
+        ability: "cha",
+    },
+    "mages-hat-greater": {
+        dc: 0,
+        spells: [SPELLS.PRESTIDIGITATION],
+        tradition: "arcane",
+        ability: "cha",
+    },
+    "magical-medal-griffons-heart": {
+        dc: 0,
+        spells: [SPELLS.FORBIDDING_WARD],
+        ability: "cha",
     },
     "perfect-droplet": {
         dc: 17,
@@ -361,6 +435,18 @@ export const SPELL_ITEMS = {
         dc: 29,
         spells: [SPELLS.FROSTBITE, SPELLS.ICE_STORM, SPELLS.HOWLING_BLIZZARD],
         notes: getSpellHeartNotes("rime-crystal"),
+    },
+    "ring-of-sigils": {
+        dc: 0,
+        spells: [SPELLS.SIGIL],
+        tradition: "arcane",
+        ability: "cha",
+    },
+    "ring-of-sigils-greater": {
+        dc: 0,
+        spells: [SPELLS.SIGIL],
+        tradition: "arcane",
+        ability: "cha",
     },
     "spiny-lodestone": {
         dc: 18,
@@ -437,9 +523,12 @@ function getSpellHeartNotes(id) {
                       property: "description",
                       value: [
                           {
-                              text: `<p>@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.armor]</p>${SPELLHEART_EFFECTS?.[id]?.armor ? `@UUID[${SPELLHEART_EFFECTS?.[id]?.armor}]` : ""}`,
+                              text: `@Localize[pf2e-item-activations.notes.spellhearts.items.${id}.armor]`,
                               title: "pf2e-item-activations.notes.spellhearts.terms.armor",
                           },
+                          ...(SPELLHEART_EFFECTS?.[id]?.armor
+                              ? [{ text: `@UUID[${SPELLHEART_EFFECTS?.[id]?.armor}]` }]
+                              : []),
                       ],
                   },
               ]
@@ -489,3 +578,98 @@ export function isSpellHeart(item) {
 export function needsSpellcasting(item) {
     return item.system.traits.value.includes("spellheart");
 }
+
+const SPECIFIC_NOTES = {
+    CHARLATANS_GLOVES_GREATER: [
+        {
+            itemType: "spell",
+            key: "ItemAlteration",
+            mode: "add",
+            predicate: ["spellcasting:id:{item|id}"],
+            property: "description",
+            value: [
+                {
+                    text: "@Localize[pf2e-item-activations.notes.misc.charlatans-gloves-greater]",
+                },
+            ],
+        },
+    ],
+    BEASTMASTERS_SIGIL: (type) => {
+        let creatures = {};
+        switch (type) {
+            case "":
+                creatures = {
+                    armor: "Compendium.pf2e.pathfinder-monster-core.Actor.A4VgQIHsqJKssQOM", // Hunting Spider
+                    "melee-weapon": "Compendium.pf2e.pathfinder-monster-core.Actor.BN5Lb6IsQ9Wyu3rL", // Wolf
+                    "ranged-weapon": "Compendium.pf2e.pathfinder-monster-core.Actor.2mg30nJR6P3HJDSd", // Vampire Bat Swarm
+                };
+                break;
+            case "greater":
+                creatures = {
+                    armor: "Compendium.pf2e.pathfinder-monster-core.Actor.oyfheSs1ta4xvtEg", // Giant Monitor Lizard
+                    "melee-weapon": "Compendium.pf2e.pathfinder-monster-core.Actor.IyhbcdTVmkV4pSju", // Boar
+                    "ranged-weapon": "Compendium.pf2e.pathfinder-monster-core.Actor.xnpuGO8jEMba9wy5", // Giant Bat
+                };
+                break;
+            case "major":
+                creatures = {
+                    armor: "Compendium.pf2e.pathfinder-monster-core.Actor.BWm17BRQYGMLqtNe", // Giant Scorpion
+                    "melee-weapon": "Compendium.pf2e.pathfinder-monster-core.Actor.AFWmiIBJ7ypgydQD", // Dire Wolf
+                    "ranged-weapon": "Compendium.pf2e.pathfinder-monster-core-2.Actor.JXM2kmdb1PhuEJls", // Fen Mosquito Swarm
+                };
+                break;
+        }
+        return [
+            {
+                key: "RollOption",
+                label: "{item|name}",
+                option: "{item|slug}",
+                placement: "spellcasting",
+                toggleable: true,
+                suboptions: [
+                    { label: "pf2e-item-activations.notes.spellhearts.terms.melee-weapon", value: "melee-weapon" },
+                    { label: "pf2e-item-activations.notes.spellhearts.terms.ranged-weapon", value: "ranged-weapon" },
+                    { label: "pf2e-item-activations.notes.spellhearts.terms.armor", value: "armor" },
+                ],
+                alwaysActive: true,
+                value: true,
+            },
+            {
+                itemType: "spell",
+                key: "ItemAlteration",
+                mode: "add",
+                predicate: ["{item|slug}:melee-weapon", "spellcasting:id:{item|id}", "item:slug:beastmasters-sigil"],
+                property: "description",
+                value: [
+                    {
+                        text: `@Localize[pf2e-item-activations.notes.spellhearts.items.beastmasters-sigil] @UUID[${creatures["melee-weapon"]}]`,
+                    },
+                ],
+            },
+            {
+                itemType: "spell",
+                key: "ItemAlteration",
+                mode: "add",
+                predicate: ["{item|slug}:ranged-weapon", "spellcasting:id:{item|id}", "item:slug:beastmasters-sigil"],
+                property: "description",
+                value: [
+                    {
+                        text: `@Localize[pf2e-item-activations.notes.spellhearts.items.beastmasters-sigil] @UUID[${creatures["ranged-weapon"]}]`,
+                    },
+                ],
+            },
+            {
+                itemType: "spell",
+                key: "ItemAlteration",
+                mode: "add",
+                predicate: ["{item|slug}:armor", "spellcasting:id:{item|id}", "item:slug:beastmasters-sigil"],
+                property: "description",
+                value: [
+                    {
+                        text: `@Localize[pf2e-item-activations.notes.spellhearts.items.beastmasters-sigil] @UUID[${creatures["armor"]}]`,
+                    },
+                ],
+            },
+        ];
+    },
+};
