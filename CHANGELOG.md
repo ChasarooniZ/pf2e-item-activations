@@ -8,14 +8,14 @@
             - `Beastmaster's Sigil`
             - `Brightbloom Posy`
             - `Desolation Locket`
-            - `Lightweave Scarf`
             - `Enigma Mirror`
+            - `Lightweave Scarf`
             - `Phantasmal Doorknob`
             - `Resonating Fork`
             - `Sanguine Fang`
             - `Saurian Spike`
-            - `Warding Statuette`
             - `Vigilant Eye`
+            - `Warding Statuette`
         - **Misc**
             - `Aeon Stone (Agate Ellipsoid)`
             - `Charlatan's Gloves`
