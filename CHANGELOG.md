@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 13.4.1
+
 - **Updated**
     - Fixed spellheart formatting for `armor`
     - Fixed styling for `Activation Spell Entries`
@@ -9,6 +11,8 @@
             - `Brightbloom Posy`
             - `Desolation Locket`
             - `Enigma Mirror`
+            - `Judgment Thurible`
+            - `Jyoti's Feather`
             - `Lightweave Scarf`
             - `Phantasmal Doorknob`
             - `Resonating Fork`

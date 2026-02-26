@@ -16,6 +16,8 @@ _**Note.** Every spellheart includes its variants as well (Greater, Major, etc.)
     - `Grim Sandglass`
     - `Heartmoss`
     - `Jolt Coil`
+    - `Judgment Thurible`
+    - `Jyoti's Feather`
     - `Lightweave Scarf`
     - `Perfect Droplet`
     - `Phantasmal Doorknob`

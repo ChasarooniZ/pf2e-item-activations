@@ -18,13 +18,16 @@ const SPELLS = {
     DAZE: "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4",
     DETECT_MAGIC: "Compendium.pf2e.spells-srd.Item.gpzpAAAJ1Lza2JVl",
     DINOSAUR_FORM: "Compendium.pf2e.spells-srd.Item.KhM8MhoUgoUjBMIz",
+    DIVINE_DECREE: "Compendium.pf2e.spells-srd.Item.sX2o0HH4RjJDAZ8C",
     DIVINE_LANCE: "Compendium.pf2e.spells-srd.Item.qwZBXN6zBoB9BHXE",
+    DIVINE_WRATH: "Compendium.pf2e.spells-srd.Item.hVU9msO9yGkxKZ3J",
     DRAW_THE_LIGHTNING: "Compendium.pf2e.spells-srd.Item.n7OgbKme4hNwxVwQ",
     ELECTRIC_ARC: "Compendium.pf2e.spells-srd.Item.kBhaPuzLUSwS6vVf",
     ENERVATION: "Compendium.pf2e.spells-srd.Item.eexkxcqnkXazsGfK",
     ENLARGE: "Compendium.pf2e.spells-srd.Item.wzctak6BxOW8xvFV",
     FEAR: "Compendium.pf2e.spells-srd.Item.4koZzrnMXhhosn0D",
     FEET_TO_FINS: "Compendium.pf2e.spells-srd.Item.RvBlSIJmxiqfCpR9",
+    FIELD_OF_LIFE: "Compendium.pf2e.spells-srd.Item.x5rGOmhDRDVQPrnW",
     FIGMENT: "Compendium.pf2e.spells-srd.Item.0zU8CPejjQFnhZFI",
     FIREBALL: "Compendium.pf2e.spells-srd.Item.sxQZ6yqTn0czJxVd",
     FORBIDDING_WARD: "Compendium.pf2e.spells-srd.Item.RA7VKcen3p56rVyZ",
@@ -78,6 +81,7 @@ const SPELLS = {
     SPOUT: "Compendium.pf2e.spells-srd.Item.eSL5hVT9gXrnRLtd",
     STABILIZE: "Compendium.pf2e.spells-srd.Item.SnjhtQYexDtNDdEg",
     SUMMON_ANIMAL: "Compendium.pf2e.spells-srd.Item.4YnON9JHYqtLzccu",
+    SUMMON_DEIFIC_HERALD: "Compendium.pf2e.spells-srd.Item.kIRWUBxocERjIBni",
     TAME: "Compendium.pf2e.spells-srd.Item.s7ILzY2xh1tc9U1v",
     TANGLE_VINE: "Compendium.pf2e.spells-srd.Item.uZK2BYzPnxUBnDjr",
     TELEKINETIC_HAND: "Compendium.pf2e.spells-srd.Item.pwzdSlJgYqN7bs2w",
@@ -92,6 +96,7 @@ const SPELLS = {
     VAMPIRIC_FEAST: "Compendium.pf2e.spells-srd.Item.N1Z1oLPdBxaSgrEE",
     VIBRANT_PATTERN: "Compendium.pf2e.spells-srd.Item.RQjSQVZRG497cJhX",
     VISION_OF_DEATH: "Compendium.pf2e.spells-srd.Item.Jmxru8zMdYMRuO5n",
+    VITAL_BEACON: "Compendium.pf2e.spells-srd.Item.ikSb3LRGnrwXJBVX",
     VITALITY_LASH: "Compendium.pf2e.spells-srd.Item.kcelf6IHl3L9VXXg",
     VOID_WARP: "Compendium.pf2e.spells-srd.Item.mAMEt4FFbdqoRnkN",
 };
@@ -127,6 +132,10 @@ const SPELLHEART_EFFECTS = {
     },
     "jolt-coil": {
         weapon: "Compendium.pf2e.equipment-effects.Item.mHIdEC7RX6isILiM",
+    },
+    "judgment-thurible": {
+        armor: "",
+        weapon: "",
     },
     "lightweave-scarf": {
         weapon: "",
@@ -333,17 +342,17 @@ export function setupSpellItems() {
         "five-feather-wreath": {
             dc: 18,
             spells: [SPELLS.GALE_BLAST],
-            notes: getSpellHeartNotes("five-feather-wreath"),
+            notes: getSpellHeartNotes("five-feather-wreath", { speed: 10 }),
         },
         "five-feather-wreath-greater": {
             dc: 24,
             spells: [SPELLS.GALE_BLAST, SPELLS.WALL_OF_WIND],
-            notes: getSpellHeartNotes("five-feather-wreath"),
+            notes: getSpellHeartNotes("five-feather-wreath", { speed: 25 }),
         },
         "five-feather-wreath-major": {
             dc: 29,
             spells: [SPELLS.GALE_BLAST, { rank: 4, uuid: SPELLS.WALL_OF_WIND }, SPELLS.AIR_WALK],
-            notes: getSpellHeartNotes("five-feather-wreath"),
+            notes: getSpellHeartNotes("five-feather-wreath", { speed: 40 }),
         },
         "flaming-star": {
             dc: 17,
@@ -411,12 +420,16 @@ export function setupSpellItems() {
         heartmoss: {
             dc: 17,
             spells: [SPELLS.STABILIZE],
-            notes: getSpellHeartNotes("heartmoss"),
+            notes: getSpellHeartNotes("heartmoss", {
+                stupefiedLabel: `{${game.i18n.localize("PF2E.ConditionTypeStupefied")} 1}`,
+            }),
         },
         "heartmoss-greater": {
             dc: 24,
             spells: [SPELLS.STABILIZE, { rank: 3, uuid: SPELLS.HEAL }],
-            notes: getSpellHeartNotes("heartmoss"),
+            notes: getSpellHeartNotes("heartmoss", {
+                stupefiedLabel: `{${game.i18n.localize("PF2E.ConditionTypeStupefied")} 2}`,
+            }),
         },
         "heartmoss-major": {
             dc: 29,
@@ -426,7 +439,9 @@ export function setupSpellItems() {
                 { rank: 4, uuid: SPELLS.SOUND_BODY },
                 SPELLS.HEALING_WELL,
             ],
-            notes: getSpellHeartNotes("heartmoss"),
+            notes: getSpellHeartNotes("heartmoss", {
+                stupefiedLabel: `{${game.i18n.localize("PF2E.ConditionTypeStupefied")} 3}`,
+            }),
         },
         "hunters-brooch": {
             dc: 0,
@@ -448,6 +463,33 @@ export function setupSpellItems() {
             dc: 29,
             spells: [SPELLS.ELECTRIC_ARC, { rank: 4, uuid: SPELLS.LIGHTNING_BOLT }, SPELLS.DRAW_THE_LIGHTNING],
             notes: getSpellHeartNotes("jolt-coil"),
+        },
+        "judgment-thurible": {
+            dc: 27,
+            spells: [SPELLS.DIVINE_LANCE, SPELLS.DIVINE_WRATH],
+            notes: getSpellHeartNotes("judgment-thurible"),
+        },
+        "judgment-thurible-greater": {
+            dc: 35,
+            spells: [SPELLS.DIVINE_LANCE, { rank: 6, uuid: SPELLS.DIVINE_WRATH }, SPELLS.DIVINE_DECREE],
+            notes: getSpellHeartNotes("judgment-thurible"),
+        },
+        "judgment-thurible-major": {
+            dc: 43,
+            spells: [SPELLS.DIVINE_LANCE, { rank: 7, uuid: SPELLS.DIVINE_WRATH }, SPELLS.SUMMON_DEIFIC_HERALD],
+            notes: getSpellHeartNotes("judgment-thurible"),
+        },
+        "jyotis-feather": {
+            dc: 0,
+            spells: [SPELLS.STABILIZE, SPELLS.VITAL_BEACON],
+        },
+        "jyotis-feather-greater": {
+            dc: 0,
+            spells: [SPELLS.STABILIZE, { rank: 5, uuid: SPELLS.VITAL_BEACON }, SPELLS.HEALING_WELL],
+        },
+        "jyotis-feather-major": {
+            dc: 0,
+            spells: [SPELLS.STABILIZE, { rank: 6, uuid: SPELLS.HEALING_WELL }, SPELLS.FIELD_OF_LIFE],
         },
         "lightweave-scarf": {
             dc: 24,
