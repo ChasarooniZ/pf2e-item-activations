@@ -1,27 +1,61 @@
 ## Unreleased
 
+## 13.4.1
+
+- **New**
+    - Added Support for the Following:
+        - **Spellhearts** _All variants of each_
+            - `Beastmaster's Sigil`
+            - `Brightbloom Posy`
+            - `Desolation Locket`
+            - `Enigma Mirror`
+            - `Judgment Thurible`
+            - `Jyoti's Feather`
+            - `Lightweave Scarf`
+            - `Phantasmal Doorknob`
+            - `Resonating Fork`
+            - `Sanguine Fang`
+            - `Saurian Spike`
+            - `Vigilant Eye`
+            - `Warding Statuette`
+        - **Misc**
+            - `Aeon Stone (Agate Ellipsoid)`
+            - `Charlatan's Gloves`
+            - `Charlatan's Gloves (Greater)`
+            - `Cloak of Illusions`
+            - `Cloak of Illusions (Greater)`
+            - `Hunter's Brooch`
+            - `Mage's Hat`
+            - `Mage's Hat (Greater)`
+            - `Magical Medal (Griffon's Heart)`
+            - `Ring of Sigils`
+            - `Ring of Sigils (Greater)`
+- **Updated**
+    - Fixed spellheart formatting for `armor`
+    - Fixed styling for `Activation Spell Entries`
+
 ## 13.4.0
 
 - **New**
     - Added support for adding spellcasting entries as item activations
     - This also includes a lot of underlying work to also support options like Grim Sanglass's "Cast Harm or Heal"
     - The following items are support at release with more to come
-      - **Spellhearts** *This includes all of their levelled variants*
-        - `Clay Sphere`
-        - `Compass Of Luong Phung`
-        - `Five Feather Wreath`
-        - `Flaming Star`
-        - `Foxglove Token`
-        - `Grim Sandglass`
-        - `Heartmoss`
-        - `Jolt Coil`
-        - `Perfect Droplet`
-        - `Pickled Demon Tongue`
-        - `Polished Demon Horn`
-        - `Rime Crystal`
-        - `Spiny Lodestone`
-        - `Thorn Triad`
-        - `Trinity Geode`
+        - **Spellhearts** _This includes all of their levelled variants_
+            - `Clay Sphere`
+            - `Compass Of Luong Phung`
+            - `Five Feather Wreath`
+            - `Flaming Star`
+            - `Foxglove Token`
+            - `Grim Sandglass`
+            - `Heartmoss`
+            - `Jolt Coil`
+            - `Perfect Droplet`
+            - `Pickled Demon Tongue`
+            - `Polished Demon Horn`
+            - `Rime Crystal`
+            - `Spiny Lodestone`
+            - `Thorn Triad`
+            - `Trinity Geode`
 
 ## 13.3.0
 

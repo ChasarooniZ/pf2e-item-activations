@@ -71,15 +71,28 @@
             "spellhearts": {
                 "terms": {
                     "armor": "Armor",
-                    "weapon": "Weapon"
+                    "weapon": "Weapon",
+                    "melee-weapon": "Melee Weapon",
+                    "ranged-weapon": "Ranged Weapon"
                 },
                 "items": {
+                    "beastmasters-sigil": "This summons a",
+                    "brightbloom-posy": {
+                        "weapon": "After you cast a plant spell by activating the posy, pollen coats your weapon. Your next Strike causes the target to be @UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{Sickened 1} on a hit (@UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{Sickened 2} on a critical hit). If the creature attempts to recover, it sneezes rather than retching (rolling against the spellheart's spell DC @Check[fortitude|dc:resolve(@item.spellcasting.system.spelldc.dc)|traits:action:retch,disease]. If you don't make a Strike by the end of your next turn, the pollen becomes inert. Plant creatures are immune."
+                    },
                     "clay-sphere": {
                         "weapon": "After you cast a morph or polymorph spell by activating the clay sphere, the weapon becomes malleable, shifting its form to your whims. Your Strikes with the affixed weapon have the versatile bludgeoning, versatile piercing, and versatile slashing trait for 1 minute. Until the end of your next turn, Strikes with the affixed weapon have their damage dice increase by one step."
                     },
                     "compass-of-luong-phung": "In addition to the effects of the cantrip, the compass itself points in the general direction of a sea dragon for 1 minute, with the point glowing brighter as you get closer. Aligning the compass with the constellation of the Sea Dragon at night instead creates a beam for 1 minute to find Luong Phung again.",
-                     "five-feather-wreath": {
-                        "weapon": "After you cast an air spell by Activating the wreath, you can Fly 5 feet as a single action, or you can Fly (Normal 10, Greater 25, Fly 40) feet as a free action if the spell you cast wasn't a cantrip. This must be your next action, and if you don't have a fly Speed, you must end the flight on solid ground or fall."
+                    "desolation-locket": {
+                        "weapon": "After you cast a non-cantrip spell by activating the locket, you emanate an aura of hopelessness in a @Template[emanation|distance:5] until the start of your next turn. A creature that ends its turn in the aura must succeed at a @Check[will|dc:{dc}|traits:emotion,mental] saving throw against the locket's spell DC or become @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 1} (@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Slowed 2} on a critical failure) until the end of its next turn."
+                    },
+                    "enigma-mirror": {
+                        "armor": "After you cast an illusion spell by activating the mirror, choose one ally within 30 feet. That ally is @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W] as if seen in a misty mirror, until the end of your next turn.",
+                        "weapon": "After you cast an illusion spell by activating the mirror, illusory copies of the weapon swirl in the air around it. You're affected by the @UUID[Compendium.pf2e.spells-srd.Item.X56VdA98VedAfGTU] spell until the end of your next turn. The spell ends if you stop wielding the affixed weapon."
+                    },
+                    "five-feather-wreath": {
+                        "weapon": "After you cast an air spell by Activating the wreath, you can Fly 5 feet as a single action, or you can Fly {speed} feet as a free action if the spell you cast wasn't a cantrip. This must be your next action, and if you don't have a fly Speed, you must end the flight on solid ground or fall."
                     },
                     "flaming-star": {
                         "weapon": "After you cast a fire spell by Activating the star, Your your Strikes with the weapon deal an additional fire damage until the end of your next turn."
@@ -91,10 +104,18 @@
                         "weapon": "After you Cast a Spell by Activating the sandglass, your Strikes with the weapon deal additional void damage until the end of your next turn."
                     },
                     "heartmoss": {
-                        "weapon": "After you cast a healing spell by activating the heartmoss, the weapon exudes a soothing scent. Your Strikes with the affixed weapon have the nonlethal trait for 1 minute. Until the end of your next turn, Strikes with the affixed weapon cause the target to be Stupefied (Normal 1, Greater 2, Major 3) for 1 round if it hits (or for 3 rounds on a critical hit)."
+                        "weapon": "After you cast a healing spell by activating the heartmoss, the weapon exudes a soothing scent. Your Strikes with the affixed weapon have the nonlethal trait for 1 minute. Until the end of your next turn, Strikes with the affixed weapon cause the target to be @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{stupefiedLabel} for 1 round if it hits (or for 3 rounds on a critical hit)."
                     },
                     "jolt-coil": {
                         "weapon": "After you cast an electricity spell by activating the coil, your Strikes with the weapon deal additional electricity damage until the end of your next turn."
+                    },
+                    "judgment-thurible": {
+                        "armor": "After you cast a spell by activating the thurible, the thurible casts 3rd-rank @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]{Protection} on you, with a duration of 1 round.",
+                        "weapon": "After you cast a spell by activating the thurible, the weapon gains a rune that lasts until the end of your next turn. It gains the @UUID[Compendium.pf2e.equipment-srd.Item.DH0kB9Wbr5pDeunX]{Holy} rune if your deity allows holy sanctification or the @UUID[Compendium.pf2e.equipment-srd.Item.gmMrJREf4JSHd2dZ]{Unholy} rune if your deity allows unholy sanctification. If your deity allows both, you can choose which rune the weapon gains. If your deity allows neither, your weapon doesn't gain a rune. (Greater/Major) The extra damage from this rune is 2d6",
+                        "damage-boost": "The extra damage from this rune is 2d6"
+                    },
+                    "lightweave-scarf": {
+                        "weapon": "(visual) After you cast an illusion spell by activating the scarf, the weapon is shrouded in a mesmerizing illusory pattern. Your next Strike causes the target to be @UUID[Compendium.pf2e.conditionitems.Item.yblD8fOR1J8rDwEQ]{Confused} for 1 round if it hits. If you don't make a Strike by the end of your next turn, the illusion ends with no effect."
                     },
                     "perfect-droplet": {
                         "armor": "After you cast a water spell by Activating the droplet, your body becomes mistlike. Until the end of the turn, you can move through enemies' spaces. You can't move through creatures that have the water trait in this way."
@@ -105,8 +126,15 @@
                     "polished-demon-horn": {
                         "weapon": "After you cast an enchantment spell by activating the horn, your Strikes with the weapon deal additional mental damage until the end of your next turn."
                     },
+                    "resonating-fork": " After you cast a sonic spell by activating the fork, the weapon reverberates with trapped sound waves. Your next Strike causes the target to be @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR] for {duration} if it hits (or for {durationCrit} on a critical hit). If you don't make a Strike by the end of your next turn, the sound waves dissipate with no effect.",
                     "rime-crystal": {
                         "weapon": "After you cast an cold spell by activating the crystal, your Strikes with the weapon deal additional cold damage until the end of your next turn."
+                    },
+                    "sanguine-fang": {
+                        "weapon": "After you cast a spell by activating the fang, your Strikes with the weapon deal persistent bleed damage until the end of your next turn."
+                    },
+                    "saurian-spike": {
+                        "weapon": "When you cast a polymorph spell by activating the spike, your battle form is exceptionally fearsome. Each enemy in a @Template[emanation|distance:30] must succeed at a @Check[will|dc:{dc}|traits:auditory,emotion,fear,visual] saving throw or become @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{Frightened {fail}} (@UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{Frightened {critFail}} on a critical failure)."
                     },
                     "spiny-lodestone": {
                         "weapon": "After you cast a spell by Activating the spiny lodestone, your Strikes with the weapon deal an additional piercing damage until the end of your next turn."
@@ -118,8 +146,14 @@
                     "trinity-geode": {
                         "armor": "After you cast an earth spell by Activating the geode, you gain resistance to physical damage (except adamantine) until the end of your next turn, or double the resistance for a non-cantrip spell.",
                         "weapon": "After you cast an earth spell by activating the geode, your Strikes with the weapon deal additional bludgeoning damage until the end of your next turn."
+                    },
+                    "warding-statuette": {
+                        "weapon": "When you hit with a Strike using the affixed weapon, or when a spell effect you created by activating the statuette hits with a Strike, you can choose a creature adjacent to the creature that was hit. That creature gains a +1 status bonus to AC until the start of your next turn. No more than one creature can benefit from this each turn."
                     }
                 }
+            },
+            "misc": {
+                "charlatans-gloves-greater": "If you are also wearing a charlatan's cape, whenever you would move an object using telekinetic hand, you may instead have it disappear in a puff of smoke and reappear hovering in a space adjacent to yours. This is a teleportation effect. The item hovers until the end of your turn or until retrieved with an Interact action."
             },
             "spells": {
                 "joined": "The following spells in this entry are linked together and when one is expended the other will be as well ({spells})"

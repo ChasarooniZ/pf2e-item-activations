@@ -11,8 +11,12 @@
         #9999991f 100%
     );
 }
-.enabled-activation {
+.actions .enabled-activation {
     box-shadow: inset 0 0 3px 1px #8248e0;
+}
+
+li.enabled-activation.spellcasting-entry {
+    box-shadow: 0 0 3px 1px #8248e0;
 }
 
 i.linked-spells-icon {

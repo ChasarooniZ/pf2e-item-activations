@@ -17,7 +17,7 @@ import {
     handleRemovedRunes,
 } from "./helpers/handle-property-runes.js";
 import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
-import { isSpellHeart, needsSpellcasting, SPELL_ITEMS } from "./helpers/spells/spellcasting-items.js";
+import { isSpellHeart, needsSpellcasting, setupSpellItems, SPELL_ITEMS } from "./helpers/spells/spellcasting-items.js";
 import {
     checkAndUpdateLinkedSpellcastingItem,
     createSpellcastingEntry,
@@ -28,6 +28,7 @@ import {
 Hooks.on("ready", () => {
     console.log("PF2e Item Activations is getting ready....");
     registerAPI();
+    setupSpellItems();
     Hooks.on("preUpdateItem", async (item, changes, diff, userID) => {
         checkAndUpdateLinkedSpellcastingItem(item, changes);
 
@@ -335,11 +336,12 @@ export async function addOrDeleteActivation(item, changeType) {
                 createSpellcastingEntry({
                     spellsAdded: spellItemInfo.spells,
                     dc: spellItemInfo.dc,
-                    useItemDC: spellItemInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellItemInfo.dc,
+                    useItemDC:
+                        spellItemInfo?.forceDC || (actor.system.attributes.spellDC?.value ?? 0) < spellItemInfo.dc,
                     entryNoteData: spellItemInfo.notes,
                     actor,
                     item,
-                    spellItemInfo
+                    spellItemInfo,
                 });
             }
         }

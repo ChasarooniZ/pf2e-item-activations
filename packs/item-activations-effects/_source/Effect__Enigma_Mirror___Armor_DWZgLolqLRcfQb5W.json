@@ -1,0 +1,68 @@
+{
+	"folder": "AvhdponYjFczNdcn",
+	"name": "Effect: Enigma Mirror - Armor",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"_migration": {
+			"version": 0.955,
+			"previous": null
+		},
+		"description": {
+			"value": "<p>Granted by @UUID[Compendium.pf2e.equipment-srd.Jx7cxxTqOENzlGaj]{Enigma Mirror}</p><p>@Localize[pf2e-item-activations.notes.spellhearts.items.enigma-mirror.armor]</p>",
+			"gm": ""
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"rules": [],
+		"slug": "effect-enigma-mirror-armor",
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"level": {
+			"value": 1
+		},
+		"duration": {
+			"value": 1,
+			"unit": "rounds",
+			"expiry": "turn-start",
+			"sustained": false
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"unidentified": false,
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"badge": null,
+		"fromSpell": false,
+		"context": null
+	},
+	"_id": "DWZgLolqLRcfQb5W",
+	"img": "icons/commodities/metal/plate-steel-pink.webp",
+	"sort": 0,
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null,
+		"coreVersion": "13.351",
+		"systemId": "pf2e",
+		"systemVersion": "7.10.1",
+		"createdTime": 1772040561897,
+		"modifiedTime": 1772040910738,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2"
+	},
+	"_key": "!items!DWZgLolqLRcfQb5W"
+}
