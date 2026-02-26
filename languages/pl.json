@@ -67,7 +67,97 @@
     },
     "notes": {
       "fortification": "Za każdym razem, gdy obrońca zostanie trafiony krytycznie podczas noszenia wytrawionej zbroi, należy wykonać test @Check[flat|dc:17|showDC:all]. W przypadku powodzenia trafienie krytyczne staje się normalnym trafieniem.\n",
-      "greater-fortification": "Za każdym razem, gdy obrońca zostanie trafiony krytycznie podczas noszenia wytrawionej zbroi, należy wykonać test @Check[flat|dc:14|showDC:all]. W przypadku powodzenia trafienie krytyczne staje się normalnym trafieniem.\n"
+      "greater-fortification": "Za każdym razem, gdy obrońca zostanie trafiony krytycznie podczas noszenia wytrawionej zbroi, należy wykonać test @Check[flat|dc:14|showDC:all]. W przypadku powodzenia trafienie krytyczne staje się normalnym trafieniem.\n",
+      "spellhearts": {
+        "terms": {
+          "armor": "Pancerz",
+          "weapon": "Broń",
+          "melee-weapon": "Broń do walki wręcz",
+          "ranged-weapon": "Broń dystansowa"
+        },
+        "items": {
+          "beastmasters-sigil": "To przywołuje",
+          "brightbloom-posy": {
+            "weapon": "Po rzuceniu zaklęcia z cechą rośliny poprzez aktywację bukietu, pyłek pokrywa twoją broń. Twoje następne atak powoduje, że cel dostaje @UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{Mdłości 1} przy trafieniu (@UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{Mdłości 2} przy trafieniu krytycznym). Jeśli stworzenie próbuje się zregenerować, kicha zamiast wymiotować (w trakcie rzutu przeciwko ST zaklęcia @Check[fortitude|dc:resolve(@item.spellcasting.system.spelldc.dc)|traits:action:retch,disease]. Jeśli nie wykonasz ataku do końca następnej tury, pyłek staje się nieaktywny. Stworzenia roślinne są na niego niewrażliwe."
+          },
+          "clay-sphere": {
+            "weapon": "Po rzuceniu zaklęcia przemiany lub polimorfii poprzez aktywację glinianej kuli broń staje się plastyczna i zmienia swoją postać zgodnie z twoimi zachciankami. Twoje ataki przy użyciu tej broni mają przez 1 minutę cechy wszechstronnych obrażeń obuchowych, wszechstronnych obrażeń kłutych i wszechstronnych obrażeń ciętych. Do końca następnej tury twojej postaci kostki obrażeń przy atakach przy użyciu tej broni mają o jeden stopień większą wartość."
+          },
+          "compass-of-luong-phung": "Oprócz efektów sztuczki, kompas wskazuje ogólny kierunek, w którym znajduje się morski smok przez 1 minutę, a jego wskazówka świeci coraz jaśniej w miarę zbliżania się do celu. Wyrównanie kompasu z konstelacją Morskiego Smoka w nocy powoduje natomiast pojawienie się wiązki światła, która przez 1 minutę pozwala ponownie odnaleźć Luong Phunga.",
+          "desolation-locket": {
+            "weapon": "Po rzuceniu zaklęcia innego niż sztuczka poprzez aktywację medalionu, emanujesz aurą beznadziejności w odległości @Template[emanation|distance:5] do początku swojej następnej tury. Istota, która kończy swoją turę w tej aurze, musi wykonać rzut obronny @Check[will|dc:{dc}|traits:emotion,mental] przeciwko wartości ST zaklęcia medalionu lub stanie się @UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Spowolnione 1} (@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{Spowolnione 2} w przypadku krytycznej porażki) do końca swojej następnej tury."
+          },
+          "enigma-mirror": {
+            "armor": "Po rzuceniu zaklęcia iluzji poprzez aktywację lustra, wybierz jednego sojusznika w promieniu 30 stóp. Sojusznik ten jest @UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W], tak jakby był widziany w zamglonym lustrze, aż do końca twojej następnej tury.",
+            "weapon": "Po rzuceniu zaklęcia iluzji poprzez aktywację lustra, iluzoryczne kopie broni wirują w powietrzu wokół niej. Jesteś pod wpływem zaklęcia @UUID[Compendium.pf2e.spells-srd.Item.X56VdA98VedAfGTU] do końca swojej następnej tury. Zaklęcie kończy się, jeśli przestaniesz dzierżyć przymocowaną broń."
+          },
+          "five-feather-wreath": {
+            "weapon": "Po rzuceniu zaklęcia powietrznego poprzez aktywację wieńca możesz wykonać lot na odległość 5 stóp jako pojedynczą akcję lub lot na odległość {speed} stóp jako akcję darmową, jeśli rzucone zaklęcie nie było sztuczką. Musi to być twoja następna akcja, a jeśli nie posiadasz zdolności latania, musisz zakończyć lot na twardym podłożu lub spaść."
+          },
+          "flaming-star": {
+            "weapon": "Po rzuceniu zaklęcia ognia poprzez aktywację gwiazdy, Twoje ataki bronią zadają dodatkowe obrażenia od ognia do końca Twojej następnej tury."
+          },
+          "foxglove-token": {
+            "weapon": "Po rzuceniu zaklęcia z cechą rośliny poprzez aktywację symbolu naparstnicy, twoje ataki bronią zadają dodatkowe obrażenia od trucizny do końca twojej następnej tury."
+          },
+          "grim-sandglass": {
+            "weapon": "Po rzuceniu zaklęcia poprzez aktywację klepsydry, twoje ataki bronią zadają dodatkowe obrażenia pustki do końca następnej tury."
+          },
+          "heartmoss": {
+            "weapon": "Po rzuceniu zaklęcia leczącego poprzez aktywację mchu sercowego broń wydziela kojący zapach. Twoje ataki przymocowaną bronią mają cechę nieśmiercionośną przez 1 minutę. Do końca następnej tury ataki przymocowaną bronią powodują, że cel jest @UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]{stupefiedLabel} przez 1 rundę, jeśli trafi (lub przez 3 rundy w przypadku trafienia krytycznego)."
+          },
+          "jolt-coil": {
+            "weapon": "Po rzuceniu zaklęcia elektrycznego poprzez aktywację cewki, twoje ataki bronią zadają dodatkowe obrażenia elektryczne do końca twojej następnej tury."
+          },
+          "judgment-thurible": {
+            "armor": "Po rzuceniu zaklęcia poprzez aktywację kadzielnicy, kadzielnica rzuca na ciebie zaklęcie 3. rangi @UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf], którego czas trwania wynosi 1 rundę.",
+            "weapon": "Po rzuceniu zaklęcia poprzez aktywację kadzielnicy broń zyskuje runę, która utrzymuje się do końca następnej tury. Zyskuje runę @UUID[Compendium.pf2e.equipment-srd.Item.DH0kB9Wbr5pDeunX]{Świętości}, jeśli twoje bóstwo zezwala na święte uświęcenie, lub runę @UUID[Compendium.pf2e.equipment-srd. Item.gmMrJREf4JSHd2dZ]{Nieświętości}, jeśli twoje bóstwo pozwala na nieświęte uświęcenie. Jeśli twoje bóstwo pozwala na oba rodzaje uświęcenia, możesz wybrać, którą runę otrzyma broń. Jeśli twoje bóstwo nie pozwala na żadne z nich, broń nie otrzymuje runy. (Większa/Potężniejsza) Dodatkowe obrażenia z tej runy wynoszą 2k6.",
+            "damage-boost": "Dodatkowe obrażenia z tej runy wynoszą 2k6."
+          },
+          "lightweave-scarf": {
+            "weapon": "(wizualny) Po rzuceniu zaklęcia iluzji poprzez aktywację szala, broń zostaje otoczona hipnotyzującym iluzorycznym wzorem. Twój następny Atak powoduje, że cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.yblD8fOR1J8rDwEQ]{Zdezorientowany} na 1 rundę, jeśli trafi. Jeśli nie wykonasz Ataku przed końcem swojej następnej tury, iluzja kończy się bez efektu."
+          },
+          "perfect-droplet": {
+            "armor": "Po rzuceniu zaklęcia wodnego poprzez aktywację kropli, twoje ciało staje się mgliste. Do końca tury możesz przemieszczać się przez pola przeciwników. Nie możesz przemieszczać się w ten sposób przez stworzenia posiadające cechę wody."
+          },
+          "pickled-demon-tongue": {
+            "weapon": "Po rzuceniu zaklęcia kwasowego poprzez aktywację marynowanego języka demona, twoje Ataki bronią zadają dodatkowe obrażenia kwasowe do końca następnej tury."
+          },
+          "polished-demon-horn": {
+            "weapon": "Po rzuceniu zaklęcia zaklęcia poprzez aktywację rogu, twoje Ataki bronią zadają dodatkowe obrażenia psychiczne do końca twojej następnej tury."
+          },
+          "resonating-fork": "Po rzuceniu zaklęcia dźwiękowego poprzez aktywację widelca broń rezonuje uwięzionymi falami dźwiękowymi. Twój następny Atak powoduje, że cel zostaje @UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR] na {duration}, jeśli trafi (lub na {durationCrit} w przypadku trafienia krytycznego). Jeśli nie wykonasz Ataku przed końcem swojej następnej tury, fale dźwiękowe rozpraszają się bez żadnego efektu.",
+          "rime-crystal": {
+            "weapon": "Po rzuceniu zaklęcia zimna poprzez aktywację kryształu, twoje Ataki bronią zadają dodatkowe obrażenia od zimna do końca następnej tury."
+          },
+          "sanguine-fang": {
+            "weapon": "Po rzuceniu zaklęcia poprzez aktywację kła, twoje Ataki bronią zadają trwałe obrażenia krwawienia do końca następnej tury."
+          },
+          "saurian-spike": {
+            "weapon": "Kiedy rzucasz zaklęcie polimorfii poprzez aktywację kolca, twoja postać bojowa staje się wyjątkowo przerażająca. Każdy wróg w @Template[emanation|distance:30] musi wykonać udany rzut obronny @Check[will|dc:{dc}|traits:auditory,emotion,fear,visual], aby uniknąć stanu @UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{Przestraszony {fail}} (@UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{Przestraszony {critFail}} w przypadku krytycznej porażki)."
+          },
+          "spiny-lodestone": {
+            "weapon": "Po rzuceniu zaklęcia poprzez aktywację kolczastego magnesu, twoje Ataki bronią zadają dodatkowe obrażenia kłute do końca następnej tury."
+          },
+          "thorn-triad": {
+            "armor": "Po rzuceniu zaklęcia roślinnego poprzez aktywację triady, zyskujesz odporność na obrażenia obuchowe i kłute oraz podatność na ogień do końca następnej tury lub podwójną odporność w przypadku zaklęcia innego niż sztuczka.",
+            "weapon": "Po rzuceniu zaklęcia roślinnego poprzez aktywację triady, z broni wyrastają ciernie. Twoje Ataki tą bronią zadają dodatkowe trwałe obrażenia krwawienia do końca następnej tury."
+          },
+          "trinity-geode": {
+            "armor": "Po rzuceniu zaklęcia ziemi poprzez aktywację geody zyskujesz odporność na obrażenia fizyczne (z wyjątkiem adamantyny) do końca swojej następnej tury lub podwójną odporność w przypadku zaklęcia innego niż sztuczka.",
+            "weapon": "Po rzuceniu zaklęcia ziemi poprzez aktywację geody, twoje Ataki bronią zadają dodatkowe obrażenia obuchowe do końca twojej następnej tury."
+          },
+          "warding-statuette": {
+            "weapon": "Kiedy wykonasz Atak bronią z przymocowanym efektem lub kiedy efekt zaklęcia, które stworzyłeś poprzez aktywację statuetki, trafi przeciwnika, możesz wybrać stworzenie znajdujące się w sąsiedztwie trafionego przeciwnika. Stworzenie to otrzymuje premię +1 do KP do początku twojej następnej tury. W każdej turze tylko jedno stworzenie może skorzystać z tego efektu."
+          }
+        }
+      },
+      "misc": {
+        "charlatans-gloves-greater": "Jeśli nosisz również pelerynę szarlatana, za każdym razem, gdy poruszasz przedmiotem za pomocą telekinetycznej ręki, możesz zamiast tego sprawić, że zniknie on w kłębach dymu i pojawi się ponownie, unosząc się w przestrzeni sąsiadującej z twoją. Jest to efekt teleportacji. Przedmiot unosi się do końca twojej tury lub do momentu, gdy zostanie pobrany za pomocą akcji Interakcja."
+      },
+      "spells": {
+        "joined": "Następujące zaklęcia w tym wpisie są ze sobą powiązane i gdy jedno zostanie zużyte, drugie również zostanie zużyte ({spells})"
+      }
     }
   }
 }
