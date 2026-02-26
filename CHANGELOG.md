@@ -2,9 +2,7 @@
 
 ## 13.4.1
 
-- **Updated**
-    - Fixed spellheart formatting for `armor`
-    - Fixed styling for `Activation Spell Entries`
+- **New**
     - Added Support for the Following:
         - **Spellhearts** _All variants of each_
             - `Beastmaster's Sigil`
@@ -32,6 +30,9 @@
             - `Magical Medal (Griffon's Heart)`
             - `Ring of Sigils`
             - `Ring of Sigils (Greater)`
+- **Updated**
+    - Fixed spellheart formatting for `armor`
+    - Fixed styling for `Activation Spell Entries`
 
 ## 13.4.0
 
