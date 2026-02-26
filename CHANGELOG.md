@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 13.4.2
+
+- Updated Polish translation (🌐 @Lioheart)
+
 ## 13.4.1
 
 - **New**
