@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 13.4.4
+
+- Fixed failing import
+
 ## 13.4.3
 
 - Fixed issue with spell list for the `Warding Statuette` line (🐛 @Dharkus BSc MInstP)

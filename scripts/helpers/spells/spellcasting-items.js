@@ -1,4 +1,4 @@
-import { SPELLHEART_EFFECTS, SPELLS } from "./const";
+import { SPELLHEART_EFFECTS, SPELLS } from "./const.js";
 
 // Defaults to 1 / day
 // Only handles per day spells
