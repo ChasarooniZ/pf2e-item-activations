@@ -246,6 +246,12 @@ export function setupSpellItems() {
             ],
             notes: getSpellHeartNotes("grim-sandglass"),
         },
+        "hand-of-the-mage": {
+            dc: 0,
+            spells: [SPELLS.TELEKINETIC_HAND],
+            tradition: "occult",
+            ability: "cha",
+        },
         heartmoss: {
             dc: 17,
             spells: [SPELLS.STABILIZE],

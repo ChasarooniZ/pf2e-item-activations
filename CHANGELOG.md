@@ -1,5 +1,13 @@
 ## Unreleased
 
+## 13.4.5
+
+- **New**
+    - Added support for:
+        - `Hand of the Mage`
+    - Added Effects to actions for
+        - `Wayfinder`
+
 ## 13.4.4
 
 - Fixed failing import

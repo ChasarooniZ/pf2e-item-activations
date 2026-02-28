@@ -299,4 +299,14 @@ export const ACTIVATIONS_LIST = Object.keys(RUNE_ACTIVATIONS);
 
 export const RULE_ELEMENT_LIST = Object.keys(RUNE_RULE_ELEMENTS);
 
-export const RELEVANT_PROPERTY_RUNE_LIST = [...ACTIVATIONS_LIST, ...RULE_ELEMENT_LIST]; // Constant defining the module ID
+export const RELEVANT_PROPERTY_RUNE_LIST = [...ACTIVATIONS_LIST, ...RULE_ELEMENT_LIST];
+
+export const SPECIFIC_EFFECTS = {
+    wayfinder: {
+        0: "Compendium.pf2e.spell-effects.Item.cVVZXNbV0nElVOPZ", // Light
+    },
+};
+
+export const SPECIFIC_NAMES = {
+
+}

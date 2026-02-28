@@ -1,4 +1,4 @@
-import { TEXT } from "./const.js";
+import { SPECIFIC_EFFECTS, TEXT } from "./const.js";
 
 export function hasActivations(item) {
     return item.system.description.value.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}`);
@@ -54,6 +54,12 @@ export function generateActivations(item) {
                 action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));
             }
             action.system.slug = game.pf2e?.system?.sluggify(action.name);
+
+            const effectUUID = (SPECIFIC_EFFECTS[item.system.slug] ||
+                SPECIFIC_EFFECTS[game.pf2e?.system?.sluggify(name)])?.[num];
+            if (effectUUID) {
+                action.system.selfEffect = { uuid: effectUUID };
+            }
             return action;
         });
     return result;

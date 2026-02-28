@@ -60,11 +60,6 @@ export const ITEM_LIST = {
             "Compendium.pf2e-item-activations.item-activations.Item.9iizr1wZ8PCtkdCZ", // Nhimbaloth Lore
         ],
     },
-    wayfinder: {
-        actions: [
-            "Compendium.pf2e-item-activations.item-activations.Item.rL8P1QXZXC5mEWs0", //Light
-        ],
-    },
     // '-': {
     //     actions: [
     //         '', //
