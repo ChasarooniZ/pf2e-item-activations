@@ -14,7 +14,11 @@ export const IGNORED_TYPES = [
     "melee",
     "ranged",
 ];
-export const IGNORE_IN_SLOT = ["tattooed-on-the-body", "affixed-to-armor-or-a-weapon"];
+export const IGNORE_IN_SLOT = [
+    "tattooed-on-the-body",
+    "affixed-to-armor-or-a-weapon",
+    "affixed-to-metal-armor-or-a-weapon",
+];
 
 export const EFFECTS = {
     FORTIFICATION: "Compendium.pf2e-item-activations.item-activations-effects.Item.B4gaHFhQA7EXsNhv",
@@ -308,5 +312,17 @@ export const SPECIFIC_EFFECTS = {
 };
 
 export const SPECIFIC_NAMES = {
+    "the-whispering-reeds": {
+        0: "Nhimbaloth Lore",
+        1: "Soul Siphon",
+        2: "Echoes of an Eerie Tale",
+    },
+};
 
-}
+export const SPECIFIC_ABILITY_SUPPRESS = {
+    "the-whispering-reeds": {
+        4: true,
+    },
+};
+
+export const SPECIFIC_ACTIVATION_NOTES = {};

@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 13.4.6
+
+- Added carveout for `affixed-to-metal-armor-or-a-weapon` usage condition which fixes `Spiny Lodestone` from not working
+
 ## 13.4.5
 
 - **New**
