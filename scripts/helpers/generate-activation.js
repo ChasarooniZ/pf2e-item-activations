@@ -44,7 +44,7 @@ export function generateActivations(item) {
                 );
             if (isRemaster) {
                 action.name = `${TEXT.ACTIVATION_TEXT}: ${descAction.split("</strong>")[0].replace("—", "")}`;
-                action.system.traits.value = descAction
+                action.system.traits.value = (descAction + "()")
                     .match(/\(([^)]+)\)/g)[0]
                     .slice(1, -1)
                     .split(",")
