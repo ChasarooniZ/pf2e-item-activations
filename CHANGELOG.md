@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 14.0.0
+
+- Updated to support FoundryVTT `14`
+- Fix error when activation has no traits (💻 @Anonomit)
+
 ## 13.4.6
 
 - Added carveout for `affixed-to-metal-armor-or-a-weapon` usage condition which fixes `Spiny Lodestone` from not working

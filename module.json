@@ -4,8 +4,8 @@
     "description": "A module that allows you to have actions be added to an actor upon equipping",
     "version": "#{VERSION}#",
     "compatibility": {
-        "minimum": "12",
-        "verified": "13"
+        "minimum": "13",
+        "verified": "14"
     },
     "authors": [
         {
