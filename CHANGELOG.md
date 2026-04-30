@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.0.1
+
+- Fixed deprecated `Tour` call (💻 @Razytos)
+
 ## 14.0.0
 
 - Updated to support FoundryVTT `14`
