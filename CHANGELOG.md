@@ -1,8 +1,12 @@
 ## Unreleased
 
-## 14.0.1
+## 14.0.2
 
 - Fixed bug with a check (@reins864)
+
+## 14.0.1
+
+- Fixed deprecated `Tour` call (💻 @Razytos)
 
 ## 14.0.0
 
