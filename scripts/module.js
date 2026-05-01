@@ -194,10 +194,16 @@ export function checkIfMatters(item, changes) {
                 !item.system?.traits?.value?.includes("consumable") &&
                 game.settings.get(MODULE_ID, "auto-gen.enabled") &&
                 hasActivations(item)) ||
-            (item?.system?.runes?.property ?? []).some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r)) ||
-            (changes?.system?.runes?.property ?? []).some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r))) &&
+            hasRelevantRune(item?.system?.runes?.property, changes?.system?.runes?.property)) &&
         item.isIdentified &&
         (changes?.system?.equipped || changes?.system?.runes?.property?.length > 0 || changes === undefined)
+    );
+}
+
+function hasRelevantRune(itemProperties, changeProperties) {
+    return (
+        (Array.isArray(itemProperties) ? itemProperties : []).some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r)) ||
+        (Array.isArray(changeProperties) ? changeProperties : []).some((r) => RELEVANT_PROPERTY_RUNE_LIST.includes(r))
     );
 }
 

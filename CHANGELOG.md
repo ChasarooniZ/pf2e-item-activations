@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.0.1
+
+- Fixed bug with a check (@reins864)
+
 ## 14.0.0
 
 - Updated to support FoundryVTT `14`
