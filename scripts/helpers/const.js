@@ -325,4 +325,28 @@ export const SPECIFIC_ABILITY_SUPPRESS = {
     },
 };
 
+export const SPECIFIC_ACTIVATION_FREQUENCY = {
+    "eternal-eruption": {
+        0: "PT24H",
+    },
+    "eternal-eruption-of-droskars-crag": {
+        0: "PT24H",
+    },
+    "eternal-eruption-of-pale-mountain": {
+        0: "PT24H",
+    },
+    "eternal-eruption-of-mhar-massif": {
+        0: "PT24H",
+    },
+    "eternal-eruption-of-barrowsiege": {
+        0: "PT24H",
+    },
+    "eternal-eruption-of-ka": {
+        0: "PT24H",
+    },
+    "eternal-eruption-of-sakalayo": {
+        0: "PT24H",
+    },
+};
+
 export const SPECIFIC_ACTIVATION_NOTES = {};

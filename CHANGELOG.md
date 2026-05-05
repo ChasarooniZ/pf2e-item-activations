@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.0.2
+
+- Added an activation cost carve out for Eternal Eruption in combination with the new update to Usage Updater
+
 ## 14.0.1
 
 - Fixed bug with a check (@reins864)
