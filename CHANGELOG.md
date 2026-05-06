@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.0.3
+
+- Fixed bug causing `Eternal Eruption` activations to be set at once per round
+
 ## 14.0.2
 
 - Added support for `Crafter's Eyepiece (Greater)` as a spellcasting activation
