@@ -10,31 +10,11 @@
 
 # PF2e Item Activations
 
-Adds actions based on items activations. There are manually inputted items (see [Supported Items](#supported-items)), but there is also an automatic generation system to generate items.
+Adds actions based on items' **Activation** entries in their description, also handles some things manually IE [Spellcasting Entries](SPELL_ITEMS.md) (see the list here)
 ![Module In Action](https://media.discordapp.net/attachments/880969157846392842/1216869819153121280/ItemActivationsInAction.gif?ex=6601f555&is=65ef8055&hm=bc150d7c0c52030df17ca34faba7bb19ac42fb270aeddb694cf26030af45ba90&=)
 
-## Table of Contents
+### Limitations
 
-- [PF2e Item Activations](#pf2e-item-activations)
-  - [Table of Contents](#table-of-contents)
-    - [Notes and Limitations](#notes-and-limitations)
-      - [Notes](#notes)
-      - [Limitations](#limitations)
-  - [Features](#features)
-    - [Specifically Handled Items](#specifically-handled-items)
-  - [Language Support](#language-support)
-  - [FAQ](#faq)
-
-### Notes and Limitations
-
-#### Notes
-
-- This module will exist until this feature is implemented into the core system
-- Module will be updated sporadically as I get time and motivation
-
-#### Limitations
-
-- ~~Currently no Custom Activations (will most likely be a later feature)~~
 - Activations in actors aren't updated unless you remove them and readd them
 - Activations only appear when an item is added/updated
 - Activations currently don't have their own action category, I may look into that to see how difficult it would be
