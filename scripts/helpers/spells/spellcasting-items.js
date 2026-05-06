@@ -134,6 +134,11 @@ export function setupSpellItems() {
                 }),
             ],
         },
+        "crafters-eyepiece=greater": {
+            dc: 0,
+            spells: [{ rank: 5, uuid: SPELLS.CREATION }],
+            notes: SPECIFIC_NOTES.CRAFTERS_EYE_PIECE_GREATER,
+        },
         "desolation-locket": {
             dc: 24,
             spells: [SPELLS.HAUNTING_HYMN, SPELLS.FEAR],
@@ -788,4 +793,14 @@ const SPECIFIC_NOTES = {
             },
         ];
     },
+    CRAFTERS_EYE_PIECE_GREATER: [
+        {
+            itemType: "spell",
+            key: "ItemAlteration",
+            mode: "remove",
+            predicate: ["item:slug:creation", "spellcasting:id:{item|id}"],
+            property: "traits",
+            value: "concentrate",
+        },
+    ],
 };

@@ -2,7 +2,8 @@
 
 ## 14.0.2
 
-- Added an activation cost carve out for Eternal Eruption in combination with the new update to Usage Updater
+- Added support for `Crafter's Eyepiece (Greater)` as a spellcasting activation
+- Added an activation cost carve out for `Eternal Eruption` in combination with the new update to `Usage Updater`
 
 ## 14.0.1
 

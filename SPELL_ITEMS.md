@@ -40,6 +40,7 @@ _**Note.** Every spellheart includes its variants as well (Greater, Major, etc.)
 - `Charlatan's Gloves (Greater)`
 - `Cloak of Illusions`
 - `Cloak of Illusions (Greater)`
+- `Crafter's Eyepiece (Greater)`
 - `Hunter's Brooch`
 - `Mage's Hat`
 - `Mage's Hat (Greater)`

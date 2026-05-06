@@ -14,6 +14,7 @@ export const SPELLS = {
     CHILLING_SPRAY: "Compendium.pf2e.spells-srd.Item.8TQiFzGf4feoHeH0",
     CLAIRVOYANCE: "Compendium.pf2e.spells-srd.Item.zvKWclOZ7A53DObE",
     CONFUSING_COLORS: "Compendium.pf2e.spells-srd.Item.uEyfLoFQsRKBRIcB",
+    CREATION: "Compendium.pf2e.spells-srd.Item.TUj8eugNqAvB1vVR",
     CURSED_METAMORPHOSIS: "Compendium.pf2e.spells-srd.Item.dN8QBNuTiaBHCKUe",
     DAZE: "Compendium.pf2e.spells-srd.Item.4gBIw4IDrSfFHik4",
     DETECT_MAGIC: "Compendium.pf2e.spells-srd.Item.gpzpAAAJ1Lza2JVl",
