@@ -18,6 +18,7 @@ export const IGNORE_IN_SLOT = [
     "tattooed-on-the-body",
     "affixed-to-armor-or-a-weapon",
     "affixed-to-metal-armor-or-a-weapon",
+    "affixed-to-non-metal-armor-or-a-weapon",
 ];
 
 export const EFFECTS = {

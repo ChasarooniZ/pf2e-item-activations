@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.0.4
+
+- Added carveout for `affixed-to-non-metal-armor-or-a-weapon` usage condition which fixes `Thorn Triad` from not working
+
 ## 14.0.3
 
 - Fixed bug causing `Eternal Eruption` activations to be set at once per round
