@@ -47,6 +47,8 @@ export async function createSpellcastingEntry({
             const isCantrip = isTheSpellACantrip(spell);
             const uses = spellItem?.uses ?? 1;
 
+            spell.system.traits.value.push("activation");
+
             spell.system.location = {
                 value: spellcastingEntry.id,
                 ...(isCantrip

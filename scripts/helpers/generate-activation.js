@@ -66,6 +66,8 @@ export function generateActivations(item) {
             if (specificActivationFrequency) {
                 action.system.frequency = specificActivationFrequency;
             }
+
+            action.system.traits.value.push("activation");
             return action;
         });
     return result;

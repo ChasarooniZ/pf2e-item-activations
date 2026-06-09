@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.0.5
+
+- Added Activation Homebrew trait to added to all created activations Allowing you to predicate off it
+
 ## 14.0.4
 
 - Added carveout for `affixed-to-non-metal-armor-or-a-weapon` usage condition which fixes `Thorn Triad` from not working

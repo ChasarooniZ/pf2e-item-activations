@@ -96,7 +96,17 @@
         "pf2e-item-activations": {
             "pf2e-homebrew": {
                 "featTraits": {
-                    "invested": "Invested"
+                    "invested": "Invested",
+                    "activation": {
+                        "label": "pf2e-item-activations.traits.activation.label",
+                        "description": "pf2e-item-activations.traits.activation.description"
+                    }
+                },
+                "spellTraits": {
+                    "activation": {
+                        "label": "pf2e-item-activations.traits.activation.label",
+                        "description": "pf2e-item-activations.traits.activation.description"
+                    }
                 }
             }
         }
