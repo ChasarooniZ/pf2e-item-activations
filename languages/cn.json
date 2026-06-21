@@ -3,7 +3,7 @@
         "module-settings": {
             "auto-gen": {
                 "enabled": {
-                    "hint": "对那些没有手动定义的物品，使用自动生成功能。注意有些描述不规范的物品可能无法生成（请向汉化组反馈BUG）。",
+                    "hint": "对那些没有手动定义的物品，使用自动生成功能。注意有些描述不规范的物品可能无法生成（请向汉化组反馈Bug）。",
                     "name": "启用自动生成"
                 }
             },
@@ -66,8 +66,104 @@
         },
         "notes": {
             "greater-fortification": "每当你穿戴蚀刻该符文的护甲被重击时，尝试一次@Check[flat|dc:14|showDC:all]检定。若成功，该次攻击变为普通命中。",
-            "fortification": "每当你穿戴蚀刻该符文的护甲被重击时，尝试一次@Check[flat|dc:17|showDC:all]检定。若成功，该次攻击变为普通命中。"
+            "fortification": "每当你穿戴蚀刻该符文的护甲被重击时，尝试一次@Check[flat|dc:17|showDC:all]检定。若成功，该次攻击变为普通命中。",
+            "spellhearts": {
+                "terms": {
+                    "armor": "护甲",
+                    "weapon": "武器",
+                    "melee-weapon": "近战武器",
+                    "ranged-weapon": "远程武器"
+                },
+                "items": {
+                    "clay-sphere": {
+                        "weapon": "当你通过启动黏土球施放化形或变形法术后，武器会变得具有可塑性，并根据你的突发奇想来变化形态。你用附着武器作出的打击具有多用B、多用P和多用S特征，持续1分钟。直至你的下个回合结束为止，使用附着武器所作出打击的伤害骰提升一级。"
+                    },
+                    "beastmasters-sigil": "通过咒心召唤一只",
+                    "brightbloom-posy": {
+                        "weapon": "当你通过启动花束施放植物法术后，花粉会覆盖在你的武器上。你的下次打击成功命中目标的话会使目标陷入@UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{恶心 Sickened 1}（重击则@UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{恶心 Sickened 2}）。如果生物尝试恢复，它需要打喷嚏而非干呕（投掷豁免对抗咒心的法术DC）@Check[fortitude|dc:resolve(@item.spellcasting.system.spelldc.dc)|traits:action:retch,disease]。如果你在下回合结束前没有进行打击，则花粉会失去活性。带有植物特征的生物免疫此效果。"
+                    },
+                    "desolation-locket": {
+                        "weapon": "当你通过启动吊坠施放非戏法法术后，你会散发出@Template[emanation|distance:5]范围的绝望灵光，直到你的下个回合开始。在灵光范围内结束回合的生物必须通过@Check[will|dc:{dc}|traits:emotion,mental]豁免，对抗吊坠的法术DC。否则陷入@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{缓慢 Slowed 1} （大失败@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{缓慢 Slowed 2}），直到他的下个回合结束。"
+                    },
+                    "enigma-mirror": {
+                        "armor": "当你通过启动镜子施放幻术法术后，选择30尺内的一个盟友。该盟友获得@UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]，仿佛在朦胧的镜中被看见一样，直到你的下个回合结束。",
+                        "weapon": "当你通过启动镜子施放幻术法术后，该武器的幻象副本会在周围的空气中旋转。你获得@UUID[Compendium.pf2e.spells-srd.Item.X56VdA98VedAfGTU]效果影响，直到你的下个回合结束。如果你不再持用附着的武器，则法术效果结束。"
+                    },
+                    "five-feather-wreath": {
+                        "weapon": "当你通过启动花环施放气特征的法术后，你能以单动作飞行5尺，如果该法术不是戏法，则你能以一个自由动作飞行{speed}尺。这必须为你的下一个动作，如果你没有飞行速度，你必须在坚实地表上结束飞行，否则会坠落。"
+                    },
+                    "flaming-star": {
+                        "weapon": "当你通过启动星星施放火焰法术后，直到你的下个回合结束前，你以此武器进行的打击造成额外火焰伤害。"
+                    },
+                    "foxglove-token": {
+                        "weapon": "当你通过启动毛地黄徽记施放植物法术后，你以此武器进行的打击额外造成毒素伤害，持续至你的下个回合结束为止。"
+                    },
+                    "grim-sandglass": {
+                        "weapon": "当你通过启动沙漏施放法术后，直到你的下个回合结束前，你以此武器进行的打击额外造成虚能伤害。"
+                    },
+                    "heartmoss": {
+                        "weapon": "当你通过启动心苔施放治疗法术后，武器会释放出令人感到舒缓的气味。你用附着武器作出的打击具有非致命特征，持续1分钟。直至你的下个回合结束为止，用附着武器作出的打击若命中的话，目标会陷入@UUID[Compendium.pf2e.conditionitems.Item.e1XGnhKNSQIm5IXg]，持续1轮（或重击时持续3轮）。"
+                    },
+                    "jolt-coil": {
+                        "weapon": "当你通过启动线圈施放电击法术后，直到你的下个回合结束前，使用该武器进行的打击将额外造成电击伤害。"
+                    },
+                    "judgment-thurible": {
+                        "armor": "当你通过启动香炉施法后，香炉会对你施展3环@UUID[Compendium.pf2e.spells-srd.Item.gMODOGamz88rgHuf]，持续1轮。",
+                        "weapon": "当你通过启动香炉施放法术后，直到你的下个回合结束前，武器获得由你选择的符文。如果你的神祗允许圣洁祝佑，则获得@UUID[Compendium.pf2e.equipment-srd.Item.DH0kB9Wbr5pDeunX]符文，如果你的神祗允许邪秽祝佑，则获得@UUID[Compendium.pf2e.equipment-srd.Item.gmMrJREf4JSHd2dZ]符文。如果你的神祇允许两者，你可以选择武器获得哪种符文。如果你的神祇两者都不允许，则你的武器不会获得符文。（高等/上等香炉）符文提供的额外伤害为2d6",
+                        "damage-boost": "符文提供的额外伤害为2d6"
+                    },
+                    "lightweave-scarf": {
+                        "weapon": "（视觉）当你通过启动绑带施放幻术法术后，武器会被令人困惑的幻象图案笼罩。你的下次打击如果命中，会使目标陷入持续1轮的@UUID[Compendium.pf2e.conditionitems.Item.yblD8fOR1J8rDwEQ]。如果你在下个回合结束前未进行打击，则幻象会毫无影响地消失。"
+                    },
+                    "perfect-droplet": {
+                        "armor": "当你通过启动水滴施放水特征法术后，你的身体将变得像雾一样。直到本回合结束前，你可以穿过敌人占据的空间。你无法以此方法穿过具有水特征的生物。"
+                    },
+                    "pickled-demon-tongue": {
+                        "weapon": "当你通过启动腌制恶魔舌施放酸蚀法术后，直到你的下个回合结束前，你以此武器进行的打击额外造成酸蚀伤害。"
+                    },
+                    "polished-demon-horn": {
+                        "weapon": "当你通过启动抛光恶魔角施放惑控系法术后，直到你的下个回合结束前，你以此武器进行的打击额外造成心灵伤害。"
+                    },
+                    "resonating-fork": " 当你通过启动音叉施放音波法术后，武器会和捕获的音波一起共鸣。你的下次打击如果命中，会使目标陷入持续{duration}的@UUID[Compendium.pf2e.conditionitems.Item.9PR9y0bi4JPKnHPR]（重击则耳聋{durationCrit}）。如果你在下个回合结束前未进行打击，则音波会毫无影响地消失。",
+                    "rime-crystal": {
+                        "weapon": "当你通过启动水晶施放寒冷法术后，直到你的下个回合结束前，你以此武器进行的打击额外造成寒冷伤害。"
+                    },
+                    "sanguine-fang": {
+                        "weapon": "当你通过启动尖牙施放法术后，直到你的下个回合结束前，你以此武器进行的打击额外造成持续流血伤害。"
+                    },
+                    "saurian-spike": {
+                        "weapon": "当你通过启动骨刺施放变形法术后，你的战斗形态变得更加可怕。@Template[emanation|distance:30]范围内所有敌人都必须成功通过@Check[will|dc:{dc}|traits:auditory,emotion,fear,visual]豁免，否则陷入@UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{惊惧 Frightened {fail}}（大失败则为@UUID[Compendium.pf2e.conditionitems.Item.TBSHQspnbcqxsmjL]{Frightened {critFail}}）。"
+                    },
+                    "spiny-lodestone": {
+                        "weapon": "当你通过启动多刺磁铁矿施放法术后，直到你的下个回合结束前，你以此武器进行的打击额外造成穿刺伤害。"
+                    },
+                    "thorn-triad": {
+                        "armor": "当你通过启动棘刺三角施放植物法术后，直到你的下个回合结束前，你获得穿刺和钝击抗力和火焰弱点；或者获得对抗非戏法法术的双倍抗力。",
+                        "weapon": "当你通过启动棘刺三角施放植物法术后，棘刺会在武器上滋生。直到你的下个回合结束前，你以此武器进行的打击额外造成持续流血伤害。"
+                    },
+                    "trinity-geode": {
+                        "armor": "当你通过启动晶洞施放土特征法术后，直到你的下个回合结束前，你获得物理抗力（精金除外），如果该法术不是戏法，则获得抗力翻倍。",
+                        "weapon": "当你通过启动晶洞施放土特征法术后，直到你的下个回合结束前，你以此武器进行的打击额外造成钝击伤害。"
+                    },
+                    "warding-statuette": {
+                        "weapon": "当你以附着的武器打击命中，或当你通过启动雕像创造的法术效果打击命中，你能选择一个与命中生物相邻的生物。直到你的下个回合开始前，该生物的AC获得+1状态加值。每个回合只能有一个生物从中获益。"
+                    },
+                    "compass-of-luong-phung": "除了戏法效果外，罗盘本身会指向海龙的大致方向，持续1分钟，且随着靠近，指针会变得更亮。若在夜间将罗盘对准海龙群，则可形成一道持续1分钟的光束，可用于再次找到梁奉。"
+                }
+            },
+            "misc": {
+                "charlatans-gloves-greater": "若你还穿戴了骗徒披肩，当你使用念动之手移动一件物品时，你可以改为令其消失在一阵青烟当中，并悬浮飘动着重新出现在邻接于你的一处空间当中。这一效果具有传送特征。这件物品会持续飘浮直到你的回合结束，或直到使用一个交互动作将其取下。"
+            },
+            "spells": {
+                "joined": "本列表中的以下法术相互关联，当其中一个法术被使用时，其他法术也会随之被消耗（{spells}）"
+            }
+        },
+        "traits": {
+            "activation": {
+                "label": "启动项",
+                "description": "这是由PF2e Item Activations模组添加的启动项"
+            }
         }
     },
-    "I18N.LANGUAGE": "中文"
+    "I18N.LANGUAGE": "简体中文"
 }
