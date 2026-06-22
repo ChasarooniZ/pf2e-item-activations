@@ -1,4 +1,6 @@
 ## Unreleased
+- **Updated**
+  - Updated chinese translation (🌐 @AlphaStarGuide)
 
 ## 14.0.5
 
