@@ -23,6 +23,8 @@ import {
     createSpellcastingEntry,
     linkedSpellStyling,
 } from "./helpers/spells/handle-spellcasting-entries.js";
+import { showOriginItem } from "./helpers/show-origin-item.js";
+import { showItemActivationsList } from "./helpers/show-activation-list.js";
 
 // Hook attachment functions
 Hooks.on("ready", () => {
@@ -105,7 +107,11 @@ Hooks.on("ready", () => {
     Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
         const actor = _sheet.actor;
         actionStyling(actor, html);
+        showOriginItem(actor, html);
         linkedSpellStyling(actor, html);
+    });
+    Hooks.on("renderItemSheet", async (_sheet, html, info) => {
+        showItemActivationsList(info?.document, html);
     });
     if (game.user.isGM) {
         sendUpdateMessage();

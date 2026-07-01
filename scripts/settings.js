@@ -10,6 +10,24 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
+    game.settings.register("pf2e-item-activations", "show.source", {
+        name: game.i18n.localize("pf2e-item-activations.module-settings.show.source.name"),
+        hint: game.i18n.localize("pf2e-item-activations.module-settings.show.source.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
+
+    game.settings.register("pf2e-item-activations", "show.activation-list", {
+        name: game.i18n.localize("pf2e-item-activations.module-settings.show.activation-list.name"),
+        hint: game.i18n.localize("pf2e-item-activations.module-settings.show.activation-list.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
+
     // Register setting for enabling/disabling NPC activations
     game.settings.register("pf2e-item-activations", "action-type-icon", {
         name: game.i18n.localize("pf2e-item-activations.module-settings.action-type-icon.enabled.name"),
@@ -59,7 +77,6 @@ Hooks.on("init", () => {
         default: false,
         type: Boolean,
     });
-
 
     game.settings.register("pf2e-item-activations", "last-version", {
         scope: "world",

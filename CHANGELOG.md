@@ -1,9 +1,15 @@
 ## Unreleased
 
+## 14.1.0
+
+- **New**
+    - `Show Source` - Add an option to see the activation source and click to open the sheet
+    - `Show Activation List` - Add an option to see a list of all active activations, and you can click to open the activation
+
 ## 14.0.6
 
 - **Updated**
-  - Updated chinese translation (🌐 @AlphaStarGuide)
+    - Updated chinese translation (🌐 @AlphaStarGuide)
 
 ## 14.0.5
 

@@ -34,3 +34,34 @@ i.linked-spells-icon {
         text-shadow: 0 2px #fa78fa;
     }
 }
+
+.activation-list-item {
+    display: flex;
+    gap: 1em;
+    margin-left: 2px;
+    align-items: center;
+
+    .pf2e-item-activation-link.item-image {
+        display: flex;
+        flex: 0 0 1.5rem;
+        height: 1.5rem;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        cursor: pointer;
+        font-size: var(--font-size-18);
+
+        &.framed {
+            --inset-shadow-length: 0.25rem;
+            border: none;
+            border-radius: 2px;
+            box-shadow:
+                0 0 0 1px var(--tertiary),
+                0 0 0 2px #9f725b,
+                inset 0 0 var(--inset-shadow-length) rgba(0, 0, 0, 0.5);
+            background-color: var(--tertiary);
+        }
+    }
+}
