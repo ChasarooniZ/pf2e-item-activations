@@ -28,6 +28,16 @@
                     "hint": "Enables automatic generations for activations that haven't been handcrafted. Note these may have less implementation/functionality."
                 }
             },
+            "show": {
+                "source": {
+                    "name": "Show Activation Source",
+                    "hint": "Shows an icon that links the the activation's source in pf2e"
+                },
+                "activation-list": {
+                    "name": "Show Activation List",
+                    "hint": "Shows a list of activations currently on the actor for a particular item (in the item sheet)"
+                }
+            },
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"
@@ -164,6 +174,13 @@
                 "label": "Activation",
                 "description": "This is an activation added by the PF2e Item Activations Module"
             }
+        },
+        "ui": {
+            "activations": "Activations",
+            "granted-by": "Granted by",
+            "open-item-source": "Open Item Source",
+            "open-activation": "Open Activation",
+            "frequency-status": "{value} / {max} uses"
         }
     }
 }
