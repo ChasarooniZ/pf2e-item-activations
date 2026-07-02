@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.1.1
+
+- Handles spellcasting entries properly for `Show Source` and `Show Activation List` (🐛 @Sol (Veronica))
+
 ## 14.1.0
 
 - **New**

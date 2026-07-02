@@ -1,8 +1,13 @@
 import { MODULE_ID } from "./const.js";
 
-export function showOriginItem(actor, html) {
+export function showOriginItem(actor, node) {
+    const html = node[0];
     const activationItemInfo = actor.items.contents
-        .filter((it) => it?.flags?.[MODULE_ID]?.enabled === true || it?.flags?.[MODULE_ID]?.enabled === false)
+        .filter(
+            (it) =>
+                (it?.flags?.[MODULE_ID]?.enabled === true || it?.flags?.[MODULE_ID]?.enabled === false) &&
+                it?.type !== "spell"
+        )
         .map((i) => ({
             id: i.id,
             originName: i?.flags?.[MODULE_ID]?.grantedBy?.name,
@@ -11,11 +16,12 @@ export function showOriginItem(actor, html) {
         }));
 
     activationItemInfo.forEach(({ id, originName, originImg, originId }) => {
-        const item = html.find(`[data-item-id='${id}'] h4`);
-        if (!item) return;
-        const itemHTML = item?.[0];
+        const itemHTML =
+            html.querySelector(`.spellcasting-entry[data-item-id='${id}'] .item-name-input`) ||
+            html.querySelector(`[data-item-id='${id}'] h4`);
+        if (!itemHTML) return;
         itemHTML.insertAdjacentHTML(
-            "afterbegin",
+            itemHTML.classList.contains("item-name-input") ? "beforebegin" : "afterbegin",
             `<a class="item-image pf2e-item-activation-link framed" id="${originId}" data-tooltip-direction="LEFT" data-tooltip="${game.i18n.localize("pf2e-item-activations.ui.granted-by")} <b>${originName}</b><hr>
                 <p><b>${game.i18n.localize("pf2e-item-activations.ui.open-item-source")}:</b> <span class='reference'>${game.i18n.localize(
                     "CONTROLS.LeftClick"
@@ -24,7 +30,10 @@ export function showOriginItem(actor, html) {
                 <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>`
         );
-        itemHTML.querySelector("a.pf2e-item-activation-link").addEventListener("click", function (e) {
+        (
+            itemHTML.querySelector("a.pf2e-item-activation-link") ||
+            itemHTML.parentElement.querySelector("a.pf2e-item-activation-link")
+        ).addEventListener("click", function (e) {
             const id = this?.id;
             const item = actor.items?.get(id);
             if (id && item) {

@@ -313,6 +313,16 @@ export const SPECIFIC_EFFECTS = {
 };
 
 export const SPECIFIC_NAMES = {
+    "collar-of-the-shifting-spider": {
+        0: "Spider's Mutagen Bite",
+    },
+    "chronicler-wayfinder": {
+        0: "Wayfinder's Knowledge"
+    },
+    "phoenix-fighting-fan": {
+        0: "Phoenix's Banishment",
+        1: "Phoenix's Revival",
+    },
     "the-whispering-reeds": {
         0: "Nhimbaloth Lore",
         1: "Soul Siphon",

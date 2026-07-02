@@ -7,12 +7,18 @@ export function showItemActivationsList(item, html) {
         const htmlLocation = relevantSection?.[0];
         if (htmlLocation) {
             const id = item?.id;
-            const activations = actor.items.contents.filter((it) => it?.flags?.[MODULE_ID]?.grantedBy?._id === id);
+            const activations = actor.items.contents.filter(
+                (it) => it?.flags?.[MODULE_ID]?.grantedBy?._id === id && it?.type !== "spellcastingEntry"
+            );
             if (activations?.length > 0) {
                 let finalHTML = `<h4>${game.i18n.localize("pf2e-item-activations.ui.activations")}</h4>`;
                 for (const activation of activations) {
-                    const usageHTML = activation.system?.frequency
-                        ? `${game.i18n.format("pf2e-item-activations.ui.frequency-status", activation.system?.frequency)}<hr>`
+                    const frequency =
+                        activation?.system?.frequency || !activation?.system?.traits?.value.includes("cantrip")
+                            ? activation?.system?.location?.uses
+                            : null;
+                    const usageHTML = frequency
+                        ? `${game.i18n.format("pf2e-item-activations.ui.frequency-status", frequency)}<hr>`
                         : "";
                     finalHTML += `<div class="activation-list-item" id="${activation.id}"
                     data-tooltip-direction="LEFT"
