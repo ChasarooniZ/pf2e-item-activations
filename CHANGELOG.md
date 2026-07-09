@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 14.1.2
+
+- **Updated**
+    - Updated Polish translation (🌐 @Lioheart)
+
 ## 14.1.1
 
 - Handles spellcasting entries properly for `Show Source` and `Show Activation List` (🐛 @Sol (Veronica))
