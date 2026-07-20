@@ -1,8 +1,13 @@
 ## Unreleased
 
-## 14.1.2
+## 14.1.3
 
 - Fixes stylign issue with spell activations (🐛 @thebrownjumper)
+
+## 14.1.2
+
+- **Updated**
+    - Updated Polish translation (🌐 @Lioheart)
 
 ## 14.1.1
 

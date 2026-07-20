@@ -28,6 +28,16 @@
           "hint": "Umożliwia automatyczne generowanie aktywacji, które nie zostały stworzone ręcznie. Należy pamiętać, że mogą one mieć mniejszą implementację/funkcjonalność."
         }
       },
+      "show": {
+        "source": {
+          "name": "Pokaż źródło aktywacji",
+          "hint": "Wyświetla ikonę, która odsyła do źródła aktywacji w pf2e"
+        },
+        "activation-list": {
+          "name": "Pokaż listę aktywacji",
+          "hint": "Wyświetla listę aktywacji aktualnie przypisanych do postaci dla danego przedmiotu (w karcie przedmiotu)"
+        }
+      },
       "debug-mode": {
         "name": "Tryb debugowania",
         "hint": "Niech konsola odbiera komunikaty dla różnych rzeczy"
@@ -158,6 +168,19 @@
       "spells": {
         "joined": "Następujące zaklęcia w tym wpisie są ze sobą powiązane i gdy jedno zostanie zużyte, drugie również zostanie zużyte ({spells})"
       }
+    },
+    "traits": {
+      "activation": {
+        "label": "Aktywacja",
+        "description": "Jest to aktywacja dodana przez moduł PF2e Item Activations"
+      }
+    },
+    "ui": {
+      "activations": "Aktywacje",
+      "granted-by": "Przyznane przez",
+      "open-item-source": "Otwórz źródło pozycji",
+      "open-activation": "Otwórz aktywację",
+      "frequency-status": "{value} / {max} użyć"
     }
   }
 }
