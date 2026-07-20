@@ -65,3 +65,7 @@ i.linked-spells-icon {
         }
     }
 }
+
+li.spellcasting-entry h3.item-name {
+    display: flex;
+}
