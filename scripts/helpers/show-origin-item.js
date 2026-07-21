@@ -10,7 +10,7 @@ export function showOriginItem(actor, node) {
         )
         .map((i) => ({
             id: i.id,
-            originName: i?.flags?.[MODULE_ID]?.grantedBy?.name,
+            originName: i?.flags?.[MODULE_ID]?.grantedBy?.name.replaceAll('"', "&quot;"),
             originImg: i?.flags?.[MODULE_ID]?.grantedBy?.img,
             originId: i?.flags?.[MODULE_ID]?.grantedBy?._id,
         }));

@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.1.4
+
+- Actually fixed the issue with not accounting for quotes in item names (🐛 @thebrownjumper)
+
 ## 14.1.3
 
 - Fixes stylign issue with spell activations (🐛 @thebrownjumper)
