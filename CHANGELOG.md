@@ -1,5 +1,14 @@
 ## Unreleased
 
+## 14.2.0
+
+- **New**
+    - Added backend method to not check for specific activations on items
+    - Added backend method to rename specific activations
+- **Updated**
+- Lessened the requirements on generating a spellcasting entry (@curiousignite)
+- Refactored code for better maintainability
+
 ## 14.1.4
 
 - Actually fixed the issue with not accounting for quotes in item names (🐛 @thebrownjumper)

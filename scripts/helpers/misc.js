@@ -30,23 +30,9 @@ Hooks.on("ready", () => {
         (t) => new RegExp(t)
     );
 });
-/**
- * Sets a module flag for the given item
- * @param {object} item The item to set the flag for
- * @param {string} flagName The name of the flag to set
- * @param {*} value The value to set for the flag
- * @returns {object} The item with the flag set
- */
+
 export function setModuleFlag(item, flagName, value) {
-    // Ensure item has a flags object
-    if (!item?.flags) item.flags = {};
-
-    // Ensure item has a flags object for the module
-    if (!item?.flags?.[MODULE_ID]) item.flags[MODULE_ID] = {};
-
-    // Set the value for the specified flag
-    item.flags[MODULE_ID][flagName] = value;
-
+    foundry.utils.setProperty(item, `flags.${MODULE_ID}.${flagName}`, value);
     return item;
 }
 

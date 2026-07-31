@@ -317,7 +317,7 @@ export const SPECIFIC_NAMES = {
         0: "Spider's Mutagen Bite",
     },
     "chronicler-wayfinder": {
-        0: "Wayfinder's Knowledge"
+        0: "Wayfinder's Knowledge",
     },
     "phoenix-fighting-fan": {
         0: "Phoenix's Banishment",
@@ -331,6 +331,9 @@ export const SPECIFIC_NAMES = {
 };
 
 export const SPECIFIC_ABILITY_SUPPRESS = {
+    "mages-hat-greater": {
+        0: true,
+    },
     "the-whispering-reeds": {
         4: true,
     },

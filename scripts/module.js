@@ -2,7 +2,7 @@ import { debugLog } from "./helpers/debug.js";
 import { deactivateAction, activateAction, turnOnOffActivation } from "./helpers/activate.js";
 import { generateActivations, hasActivations } from "./helpers/generate-activation.js";
 import { ITEM_LIST, ITEM_SLUGS } from "./helpers/item-list.js";
-import { IGNORE_IN_SLOT, IGNORED_TYPES, MODULE_ID } from "./helpers/const.js";
+import { IGNORE_IN_SLOT, IGNORED_TYPES, MODULE_ID, RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
 import { checkChangeTypeNPC, isQualifiedNPC } from "./helpers/npc.js";
 import { augmentAction } from "./helpers/on-create.js";
 import { checkChangeTypePC, isQualifiedPC } from "./helpers/pc.js";
@@ -16,7 +16,6 @@ import {
     handlePropertyRunes,
     handleRemovedRunes,
 } from "./helpers/handle-property-runes.js";
-import { RELEVANT_PROPERTY_RUNE_LIST } from "./helpers/const.js";
 import { isSpellHeart, needsSpellcasting, setupSpellItems, SPELL_ITEMS } from "./helpers/spells/spellcasting-items.js";
 import {
     checkAndUpdateLinkedSpellcastingItem,
@@ -25,8 +24,12 @@ import {
 } from "./helpers/spells/handle-spellcasting-entries.js";
 import { showOriginItem } from "./helpers/show-origin-item.js";
 import { showItemActivationsList } from "./helpers/show-activation-list.js";
+import { setupSettings } from "./settings.js";
 
-// Hook attachment functions
+Hooks.on("init", () => {
+    setupSettings();
+});
+
 Hooks.on("ready", () => {
     console.log("PF2e Item Activations is getting ready....");
     registerAPI();
@@ -194,16 +197,27 @@ export async function updateTokensActivations(token) {
  * @returns {boolean} True if the item is relevant for activation
  */
 export function checkIfMatters(item, changes) {
-    return (
-        (ITEM_SLUGS.includes(item.system.slug) ||
-            (!IGNORED_TYPES.includes(item.type) &&
-                !item.system?.traits?.value?.includes("consumable") &&
-                game.settings.get(MODULE_ID, "auto-gen.enabled") &&
-                hasActivations(item)) ||
-            hasRelevantRune(item?.system?.runes?.property, changes?.system?.runes?.property)) &&
-        item.isIdentified &&
-        (changes?.system?.equipped || changes?.system?.runes?.property?.length > 0 || changes === undefined)
-    );
+    if (!item.isIdentified || !game.settings.get(MODULE_ID, "auto-gen.enabled")) {
+        return false;
+    }
+    if (!changes?.system?.equipped && !(changes?.system?.runes?.property?.length > 0) && changes !== undefined) {
+        return false;
+    }
+    if (ITEM_SLUGS.includes(item.system.slug) || Object.hasOwn(SPELL_ITEMS, item.system.slug)) {
+        return true;
+    }
+    if (hasRelevantRune(item?.system?.runes?.property, changes?.system?.runes?.property)) {
+        return true;
+    }
+    if (
+        !IGNORED_TYPES.includes(item.type) &&
+        !item.system?.traits?.value?.includes("consumable") &&
+        hasActivations(item)
+    ) {
+        return true;
+    }
+
+    return false;
 }
 
 function hasRelevantRune(itemProperties, changeProperties) {
@@ -342,10 +356,11 @@ export async function addOrDeleteActivation(item, changeType) {
 
         if (!qualified) {
             actions = actions.map((action) => deactivateAction(action));
-        } else if (!needsSpellcasting(item) || actor.isSpellcaster) {
+        }
+        if (!needsSpellcasting(item) || actor.isSpellcaster) {
             const spellItemInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
             if (spellItemInfo) {
-                createSpellcastingEntry({
+                await createSpellcastingEntry({
                     spellsAdded: spellItemInfo.spells,
                     dc: spellItemInfo.dc,
                     useItemDC:

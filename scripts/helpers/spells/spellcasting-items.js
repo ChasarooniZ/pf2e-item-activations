@@ -122,7 +122,6 @@ export function setupSpellItems() {
             spells: [SPELLS.FIGMENT],
             tradition: "occult",
             ability: "cha",
-            notes: SPECIFIC_NOTES.CHARLATANS_GLOVES_GREATER,
         },
         "compass-of-luong-phung": {
             dc: 0,

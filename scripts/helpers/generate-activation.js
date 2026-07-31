@@ -1,4 +1,10 @@
-import { SPECIFIC_ACTIVATION_FREQUENCY, SPECIFIC_EFFECTS, TEXT } from "./const.js";
+import {
+    SPECIFIC_ABILITY_SUPPRESS,
+    SPECIFIC_ACTIVATION_FREQUENCY,
+    SPECIFIC_EFFECTS,
+    SPECIFIC_NAMES,
+    TEXT,
+} from "./const.js";
 
 export function hasActivations(item) {
     return item.system.description.value.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}`);
@@ -14,7 +20,7 @@ export function generateActivations(item) {
     const isRemaster = description.includes(`<p><strong>${TEXT.ACTIVATE_TEXT}—`);
     let result = description.split(`<p><strong>${TEXT.ACTIVATE_TEXT}`).slice(1) ?? [];
     result = result
-        .filter((description) => isValidActivation(description))
+        .filter((description, cnt) => isValidActivation(description, item?.slug, cnt))
         .map((descAction, num) => {
             const type = descAction.includes(`<span class="action-glyph">`)
                 ? descAction.split(`<span class="action-glyph">`)[1]?.split(`</span>`)[0]
@@ -50,7 +56,10 @@ export function generateActivations(item) {
                     .split(",")
                     .filter((t) => t.trim().length > 0);
             } else {
-                action.name = `${TEXT.ACTIVATION_TEXT}: ${item.name}${result.length > 1 ? `(#${num + 1})` : ""}`;
+                const legacyName = SPECIFIC_NAMES?.[item?.slug]?.[num]
+                    ? SPECIFIC_NAMES?.[item?.slug]?.[num]
+                    : item.name;
+                action.name = `${TEXT.ACTIVATION_TEXT}: ${legacyName}`;
                 action.system.traits.value = getOldActionTraits(getOldActionTraitString(descAction));
             }
             action.system.slug = game.pf2e?.system?.sluggify(action.name);
@@ -203,6 +212,6 @@ function getFrequency(str) {
     return re;
 }
 
-function isValidActivation(desc) {
-    return !TEXT.INVALID_ACTIVATIONS.some((regex) => regex.test(desc));
+function isValidActivation(desc, slug, cnt) {
+    return !TEXT.INVALID_ACTIVATIONS.some((regex) => regex.test(desc)) && !SPECIFIC_ABILITY_SUPPRESS?.[slug]?.[cnt];
 }
