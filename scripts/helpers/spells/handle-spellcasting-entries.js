@@ -130,8 +130,8 @@ function createSpellcastingEntryDocument({ tradition, type, ability, dc, useItem
             ],
             slug: item.system.slug || game.pf2e.system.sluggify(item.name),
             spelldc: {
-                value: (useItemDC ? dc : item.actor.system.attributes.spellDC.value) - 10,
-                dc: useItemDC ? dc : item.actor.system.attributes.spellDC.value,
+                value: (useItemDC ? dc : (item?.actor?.system?.attributes?.spellDC?.value ?? 10)) - 10,
+                dc: useItemDC ? dc : (item?.actor?.system?.attributes?.spellDC?.value ?? 10),
             },
             traits: {
                 otherTags: [],

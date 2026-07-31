@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.2.1
+
+- Fixed minor failure bug
+
 ## 14.2.0
 
 - **New**
