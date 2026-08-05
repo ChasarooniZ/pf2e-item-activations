@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.2.2
+
+- Updated Chinese translation (🌐 @AlphaStarguide)
+
 ## 14.2.1
 
 - Fixed minor failure bug
