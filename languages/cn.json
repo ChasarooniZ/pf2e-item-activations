@@ -30,6 +30,16 @@
             "debug-mode": {
                 "name": "调试模式",
                 "hint": "让控制台接收不同类型的信息"
+            },
+            "show": {
+                "source": {
+                    "name": "显示启动项来源",
+                    "hint": "显示用于连接到PF2e系统中该启动项来源物品的图标"
+                },
+                "activation-list": {
+                    "name": "显示启动项列表",
+                    "hint": "（在物品卡中）显示当前角色在特定物品上拥有的启动项列表"
+                }
             }
         },
         "code": {
@@ -83,7 +93,7 @@
                         "weapon": "当你通过启动花束施放植物法术后，花粉会覆盖在你的武器上。你的下次打击成功命中目标的话会使目标陷入@UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{恶心 Sickened 1}（重击则@UUID[Compendium.pf2e.conditionitems.Item.fesd1n5eVhpCSS18]{恶心 Sickened 2}）。如果生物尝试恢复，它需要打喷嚏而非干呕（投掷豁免对抗咒心的法术DC）@Check[fortitude|dc:resolve(@item.spellcasting.system.spelldc.dc)|traits:action:retch,disease]。如果你在下回合结束前没有进行打击，则花粉会失去活性。带有植物特征的生物免疫此效果。"
                     },
                     "desolation-locket": {
-                        "weapon": "当你通过启动吊坠施放非戏法法术后，你会散发出@Template[emanation|distance:5]范围的绝望灵光，直到你的下个回合开始。在灵光范围内结束回合的生物必须通过@Check[will|dc:{dc}|traits:emotion,mental]豁免，对抗吊坠的法术DC。否则陷入@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{缓慢 Slowed 1} （大失败@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{缓慢 Slowed 2}），直到他的下个回合结束。"
+                        "weapon": "当你通过启动吊坠施放非戏法法术后，你会散发出@Template[emanation|distance:5]范围的绝望灵光，直到你的下个回合开始。在灵光范围内结束回合的生物必须通过@Check[will|dc:{dc}|traits:emotion,mental]豁免，对抗吊坠的法术DC。否则陷入@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{缓慢 Slowed 1}（大失败@UUID[Compendium.pf2e.conditionitems.Item.xYTAsEpcJE1Ccni3]{缓慢 Slowed 2}），直到他的下个回合结束。"
                     },
                     "enigma-mirror": {
                         "armor": "当你通过启动镜子施放幻术法术后，选择30尺内的一个盟友。该盟友获得@UUID[Compendium.pf2e.conditionitems.Item.DmAIPqOBomZ7H95W]，仿佛在朦胧的镜中被看见一样，直到你的下个回合结束。",
@@ -163,6 +173,13 @@
                 "label": "启动项",
                 "description": "这是由PF2e Item Activations模组添加的启动项"
             }
+        },
+        "ui": {
+            "activations": "启动项",
+            "granted-by": "来自于",
+            "open-item-source": "打开来源物品",
+            "open-activation": "打开启动项",
+            "frequency-status": "{value} / {max}次"
         }
     },
     "I18N.LANGUAGE": "简体中文"
