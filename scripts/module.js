@@ -339,17 +339,11 @@ export async function addOrDeleteActivation(item, changeType) {
         //Property Runes
         const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
         actions.push(...actives);
-        const relevantRules = rules.filter(
-            (rule) =>
-                !item?.system?.rules?.some(
-                    (itemRule) => itemRule?.flags?.grantedBy?.rule === rule?.flags?.grantedBy?.rule
-                )
-        );
-        if (relevantRules?.length > 0) {
+        if (rules?.length > 0) {
             await actor.updateEmbeddedDocuments("Item", [
                 {
                     _id: item.id,
-                    system: { rules: [...item.system.rules, ...relevantRules] },
+                    system: { rules: [...item.system.rules, ...rules] },
                 },
             ]);
         }
@@ -364,10 +358,8 @@ export async function addOrDeleteActivation(item, changeType) {
             actions = actions.map((action) => deactivateAction(action));
         }
         if (!needsSpellcasting(item) || actor.isSpellcaster) {
-            const spellSlug = item?.system?.slug || game.pf2e.system.sluggify(item.name);
-            const spellItemInfo = SPELL_ITEMS?.[spellSlug];
-            const entryExists = actor.items.some((existingItem) => existingItem.system.slug === spellSlug);
-            if (spellItemInfo && !entryExists) {
+            const spellItemInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
+            if (spellItemInfo) {
                 await createSpellcastingEntry({
                     spellsAdded: spellItemInfo.spells,
                     dc: spellItemInfo.dc,
