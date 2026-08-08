@@ -27,7 +27,7 @@
 
 ## 14.1.3
 
-- Fixes stylign issue with spell activations (🐛 @thebrownjumper)
+- Fixes styling issue with spell activations (🐛 @thebrownjumper)
 
 ## 14.1.2
 

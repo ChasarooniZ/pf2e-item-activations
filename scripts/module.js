@@ -339,11 +339,17 @@ export async function addOrDeleteActivation(item, changeType) {
         //Property Runes
         const { actives = [], rules = [] } = (await handlePropertyRunes(item)) || {};
         actions.push(...actives);
-        if (rules?.length > 0) {
+        const relevantRules = rules.filter(
+            (rule) =>
+                !item?.system?.rules?.some(
+                    (itemRule) => itemRule?.flags?.grantedBy?.rule === rule?.flags?.grantedBy?.rule
+                )
+        );
+        if (relevantRules?.length > 0) {
             await actor.updateEmbeddedDocuments("Item", [
                 {
                     _id: item.id,
-                    system: { rules: [...item.system.rules, ...rules] },
+                    system: { rules: [...item.system.rules, ...relevantRules] },
                 },
             ]);
         }
@@ -358,8 +364,10 @@ export async function addOrDeleteActivation(item, changeType) {
             actions = actions.map((action) => deactivateAction(action));
         }
         if (!needsSpellcasting(item) || actor.isSpellcaster) {
-            const spellItemInfo = SPELL_ITEMS?.[item?.system?.slug || game.pf2e.system.sluggify(item.name)];
-            if (spellItemInfo) {
+            const spellSlug = item?.system?.slug || game.pf2e.system.sluggify(item.name);
+            const spellItemInfo = SPELL_ITEMS?.[spellSlug];
+            const entryExists = actor.items.some((existingItem) => existingItem.system.slug === spellSlug);
+            if (spellItemInfo && !entryExists) {
                 await createSpellcastingEntry({
                     spellsAdded: spellItemInfo.spells,
                     dc: spellItemInfo.dc,
@@ -374,7 +382,9 @@ export async function addOrDeleteActivation(item, changeType) {
         }
 
         debugLog({ actions }, "Add");
-        actions = actions.filter((action) => !actor.items.some((existingItem) => existingItem.slug === action.slug));
+        actions = actions.filter(
+            (action) => !actor.items.some((existingItem) => existingItem.system.slug === action.system.slug)
+        );
         if (actions.length > 0) {
             await actor.createEmbeddedDocuments("Item", actions);
         }
