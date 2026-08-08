@@ -374,7 +374,10 @@ export async function addOrDeleteActivation(item, changeType) {
         }
 
         debugLog({ actions }, "Add");
-        await actor.createEmbeddedDocuments("Item", actions);
+        actions = actions.filter((action) => !actor.items.some((existingItem) => existingItem.slug === action.slug));
+        if (actions.length > 0) {
+            await actor.createEmbeddedDocuments("Item", actions);
+        }
     } else if (changeType === "Delete") {
         const deleteIds = actor.items
             .filter((existingItem) => existingItem?.flags?.[MODULE_ID]?.grantedBy?._id === item.id)

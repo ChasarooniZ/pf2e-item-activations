@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.2.2
+
+- Fix for bug with NPCs double generating activations (💻 @teppuM)
+
 ## 14.2.1
 
 - Fixed minor failure bug
