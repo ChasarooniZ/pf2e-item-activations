@@ -141,3 +141,13 @@ jobs:
           artifacts: "./module.json, ./module.zip"
           tag: ${{ github.event.release.tag_name }}
           body: ${{ steps.changelog.outputs.changelog }}
+
+      - name: Publish FoundryVTT Package
+        env:
+          PACKAGE_TOKEN: ${{ secrets.FVTT_API_TOKEN }}
+        if: ${{!github.event.release.prerelease && env.PACKAGE_TOKEN}}
+        uses: cs96and/FoundryVTT-release-package@v1.0.3
+        with:
+          package-token: ${{ secrets.FVTT_API_TOKEN }}
+          manifest-url: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json
+          notes-url: https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}
