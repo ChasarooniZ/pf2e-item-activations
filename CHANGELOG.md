@@ -1,8 +1,12 @@
 ## Unreleased
 
-## 14.2.2
+## 14.2.3
 
 - Fix for bug with NPCs double generating activations (💻 @teppuM)
+
+## 14.2.2
+
+- Updated Chinese translation (🌐 @AlphaStarguide)
 
 ## 14.2.1
 
