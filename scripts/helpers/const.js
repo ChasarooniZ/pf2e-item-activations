@@ -319,6 +319,11 @@ export const SPECIFIC_NAMES = {
     "chronicler-wayfinder": {
         0: "Wayfinder's Knowledge",
     },
+    "decanter-of-endless-water": {
+        0: "Decanter's Stream",
+        1: "Decanter's Fountain",
+        2: "Decanter's Geyser",
+    },
     "phoenix-fighting-fan": {
         0: "Phoenix's Banishment",
         1: "Phoenix's Revival",
