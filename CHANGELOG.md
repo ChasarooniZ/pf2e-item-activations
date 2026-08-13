@@ -1,5 +1,10 @@
 ## Unreleased
 
+## 14.2.4
+
+- Removed bane from rune automation list for causing issues (@KonradMcClure
+  )
+
 ## 14.2.3
 
 - Fix for bug with NPCs double generating activations (💻 @teppuM)
