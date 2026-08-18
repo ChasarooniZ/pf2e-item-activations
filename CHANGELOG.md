@@ -11,6 +11,8 @@
             - `Sidestepping`
         - **Rule Elements**
             - `Convincing` and variants
+- **Updated**
+    - Updated new minimum pf2e system version to `8.4.1`
 
 ## 14.2.4
 
