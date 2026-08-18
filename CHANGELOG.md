@@ -1,5 +1,17 @@
 ## Unreleased
 
+## 14.3.0
+
+- **New**
+    - Added support for the following new runes:
+        - **Activations**
+            - `Sunweave` and variants
+            - `Deflecting`
+            - `Safeguarding`
+            - `Sidestepping`
+        - **Rule Elements**
+            - `Convincing` and variants
+
 ## 14.2.4
 
 - Removed bane from rune automation list for causing issues (@KonradMcClure

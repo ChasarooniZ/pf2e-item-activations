@@ -39,6 +39,7 @@ export const RUNE_ACTIVATIONS = {
     cunning: "Compendium.pf2e.equipment-srd.Item.T4gTHDKJ0HI10p3y",
     deathdrinking: "Compendium.pf2e.equipment-srd.Item.4DXupoMmwenFn4Kc",
     deathless: "Compendium.pf2e.equipment-srd.Item.kOEZCUTCPCqCFoJf",
+    deflecting: "Compendium.pf2e.equipment-srd.Item.djfRlJTck2pVnIjA",
     earthbinding: "Compendium.pf2e.equipment-srd.Item.OClYfRHzoynib6wX",
     energizing: "Compendium.pf2e.equipment-srd.Item.Qqh586pudsEqITUk",
     energyAdaptive: "Compendium.pf2e.equipment-srd.Item.DAWaXFtevHLUJxHB",
@@ -56,6 +57,7 @@ export const RUNE_ACTIVATIONS = {
     greaterHauling: "Compendium.pf2e.equipment-srd.Item.o0XXVVymB8kluwLK",
     greaterInvisibility: "Compendium.pf2e.equipment-srd.Item.bxz885LMjLCkpDq3",
     greaterKolssOath: "Compendium.pf2e.equipment-srd.Item.BuQsMeD7IP4mvDCQ",
+    greaterSunweave: "Compendium.pf2e.equipment-srd.Item.mDEkOSueuDOFW6V2",
     greaterSwallowSpike: "Compendium.pf2e.equipment-srd.Item.ciykvIC4SFFxIfUw",
     greaterTruddsStrength: "Compendium.pf2e.equipment-srd.Item.wvo5Qaj5qn7jFHaA",
     greaterWinged: "Compendium.pf2e.equipment-srd.Item.Ztb4xv4UGZbF32TE",
@@ -67,6 +69,7 @@ export const RUNE_ACTIVATIONS = {
     kolssOath: "Compendium.pf2e.equipment-srd.Item.tvFMexALNZ70NVwh",
     magnetizing: "Compendium.pf2e.equipment-srd.Item.jrjwukkie7Y7wkxu",
     majorFanged: "Compendium.pf2e.equipment-srd.Item.qL1S3vGfv8Dh5yAE",
+    majorSunweave: "Compendium.pf2e.equipment-srd.Item.yYCZXExIR7b9PO4V",
     majorSwallowSpike: "Compendium.pf2e.equipment-srd.Item.RRFyASbHcdclympe",
     malleable: "Compendium.pf2e.equipment-srd.Item.eHfL8Apfx4fxGksT",
     misleading: "Compendium.pf2e.equipment-srd.Item.68rHNRZmlnyaUbBF",
@@ -74,12 +77,15 @@ export const RUNE_ACTIVATIONS = {
     portable: "Compendium.pf2e.equipment-srd.Item.VYXAdLJdF0XSeX5m",
     quickstrike: "Compendium.pf2e.equipment-srd.Item.KnZL0xPWDzQx9vWQ",
     raiment: "Compendium.pf2e.equipment-srd.Item.iTxqImupNnm8gvoe",
+    safeguarding: "Compendium.pf2e.equipment-srd.Item.f4GQdPIDAl058wfs",
     serrating: "Compendium.pf2e.equipment-srd.Item.SV7W0lC2d8mfYuhy",
     shifting: "Compendium.pf2e.equipment-srd.Item.roeYtwlIe65BPMJ1",
+    sidestepping: "Compendium.pf2e.equipment-srd.Item.E4iDTr5likUCR6gz",
     sinisterKnight: "Compendium.pf2e.equipment-srd.Item.QDYPr19De3TBIysx",
     sizeChanging: "Compendium.pf2e.equipment-srd.Item.Z5FvYWLEpWVo3PUF",
     spellReservoir: "Compendium.pf2e.equipment-srd.Item.payq4TwkN2BRF6fs",
     soaring: "Compendium.pf2e.equipment-srd.Item.CJtn848AL7Q0Lxf2",
+    sunweave: "Compendium.pf2e.equipment-srd.Item.81Ejj6xXLN3l6uDb",
     swallowSpike: "Compendium.pf2e.equipment-srd.Item.BKjwg0TEGioiYpz1",
     swarming: "Compendium.pf2e.equipment-srd.Item.z8nKK4rSUGQVT2t9",
     truddsStrength: "Compendium.pf2e.equipment-srd.Item.I8XecIUYhwagAnXv",
@@ -104,11 +110,11 @@ export const RUNE_RULE_ELEMENTS = {
     stanching: makeFlatCheckAlteration("bleed", 12),
     greaterStanching: makeFlatCheckAlteration("bleed", 10),
     majorStanching: makeFlatCheckAlteration("bleed", 8),
-    trueStanching: [...makeFlatCheckAlteration("acid", 5), ...makeFlatCheckAlteration("fire", 5)],
-    quenching: [...makeFlatCheckAlteration("acid", 12), ...makeFlatCheckAlteration("fire", 12)],
-    greaterQuenching: [...makeFlatCheckAlteration("acid", 10), ...makeFlatCheckAlteration("fire", 10)],
-    majorQuenching: [...makeFlatCheckAlteration("acid", 8), ...makeFlatCheckAlteration("fire", 8)],
-    trueQuenching: [...makeFlatCheckAlteration("acid", 5), ...makeFlatCheckAlteration("fire", 5)],
+    trueStanching: [makeFlatCheckAlteration("acid", 5), makeFlatCheckAlteration("fire", 5)].flat(),
+    quenching: [makeFlatCheckAlteration("acid", 12), makeFlatCheckAlteration("fire", 12)].flat(),
+    greaterQuenching: [makeFlatCheckAlteration("acid", 10), makeFlatCheckAlteration("fire", 10)].flat(),
+    majorQuenching: [makeFlatCheckAlteration("acid", 8), makeFlatCheckAlteration("fire", 8)].flat(),
+    trueQuenching: [makeFlatCheckAlteration("acid", 5), makeFlatCheckAlteration("fire", 5)].flat(),
     deathdrinking: [
         {
             key: "FlatModifier",
@@ -131,7 +137,7 @@ export const RUNE_RULE_ELEMENTS = {
             type: "item",
             value: 1,
         },
-    ],
+    ].flat(),
     greaterBolkasBlessing: [
         makeFlatModifier("diplomacy", 2),
         {
@@ -143,7 +149,7 @@ export const RUNE_RULE_ELEMENTS = {
             type: "item",
             value: 2,
         },
-    ],
+    ].flat(),
     kolssOath: [
         makeFlatModifier("society", 1),
         {
@@ -155,7 +161,7 @@ export const RUNE_RULE_ELEMENTS = {
             type: "item",
             value: 1,
         },
-    ],
+    ].flat(),
     greaterKolssOath: [
         makeFlatModifier("society", 2),
         {
@@ -167,7 +173,7 @@ export const RUNE_RULE_ELEMENTS = {
             type: "item",
             value: 2,
         },
-    ],
+    ].flat(),
     truddsStrength: [
         makeFlatModifier("athletics", 1),
         {
@@ -179,7 +185,7 @@ export const RUNE_RULE_ELEMENTS = {
             type: "item",
             value: 1,
         },
-    ],
+    ].flat(),
     greaterTruddsStrength: [
         makeFlatModifier("athletics", 2),
         {
@@ -191,7 +197,7 @@ export const RUNE_RULE_ELEMENTS = {
             type: "item",
             value: 2,
         },
-    ],
+    ].flat(),
     antimagic: [
         {
             key: "FlatModifier",
@@ -269,6 +275,21 @@ export const RUNE_RULE_ELEMENTS = {
             value: item?.system?.bulk?.value ?? 1,
         },
     ],
+    convincing: makeFlatModifier("diplomacy", 1, [
+        {
+            or: ["action:make-an-impression", "action:request"],
+        },
+    ]),
+     greaterConvincing: makeFlatModifier("diplomacy", 2, [
+        {
+            or: ["action:make-an-impression", "action:request"],
+        },
+    ]),
+     majorConvincing: makeFlatModifier("diplomacy", 3, [
+        {
+            or: ["action:make-an-impression", "action:request"],
+        },
+    ]),
     // bane: [
     //     {
     //         key: "ChoiceSet",

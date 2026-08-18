@@ -36,7 +36,6 @@ export function setModuleFlag(item, flagName, value) {
     return item;
 }
 
-// Helper to generate similar rule elements
 export const makeFlatModifier = (selector, value, predicate = undefined) => [
     {
         key: "FlatModifier",
