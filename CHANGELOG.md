@@ -3,7 +3,7 @@
 ## 14.3.1
 
 - **Update**
-    - Removed system requirement as it wasn't necessary
+    - Removed system version requirement as it wasn't necessary
 
 ## 14.3.0
 
