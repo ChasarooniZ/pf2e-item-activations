@@ -1,6 +1,7 @@
 import {
     ACTIVATIONS_LIST,
     DYNAMIC_RUNE_RULE_ELEMENTS,
+    EFFECTS,
     RELEVANT_PROPERTY_RUNE_LIST,
     RULE_ELEMENT_LIST,
     RUNE_ACTIVATIONS,
@@ -53,7 +54,13 @@ export async function handlePropertyRunes(item) {
             }));
         } else {
             return generateActivationForARune(item, RUNE_ACTIVATIONS[rune]).then((acts) =>
-                acts.map((act) => ({ ...setModuleFlag(act, "rune", rune), sourceId: RUNE_ACTIVATIONS[rune] }))
+                acts.map((act) => ({
+                    ...setModuleFlag(act, "rune", rune),
+                    sourceId: RUNE_ACTIVATIONS[rune],
+                    ...(rune === "serrating"
+                        ? { action: { system: { selfEffect: { uuid: EFFECTS.SERRATING } } } }
+                        : {}),
+                }))
             );
         }
     });

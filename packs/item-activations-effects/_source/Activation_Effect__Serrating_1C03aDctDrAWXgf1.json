@@ -1,0 +1,92 @@
+{
+	"name": "Activation Effect: Serrating",
+	"type": "effect",
+	"effects": [],
+	"system": {
+		"_migration": {
+			"version": 0.959,
+			"previous": null
+		},
+		"description": {
+			"value": "<p>Graanted by @UUID[Compendium.pf2e.equipment-srd.SV7W0lC2d8mfYuhy]{Serrating}</p><p>You brandish the weapon and focus its power, causing the serrated shards to buzz as they spin at a dizzying speed. On your next hit with the weapon this turn that deals slashing damage, the serrating rune adds an additional 1d12 damage instead of the additional 1d4 damage, and then the shards return to their usual speed</p>",
+			"gm": ""
+		},
+		"publication": {
+			"title": "",
+			"authors": "",
+			"license": "OGL",
+			"remaster": false
+		},
+		"rules": [
+			{
+				"key": "DamageAlteration",
+				"selectors": [
+					"strike-damage"
+				],
+				"property": "dice-faces",
+				"mode": "upgrade",
+				"value": 12,
+				"predicate": [
+					"dice:slug:serrating"
+				],
+				"relabel": "Activated Serrating"
+			},
+			{
+				"key": "Note",
+				"selector": [
+					"strike-damage"
+				],
+				"predicate": [
+					"item:rune:property:serrating"
+				],
+				"text": "On your next hit with the weapon this turn that deals slashing damage, the serrating rune adds an additional 1d12 damage instead of the additional 1d4 damage, and then the shards return to their usual speed. (Remove this effect)"
+			}
+		],
+		"slug": null,
+		"traits": {
+			"otherTags": [],
+			"value": []
+		},
+		"level": {
+			"value": 1
+		},
+		"duration": {
+			"value": -1,
+			"unit": "unlimited",
+			"expiry": null,
+			"sustained": false
+		},
+		"tokenIcon": {
+			"show": true
+		},
+		"unidentified": false,
+		"start": {
+			"value": 0,
+			"initiative": null
+		},
+		"badge": null,
+		"fromSpell": false,
+		"context": null
+	},
+	"_id": "1C03aDctDrAWXgf1",
+	"img": "icons/tools/hand/saw-hacksaw-brass-grey.webp",
+	"folder": null,
+	"sort": 0,
+	"ownership": {
+		"default": 0,
+		"vj8VUT8j7Wtzy3Y2": 3
+	},
+	"flags": {},
+	"_stats": {
+		"coreVersion": "14.368",
+		"systemId": "pf2e",
+		"systemVersion": "8.5.1",
+		"createdTime": 1790540635663,
+		"modifiedTime": 1790540892575,
+		"lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+		"compendiumSource": null,
+		"duplicateSource": null,
+		"exportSource": null
+	},
+	"_key": "!items!1C03aDctDrAWXgf1"
+}

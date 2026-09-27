@@ -24,6 +24,7 @@ export const IGNORE_IN_SLOT = [
 export const EFFECTS = {
     FORTIFICATION: "Compendium.pf2e-item-activations.item-activations-effects.Item.B4gaHFhQA7EXsNhv",
     GREATER_FORTIFICATION: "Compendium.pf2e-item-activations.item-activations-effects.Item.0ERQrI3YN4sahcih",
+    SERRATING: "Compendium.pf2e-item-activations.item-activations-effects.Item.1C03aDctDrAWXgf1"
 };
 export const RUNE_ACTIVATIONS = {
     advancing: "Compendium.pf2e.equipment-srd.Item.45zjE7pj6FUHuz3K",

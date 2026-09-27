@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 14.3.2
+
+- Added effect to Serrating activation (💻 @TheTenk)
+
 ## 14.3.1
 
 - **Update**
