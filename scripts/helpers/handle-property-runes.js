@@ -54,13 +54,15 @@ export async function handlePropertyRunes(item) {
             }));
         } else {
             return generateActivationForARune(item, RUNE_ACTIVATIONS[rune]).then((acts) =>
-                acts.map((act) => ({
-                    ...setModuleFlag(act, "rune", rune),
-                    sourceId: RUNE_ACTIVATIONS[rune],
-                    ...(rune === "serrating"
-                        ? { action: { system: { selfEffect: { uuid: EFFECTS.SERRATING } } } }
-                        : {}),
-                }))
+                acts.map((act) => {
+                    if (rune === "serrating") {
+                        act.system.selfEffect = { uuid: EFFECTS.SERRATING };
+                    }
+                    return {
+                        ...setModuleFlag(act, "rune", rune),
+                        sourceId: RUNE_ACTIVATIONS[rune],
+                    };
+                })
             );
         }
     });
