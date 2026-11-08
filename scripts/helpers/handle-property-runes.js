@@ -7,10 +7,11 @@ import {
     RUNE_ACTIVATIONS,
     RUNE_RULE_ELEMENTS,
     SPECIFIC_ACTION_RUNE_ACTIVATIONS,
+    MODULE_ID,
+    RULE_ELEMENT_PREDICATE_FLAG,
 } from "./const.js";
 import { generateActivations } from "./generate-activation.js";
 import { setModuleFlag } from "./misc.js";
-import { MODULE_ID } from "./const.js";
 import { augmentAction } from "./on-create.js";
 
 function filterRelevantRunes(runes, list) {
@@ -21,7 +22,11 @@ export function getRelevantPropertyRunes(item) {
     const runes = item?.system?.runes?.property ?? [];
     return {
         rule_elements: filterRelevantRunes(runes, RULE_ELEMENT_LIST).flatMap((r) =>
-            getREsForARune(r, item).map((re) => ({ ...re, flags: { grantedBy: { uuid: item.uuid }, rune: r } }))
+            getREsForARune(r, item).map((re) => {
+                let predicate = re.predicate ?? [];
+                predicate.push(RULE_ELEMENT_PREDICATE_FLAG, { not: `rune-${r}` });
+                foundry.utils.mergeObject(re, { predicate });
+            })
         ),
         activations: filterRelevantRunes(runes, ACTIVATIONS_LIST),
     };
@@ -101,7 +106,15 @@ export async function handleRemovedRunes(item, runes) {
         await actor.updateEmbeddedDocuments("Item", [
             {
                 _id: item.id,
-                system: { rules: (item.system.rules ?? []).filter((r) => !runes.includes(r?.flags?.rune)) },
+                system: {
+                    rules: (item.system.rules ?? []).filter(
+                        (rule) =>
+                            !(
+                                rule?.predicate?.some((p) => foundry.utils.equals(p, RULE_ELEMENT_PREDICATE_FLAG)) &&
+                                rule?.predicate?.some((p) => runes.some((rune) => `rune-${rune}` === p?.not))
+                            )
+                    ),
+                },
             },
         ]);
     }
