@@ -1,5 +1,11 @@
 ## Unreleased
 
+## 14.3.3
+
+- **Updated**
+    - Fixed functionality on `Show Activation List` and `Show Source`
+    - Added support for Activations without traits (💻 @metroxide)
+
 ## 14.3.2
 
 - Added effect to Serrating activation (💻 @TheTenk)

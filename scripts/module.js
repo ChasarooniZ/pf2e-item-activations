@@ -110,11 +110,15 @@ Hooks.on("ready", () => {
     Hooks.on("renderCharacterSheetPF2e", async (_sheet, html, _character) => {
         const actor = _sheet.actor;
         actionStyling(actor, html);
-        showOriginItem(actor, html);
+        if (game.settings.get(MODULE_ID, "show.source")) {
+            showOriginItem(actor, html);
+        }
         linkedSpellStyling(actor, html);
     });
     Hooks.on("renderItemSheet", async (_sheet, html, info) => {
-        showItemActivationsList(info?.document, html);
+        if (game.settings.get(MODULE_ID, "show.activation-list")) {
+            showItemActivationsList(info?.document, html);
+        }
     });
     if (game.user.isGM) {
         sendUpdateMessage();

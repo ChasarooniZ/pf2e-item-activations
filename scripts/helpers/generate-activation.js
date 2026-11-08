@@ -50,9 +50,9 @@ export function generateActivations(item) {
                 );
             if (isRemaster) {
                 action.name = `${TEXT.ACTIVATION_TEXT}: ${descAction.split("</strong>")[0].replace("—", "")}`;
-                action.system.traits.value = (descAction + "()")
-                    .match(/\(([^)]+)\)/g)[0]
-                    .slice(1, -1)
+                const traitLine = `${descAction?.split("</p>")?.[0]}()`;
+                action.system.traits.value = traitLine
+                    .slice(traitLine.indexOf("(") + 1, traitLine.indexOf(")"))
                     .split(",")
                     .filter((t) => t.trim().length > 0);
             } else {
