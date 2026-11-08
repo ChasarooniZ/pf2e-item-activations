@@ -3,7 +3,7 @@ name: Item Request
 about: Suggest an item to add aactivations for
 title: '[Item] '
 labels: 'data-entry'
-assignees: ''
+assignees: ['ChasarooniZ']
 
 ---
 
