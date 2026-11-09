@@ -24,7 +24,7 @@ export const IGNORE_IN_SLOT = [
 export const EFFECTS = {
     FORTIFICATION: "Compendium.pf2e-item-activations.item-activations-effects.Item.B4gaHFhQA7EXsNhv",
     GREATER_FORTIFICATION: "Compendium.pf2e-item-activations.item-activations-effects.Item.0ERQrI3YN4sahcih",
-    SERRATING: "Compendium.pf2e-item-activations.item-activations-effects.Item.1C03aDctDrAWXgf1"
+    SERRATING: "Compendium.pf2e-item-activations.item-activations-effects.Item.1C03aDctDrAWXgf1",
 };
 export const RUNE_ACTIVATIONS = {
     advancing: "Compendium.pf2e.equipment-srd.Item.45zjE7pj6FUHuz3K",
@@ -281,12 +281,12 @@ export const RUNE_RULE_ELEMENTS = {
             or: ["action:make-an-impression", "action:request"],
         },
     ]),
-     greaterConvincing: makeFlatModifier("diplomacy", 2, [
+    greaterConvincing: makeFlatModifier("diplomacy", 2, [
         {
             or: ["action:make-an-impression", "action:request"],
         },
     ]),
-     majorConvincing: makeFlatModifier("diplomacy", 3, [
+    majorConvincing: makeFlatModifier("diplomacy", 3, [
         {
             or: ["action:make-an-impression", "action:request"],
         },
@@ -391,3 +391,5 @@ export const SPECIFIC_ACTIVATION_FREQUENCY = {
 };
 
 export const SPECIFIC_ACTIVATION_NOTES = {};
+
+export const RULE_ELEMENT_PREDICATE_FLAG = { not: "pf2e-item-activations-flag" };
